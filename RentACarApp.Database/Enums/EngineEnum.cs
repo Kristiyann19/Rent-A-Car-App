@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RentACarApp.Database.Enums
 {
-    internal class EngineEnum
+    public enum EngineEnum
     {
+        Petrol = 1,
+        Diesel = 2, 
+        Electric = 3
     }
 }

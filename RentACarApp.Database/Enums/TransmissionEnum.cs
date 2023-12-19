@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RentACarApp.Database.Enums
 {
-    internal class TransmissionEnum
+    public enum TransmissionEnum
     {
+        Automatic = 1,
+        Manual = 2,
+        SemiAutomatic = 3
     }
 }

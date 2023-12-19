@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RentACarApp.Database.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace RentACarApp.Database.Models
 {
@@ -47,7 +44,7 @@ namespace RentACarApp.Database.Models
     }
 
     public class CarConfiguration : IEntityTypeConfiguration<Car>
-    {
+    {           
         public void Configure(EntityTypeBuilder<Car> builder)
         {
             builder
@@ -64,7 +61,40 @@ namespace RentACarApp.Database.Models
                 .Property(x => x.Color)
                 .IsRequired()
                 .HasMaxLength(50);
-            //TODO: all database validations
+
+            builder
+                .Property(x => x.Price)
+                .IsRequired();
+
+            builder
+                .Property(x => x.Year)
+                .IsRequired();
+
+            builder
+                .Property(x => x.HorsePower)
+                .IsRequired();
+
+            builder
+                .Property(x => x.Color)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder
+                .Property(x => x.CubicCapacity)
+                .IsRequired();
+
+            builder
+                .Property(x => x.Mileage)
+                .IsRequired();
+
+            builder
+                .Property(x => x.Description)
+                .HasMaxLength(3000)
+                .IsRequired();
+
+            builder
+                .Property(x => x.isActive)
+                .IsRequired();
         }
     }
 }

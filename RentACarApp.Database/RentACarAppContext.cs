@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentACarApp.Database.Models
+namespace RentACarApp.Database
 {
     public class RentACarAppContext : DbContext
     {

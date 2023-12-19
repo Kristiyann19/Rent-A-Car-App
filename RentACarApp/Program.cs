@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RentACarApp.Database;
 using RentACarApp.Database.Models;
 
 var builder = WebApplication.CreateBuilder(args);

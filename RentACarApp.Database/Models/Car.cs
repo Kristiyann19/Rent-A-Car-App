@@ -60,6 +60,10 @@ namespace RentACarApp.Database.Models
                 .IsRequired()
                 .HasMaxLength(50);
 
+            builder
+                .Property(x => x.Color)
+                .IsRequired()
+                .HasMaxLength(50);
             //TODO: all database validations
         }
     }

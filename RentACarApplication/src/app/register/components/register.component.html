@@ -1,8 +1,14 @@
-<div class="row">
-  <div class="col-md-4 offset-md-4">
-    <div class="text-center mb-3">
-      <input class="form-control">
+<form (ngSubmit)="onSubmit()">
+  <input type="text"
+         placeholder="Username"
+         [(ngModel)]="user.userName"
+         name="username"
+         required>
+  <input type="password"
+         placeholder="Password"
+         [(ngModel)]="user.password"
+         name="password"
+         required>
 
-    </div>
-  </div>
-</div>
+  <button type="submit">Register</button>
+</form>

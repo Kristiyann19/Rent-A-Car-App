@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
+using RentACarApp.Dtos;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -22,9 +23,9 @@ namespace RentACarApp.Services
             configuration = _configuration;
         }
 
-        public string Login(string username)
+        public string Login(LoginDto login)
         {
-            var LoginUser = context.Users.SingleOrDefault(x => x.UserName == username);
+            var LoginUser = context.Users.SingleOrDefault(x => x.UserName == login.UserName);
 
             if (LoginUser == null)
             {
@@ -37,7 +38,7 @@ namespace RentACarApp.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, username)
+                    new Claim(ClaimTypes.Name, login.UserName)
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

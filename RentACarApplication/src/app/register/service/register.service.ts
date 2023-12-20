@@ -1,22 +1,17 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-import { RegisterDto } from "../dtos/register.dto";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { RegisterDto } from '../dtos/register.dto';
+
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root'
 })
+export class RegisterService {
+    private apiUrl = 'http://localhost:19999/api/Register';
 
-export class RegisterService{
-    constructor(private http : HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-
-    getRegister() : Observable<RegisterDto>{
-      return this.http.get<RegisterDto>('http://localhost:19999/api/Register')
+    register(userDto: RegisterDto) {
+        return this.http.post(this.apiUrl, userDto);
     }
-
-    // registerUser(userData: RegisterDto): Observable<RegisterDto> {
-    //   return this.http.post<RegisterDto>('http://localhost:19999/api/User', userData)
-    // }
 }
-

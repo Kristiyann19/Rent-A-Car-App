@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { RegisterDto } from '../dtos/register.dto';
 import { RegisterService } from '../service/register.service';
+import { RegisterDto } from '../dtos/register.dto';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
+    selector: 'app-registration',
+    templateUrl: './register.component.html',
+    //styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  register: RegisterDto = new RegisterDto();
+    user: RegisterDto = { userName: '', email: '', password: '', confirmPassword: '' }; // Initialize with appropriate fields
 
-  constructor (private registerService: RegisterService){}
+    constructor(private registerService: RegisterService) {}
 
-  ngOnInit() : void {
-    this.registerService.getRegister().subscribe((result: RegisterDto) =>{
-      this.register = result;
-    })
-  }
+    onSubmit() : void {
+        this.registerService.register(this.user)
+            .subscribe((result: RegisterDto) =>{
+              this.user = result;
+    });
+ }
 }

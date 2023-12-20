@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using RentACarApp;
+using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
+using RentACarApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,7 @@ builder.Services.AddDbContext<RentACarAppContext>(options =>
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // Add services to the container.
 //builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddRentACarServices();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

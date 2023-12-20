@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RentACarApp.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,12 @@ namespace RentACarApp.Database
         {
 
         }
+
+        public DbSet<Car> Cars { get;set; }
+
+        public DbSet<User> Users { get;set; }
+
+        public DbSet<Role> Roles { get;set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

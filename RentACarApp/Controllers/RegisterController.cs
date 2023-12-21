@@ -1,17 +1,16 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using RentACarApp.Database.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using RentACarApp.Contracts;
 using RentACarApp.Dtos;
-using RentACarApp.Services;
 
 namespace RentACarApp.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class RegisterController : Controller
     {
-        private readonly RegisterService registerService;
+        private readonly IRegisterService registerService;
 
-        public RegisterController(RegisterService _registerService)
+        public RegisterController(IRegisterService _registerService)
         {
             registerService = _registerService;
         }

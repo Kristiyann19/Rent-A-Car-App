@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentACarApp.Contracts;
 using RentACarApp.Dtos;
 using RentACarApp.Services;
 
 namespace RentACarApp.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class LoginController : Controller
     {
 
-        private readonly LoginService loginService;
+        private readonly ILoginService loginService;
 
-        public LoginController(LoginService _loginService)
+        public LoginController(ILoginService _loginService)
         {
             loginService = _loginService;
         }
 
-        public IActionResult Login(LoginDto loginDto)
+        [HttpPost]
+        public IActionResult Login([FromBody]LoginDto loginDto)
         {
             var token = loginService.Login(loginDto);
             if (!string.IsNullOrEmpty(token))

@@ -8,7 +8,7 @@ import { RegisterDto } from '../dtos/register.dto';
     //styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-    user: RegisterDto = { userName: '', email: '', password: '', confirmPassword: '' }; // Initialize with appropriate fields
+    user: RegisterDto = { userName: '', email: '', password: '', confirmPassword: '' }; 
 
     constructor(private registerService: RegisterService) {}
 

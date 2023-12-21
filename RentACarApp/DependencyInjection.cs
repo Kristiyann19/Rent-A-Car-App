@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using RentACarApp.Contracts;
+﻿using RentACarApp.Contracts;
 using RentACarApp.Services;
 
 namespace RentACarApp

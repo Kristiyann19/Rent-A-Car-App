@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentACarApp.Database.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RentACarApp.Database
 {

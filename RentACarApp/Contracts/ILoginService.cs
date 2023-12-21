@@ -1,9 +1,10 @@
-﻿using RentACarApp.Database.Models;
+﻿using RentACarApp.Dtos;
 
 namespace RentACarApp.Contracts
 {
     public interface ILoginService
     {
-        public string Login(string username);
+        string HashPassword(string password);
+        string Login(LoginDto login);
     }
 }

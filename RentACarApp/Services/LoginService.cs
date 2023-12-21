@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Win32;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
-using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace RentACarApp.Services
@@ -22,15 +21,35 @@ namespace RentACarApp.Services
             context = _context;
             configuration = _configuration;
         }
+        public string HashPassword(string password)
+        {
+            byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
+            return Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            password: password!,
+            salt: salt,
+            prf: KeyDerivationPrf.HMACSHA256,
+            iterationCount: 100000,
+            numBytesRequested: 256 / 8));
+
+        }
+
 
         public string Login(LoginDto login)
         {
-            var LoginUser = context.Users.SingleOrDefault(x => x.UserName == login.UserName);
+            var passwordHash = HashPassword(login.Password);
+            var LoginUser = context.Users.SingleOrDefault(x => x.UserName == login.UserName && x.Password == passwordHash);
+
 
             if (LoginUser == null)
             {
                 return string.Empty;
             }
+
+            if (LoginUser.Password != passwordHash)
+            {
+                throw new ArgumentException();
+            }
+            
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"]);
@@ -48,5 +67,6 @@ namespace RentACarApp.Services
             return userToken;
         }
 
+      
     }
 }

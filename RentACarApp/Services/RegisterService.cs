@@ -29,14 +29,11 @@ namespace RentACarApp.Services
 
         public void Register(RegisterDto register)
         {
-
-            string hashedPassword = HashPassword(register.Password);
-
             var user = new User
             {
                 UserName = register.UserName,
                 Email = register.Email,
-                Password = hashedPassword
+                Password = HashPassword(register.Password)
             };
 
             context.Users.Add(user);

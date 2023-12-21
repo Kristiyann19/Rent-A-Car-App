@@ -24,7 +24,7 @@ namespace RentACarApp.Database.Models
 
         public string NormalizedEmail { get; set; }
 
-        public string EmailConfirmed { get; set; }
+        public string PasswordSalt { get; set; }
 
         public string Password { get; set; }
 

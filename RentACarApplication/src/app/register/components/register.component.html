@@ -1,34 +1,67 @@
-<form>
-       <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email"
-                     class="form-control"
-                     id="exampleInputEmail1"
-                     aria-describedby="emailHelp"
-                     placeholder="Enter email">
-              <small id="emailHelp"
-                     class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="row custom-row">
+       <div class="col-xl-6">
+              <div class="card">
+                     <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                            <form (ngSubmit)="onSubmit()">
+
+                                   <div class="form-outline mb-4">
+                                          <input type="text"
+                                                 placeholder="Username"
+                                                 [(ngModel)]="user.userName"
+                                                 name="username"
+                                                 required>
+                                          <!-- <label class="form-label"
+                                                 for="form3Example1cg">Your UserName</label> -->
+                                   </div>
+
+                                   <div class="form-outline mb-4">
+                                          <input type="text"
+                                                 placeholder="Email"
+                                                 [(ngModel)]="user.email"
+                                                 name="username"
+                                                 required>
+                                          <!-- <label class="form-label"
+                                                 for="form3Example3cg">Your Email</label> -->
+                                   </div>
+
+                                   <div class="form-outline mb-4">
+                                          <input type="password"
+                                                 placeholder="Password"
+                                                 [(ngModel)]="user.password"
+                                                 name="password"
+                                                 required>
+                                          <!-- <label class="form-label"
+                                                 for="form3Example4cg">Password</label> -->
+                                   </div>
+
+                                   <div class="form-outline mb-4">
+                                          <input type="password"
+                                                 placeholder="Confirm Password"
+                                                 [(ngModel)]="user.confirmPassword"
+                                                 name="username"
+                                                 required>
+                                          <!-- <label class="form-label"
+                                                 for="form3Example4cdg">Repeat your
+                                                 password</label> -->
+                                   </div>
+
+                                   <div class="d-flex justify-content-center">
+                                          <button type="submit"
+                                                  class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                   </div>
+                                   <p class="text-center text-muted mt-5 mb-0">Have already an
+                                          account? <a href="#!"
+                                             class="fw-bold text-body"><u>Login here</u></a></p>
+                            </form>
+                     </div>
+              </div>
        </div>
-       <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password"
-                     class="form-control"
-                     id="exampleInputPassword1"
-                     placeholder="Password">
-       </div>
-       <div class="form-group form-check">
-              <input type="checkbox"
-                     class="form-check-input"
-                     id="exampleCheck1">
-              <label class="form-check-label"
-                     for="exampleCheck1">Check me out</label>
-       </div>
-       <button type="submit"
-               class="btn btn-primary">Submit</button>
-</form>
+</div>
 
 
-<form (ngSubmit)="onSubmit()">
+<!-- <form (ngSubmit)="onSubmit()">
        <input type="text"
               placeholder="Username"
               [(ngModel)]="user.userName"
@@ -51,4 +84,4 @@
               required>
 
        <button type="submit">Register</button>
-</form>
+</form> -->

@@ -5,7 +5,7 @@ import { RegisterDto } from '../dtos/register.dto';
 @Component({
     selector: 'app-registration',
     templateUrl: './register.component.html',
-    //styleUrls: ['./register.component.css']
+    styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
     user: RegisterDto = { userName: '', email: '', password: '', confirmPassword: '' }; 

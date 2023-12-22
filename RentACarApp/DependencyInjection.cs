@@ -9,7 +9,8 @@ namespace RentACarApp
         {
             services
                 .AddScoped<ILoginService, LoginService>()
-                .AddScoped<IRegisterService, RegisterService>();
+                .AddScoped<IRegisterService, RegisterService>()
+                .AddScoped<ICarService, CarService>();
 
             return services;
         }

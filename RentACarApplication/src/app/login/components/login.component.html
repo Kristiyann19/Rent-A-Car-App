@@ -1,4 +1,44 @@
-<div class="md">
+<div class="row custom-row">
+  <div class="col-xl-4">
+    <div class="card p-5">
+
+      <h2 class="text-uppercase text-center mb-5">Login in to an account</h2>
+
+      <form (ngSubmit)="onSubmit()"
+            class="text-center">
+
+        <div class="form-outline mb-4">
+          <input type="text"
+                 placeholder="Username"
+                 [(ngModel)]="user.userName"
+                 name="username"
+                 required>
+          <!-- <label class="form-label"
+                                            for="form3Example1cg">Your UserName</label> -->
+        </div>
+
+        <div class="form-outline mb-4">
+          <input type="password"
+                 placeholder="Password"
+                 [(ngModel)]="user.password"
+                 name="password"
+                 required>
+          <!-- <label class="form-label"
+                                            for="form3Example4cg">Password</label> -->
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button type="submit"
+                  class="btn btn-success">Login</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="md">
   <form (ngSubmit)="onSubmit()">
     <input type="text"
            placeholder="Username"
@@ -16,4 +56,4 @@
     <button type="submit">Login</button>
   </form>
 
-</div>
+</div> -->

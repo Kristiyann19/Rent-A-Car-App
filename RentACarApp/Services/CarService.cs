@@ -52,6 +52,8 @@ namespace RentACarApp.Services
 
         public async Task<IEnumerable<Car>> GetAllCarsAsync()
             => await context.Cars.ToListAsync();
+
+        //Maybe make it for the details and change the getallcars to not have so much properties?
         public Task<CarDto> GetCarByIdAsync(int carId)
         {
             throw new NotImplementedException();

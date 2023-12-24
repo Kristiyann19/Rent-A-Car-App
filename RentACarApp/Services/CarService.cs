@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
+using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
 
 namespace RentACarApp.Services
@@ -25,25 +26,8 @@ namespace RentACarApp.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<CarDto>> GetAllCarsAsync()
-        {
-            var cars = await context.Cars.ToListAsync();
-
-            return context.Cars.Select(c => new CarDto
-            {
-                //not all fields initialized
-                Description = c.Description,
-                Engine = c.Engine,
-                HorsePower = c.HorsePower,
-                Make = c.Make,
-                Mileage = c.Mileage,
-                Model = c.Model,
-                Price = c.Price,
-                Region = c.Region,
-                Year = c.Year
-            });
-        }
-
+        public async Task<IEnumerable<Car>> GetAllCarsAsync()
+            => await context.Cars.ToListAsync();
         public Task<CarDto> GetCarByIdAsync(int carId)
         {
             throw new NotImplementedException();

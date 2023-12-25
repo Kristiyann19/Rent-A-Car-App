@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
+using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
 
 namespace RentACarApp.Services
@@ -17,9 +18,19 @@ namespace RentACarApp.Services
 
         public async Task BecomeAgentAsync(AgentDto agent, int userId)
         {
-            //var user = context.Users.FirstOrDefaultAsync(x => x.Id == userId);
-            //TODO
-            throw new ArgumentException();
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            
+            if (user == null)
+            {
+                user.Id = userId;
+                user.FirstName = agent.FirstName;
+                user.LastName = agent.LastName;
+                user.PhoneNumber = agent.PhoneNumber;
+                user.RoleId = 2;
+
+                await context.SaveChangesAsync();
+            }
+           
         }
     }
 

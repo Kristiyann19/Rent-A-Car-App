@@ -7,14 +7,15 @@ namespace RentACarApp.Contracts
     {
         Task<IEnumerable<Car>> GetAllCarsAsync();
 
-        Task<CarDto> GetCarByIdAsync(int carId);
+        Task<Car> GetCarByIdAsync(int carId);
 
         Task AddCarAsync(AddCarDto car);
 
         Task DeleteCarAsync(int carId);
 
-        //update and search
+        Task UpdateCarAsync(CarDto updatedCar);
 
+        Task<List<Car>> SeachInCarAsync(CarDto car);
 
     }
 }

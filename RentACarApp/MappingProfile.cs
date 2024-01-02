@@ -10,6 +10,7 @@ namespace RentACarApp
         {
             CreateMap<Car, Car>();
             CreateMap<CarDto, CarDto>();
+            CreateMap<AgentDto, User>();
         }
     }
 }

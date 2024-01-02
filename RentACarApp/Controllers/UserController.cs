@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
+using RentACarApp.Dtos;
+using RentACarApp.Services;
 using System.Runtime.CompilerServices;
 
 namespace RentACarApp.Controllers
@@ -27,6 +29,13 @@ namespace RentACarApp.Controllers
         public async Task<IActionResult> UserById([FromRoute] int id)
         {
             await userService.GetUserByIdAsync(id);
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> BecomeAgent([FromBody] AgentDto updatedToAgent)
+        {
+            await userService.BecomeAgentAsync(updatedToAgent);
             return Ok();
         }
     }

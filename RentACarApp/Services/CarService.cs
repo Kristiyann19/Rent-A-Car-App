@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
@@ -78,7 +77,7 @@ namespace RentACarApp.Services
             {
                 query = query.Where(x => x.Year == car.Year);
             }
-
+            //FIX
             if (car.Price != 0)
             {
                 query = query.GroupBy(x => x.Price).Select(car => car.Where(x => x.Price == car.Max(y => y.Price)).First());

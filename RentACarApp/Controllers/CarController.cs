@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.Dtos;
 
@@ -6,6 +7,7 @@ namespace RentACarApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class CarController : Controller
     {
         private readonly ICarService carService;
@@ -15,6 +17,7 @@ namespace RentACarApp.Controllers
             carService = _carService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> AllCars()
         {
@@ -37,6 +40,8 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
+
+        [AllowAnonymous]
         [HttpGet("{carId:int}")]
         public async Task<IActionResult> CarById([FromRoute] int carId)
         {
@@ -44,6 +49,7 @@ namespace RentACarApp.Controllers
             return Ok(reuslt);
         }
 
+        [AllowAnonymous]
         [HttpGet("search")]
         public async Task<IActionResult> SearchCar([FromQuery] CarDto car)
         {

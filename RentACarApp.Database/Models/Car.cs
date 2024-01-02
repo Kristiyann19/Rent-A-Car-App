@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RentACarApp.Database.Enums;
-using FluentValidation;
-using FluentValidation.Results;
 
 namespace RentACarApp.Database.Models
 {

@@ -18,6 +18,10 @@ export class CarService{
     return this.http.get<CarDto>(`http://localhost:19999/api/Car/${id}`);
   }  
 
+ 
+  addCar(car: CarDto) : Observable<CarDto>{
+    return this.http.post<CarDto>('http://localhost:19999/api/Car', car);
+  }
 
   searchCar(car: CarDto): Observable<CarDto[]> {
     const url = 'http://localhost:19999/api/Car/search';

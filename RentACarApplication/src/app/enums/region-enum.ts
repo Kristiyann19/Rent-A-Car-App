@@ -29,3 +29,37 @@ shumen = 27,
 qmbol = 28,
 outOfCountry = 29
 }
+
+export const RegionEnumLocalization = {
+  [RegionEnum.blagoevgrad]: 'Благоевград',
+  [RegionEnum.burgas]: 'Бургас',
+  [RegionEnum.varna]:'Варна',
+  [RegionEnum.velikoTarnovo]: 'Велико Търново',
+  [RegionEnum.vidin]: 'Видин',
+  [RegionEnum.vraca]:'Враца',
+  [RegionEnum.gabrovo]: 'Габрово',
+  [RegionEnum.dobrich]: 'Добрич',
+  [RegionEnum.dupnica]:'Дупница',
+  [RegionEnum.kardzhali]: 'Кърджали',
+  [RegionEnum.kyustendil]: 'Кюстендил',
+  [RegionEnum.lovech]:'Ловеч',
+  [RegionEnum.montana]: 'Монтана',
+  [RegionEnum.pazardhzik]: 'Пазарджик',
+  [RegionEnum.pernik]:'Перник',
+  [RegionEnum.pleven]: 'Плевен',
+  [RegionEnum.plovdiv]: 'Пловдив',
+  [RegionEnum.razgrad]:'Разград',
+  [RegionEnum.ruse]: 'Русе',
+  [RegionEnum.silistra]: 'Силистра',
+  [RegionEnum.sliven]:'Сливен',
+  [RegionEnum.smolyan]: 'Смолян',
+  [RegionEnum.sofiq]: 'София',
+  [RegionEnum.staraZagora]:'Стара Загора',
+  [RegionEnum.tyrgovishte]: 'Търговище',
+  [RegionEnum.haskovo]: 'Хасково',
+  [RegionEnum.shumen]:'Шумен',
+  [RegionEnum.qmbol]: 'Ямбол',
+  [RegionEnum.outOfCountry]:'Извън страната',
+  
+  
+}

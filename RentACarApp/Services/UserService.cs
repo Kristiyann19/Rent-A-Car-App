@@ -11,6 +11,7 @@ namespace RentACarApp.Services
     {
         private readonly RentACarAppContext context;
         private readonly IMapper mapper;
+
         public UserService(RentACarAppContext _context, IMapper _mapper)
         {
             context = _context;

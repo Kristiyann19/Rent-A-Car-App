@@ -9,3 +9,16 @@ export enum CategoryEnum{
   convertible = 8,
   wagon = 9
 }
+
+export const CategoryEnumLocalization = {
+  [CategoryEnum.sedan]: 'Седан',
+  [CategoryEnum.hatchback]: 'Хечбек',
+  [CategoryEnum.suv]:'SUV',
+  [CategoryEnum.coupe]: 'Купе',
+  [CategoryEnum.minivan]: 'Миниван',
+  [CategoryEnum.pickupTruck]:'Пикап',
+  [CategoryEnum.sportsCar]: 'Спортна Кола',
+  [CategoryEnum.convertible]: 'Кабриолет',
+  [CategoryEnum.wagon]:'Комби',
+  
+}

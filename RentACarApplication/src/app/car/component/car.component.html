@@ -12,8 +12,8 @@
       <li class="list-group-item">Цена: {{car.price}} лв.</li>
       <li class="list-group-item">Пробег: {{car.mileage}} км.</li>
       <li class="list-group-item">Година: {{car.year}}</li>
-      <li><button class="btn btn-primary"
-                [routerLink]="['/car',car.id]">детайли</button></li>
+      <button class="btn btn-primary"
+              [routerLink]="['/car',car.id]">детайли</button>
     </ul>
   </div>
 </div>

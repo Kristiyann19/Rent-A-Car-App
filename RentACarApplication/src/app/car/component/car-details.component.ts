@@ -3,6 +3,9 @@ import { CarDto } from "../dtos/car.dto";
 import { EngineEnum, EngineEnumLocalization } from "../../enums/engine-enum";
 import { ActivatedRoute } from "@angular/router";
 import { CarService } from "../service/car.service";
+import { CategoryEnum, CategoryEnumLocalization } from "../../enums/category-enum";
+import { TransmissionEnum, TransmissionEnumLocalization } from "../../enums/transmission-enum";
+import { RegionEnum, RegionEnumLocalization } from "../../enums/region-enum";
 
 @Component({
   selector: 'app-car-details',
@@ -14,8 +17,14 @@ export class CarDetailsComponent{
   car: CarDto;
 
   engineEnumLocalization = EngineEnumLocalization;
-
+  categoryEnumLocalization = CategoryEnumLocalization;
+  transmissionEnumLocalization = TransmissionEnumLocalization;
+  regionEnumLocalization = RegionEnumLocalization;
+  
   engineEnum = EngineEnum;
+  categoryEnum = CategoryEnum;
+  transmissionEnum = TransmissionEnum;
+  regionEnum = RegionEnum;
 
   constructor(private route: ActivatedRoute, private carService: CarService) {}
 

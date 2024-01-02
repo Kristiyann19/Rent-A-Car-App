@@ -10,7 +10,7 @@ import { CarService } from "../service/car.service";
 
 export class CarComponent {
   cars: CarDto[] = [];
-
+  car: CarDto = new CarDto();
   constructor(private carService: CarService){}
 
   ngOnInit(): void {
@@ -18,5 +18,13 @@ export class CarComponent {
       this.cars = result;
     });
   }
+
+  search(): void {
+    this.carService.searchCar(this.car).subscribe(
+      (data: CarDto[]) => {
+        this.cars = data;
+      }
+    )
+  }  
 
 }

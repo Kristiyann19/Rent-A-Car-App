@@ -1,19 +1,82 @@
-<div class="row">
-  <div *ngFor="let car of cars"
-       class="card"
-       style="width: 18rem;">
-    <img class="card-img-top"
-         src="..."
-         alt="Card image ">
-    <div class="card-body">
-      <h5 class="card-title">{{car.make}} {{car.model}}</h5>
+<div class="container">
+  <div class="row">
+    <div class="p-3 border bg-light">
+      <input type="text"
+             [(ngModel)]="car.make"
+             placeholder="Search By Make">
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Цена: {{car.price}} лв.</li>
-      <li class="list-group-item">Пробег: {{car.mileage}} км.</li>
-      <li class="list-group-item">Година: {{car.year}}</li>
+    <div class="p-3 border bg-light">
+      <input type="text"
+             [(ngModel)]="car.model"
+             placeholder="Search By Model">
+    </div>
+    <div class="p-3 border bg-light">
+      <input type="text"
+             [(ngModel)]="car.model"
+             placeholder="Search By Model">
+    </div>
+    <div class="p-3 border bg-light">
+      <input type="number"
+             [(ngModel)]="car.year"
+             placeholder="Search By Year">
+    </div>
+
+    <div class="p-3 border bg-light">
+      <select [(ngModel)]="car.engine">
+        <option></option>
+        <option value="1"> Бензинов</option>
+        <option value="2">Дизелов</option>
+        <option value="3">Електрически</option>
+      </select>
+    </div>
+    <div class="p-3 border bg-light">
+      <select [(ngModel)]="car.category">
+        <option></option>
+        <option value="1"> Седан</option>
+        <option value="2">Хечбек</option>
+        <option value="3">SUV</option>
+        <option value="4">Купе</option>
+        <option value="5">Миниван</option>
+        <option value="6">Пикап</option>
+        <option value="7">Спортна кола</option>
+        <option value="8">Кабриолет</option>
+        <option value="9">Комби</option>
+      </select>
+    </div>
+    <div class="p-3 border bg-light">
+      <select [(ngModel)]="car.transmission">
+        <option></option>
+        <option value="1"> Автоматична</option>
+        <option value="2">Ръчна</option>
+        <option value="3">Семи-автоматична</option>
+      </select>
+    </div>
+    <div class="p-3 border bg-light">
       <button class="btn btn-primary"
-              [routerLink]="['/car',car.id]">детайли</button>
-    </ul>
+              (click)="search()">Search</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let car of cars"
+         class="card"
+         style="width: 18rem;">
+      <img class="card-img-top"
+           alt="Card image ">
+      <div class="card-body">
+        <h5 class="card-title">{{car.make}} {{car.model}}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Цена: {{car.price}} лв.</li>
+        <li class="list-group-item">Пробег: {{car.mileage}} км.</li>
+        <li class="list-group-item">Година: {{car.year}}</li>
+        <button class="btn btn-primary"
+                [routerLink]="['/car',car.id]">детайли</button>
+      </ul>
+    </div>
   </div>
 </div>

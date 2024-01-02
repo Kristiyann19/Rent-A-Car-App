@@ -26,12 +26,12 @@ namespace RentACarApp.Dtos
 
         public bool isActive { get; set; }
 
-        public EngineEnum Engine { get; set; }
+        public EngineEnum? Engine { get; set; }
 
-        public TransmissionEnum Transmission { get; set; }
+        public TransmissionEnum? Transmission { get; set; }
 
-        public RegionEnum Region { get; set; }
+        public RegionEnum? Region { get; set; }
 
-        public CategoryEnum Category { get; set; }
+        public CategoryEnum? Category { get; set; }
     }
 }

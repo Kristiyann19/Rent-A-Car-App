@@ -78,6 +78,33 @@ namespace RentACarApp.Services
             {
                 query = query.Where(x => x.Year == car.Year);
             }
+
+            if (car.Price != 0)
+            {
+                query = query.GroupBy(x => x.Price).Select(car => car.Where(x => x.Price == car.Max(y => y.Price)).First());
+            }
+
+            if (car.HorsePower != 0)
+            {
+                query = query.Where(x => x.HorsePower == car.HorsePower);
+            }
+
+            if (car.Engine != null)
+            {
+                query = query.Where(x => x.Engine == car.Engine);
+            }
+            if (car.Category != null)
+            {
+                query = query.Where(x => x.Category == car.Category);
+            }
+            if (car.Region != null)
+            {
+                query = query.Where(x => x.Region == car.Region);
+            }
+            if (car.Transmission != null)
+            {
+                query = query.Where(x => x.Transmission == car.Transmission);
+            }
             //TODO: Add more later
 
             return await query.ToListAsync();

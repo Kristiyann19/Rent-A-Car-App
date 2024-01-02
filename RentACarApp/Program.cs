@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RentACarApp;
 using RentACarApp.Database;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +12,9 @@ builder.Services.AddDbContext<RentACarAppContext>(options =>
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-//builder.Services.AddFluentValidationAutoValidation();
-
 builder.Services.AddRentACarServices();
+builder.Services.AddFluentValidationAutoValidation();
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();

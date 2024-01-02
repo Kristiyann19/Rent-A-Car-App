@@ -1,5 +1,8 @@
-﻿using RentACarApp.Contracts;
+﻿using FluentValidation;
+using RentACarApp.Contracts;
+using RentACarApp.Dtos;
 using RentACarApp.Services;
+using RentACarApp.Validations;
 
 namespace RentACarApp
 {
@@ -12,7 +15,8 @@ namespace RentACarApp
                 .AddScoped<IRegisterService, RegisterService>()
                 .AddScoped<ICarService, CarService>()
                 .AddScoped<IAgentService, AgentService>()
-                .AddScoped<IUserService, UserService>();
+                .AddScoped<IUserService, UserService>()
+                .AddScoped<IValidator<RegisterDto>, RegisterValidator>();
 
             return services;
         }

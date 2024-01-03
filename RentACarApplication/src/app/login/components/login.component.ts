@@ -32,7 +32,3 @@ export class LoginComponent {
         })             
     };
  }
-//result.token
-              // Set token to local storage
-              // router.navigate -> home
-              // AuthGuard

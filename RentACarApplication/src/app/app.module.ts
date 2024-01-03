@@ -11,7 +11,7 @@ import { CarDetailsComponent } from './car/component/car-details.component';
 import { AddCarComponent } from './car/component/add-car.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { JwtInterceptor } from './jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,13 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
     
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
     provideClientHydration(),
+    
   ],
   bootstrap: [AppComponent]
 })

@@ -27,8 +27,4 @@ export class CarComponent {
     )
   }  
 
-  //TODO
-  add(car: CarDto) : void{
-    this.carService.addCar(car).subscribe(car => this.cars.push(car));
-  }
 }

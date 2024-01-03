@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RentACarApp.Database.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RentACarApp.Database.Models
 {
@@ -34,9 +35,10 @@ namespace RentACarApp.Database.Models
 
         public RegionEnum Region { get; set; } 
 
-        public CategoryEnum Category { get; set; } 
+        public CategoryEnum Category { get; set; }
 
-        //image
+        public List<Image> Images { get; set; }
+
 
 
     }

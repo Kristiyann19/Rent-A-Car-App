@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+    <div class="p-3 border">
+      <input type="text"
+             [(ngModel)]="car.make"
+             placeholder="Make">
+    </div>
+    <div class="p-3 border">
+      <input type="text"
+             [(ngModel)]="car.model"
+             placeholder="Model">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="car.year"
+             placeholder="Year">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="car.price"
+             placeholder="Price">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="car.horsePower"
+             placeholder="HorsePower">
+    </div>
+    <div class="p-3 border">
+      <input type="text"
+             [(ngModel)]="car.color"
+             placeholder="Color">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="car.cubicCapacity"
+             placeholder="Cubic Capacity">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="car.mileage"
+             placeholder="Mileage">
+    </div>
+    <div class="p-3 border">
+      <input type="text"
+             [(ngModel)]="car.description"
+             placeholder="Description">
+    </div>
+    <div class="p-3 border">
+      <select [(ngModel)]="car.engine">
+        <option value="1"> Бензинов</option>
+        <option value="2">Дизелов</option>
+        <option value="3">Електрически</option>
+      </select>
+    </div>
+    <div class="p-3 border">
+      <select [(ngModel)]="car.category">
+        <option value="1"> Седан</option>
+        <option value="2">Хечбек</option>
+        <option value="3">SUV</option>
+        <option value="4">Купе</option>
+        <option value="5">Миниван</option>
+        <option value="6">Пикап</option>
+        <option value="7">Спортна кола</option>
+        <option value="8">Кабриолет</option>
+        <option value="9">Комби</option>
+      </select>
+    </div>
+    <div class="p-3 border">
+      <select [(ngModel)]="car.transmission">
+        <option></option>
+        <option value="1"> Автоматична</option>
+        <option value="2">Ръчна</option>
+        <option value="3">Семи-автоматична</option>
+      </select>
+    </div>
+    <!-- <div class="p-3 border">
+      <label for="myfile">Select a file:</label>
+      <input type="file"
+             [(ngModel)]=""
+             id="myfile"
+             name="myfile">
+    </div> -->
+    <div class="p-3 border">
+      <button class="btn btn-primary"
+              (click)="add(car)">Add</button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="mb-3">
+  <label asp-for="ImageFiles"
+         class="form-label">Снимки</label>
+  <input asp-for="ImageFiles"
+         type="file"
+         class="form-control"
+         multiple
+         accept="image/*" />
+  <span asp-validation-for="ImageFiles"
+        class="text-danger"></span>
+</div> -->

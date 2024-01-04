@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent {
   user: LoginDto = { userName: '',  password: '' }; 
-  
+  private isLoggedIn = false;
 
     constructor(private loginService: LoginService, private router: Router) {}
 

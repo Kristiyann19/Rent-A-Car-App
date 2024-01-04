@@ -21,7 +21,6 @@ export class LoginService {
     }
 
     logout() {
-      debugger
       localStorage.removeItem('access_token');
   }
 }

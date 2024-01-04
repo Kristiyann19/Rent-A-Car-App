@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserDto } from './user/user.dto';
+import { UserDto } from './user/dtos/user.dto';
 import { LoginService } from './login/service/login.service';
 import { Router } from '@angular/router';
 

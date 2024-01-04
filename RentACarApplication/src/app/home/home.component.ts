@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-import { UserService } from '../user/user.service';
-import { UserDto } from '../user/user.dto';
+import { UserService } from '../user/service/user.service';
+import { UserDto } from '../user/dtos/user.dto';
 
 
 @Component({templateUrl: 'home.component.html'})

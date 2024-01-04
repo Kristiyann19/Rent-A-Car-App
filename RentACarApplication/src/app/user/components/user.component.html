@@ -1,0 +1,20 @@
+<form (ngSubmit)="become()"
+      class="container">
+  <label for="firstName">First Name:</label>
+  <input type="text"
+         id="fname"
+         name="fname"
+         [(ngModel)]="agent.firstName">
+  <label for="lastName">Last Name:</label>
+  <input type="text"
+         id="lname"
+         name="lname"
+         [(ngModel)]="agent.lastName">
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="text"
+         id="phone"
+         name="phone"
+         [(ngModel)]="agent.phoneNumber">
+
+  <button type="submit">Become Agent</button>
+</form>

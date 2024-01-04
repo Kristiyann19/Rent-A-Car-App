@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace RentACarApp.Database.Models
+﻿namespace RentACarApp.Database.Models
 {
     public class Image
     {

@@ -7,6 +7,7 @@ import { CarComponent } from './car/component/car.component';
 import { AddCarComponent } from './car/component/add-car.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
+import { UserComponent } from './user/components/user.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'car/:id', component: CarDetailsComponent},
   {path: '', component: CarComponent},
   {path: 'add', component: AddCarComponent},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]}//probably will have to change and add home component
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'becomeagent', component: UserComponent }//probably will have to change and add home component
 ];
 
 @NgModule({

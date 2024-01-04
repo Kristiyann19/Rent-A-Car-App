@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="p-3 border">
     <input type="text"
            [(ngModel)]="car.make"
@@ -47,6 +47,68 @@
   <div class="p-3 border">
     <button class="btn btn-primary"
             (click)="search()">Search</button>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <div class="col-sm-4">
+        <input type="text"
+               [(ngModel)]="car.make"
+               class="form-control"
+               placeholder="Search By Make">
+      </div>
+      <div class="col-sm-4">
+        <input type="text"
+               [(ngModel)]="car.model"
+               class="form-control"
+               placeholder="Search By Model">
+      </div>
+      <div class="col-sm-4">
+        <input type="number"
+               [(ngModel)]="car.year"
+               class="form-control"
+               placeholder="Search By Year">
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-4">
+        <select [(ngModel)]="car.engine"
+                class="form-control">
+          <option></option>
+          <option value="1">Бензинов</option>
+          <option value="2">Дизелов</option>
+          <option value="3">Електрически</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select [(ngModel)]="car.category"
+                class="form-control">
+          <option></option>
+          <option value="1">Седан</option>
+          <option value="2">Хечбек</option>
+          <!-- other options -->
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select [(ngModel)]="car.transmission"
+                class="form-control">
+          <option></option>
+          <option value="1">Автоматична</option>
+          <option value="2">Ръчна</option>
+          <option value="3">Семи-автоматична</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12 text-center">
+        <button class="btn btn-primary"
+                (click)="search()">Search</button>
+      </div>
+    </div>
   </div>
 </div>
 

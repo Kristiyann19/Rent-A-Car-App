@@ -13,22 +13,36 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent {
   user: LoginDto = { userName: '',  password: '' }; 
-  private isLoggedIn = false;
-
+  
     constructor(private loginService: LoginService, private router: Router) {}
 
-    onSubmit() : void {
-        this.loginService.login(this.user)
-        .pipe(
-          catchError((err: HttpErrorResponse) => {
-              return throwError(() => new Error('Invalid login.'));
-          })
-        )
-        .subscribe(e => {
-          if(e?.token){
-            localStorage.setItem('access_token', e.token);
+    // onSubmit() : void {
+    //     this.loginService.login(this.user)
+    //     .pipe(
+    //       catchError((err: HttpErrorResponse) => {
+    //           return throwError(() => new Error('Invalid login.'));
+    //       })
+    //     )
+    //     .subscribe(e => {
+    //       if(e?.token){
+    //         localStorage.setItem('access_token', e.token);
+    //         this.router.navigate(['/home']);
+    //       }
+    //     })             
+    // };
+
+    onSubmit(): void {
+      this.loginService.login(this.user).subscribe(
+        (response: any) => {
+          if (response?.token) {
+            localStorage.setItem('access_token', response.token);
+            this.loginService.setIsLoggedIn(true); // Set user as logged in
             this.router.navigate(['/home']);
           }
-        })             
-    };
+        },
+        (error) => {
+          console.error('Login failed:', error);
+        }
+      );
  }
+}

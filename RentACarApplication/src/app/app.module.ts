@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { JwtInterceptor } from './jwt.interceptor';
 import { UserComponent } from './user/components/user.component';
+import { NavBarComponent } from './nav/nav-bar.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UserComponent } from './user/components/user.component';
     CarDetailsComponent, 
     AddCarComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

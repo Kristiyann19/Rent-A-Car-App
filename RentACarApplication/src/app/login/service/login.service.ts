@@ -7,6 +7,7 @@ import { LoginDto } from "../dtos/login.dto";
 })
 export class LoginService {
   private apiUrl = 'http://localhost:19999/api/Login';
+  private isLoggedIn = false;
 
   constructor(private http: HttpClient ) {
      
@@ -22,6 +23,15 @@ export class LoginService {
 
     logout() {
       localStorage.removeItem('access_token');
+      this.setIsLoggedIn(false);
+  }
+
+  setIsLoggedIn(status: boolean): void {
+    this.isLoggedIn = status; // Set the logged-in status
+  }
+
+  getIsLoggedIn(): boolean {
+    return this.isLoggedIn; // Get the logged-in status
   }
 }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserDto } from '../dtos/user.dto';
 import { AgentDto } from '../dtos/become-agent.dto';
 import { Observable } from 'rxjs';
@@ -14,6 +14,12 @@ export class UserService {
     }
 
     becomeAgent(agent: AgentDto) : Observable<AgentDto>{
-        return this.http.put<AgentDto>('http://localhost:19999/api/User', agent)
+        const token = localStorage.getItem('access_token'); 
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+        return this.http.put<AgentDto>('http://localhost:19999/api/User', agent, { headers: headers })
     }
 }

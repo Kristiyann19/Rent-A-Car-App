@@ -11,8 +11,16 @@ export class UserComponent  {
   agent: AgentDto = new AgentDto();
 
   become() : void {
+    this.agent.roleId = 2;
 
-    this.userService.becomeAgent(this.agent).subscribe();
+    this.userService.becomeAgent(this.agent).subscribe(
+      (response) => {
+        console.log('User became agent successfully!', response);
+      },
+      (error) => {
+        console.error('Error becoming agent:', error);
+      }
+    );
   }
 }
 

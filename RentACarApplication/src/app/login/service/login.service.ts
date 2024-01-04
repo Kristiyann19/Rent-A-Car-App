@@ -23,7 +23,8 @@ export class LoginService {
     }
 
     logout() {
-      localStorage.removeItem('user');
+      debugger
+      localStorage.removeItem('access_token');
   }
 }
 

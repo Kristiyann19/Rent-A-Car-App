@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Inject, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { AddCarComponent } from './car/component/add-car.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { JwtInterceptor } from './jwt.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +41,6 @@ import { JwtInterceptor } from './jwt.interceptor';
       multi: true
     },
     provideClientHydration(),
-    
   ],
   bootstrap: [AppComponent]
 })

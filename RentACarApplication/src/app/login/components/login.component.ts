@@ -26,6 +26,7 @@ export class LoginComponent {
         )
         .subscribe(e => {
           if(e?.token){
+            debugger
             localStorage.setItem('access_token', e.token);
             this.router.navigate(['/home']);
           }

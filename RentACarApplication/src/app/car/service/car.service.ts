@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { CarDto } from "../dtos/car.dto";
+import { AddCarDto } from "../dtos/add-car.dto";
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +10,9 @@ import { CarDto } from "../dtos/car.dto";
 
 export class CarService{
   constructor(private http: HttpClient){}
-
+  private apiUrl = 'http://localhost:19999/api/Car';
   getCars() : Observable<CarDto[]>{
-    return this.http.get<CarDto[]>('http://localhost:19999/api/Car')
+    return this.http.get<CarDto[]>(this.apiUrl);
   }
 
   getCarDetails(id: number): Observable<CarDto> {
@@ -19,8 +20,8 @@ export class CarService{
   }  
 
  
-  addCar(car: CarDto) : Observable<CarDto>{
-    return this.http.post<CarDto>('http://localhost:19999/api/Car', car);
+  addCar(car: AddCarDto) : Observable<AddCarDto>{
+    return this.http.post<AddCarDto>(this.apiUrl, car);
   }
 
   searchCar(car: CarDto): Observable<CarDto[]> {

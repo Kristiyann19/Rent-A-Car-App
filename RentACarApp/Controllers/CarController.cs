@@ -27,6 +27,7 @@ namespace RentACarApp.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> AddCar([FromBody] AddCarDto car)
         {
             await carService.AddCarAsync(car);

@@ -37,7 +37,7 @@ namespace RentACarApp.Database.Models
 
         public CategoryEnum Category { get; set; }
 
-        public List<Image> Images { get; set; }
+        //public List<Image> Images { get; set; }
 
 
 

@@ -39,34 +39,34 @@ namespace RentACarApp.Services
                 Transmission = car.Transmission,
             };
 
-            List<Image> photolist = new List<Image>();
-            if (car.ImageFiles.Count > 0)
-            {
-                foreach (var formFile in car.ImageFiles)
-                {
-                    if (formFile.Length > 0)
-                    {
-                        using (var memoryStream = new MemoryStream())
-                        {
-                            await formFile.CopyToAsync(memoryStream);
-                            // Upload the file if less than 2 MB  
-                            if (memoryStream.Length < 2097152)
-                            {
+            //List<Image> photolist = new List<Image>();
+            //if (car.ImageFiles.Count > 0)
+            //{
+            //    foreach (var formFile in car.ImageFiles)
+            //    {
+            //        if (formFile.Length > 0)
+            //        {
+            //            using (var memoryStream = new MemoryStream())
+            //            {
+            //                await formFile.CopyToAsync(memoryStream);
+            //                // Upload the file if less than 2 MB  
+            //                if (memoryStream.Length < 2097152)
+            //                {
 
-                                var newphoto = new Image()
-                                {
-                                    Bytes = memoryStream.ToArray(),
-                                    Description = formFile.FileName,
-                                    FileExtension = Path.GetExtension(formFile.FileName),
-                                    Size = formFile.Length,
-                                };
-                                photolist.Add(newphoto);
-                            }
+            //                    var newphoto = new Image()
+            //                    {
+            //                        Bytes = memoryStream.ToArray(),
+            //                        Description = formFile.FileName,
+            //                        FileExtension = Path.GetExtension(formFile.FileName),
+            //                        Size = formFile.Length,
+            //                    };
+            //                    photolist.Add(newphoto);
+            //                }
                            
-                        }
-                    }
-                }
-            }
+            //            }
+            //        }
+            //    }
+            //}
 
 
             await context.Cars.AddAsync(entity);

@@ -34,8 +34,8 @@ namespace RentACarApp.Dtos
 
         public CategoryEnum Category { get; set; }
 
-        public List<IFormFile> ImageFiles { get; set; }
+        //public List<IFormFile> ImageFiles { get; set; }
 
-        public List<Image> Images { get; set; } = new List<Image>();
+        //public List<Image> Images { get; set; } = new List<Image>();
     }
 }

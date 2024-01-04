@@ -3,7 +3,7 @@ import { EngineEnum } from "../../enums/engine-enum";
 import { RegionEnum } from "../../enums/region-enum";
 import { TransmissionEnum } from "../../enums/transmission-enum";
 
-export class CarDto{
+export class AddCarDto{
   make: string;
   model: string;  
   price: number;

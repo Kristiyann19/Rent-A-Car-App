@@ -10,13 +10,12 @@ export class JwtInterceptor implements HttpInterceptor
   localStorage: Storage;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    debugger
+   
     this.localStorage = document.defaultView?.localStorage;
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
   {
-    debugger
     const token = this.localStorage?.getItem('access_token');
     if (token) {
       request = request.clone({

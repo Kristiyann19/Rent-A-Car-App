@@ -9,7 +9,7 @@ namespace RentACarApp.Database.Models
         public string Description { get; set; }
         public string FileExtension { get; set; }
         public decimal Size { get; set; }
-        public int CarId { get; set; }
-        public Car Car { get; set; }
+        //public int CarId { get; set; }
+        //public Car Car { get; set; }
     }
 }

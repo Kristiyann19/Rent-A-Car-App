@@ -1,3 +1,113 @@
+<!-- <form (ngSubmit)="add()"
+      class="container">
+  <div class="row g-0">
+    <label for="make">Make:</label>
+    <input type="text"
+           id="make"
+           name="make"
+           class="p-3 border"
+           [(ngModel)]="car.make">
+    <label for="make">Model:</label>
+    <input type="text"
+           id="model"
+           name="model"
+           class="p-3 border"
+           [(ngModel)]="car.model">
+    <label for="make">Price:</label>
+    <input type="number"
+           id="price"
+           name="price"
+           class="p-3 border"
+           [(ngModel)]="car.price">
+    <label for="make">Year:</label>
+    <input type="number"
+           id="year"
+           name="year"
+           class="p-3 border"
+           [(ngModel)]="car.year">
+    <label for="make">HorsePower::</label>
+    <input type="number"
+           id="horsePower"
+           name="horsePower"
+           class="p-3 border"
+           [(ngModel)]="car.horsePower">
+    <label for="make">Color:</label>
+    <input type="text"
+           id="color"
+           name="color"
+           class="p-3 border"
+           [(ngModel)]="car.color">
+    <label for="make">CubicCapacity:</label>
+    <input type="number"
+           id="cubicCapacity"
+           name="cubicCapacity"
+           class="p-3 border"
+           [(ngModel)]="car.cubicCapacity">
+    <label for="make">Mileage:</label>
+    <input type="number"
+           id="mileage"
+           name="mileage"
+           class="p-3 border"
+           [(ngModel)]="car.mileage">
+    <label for="make">Description:</label>
+    <input type="text"
+           id="description"
+           name="description"
+           class="p-3 border"
+           [(ngModel)]="car.description">
+    <label for="engine">Engine:</label>
+    <select [(ngModel)]="car.engine"
+            id="engine"
+            name="engine"
+            class="p-3 border">
+      <option></option>
+      <option [ngValue]="1"> Бензинов</option>
+      <option [ngValue]="2">Дизелов</option>
+      <option [ngValue]="3">Електрически</option>
+    </select>
+    <label for="category">Category:</label>
+    <select [(ngModel)]="car.category"
+            id="category"
+            name="category"
+            class="p-3 border">
+
+      <option></option>
+      <option [ngValue]="1"> Седан</option>
+      <option [ngValue]="2">Хечбек</option>
+      <option [ngValue]="3">SUV</option>
+      <option [ngValue]="4">Купе</option>
+      <option [ngValue]="5">Миниван</option>
+      <option [ngValue]="6">Пикап</option>
+      <option [ngValue]="7">Спортна кола</option>
+      <option [ngValue]="8">Кабриолет</option>
+      <option [ngValue]="9">Комби</option>
+    </select>
+    {{car.category}}
+    <label for="transmission">Transmission:</label>
+    <select [(ngModel)]="car.transmission"
+            id="transmission"
+            name="transmission"
+            class="p-3 border">
+      <option></option>
+      <option [ngValue]="1"> Автоматична</option>
+      <option [ngValue]="2">Ръчна</option>
+      <option [ngValue]="3">Семи-автоматична</option>
+    </select>
+    <label for="region"> Region:</label>
+    <select [(ngModel)]="car.region"
+            id="region"
+            name="region"
+            class="p-3 border">
+      <option></option>
+      <option [ngValue]="1"> Благоев Град</option>
+    </select>
+    <button type="submit"
+            class="btn-success"> Add</button>
+  </div>
+</form>
+
+ -->
+
 <div class="row">
   <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
     <div class="p-3 border">
@@ -47,47 +157,47 @@
     </div>
     <div class="p-3 border">
       <select [(ngModel)]="car.engine">
-        <option value="1"> Бензинов</option>
-        <option value="2">Дизелов</option>
-        <option value="3">Електрически</option>
+        <option [ngValue]="1"> Бензинов</option>
+        <option [ngValue]="2">Дизелов</option>
+        <option [ngValue]="3">Електрически</option>
       </select>
     </div>
     <div class="p-3 border">
       <select [(ngModel)]="car.category">
-        <option value="1"> Седан</option>
-        <option value="2">Хечбек</option>
-        <option value="3">SUV</option>
-        <option value="4">Купе</option>
-        <option value="5">Миниван</option>
-        <option value="6">Пикап</option>
-        <option value="7">Спортна кола</option>
-        <option value="8">Кабриолет</option>
-        <option value="9">Комби</option>
+        <option [ngValue]="1"> Седан</option>
+        <option [ngValue]="2">Хечбек</option>
+        <option [ngValue]="3">SUV</option>
+        <option [ngValue]="4">Купе</option>
+        <option [ngValue]="5">Миниван</option>
+        <option [ngValue]="6">Пикап</option>
+        <option [ngValue]="7">Спортна кола</option>
+        <option [ngValue]="8">Кабриолет</option>
+        <option [ngValue]="9">Комби</option>
       </select>
     </div>
     <div class="p-3 border">
       <select [(ngModel)]="car.transmission">
         <option></option>
-        <option value="1"> Автоматична</option>
-        <option value="2">Ръчна</option>
-        <option value="3">Семи-автоматична</option>
+        <option [ngValue]="1"> Автоматична</option>
+        <option [ngValue]="2">Ръчна</option>
+        <option [ngValue]="3">Семи-автоматична</option>
       </select>
     </div>
-    <!-- <div class="p-3 border">
-      <label for="myfile">Select a file:</label>
-      <input type="file"
-             [(ngModel)]=""
-             id="myfile"
-             name="myfile">
-    </div> -->
+    <div class="p-3 border">
+      <select [(ngModel)]="car.region">
+        <option></option>
+        <option [ngValue]="1"> Благоев Град</option>
+      </select>
+    </div>
     <div class="p-3 border">
       <button class="btn btn-primary"
-              (click)="add(car)">Add</button>
+              [routerLink]="['/']"
+              (click)="add()">Add</button>
     </div>
-  </div>
-</div>
 
-<!-- <div class="mb-3">
+  </div>
+
+  <!-- <div class="mb-3">
   <label asp-for="ImageFiles"
          class="form-label">Снимки</label>
   <input asp-for="ImageFiles"

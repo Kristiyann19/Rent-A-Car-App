@@ -3,14 +3,28 @@
   color: white;
 }
 
+.navbar{
+  display:flex;
+}
+
 .nav-link{
   color:white;
+  float: right;
 }
 .navbar-brand{
   color: white;
   margin-left: 10px;
 }
 
+.nav-custom{
+  float: left;
+}
+
 .agent{
-  float:left
+  justify-content: start;
+}
+
+.container{
+  display: flex;
+  order: 1;
 }

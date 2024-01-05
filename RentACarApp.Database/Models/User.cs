@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-
-namespace RentACarApp.Database.Models
+﻿namespace RentACarApp.Database.Models
 {
     public class User 
     {

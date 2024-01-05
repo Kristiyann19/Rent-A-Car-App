@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.Dtos;
 using System.Security.Claims;
@@ -32,6 +33,7 @@ namespace RentACarApp.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> BecomeAgent([FromBody] AgentDto updatedToAgent)
         {
             //var test = HttpContext.User.FindFirst(ClaimTypes.Name);

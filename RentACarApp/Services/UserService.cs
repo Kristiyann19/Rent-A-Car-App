@@ -4,6 +4,8 @@ using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace RentACarApp.Services
 {
@@ -18,18 +20,39 @@ namespace RentACarApp.Services
             mapper = _mapper;
         }
 
-        public async Task BecomeAgentAsync(AgentDto updatedToAgent)
+        public  async Task<bool> BecomeAgentAsync(HttpContext httpContext, AgentDto updatedToAgent)
         {
-          
-            var existingUser = await context.Users
-                    .FirstOrDefaultAsync(x => x.Id == updatedToAgent.Id);
+            try
+            {
+                var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
 
-            mapper.Map(updatedToAgent, existingUser);
-    
-            //RoleId must be set to 2 automatically
+                if (existingUserClaim != null)
+                {
+                    var userName = existingUserClaim.Value;
 
-            await context.SaveChangesAsync();
-            
+                    var existingUser = context.Users.FirstOrDefault(x => x.UserName == userName);
+
+                    if (existingUser != null)
+                    {
+                        existingUser.FirstName = updatedToAgent.FirstName;
+                        existingUser.LastName = updatedToAgent.LastName;
+                        existingUser.PhoneNumber = updatedToAgent.PhoneNumber;
+                        existingUser.RoleId = 2;
+
+                        await context.SaveChangesAsync();
+                        return true;
+                    }                  
+                }
+                return false;
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+            //mapper.Map(updatedToAgent, existingUser);                      
         }
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()

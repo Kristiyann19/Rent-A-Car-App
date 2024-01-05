@@ -1,5 +1,4 @@
 ﻿using RentACarApp.Database.Enums;
-using RentACarApp.Database.Models;
 
 namespace RentACarApp.Dtos
 {

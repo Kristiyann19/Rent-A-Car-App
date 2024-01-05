@@ -18,17 +18,6 @@ namespace RentACarApp.Services
             context = _context;
             configuration = _configuration;
         }
-        //public string HashPassword(string password)
-        //{
-        //    byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
-        //    return Convert.ToBase64String(KeyDerivation.Pbkdf2(
-        //    password: password!,
-        //    salt: salt,
-        //    prf: KeyDerivationPrf.HMACSHA256,
-        //    iterationCount: 100000,
-        //    numBytesRequested: 256 / 8));
-
-        //}
 
 
         public string Login(LoginDto login)
@@ -66,7 +55,6 @@ namespace RentACarApp.Services
             string userToken = tokenHandler.WriteToken(token);
             return userToken;
         }
-
       
     }
 }

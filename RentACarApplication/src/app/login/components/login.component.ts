@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginDto } from '../dtos/login.dto';
 import { LoginService } from '../service/login.service';
-import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
-import { catchError, first, throwError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -36,8 +33,8 @@ export class LoginComponent {
         (response: any) => {
           if (response?.token) {
             localStorage.setItem('access_token', response.token);
-            this.loginService.setIsLoggedIn(true); // Set user as logged in
-            this.router.navigate(['/home']);
+            this.loginService.setIsLoggedIn(true); 
+            this.router.navigate(['']);
           }
         },
         (error) => {

@@ -25,7 +25,7 @@ namespace RentACarApp.Services
                     .FirstOrDefaultAsync(x => x.Id == updatedToAgent.Id);
 
             mapper.Map(updatedToAgent, existingUser);
-            existingUser.RoleId = 2;
+    
             //RoleId must be set to 2 automatically
 
             await context.SaveChangesAsync();

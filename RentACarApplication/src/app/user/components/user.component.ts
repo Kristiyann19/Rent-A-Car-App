@@ -14,6 +14,7 @@ export class UserComponent  {
     this.agent.roleId = 2;
 
     this.userService.becomeAgent(this.agent).subscribe(
+      
       (response) => {
         console.log('User became agent successfully!', response);
       },

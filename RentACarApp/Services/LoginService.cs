@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
-using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace RentACarApp.Services
@@ -53,15 +50,17 @@ namespace RentACarApp.Services
                 
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"]);
+            var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
+                Issuer = "http://localhost:19999",
+				Audience = "http://localhost:19999",
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, login.UserName)
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             string userToken = tokenHandler.WriteToken(token);

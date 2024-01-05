@@ -14,6 +14,6 @@ export class NavBarComponent {
   }
 
   logout(): void {
-    this.loginService.logout(); // Logout method from LoginService
+    this.loginService.logout(); 
   }
 }

@@ -17,6 +17,8 @@ namespace RentACarApp.Database
 
         public DbSet<Role> Roles { get;set; }
 
+        public DbSet<RentalCar> RentalCars { get;set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

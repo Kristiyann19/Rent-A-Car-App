@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RentACarApp.Database.Models
 {
-    public class Car 
+    public class Car
     {
         public int Id { get; set; }
 
@@ -29,17 +29,18 @@ namespace RentACarApp.Database.Models
 
         public bool isActive { get; set; }
 
-        public EngineEnum Engine { get; set; } 
+        public EngineEnum Engine { get; set; }
 
-        public TransmissionEnum Transmission { get; set; } 
+        public TransmissionEnum Transmission { get; set; }
 
-        public RegionEnum Region { get; set; } 
+        public RegionEnum Region { get; set; }
 
         public CategoryEnum Category { get; set; }
 
+        public int UserId { get; set; }
+        public User User { get; set; }
+
         //public List<Image> Images { get; set; }
-
-
 
     }
 

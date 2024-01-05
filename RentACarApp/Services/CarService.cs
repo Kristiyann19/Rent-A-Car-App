@@ -21,6 +21,7 @@ namespace RentACarApp.Services
 
         public async Task AddCarAsync(AddCarDto car)
         {
+
             var entity = new Car()
             {
                 Make = car.Make,

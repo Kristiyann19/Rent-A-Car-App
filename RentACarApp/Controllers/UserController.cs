@@ -33,7 +33,6 @@ namespace RentACarApp.Controllers
         }
 
         [HttpPut]
-        [Authorize]
         public async Task<IActionResult> BecomeAgent([FromBody] AgentDto updatedToAgent)
         {
             //var test = HttpContext.User.FindFirst(ClaimTypes.Name);

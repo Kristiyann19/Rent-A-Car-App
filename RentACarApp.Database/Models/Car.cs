@@ -40,7 +40,7 @@ namespace RentACarApp.Database.Models
         public int UserId { get; set; }
         public User User { get; set; }
 
-        //public List<Image> Images { get; set; }
+        public List<Image> Images { get; set; }
 
     }
 

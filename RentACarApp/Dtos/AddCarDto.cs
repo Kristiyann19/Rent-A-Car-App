@@ -1,4 +1,5 @@
 ﻿using RentACarApp.Database.Enums;
+using RentACarApp.Database.Models;
 
 namespace RentACarApp.Dtos
 {
@@ -17,7 +18,7 @@ namespace RentACarApp.Dtos
 
         public string Color { get; set; }
 
-        public int CubicCapacity { get; set; }
+        public int CubicCapacity { get; set; }  
 
         public int Mileage { get; set; }
 
@@ -33,8 +34,8 @@ namespace RentACarApp.Dtos
 
         public CategoryEnum Category { get; set; }
 
-        //public List<IFormFile> ImageFiles { get; set; }
+        public List<IFormFile> ImageFiles { get; set; }
 
-        //public List<Image> Images { get; set; } = new List<Image>();
+        public List<Image> Images { get; set; } = new List<Image>();
     }
 }

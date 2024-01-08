@@ -13,6 +13,10 @@ export class UserService {
         return this.http.get<UserDto[]>('http://localhost:19999/api/User');
     }
 
+    getAgentDetails(id: number): Observable<AgentDto> {
+        return this.http.get<AgentDto>(`http://localhost:19999/api/User/${id}`);
+      }  
+
     becomeAgent(agent: AgentDto) : Observable<AgentDto>{
         const token = localStorage.getItem('access_token'); 
 

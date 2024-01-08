@@ -9,7 +9,7 @@ namespace RentACarApp.Contracts
 
         Task<Car> GetCarByIdAsync(int carId);
 
-        Task AddCarAsync(AddCarDto car);
+        Task AddCarAsync(HttpContext httpContext, AddCarDto car);
 
         Task DeleteCarAsync(int carId);
 

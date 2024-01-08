@@ -28,8 +28,8 @@ namespace RentACarApp.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> UserById([FromRoute] int id)
         {
-            await userService.GetUserByIdAsync(id);
-            return Ok();
+            var user = await userService.GetUserByIdAsync(id);
+            return Ok(user);
         }
 
         [HttpPut]

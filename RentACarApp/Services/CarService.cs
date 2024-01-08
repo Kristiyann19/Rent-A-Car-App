@@ -4,6 +4,7 @@ using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
+using System.Security.Claims;
 
 namespace RentACarApp.Services
 {
@@ -19,59 +20,72 @@ namespace RentACarApp.Services
         }
 
 
-        public async Task AddCarAsync(AddCarDto car)
+        public async Task AddCarAsync(HttpContext httpContext, AddCarDto car)
         {
+            var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
 
-            var entity = new Car()
+            if (existingUserClaim != null)
             {
-                Make = car.Make,
-                Model = car.Model,
-                Year = car.Year,
-                Color = car.Color,
-                HorsePower = car.HorsePower,
-                CubicCapacity = car.CubicCapacity,
-                Description = car.Description,
-                Price = car.Price,
-                Engine = car.Engine,
-                isActive = true,
-                Category = car.Category,
-                Mileage = car.Mileage,
-                Region = car.Region,
-                Transmission = car.Transmission,
-            };
+                var userName = existingUserClaim.Value;
 
-            //List<Image> photolist = new List<Image>();
-            //if (car.ImageFiles.Count > 0)
-            //{
-            //    foreach (var formFile in car.ImageFiles)
-            //    {
-            //        if (formFile.Length > 0)
-            //        {
-            //            using (var memoryStream = new MemoryStream())
-            //            {
-            //                await formFile.CopyToAsync(memoryStream);
-            //                // Upload the file if less than 2 MB  
-            //                if (memoryStream.Length < 2097152)
-            //                {
+                var existingUser = context.Users.FirstOrDefault(x => x.UserName == userName);
 
-            //                    var newphoto = new Image()
-            //                    {
-            //                        Bytes = memoryStream.ToArray(),
-            //                        Description = formFile.FileName,
-            //                        FileExtension = Path.GetExtension(formFile.FileName),
-            //                        Size = formFile.Length,
-            //                    };
-            //                    photolist.Add(newphoto);
-            //                }
-                           
-            //            }
-            //        }
-            //    }
-            //}
+                if (existingUser != null)
+                {
+                    var entity = new Car()
+                    {
+                        Make = car.Make,
+                        Model = car.Model,
+                        Year = car.Year,
+                        Color = car.Color,
+                        HorsePower = car.HorsePower,
+                        CubicCapacity = car.CubicCapacity,
+                        Description = car.Description,
+                        Price = car.Price,
+                        Engine = car.Engine,
+                        isActive = true,
+                        Category = car.Category,
+                        Mileage = car.Mileage,
+                        Region = car.Region,
+                        Transmission = car.Transmission,
+                        Images = car.Images,
+                        UserId = existingUser.Id
+                    };
 
+                    List<Image> imageList = new List<Image>();
+                    if (car.ImageFiles.Count > 0)
+                    {
+                        foreach (var formFile in car.ImageFiles)
+                        {
+                            if (formFile.Length > 0)
+                            {
+                                using (var memoryStream = new MemoryStream())
+                                {
+                                    await formFile.CopyToAsync(memoryStream);
 
-            await context.Cars.AddAsync(entity);
-            await context.SaveChangesAsync();
+                                    if (memoryStream.Length < 2097152) //2mb
+                                    {
+
+                                        var newImage = new Image()
+                                        {
+                                            Bytes = memoryStream.ToArray(),
+                                            Description = formFile.FileName,
+                                            FileExtension = Path.GetExtension(formFile.FileName),
+                                            Size = formFile.Length,
+                                        };
+                                        imageList.Add(newImage);
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+
+                    await context.Cars.AddAsync(entity);
+                    await context.SaveChangesAsync();
+                }
+            }
+          
         }
 
         public async Task DeleteCarAsync(int carId)

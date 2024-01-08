@@ -19,4 +19,6 @@ export class CarDto{
   transmission: TransmissionEnum;
   region: RegionEnum; 
 
+  userId: number;
+
 }

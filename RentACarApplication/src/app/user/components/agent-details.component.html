@@ -1,0 +1,15 @@
+<div *ngIf="!loadingData else loadingDataSection"
+     class="card">
+  <div class="text-center row">
+    <div class="col-md-12">
+      <div class="card-body">
+        <h5 class="card-title mt-1">{{agent?.firstName}} {{agent?.lastName}}</h5>
+        <p class="card-text">{{agent?.phoneNumber}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loadingDataSection>
+  TEST LOADING ICON
+  <!--<loading-section></loading-section-->
+</ng-template>

@@ -5,11 +5,11 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link"
-           [routerLink]="['/becomeagent']"> Become Agent</a>
+           [routerLink]="['/becomeagent']"> Become Agent</a> /
       </li>
       <li class="nav-item">
         <a class="nav-link"
-           [routerLink]="['/add']"> Add Car </a>
+           [routerLink]="isAgent ? '/add': '/becomeagent'"> Add Car </a>
       </li>
     </ul>
 

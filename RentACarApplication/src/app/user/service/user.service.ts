@@ -6,8 +6,20 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+
+
+    private isAgent = false;
+
     constructor(private http: HttpClient) { }
 
+
+    setIsAgent(status: boolean): void {
+        this.isAgent = status;
+      }
+
+      getIsAgent(): boolean {
+        return this.isAgent; // Get the logged-in status
+      }
 
     getAll() {
         return this.http.get<UserDto[]>('http://localhost:19999/api/User');

@@ -10,5 +10,7 @@ namespace RentACarApp.Contracts
         Task<User> GetUserByIdAsync(int  id);
 
         Task<bool> BecomeAgentAsync(HttpContext httpContext, AgentDto updatedToAgent);
+
+        Task<User> GetUserDataAsync(HttpContext httpContext);
     }
 }

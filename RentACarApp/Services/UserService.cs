@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
@@ -58,7 +59,22 @@ namespace RentACarApp.Services
         public async Task<IEnumerable<User>> GetAllUsersAsync()
             => await context.Users.ToListAsync();
 
-        public Task<User> GetUserByIdAsync(int id)
-            => context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        public async Task<User> GetUserByIdAsync(int id)
+            => await context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+        public async Task<User> GetUserDataAsync(HttpContext httpContext)
+        {
+            var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
+
+            if (existingUserClaim != null)
+            {
+                var userName = existingUserClaim.Value;
+                var existingUser = await context.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+                return existingUser;
+            }
+
+            return null;
+
+        }
     }
 }

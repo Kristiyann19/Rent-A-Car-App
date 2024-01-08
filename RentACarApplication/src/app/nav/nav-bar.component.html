@@ -5,14 +5,15 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link"
-           [routerLink]="['/becomeagent']"> Become Agent</a> /
+           [routerLink]="['/becomeagent']"> Become Agent</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"
-           [routerLink]="isAgent ? '/add': '/becomeagent'"> Add Car </a>
+        <a *ngIf="currentUser.roleId === 2"
+           class="nav-link"
+           [routerLink]="['/add']"> Add Car </a>
       </li>
     </ul>
-
+    <!-- [routerLink]="isAgent ? '/add': '/becomeagent'"> Add Car </a> -->
 
     <div class="navbar-collapse justify-content-end">
       <ul class="navbar-nav">

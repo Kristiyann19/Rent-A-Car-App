@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../login/service/login.service';
 import { UserService } from '../user/service/user.service';
+import { UserDto } from '../user/dtos/user.dto';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,6 +11,14 @@ import { UserService } from '../user/service/user.service';
 export class NavBarComponent {
   constructor(private loginService: LoginService, private userService: UserService) {}
 
+  currentUser: UserDto = new UserDto();
+
+
+  // getCurrentUser(): any{
+  //   this.userService.getCurrentUser().subscribe(result =>{
+  //     result = this.currentUser
+  //   });
+  // };
   get isLoggedIn(): boolean {
     return this.loginService.getIsLoggedIn();
   }

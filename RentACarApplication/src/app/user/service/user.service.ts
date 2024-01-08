@@ -3,18 +3,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserDto } from '../dtos/user.dto';
 import { AgentDto } from '../dtos/become-agent.dto';
 import { Observable } from 'rxjs';
+import { IncomingMessage } from 'http';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-
+    agentDto: AgentDto;
+    currentUserDto: UserDto;
     private isAgent = false;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }  
 
+    
+    getCurrentUser(){
+        return this.http.get<UserDto>('http://localhost:19999/api/User');
+    }
 
+    
     setIsAgent(status: boolean): void {
-        this.isAgent = status;
+          this.isAgent = status;
       }
 
       getIsAgent(): boolean {
@@ -22,7 +29,7 @@ export class UserService {
       }
 
     getAll() {
-        return this.http.get<UserDto[]>('http://localhost:19999/api/User');
+        return this.http.get<UserDto[]>('http://localhost:19999/api/User/All');
     }
 
     getAgentDetails(id: number): Observable<AgentDto> {

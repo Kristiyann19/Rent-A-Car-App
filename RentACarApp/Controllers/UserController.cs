@@ -18,6 +18,14 @@ namespace RentACarApp.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetUserData()
+        {
+            await userService.GetUserDataAsync(HttpContext);
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("All")]
         public async Task<IActionResult> AllUsers()
         {
             var users = await userService.GetAllUsersAsync();

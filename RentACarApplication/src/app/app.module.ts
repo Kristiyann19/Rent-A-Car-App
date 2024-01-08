@@ -1,4 +1,4 @@
-import { Inject, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Inject, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { JwtInterceptor } from './jwt.interceptor';
 import { UserComponent } from './user/components/user.component';
 import { NavBarComponent } from './nav/nav-bar.component';
 import { AgentDetailsComponent } from './user/components/agent-details.component';
+import { UserService } from './user/service/user.service';
 
 
 @NgModule({
@@ -28,17 +29,15 @@ import { AgentDetailsComponent } from './user/components/agent-details.component
     HomeComponent,
     UserComponent,
     NavBarComponent,
-    AgentDetailsComponent
+    AgentDetailsComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
-    
-    
-    
+    RouterModule  
   ],
   providers: [
     {
@@ -46,8 +45,19 @@ import { AgentDetailsComponent } from './user/components/agent-details.component
       useClass: JwtInterceptor,
       multi: true
     },
+    {
+      provide: APP_INITIALIZER,
+      deps: [UserService],
+      useFactory: getUserData,
+      multi: true
+    },
     provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+export function getUserData(userService: UserService) {
+  return () => userService.getCurrentUser();
+}
+

@@ -15,18 +15,12 @@ export class LoginService {
 
   constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document, private userService: UserService) {
     this.localStorage = document.defaultView?.localStorage;
+  } 
+  login(userDto: LoginDto) {
+      return this.http.post<any>(this.apiUrl, userDto);
   }
 
-  // login(userDto: LoginDto) {
-  //   return this.http.post(this.apiUrl, userDto);
-
-  
-  
-    login(userDto: LoginDto) {
-      return this.http.post<any>(this.apiUrl, userDto);
-    }
-
-    logout() {
+  logout() {
       this.localStorage?.removeItem('access_token');
       this.userService.currentUserDto = new UserDto();
       this.setIsLoggedIn(false);
@@ -42,6 +36,3 @@ export class LoginService {
     return this.isLoggedIn; 
   }
 }
-
-
-

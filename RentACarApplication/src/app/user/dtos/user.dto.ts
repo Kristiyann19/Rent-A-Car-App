@@ -1,6 +1,6 @@
 export class UserDto {
   id: number;
-  username: string;
+  userName: string;
   password: string;
   roleId: number;
   

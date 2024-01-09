@@ -15,10 +15,28 @@ export class AddCarComponent{
   
   cars: CarDto[] = [];
   car: AddCarDto = new AddCarDto();
+  file: any;
 
   constructor(private carService: CarService){}
 
+
+  ngOnInit(): void {
+    
+    this.car = new AddCarDto();
+  }
+onChangeFile(event){
+    this.car.file = event.srcElement.files;
+}
+
+
   add() : void{
-    this.carService.addCar(this.car).subscribe(() => {debugger});
+    let formData: FormData = new FormData();
+    formData.append('file', this.file[0], this.file[0].name);
+    this.carService.addCar(this.car).subscribe(response =>{
+      console.log(response);          
+  },
+  error=>{
+      console.log(error);
+  });
   }
 }

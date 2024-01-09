@@ -5,7 +5,6 @@ namespace RentACarApp.Dtos
 {
     public class AddCarDto
     {
-
         public string Make { get; set; }
 
         public string Model { get; set; }

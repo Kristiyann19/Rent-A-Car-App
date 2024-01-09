@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserDto } from './user/dtos/user.dto';
 import { LoginService } from './login/service/login.service';
 import { Router } from '@angular/router';
+import { UserService } from './user/service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent {
 
   constructor(
       private router: Router,
-      private loginService: LoginService
+      private loginService: LoginService,
+      private userService: UserService
   ) {
        
   }
@@ -23,4 +25,10 @@ export class AppComponent {
       this.loginService.logout();
       this.router.navigate(['/login']);
   }
+
+  test(){
+    debugger
+    this.userService.getCurrentUser();
+  }
+
 }

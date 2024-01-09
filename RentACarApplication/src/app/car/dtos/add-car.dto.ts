@@ -18,5 +18,6 @@ export class AddCarDto{
   engine: EngineEnum;
   transmission: TransmissionEnum;
   region: RegionEnum; 
+  file: File; 
 
 }

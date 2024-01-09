@@ -79,6 +79,10 @@
         <option [ngValue]="1"> Благоев Град</option>
       </select>
     </div>
+    <input class="form-control"
+           type="file"
+           [(ngModel)]="car.file"
+           (change)="onChangeFile($event)" />
     <div class="p-3 border">
       <button class="btn btn-primary"
               [routerLink]="['/']"
@@ -86,15 +90,3 @@
     </div>
 
   </div>
-
-  <!-- <div class="mb-3">
-  <label asp-for="ImageFiles"
-         class="form-label">Снимки</label>
-  <input asp-for="ImageFiles"
-         type="file"
-         class="form-control"
-         multiple
-         accept="image/*" />
-  <span asp-validation-for="ImageFiles"
-        class="text-danger"></span>
-</div> -->

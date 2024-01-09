@@ -9,16 +9,8 @@ import { UserDto } from '../user/dtos/user.dto';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-  constructor(private loginService: LoginService, private userService: UserService) {}
+  constructor(private loginService: LoginService, public userService: UserService) {}
 
-  currentUser: UserDto = new UserDto();
-
-
-  // getCurrentUser(): any{
-  //   this.userService.getCurrentUser().subscribe(result =>{
-  //     result = this.currentUser
-  //   });
-  // };
   get isLoggedIn(): boolean {
     return this.loginService.getIsLoggedIn();
   }
@@ -29,5 +21,8 @@ export class NavBarComponent {
 
   logout(): void {
     this.loginService.logout(); 
+  }
+  test() {
+    this.userService.getCurrentUser();
   }
 }

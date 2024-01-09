@@ -40,18 +40,18 @@ import { UserService } from './user/service/user.service';
     RouterModule  
   ],
   providers: [
+    UserService,
+    {
+       provide: APP_INITIALIZER,
+       deps: [UserService],
+       useFactory: getUserData,
+       multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
-    },
-    {
-      provide: APP_INITIALIZER,
-      deps: [UserService],
-      useFactory: getUserData,
-      multi: true
-    },
-    provideClientHydration(),
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginDto } from '../dtos/login.dto';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../user/service/user.service';
 
 @Component({
     selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   user: LoginDto = { userName: '',  password: '' }; 
   
-    constructor(private loginService: LoginService, private router: Router) {}
+    constructor(private loginService: LoginService, private router: Router, private userService: UserService) {}
 
     // onSubmit() : void {
     //     this.loginService.login(this.user)
@@ -34,6 +35,7 @@ export class LoginComponent {
           if (response?.token) {
             localStorage.setItem('access_token', response.token);
             this.loginService.setIsLoggedIn(true); 
+            this.userService.getCurrentUser();
             this.router.navigate(['']);
           }
         },

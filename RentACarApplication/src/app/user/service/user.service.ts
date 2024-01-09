@@ -1,32 +1,33 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserDto } from '../dtos/user.dto';
 import { AgentDto } from '../dtos/become-agent.dto';
-import { Observable } from 'rxjs';
-import { IncomingMessage } from 'http';
+import { Observable, Observer, catchError, throwError } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class UserService {
-
     agentDto: AgentDto;
-    currentUserDto: UserDto;
+    currentUserDto: UserDto = new UserDto();
     private isAgent = false;
+    localStorage: Storage;
 
-    constructor(private http: HttpClient) { }  
+    constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document) { 
+        this.localStorage = document.defaultView?.localStorage;
+    }  
 
-    
-    getCurrentUser(){
-        return this.http.get<UserDto>('http://localhost:19999/api/User');
+    getCurrentUser() {
+      debugger
+      return this.http.get<UserDto>('api/User/currentData').subscribe(e => this.currentUserDto = e);
     }
 
-    
     setIsAgent(status: boolean): void {
           this.isAgent = status;
-      }
+    }
 
-      getIsAgent(): boolean {
-        return this.isAgent; // Get the logged-in status
-      }
+    getIsAgent(): boolean {
+       return this.isAgent; 
+    }
 
     getAll() {
         return this.http.get<UserDto[]>('http://localhost:19999/api/User/All');
@@ -34,10 +35,10 @@ export class UserService {
 
     getAgentDetails(id: number): Observable<AgentDto> {
         return this.http.get<AgentDto>(`http://localhost:19999/api/User/${id}`);
-      }  
+    }  
 
     becomeAgent(agent: AgentDto) : Observable<AgentDto>{
-        const token = localStorage.getItem('access_token'); 
+        const token = this.localStorage.getItem('access_token'); 
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

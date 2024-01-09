@@ -17,11 +17,10 @@ namespace RentACarApp.Controllers
             userService = _userService;
         }
 
-        [HttpGet]
+        [HttpGet("currentData")]
         public async Task<IActionResult> GetUserData()
         {
-            await userService.GetUserDataAsync(HttpContext);
-            return Ok();
+            return Ok(await userService.GetUserDataAsync(HttpContext));
         }
 
         [HttpGet]

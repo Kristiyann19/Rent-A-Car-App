@@ -62,15 +62,15 @@ namespace RentACarApp.Services
         public async Task<User> GetUserByIdAsync(int id)
             => await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-        public async Task<User> GetUserDataAsync(HttpContext httpContext)
+        public async Task<UserDto> GetUserDataAsync(HttpContext httpContext)
         {
             var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
-
+             
             if (existingUserClaim != null)
             {
                 var userName = existingUserClaim.Value;
                 var existingUser = await context.Users.FirstOrDefaultAsync(x => x.UserName == userName);
-                return existingUser;
+                return new UserDto { Email = existingUser.Email, Id = existingUser.Id, RoleId = existingUser.RoleId, UserName = existingUser.UserName};
             }
 
             return null;

@@ -27,7 +27,6 @@ export class AgentDetailsComponent implements OnInit {
             })
           )
     .subscribe((agent: AgentDto) => {
-      debugger
       this.agent = agent;
       this.loadingData = false;
     });

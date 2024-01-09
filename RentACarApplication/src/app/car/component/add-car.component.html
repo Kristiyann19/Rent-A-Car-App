@@ -79,10 +79,15 @@
         <option [ngValue]="1"> Благоев Град</option>
       </select>
     </div>
-    <input class="form-control"
-           type="file"
-           [(ngModel)]="car.file"
-           (change)="onChangeFile($event)" />
+    <div>
+      <label for="imageUpload">Upload Image:</label>
+      <input type="file"
+             id="imageUpload"
+             name="imageUpload"
+             (change)="handleImageUpload($event)"
+             accept="image/*"
+             multiple>
+    </div>
     <div class="p-3 border">
       <button class="btn btn-primary"
               [routerLink]="['/']"

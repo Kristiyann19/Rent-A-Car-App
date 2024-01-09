@@ -17,16 +17,7 @@ export class UserService {
     }  
 
     getCurrentUser() {
-      debugger
       return this.http.get<UserDto>('api/User/currentData').subscribe(e => this.currentUserDto = e);
-    }
-
-    setIsAgent(status: boolean): void {
-          this.isAgent = status;
-    }
-
-    getIsAgent(): boolean {
-       return this.isAgent; 
     }
 
     getAll() {

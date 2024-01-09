@@ -1,12 +1,13 @@
 import { Component} from '@angular/core';
 import { UserService } from '../service/user.service';
 import { AgentDto } from '../dtos/become-agent.dto';
+import { Router } from '@angular/router';
 
 
 @Component({templateUrl: 'user.component.html'})
 
 export class UserComponent  {
-  constructor(private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   agent: AgentDto = new AgentDto();
 
@@ -15,7 +16,9 @@ export class UserComponent  {
       
       (response) => {
         console.log('User became agent successfully!', response)
-        this.userService.setIsAgent(true);
+        this.router.navigate(['']);        
+      
+        
       },
       (error) => {
         console.error('Error becoming agent:', error);

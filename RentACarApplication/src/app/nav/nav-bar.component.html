@@ -3,7 +3,8 @@
     <a class="navbar-brand"
        [routerLink]="['']">RentACar</a>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li *ngIf="userService.currentUserDto.roleId === 1"
+          class="nav-item">
         <a class="nav-link"
            [routerLink]="['/becomeagent']"> Become Agent</a>
       </li>
@@ -13,8 +14,7 @@
            [routerLink]="['/add']"> Add Car </a>
       </li>
     </ul>
-    <!-- [routerLink]="isAgent ? '/add': '/becomeagent'"> Add Car </a> -->
-    <!-- *ngIf="currentUser.roleId === 2" -->
+
     <div class="navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <ng-container *ngIf="!isLoggedIn; else loggedInLinks">

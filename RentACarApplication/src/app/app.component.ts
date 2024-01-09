@@ -26,9 +26,5 @@ export class AppComponent {
       this.router.navigate(['/login']);
   }
 
-  test(){
-    debugger
-    this.userService.getCurrentUser();
-  }
 
 }

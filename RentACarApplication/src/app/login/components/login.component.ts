@@ -14,21 +14,6 @@ export class LoginComponent {
   
     constructor(private loginService: LoginService, private router: Router, private userService: UserService) {}
 
-    // onSubmit() : void {
-    //     this.loginService.login(this.user)
-    //     .pipe(
-    //       catchError((err: HttpErrorResponse) => {
-    //           return throwError(() => new Error('Invalid login.'));
-    //       })
-    //     )
-    //     .subscribe(e => {
-    //       if(e?.token){
-    //         localStorage.setItem('access_token', e.token);
-    //         this.router.navigate(['/home']);
-    //       }
-    //     })             
-    // };
-
     onSubmit(): void {
       this.loginService.login(this.user).subscribe(
         (response: any) => {

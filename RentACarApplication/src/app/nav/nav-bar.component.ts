@@ -15,14 +15,7 @@ export class NavBarComponent {
     return this.loginService.getIsLoggedIn();
   }
 
-  get isAgent(): boolean {
-    return this.userService.getIsAgent();
-  }
-
   logout(): void {
     this.loginService.logout(); 
-  }
-  test() {
-    this.userService.getCurrentUser();
   }
 }

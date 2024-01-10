@@ -20,8 +20,8 @@ export class CarService{
   }  
 
  
-  addCar(car: AddCarDto) : Observable<AddCarDto>{
-    return this.http.post<AddCarDto>(this.apiUrl, car);
+  addCar(car: FormData) : Observable<void>{
+    return this.http.post<void>(this.apiUrl, car);
   }
 
   searchCar(car: CarDto): Observable<CarDto[]> {

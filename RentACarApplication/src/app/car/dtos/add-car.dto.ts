@@ -20,6 +20,7 @@ export class AddCarDto{
   transmission: TransmissionEnum;
   region: RegionEnum; 
   
+  imageFiles: File;
   images: CarImage[]
 
 }

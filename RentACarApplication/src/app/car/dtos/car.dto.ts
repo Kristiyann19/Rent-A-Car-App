@@ -2,6 +2,7 @@ import { CategoryEnum } from "../../enums/category-enum";
 import { EngineEnum } from "../../enums/engine-enum";
 import { RegionEnum } from "../../enums/region-enum";
 import { TransmissionEnum } from "../../enums/transmission-enum";
+import { CarImage } from "./image.dto";
 
 export class CarDto{
   make: string;
@@ -18,7 +19,8 @@ export class CarDto{
   engine: EngineEnum;
   transmission: TransmissionEnum;
   region: RegionEnum; 
-
   userId: number;
+  imageFiles: File;
+  images: CarImage[];
 
 }

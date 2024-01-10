@@ -11,6 +11,8 @@ export class UserComponent  {
 
   agent: AgentDto = new AgentDto();
 
+
+
   become() : void {
     this.userService.becomeAgent(this.agent).subscribe(
       

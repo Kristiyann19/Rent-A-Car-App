@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
@@ -14,6 +15,7 @@ namespace RentACarApp.Services
     {
         private readonly RentACarAppContext context;
         private readonly IMapper mapper;
+
 
         public UserService(RentACarAppContext _context, IMapper _mapper)
         {
@@ -62,19 +64,21 @@ namespace RentACarApp.Services
         public async Task<User> GetUserByIdAsync(int id)
             => await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
+
         public async Task<UserDto> GetUserDataAsync(HttpContext httpContext)
         {
             var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
-             
+
             if (existingUserClaim != null)
             {
                 var userName = existingUserClaim.Value;
                 var existingUser = await context.Users.FirstOrDefaultAsync(x => x.UserName == userName);
-                return new UserDto { Email = existingUser.Email, Id = existingUser.Id, RoleId = existingUser.RoleId, UserName = existingUser.UserName};
+                return new UserDto { Email = existingUser.Email, Id = existingUser.Id, RoleId = existingUser.RoleId, UserName = existingUser.UserName, RentalCars = existingUser.RentalCars };
             }
 
             return null;
 
-        }
+        } 
+
     }
 }

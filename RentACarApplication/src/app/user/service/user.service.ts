@@ -4,6 +4,7 @@ import { UserDto } from '../dtos/user.dto';
 import { AgentDto } from '../dtos/become-agent.dto';
 import { Observable, Observer, catchError, throwError } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
+import { AgentDetailsDto } from '../dtos/agent-details.dto';
 
 @Injectable()
 export class UserService {
@@ -24,8 +25,8 @@ export class UserService {
         return this.http.get<UserDto[]>('http://localhost:19999/api/User/All');
     }
 
-    getAgentDetails(id: number): Observable<AgentDto> {
-        return this.http.get<AgentDto>(`http://localhost:19999/api/User/${id}`);
+    getAgentDetails(id: number): Observable<AgentDetailsDto> {
+        return this.http.get<AgentDetailsDto>(`http://localhost:19999/api/User/${id}`);
     }  
 
     becomeAgent(agent: AgentDto) : Observable<AgentDto>{

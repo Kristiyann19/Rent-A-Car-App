@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.Dtos;
+using RentACarApp.Services;
 using System.Security.Claims;
 
 namespace RentACarApp.Controllers
@@ -46,5 +47,8 @@ namespace RentACarApp.Controllers
             await userService.BecomeAgentAsync(HttpContext, updatedToAgent);
             return Ok();
         }
+
+        
     }
 }
+    

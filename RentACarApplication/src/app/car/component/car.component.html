@@ -88,6 +88,8 @@
       </ul>
       <button class="btn btn-primary"
               [routerLink]="['/agent', car.userId]">Агент</button>
+      <button class="btn btn-primary"
+              (click)="rentCar(car.id)">Rent</button>
     </div>
   </div>
 </div>

@@ -86,7 +86,7 @@ namespace RentACarApp.Database.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Cars", (string)null);
                 });
 
             modelBuilder.Entity("RentACarApp.Database.Models.Image", b =>
@@ -116,7 +116,7 @@ namespace RentACarApp.Database.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("RentACarApp.Database.Models.RentalCar", b =>
@@ -131,7 +131,7 @@ namespace RentACarApp.Database.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("RentalCars");
+                    b.ToTable("RentalCars", (string)null);
                 });
 
             modelBuilder.Entity("RentACarApp.Database.Models.Role", b =>
@@ -147,7 +147,7 @@ namespace RentACarApp.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("RentACarApp.Database.Models.User", b =>
@@ -192,7 +192,7 @@ namespace RentACarApp.Database.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("RentACarApp.Database.Models.Car", b =>

@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { CarDto } from "../dtos/car.dto";
 import { CarService } from "../service/car.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-car',
@@ -11,7 +12,12 @@ import { CarService } from "../service/car.service";
 export class CarComponent {
   cars: CarDto[] = [];
   car: CarDto = new CarDto();
-  constructor(private carService: CarService){}
+  constructor(private carService: CarService, private route: ActivatedRoute){}
+
+  rentCar(id){
+    // const id = parseInt(this.route.snapshot.paramMap.get('id')!)
+    this.carService.userRentCar(id).subscribe((car: CarDto) => this.car = car);;
+  }
 
   ngOnInit(): void {
     this.carService.getCars().subscribe((result: CarDto[]) => {
@@ -26,5 +32,5 @@ export class CarComponent {
       }
     )
   }  
-  
+
 }

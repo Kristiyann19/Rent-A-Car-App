@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
@@ -50,7 +51,9 @@ namespace RentACarApp.Services
                         Transmission = car.Transmission,
                         Images = car.Images,
                         UserId = existingUser.Id
+                        
                     };
+
 
                     List<Image> imageList = new List<Image>();
                     if (car.ImageFiles.Count > 0)
@@ -162,6 +165,35 @@ namespace RentACarApp.Services
             mapper.Map(updatedCar, existingCar);
 
             await context.SaveChangesAsync();
+        }
+
+    
+        public async Task RentCarAsync(int carId, HttpContext httpContext)
+        {
+            var user = await GetUserDataAsync(httpContext);
+
+            var car = await context.Cars.FirstOrDefaultAsync(c => c.Id == carId);
+
+            if (!await context.RentalCars.AnyAsync(e => e.CarId == car.Id && e.UserId == user.Id))
+            {
+                context.RentalCars.Add(new RentalCar { CarId = car.Id, UserId = user.Id});
+                await context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<UserDto> GetUserDataAsync(HttpContext httpContext)
+        {
+            var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
+
+            if (existingUserClaim != null)
+            {   
+                var userName = existingUserClaim.Value;
+                var existingUser = await context.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+                return new UserDto { Email = existingUser.Email, Id = existingUser.Id, RoleId = existingUser.RoleId, UserName = existingUser.UserName, RentalCars = existingUser.RentalCars };
+            }
+
+            return null;
+
         }
     }
 }

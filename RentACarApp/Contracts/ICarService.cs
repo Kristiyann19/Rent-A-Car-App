@@ -17,5 +17,8 @@ namespace RentACarApp.Contracts
 
         Task<List<Car>> SeachInCarAsync(CarDto car);
 
+        Task RentCarAsync(int carId, HttpContext httpContext);
+
+        Task<UserDto> GetUserDataAsync(HttpContext httpContext);
     }
 }

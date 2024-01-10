@@ -48,6 +48,7 @@ namespace RentACarApp.Database.Models
     {           
         public void Configure(EntityTypeBuilder<Car> builder)
         {
+       
             builder
                 .Property(x => x.Make)
                 .IsRequired()

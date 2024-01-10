@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using RentACarApp;
 using RentACarApp.Database;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
-using System.IdentityModel.Tokens.Jwt;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -5,6 +5,8 @@ import { TransmissionEnum } from "../../enums/transmission-enum";
 import { CarImage } from "./image.dto";
 
 export class CarDto{
+
+  id: number
   make: string;
   model: string;  
   price: number;

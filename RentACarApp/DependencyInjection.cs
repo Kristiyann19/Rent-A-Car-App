@@ -20,9 +20,6 @@ namespace RentACarApp
                 .AddScoped<IUserService, UserService>()
                 .AddScoped<IValidator<RegisterDto>, RegisterValidator>();
 
-
-
-
             return services;
         }
 

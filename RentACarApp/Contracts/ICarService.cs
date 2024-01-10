@@ -20,5 +20,7 @@ namespace RentACarApp.Contracts
         Task RentCarAsync(int carId, HttpContext httpContext);
 
         Task<UserDto> GetUserDataAsync(HttpContext httpContext);
+
+        Task<IEnumerable<Car>> GetRentedCarsAsync(HttpContext httpContext);
     }
 }

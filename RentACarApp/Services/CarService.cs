@@ -168,6 +168,33 @@ namespace RentACarApp.Services
         }
 
     
+        public async Task<IEnumerable<Car>> GetRentedCarsAsync (HttpContext httpContext) //DTO
+        {
+            var user = await GetUserDataAsync(httpContext);
+
+            return  context.RentalCars.Include(x => x.Car)
+                .Select(c => new Car
+                {
+                    Make = c.Car.Make,
+                    Model = c.Car.Model,
+                    Year = c.Car.Year,
+                    Color = c.Car.Color,
+                    HorsePower = c.Car.HorsePower,
+                    CubicCapacity = c.Car.CubicCapacity,
+                    Description = c.Car.Description,
+                    Price = c.Car.Price,
+                    Engine = c.Car.Engine,
+                    isActive = true,
+                    Category = c.Car.Category,
+                    Mileage = c.Car.Mileage,
+                    Region = c.Car.Region,
+                    Transmission = c.Car.Transmission,
+                    Images = c.Car.Images,
+                    UserId = user.Id
+                });
+
+        }
+
         public async Task RentCarAsync(int carId, HttpContext httpContext)
         {
             var user = await GetUserDataAsync(httpContext);

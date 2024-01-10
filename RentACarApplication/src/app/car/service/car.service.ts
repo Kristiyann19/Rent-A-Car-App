@@ -18,6 +18,10 @@ export class CarService{
   private apiUrl = 'http://localhost:19999/api/Car';
 
 
+  getRentedCars(): Observable<CarDto[]>{
+  
+    return this.http.get<CarDto[]>('http://localhost:19999/api/Car/RentedCars')
+  }
 
   userRentCar(id: number) : Observable<any>{
     return this.http.post<any>(`http://localhost:19999/api/Car/${id}`, this.currentUser);

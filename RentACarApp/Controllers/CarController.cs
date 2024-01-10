@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
+using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
 
 namespace RentACarApp.Controllers
@@ -58,6 +59,13 @@ namespace RentACarApp.Controllers
         {
             await carService.UpdateCarAsync(updatedCar);
             return Ok();
+        }
+
+        [HttpGet("RentedCars")]
+        public async Task<IActionResult> RentedCars()
+        {
+            var rentedCars = await carService.GetRentedCarsAsync(HttpContext);
+            return Ok(rentedCars);
         }
 
         [HttpPost("{carId}")]

@@ -16,7 +16,7 @@ export class CarComponent {
 
   rentCar(id){
     // const id = parseInt(this.route.snapshot.paramMap.get('id')!)
-    this.carService.userRentCar(id).subscribe((car: CarDto) => this.car = car);;
+    this.carService.userRentCar(id).subscribe((car: CarDto) => this.car = car);
   }
 
   ngOnInit(): void {

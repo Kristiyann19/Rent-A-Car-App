@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { UserComponent } from './user/components/user.component';
 import { AgentDetailsComponent } from './user/components/agent-details.component';
+import { RentCarComponent } from './car/component/rent-car.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path: 'add', component: AddCarComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'becomeagent', component: UserComponent },
-  {path: 'agent/:id', component: AgentDetailsComponent}
+  {path: 'agent/:id', component: AgentDetailsComponent},
+  {path: 'rentedcars', component: RentCarComponent}
+
 ];
 
 @NgModule({

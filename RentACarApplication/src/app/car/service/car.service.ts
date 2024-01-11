@@ -2,8 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { CarDto } from "../dtos/car.dto";
-import { AddCarDto } from "../dtos/add-car.dto";
-import { UserDto } from "../../user/dtos/user.dto";
 import { UserService } from "../../user/service/user.service";
 
 @Injectable({
@@ -19,7 +17,6 @@ export class CarService{
 
 
   getRentedCars(): Observable<CarDto[]>{
-  
     return this.http.get<CarDto[]>('http://localhost:19999/api/Car/RentedCars')
   }
 
@@ -43,8 +40,7 @@ export class CarService{
   searchCar(car: CarDto): Observable<CarDto[]> {
     const url = 'http://localhost:19999/api/Car/search';
     return this.http.get<CarDto[]>(url + this.composeQueryString(car));
-
-}
+  }
 
 public composeQueryString(object: any): string {
     let result = '';

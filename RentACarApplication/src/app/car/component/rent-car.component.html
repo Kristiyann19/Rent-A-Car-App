@@ -1,24 +1,20 @@
-{{car.make}}
+{{rentCar.make}}
 <div class="container">
   <div class="row">
-    <div *ngFor="let car of cars"
+    <div *ngFor="let car of rentCars"
          class="card"
          style="width: 18rem;">
-      <img class="card-img-top"
-           src="{{car.imageFiles}}">
       <div class="card-body">
-        <h5 class="card-title">{{car.make}} {{car.model}}</h5>
+        <h5 class="card-title">{{car.make}} {{rentCar.model}}</h5>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Цена: {{car.price}} лв.</li>
-        <li class="list-group-item">Пробег: {{car.mileage}} км.</li>
-        <li class="list-group-item">Година: {{car.year}}</li>
-        <button class="btn btn-primary"
-                [routerLink]="['/car',car.id]">детайли</button>
+        <li class="list-group-item">Цена: {{rentCar.price}} лв.</li>
+        <li class="list-group-item">Пробег: {{rentCar.mileage}} км.</li>
+        <li class="list-group-item">Година: {{rentCar.year}}</li>
+
 
       </ul>
-      <button class="btn btn-primary"
-              [routerLink]="['/agent', car.userId]">Агент</button>
+
     </div>
   </div>
 </div>

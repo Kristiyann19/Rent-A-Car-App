@@ -175,6 +175,7 @@ namespace RentACarApp.Services
             return  context.RentalCars.Include(x => x.Car)
                 .Select(c => new Car
                 {
+                    Id = c.Car.Id,
                     Make = c.Car.Make,
                     Model = c.Car.Model,
                     Year = c.Car.Year,

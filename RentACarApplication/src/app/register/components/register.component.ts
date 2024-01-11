@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RegisterService } from '../service/register.service';
 import { RegisterDto } from '../dtos/register.dto';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-registration',
@@ -9,8 +10,10 @@ import { RegisterDto } from '../dtos/register.dto';
 })
 export class RegisterComponent {
     user: RegisterDto = { userName: '', email: '', password: '', confirmPassword: '' }; 
+    form: FormGroup;
+    submitted = false;
+    constructor(private registerService: RegisterService,private formBuilder: FormBuilder) {}
 
-    constructor(private registerService: RegisterService) {}
 
     onSubmit() : void {
         this.registerService.register(this.user)

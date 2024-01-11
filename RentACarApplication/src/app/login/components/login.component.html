@@ -2,14 +2,14 @@
   <div class="col-xl-4">
     <div class="card p-5">
 
-      <h2 class="text-uppercase text-center mb-5">Login in to an account</h2>
+      <h2 class="text-uppercase text-center mb-5">Влезте в акаунта си</h2>
 
       <form (ngSubmit)="onSubmit()"
             class="text-center">
 
         <div class="form-outline mb-4">
           <input type="text"
-                 placeholder="Username"
+                 placeholder="Потребителско име"
                  [(ngModel)]="user.userName"
                  name="username"
                  required>
@@ -19,7 +19,7 @@
 
         <div class="form-outline mb-4">
           <input type="password"
-                 placeholder="Password"
+                 placeholder="Парола"
                  [(ngModel)]="user.password"
                  name="password"
                  required>
@@ -29,7 +29,7 @@
 
         <div class="d-flex justify-content-center">
           <button type="submit"
-                  class="btn btn-success">Login</button>
+                  class="btn btn-success">Вход</button>
         </div>
 
       </form>

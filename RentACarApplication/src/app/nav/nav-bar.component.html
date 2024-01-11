@@ -6,16 +6,16 @@
       <li *ngIf="userService.currentUserDto?.roleId === 1"
           class="nav-item">
         <a class="nav-link"
-           [routerLink]="['/becomeagent']"> Become Agent</a>
+           [routerLink]="['/becomeagent']">Стани Дилър на Коли</a>
       </li>
       <li *ngIf="userService.currentUserDto?.roleId === 2"
           class="nav-item">
         <a class="nav-link"
-           [routerLink]="['/add']"> Add Car </a>
+           [routerLink]="['/add']"> Пусни кола под наем </a>
       </li>
       <li class="nav-item">
         <a class="nav-link"
-           [routerLink]="['/rentedcars']">rented</a>
+           [routerLink]="['/rentedcars']">Наети Коли</a>
       </li>
     </ul>
 
@@ -24,11 +24,11 @@
         <ng-container *ngIf="!isLoggedIn; else loggedInLinks">
           <li class="nav-item">
             <a class="nav-link"
-               [routerLink]="['/register']">Register</a>
+               [routerLink]="['/register']">Нова Регистрация</a>
           </li>
           <li class="nav-item">
             <a class="nav-link"
-               [routerLink]="['/login']">Login</a>
+               [routerLink]="['/login']">Вход</a>
           </li>
         </ng-container>
         <ng-template #loggedInLinks>

@@ -1,22 +1,22 @@
 <form (ngSubmit)="become()"
       class="container">
-       <h2>Become Agent in order to add a car for rent!</h2>
-       <label for="firstName">First Name:</label>
+       <h2>Стани Дилър на Коли, за да пускаш обяви!</h2>
+       <label for="firstName">Име:</label>
        <input type="text"
               id="fname"
               name="fname"
               [(ngModel)]="agent.firstName">
-       <label for="lastName">Last Name:</label>
+       <label for="lastName">Фамилия:</label>
        <input type="text"
               id="lname"
               name="lname"
               [(ngModel)]="agent.lastName">
-       <label for="phoneNumber">Phone Number:</label>
+       <label for="phoneNumber">Телефонен номер:</label>
        <input type="text"
               id="phone"
               name="phone"
               [(ngModel)]="agent.phoneNumber">
 
-       <button type="submit">Become Agent</button>
+       <button type="submit">Стани Дилър на Коли</button>
 
 </form>

@@ -1,14 +1,14 @@
 <div class="row custom-row">
        <div class="col-xl-5">
               <div class="card card-body p-5">
-                     <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                     <h2 class="text-uppercase text-center mb-5">Създайте акаунт</h2>
 
                      <form (ngSubmit)="onSubmit()"
                            class="text-center mb-5">
 
                             <div class="form-outline mb-4">
                                    <input type="text"
-                                          placeholder="Username"
+                                          placeholder="Потребителско име"
                                           [(ngModel)]="user.userName"
                                           name="username"
                                           required>
@@ -18,7 +18,7 @@
 
                             <div class="form-outline mb-4">
                                    <input type="text"
-                                          placeholder="Email"
+                                          placeholder="Имейл"
                                           [(ngModel)]="user.email"
                                           name="username"
                                           required>
@@ -28,7 +28,7 @@
 
                             <div class="form-outline mb-4">
                                    <input type="password"
-                                          placeholder="Password"
+                                          placeholder="Парола"
                                           [(ngModel)]="user.password"
                                           name="password"
                                           required>
@@ -38,7 +38,7 @@
 
                             <div class="form-outline mb-4">
                                    <input type="password"
-                                          placeholder="Confirm Password"
+                                          placeholder="Повтори паролата"
                                           [(ngModel)]="user.confirmPassword"
                                           name="username"
                                           required>
@@ -49,12 +49,13 @@
 
                             <div class="d-flex justify-content-center">
                                    <button type="submit"
-                                           class="btn btn-success">Register</button>
+                                           [routerLink]="['/login']"
+                                           class="btn btn-success">Регистрация</button>
                             </div>
                             <p class="text-center text-muted mt-5 mb-0">
-                                   Have already an account?
+                                   Вече си имаш акаунт?
                                    <a routerLink="/login"
-                                      class="fw-bold text-body"><u>Login here</u></a>
+                                      class="fw-bold text-body"><u>Влез от тук</u></a>
                             </p>
                      </form>
               </div>

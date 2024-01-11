@@ -7,5 +7,4 @@ export class AgentDetailsDto{
   phoneNumber: string;
   roleId: number;
   userCar: CarDto[];
-  
 }

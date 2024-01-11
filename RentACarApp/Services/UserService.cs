@@ -62,7 +62,7 @@ namespace RentACarApp.Services
             => await context.Users.ToListAsync();
 
         public async Task<User> GetUserByIdAsync(int id)
-            => await context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            => await context.Users.Include(x => x.UserCars).FirstOrDefaultAsync(u => u.Id == id);
 
 
         public async Task<UserDto> GetUserDataAsync(HttpContext httpContext)
@@ -81,4 +81,4 @@ namespace RentACarApp.Services
         } 
 
     }
-}
+}       

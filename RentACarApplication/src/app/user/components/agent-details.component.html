@@ -5,6 +5,21 @@
       <div class="card-body">
         <h5 class="card-title mt-1">{{agentDetails?.firstName}} {{agentDetails?.lastName}}</h5>
         <p class="card-text">{{agentDetails?.phoneNumber}} </p>
+        <button (click)="showCars = !showCars">
+          <span *ngIf="showCars">Скрий</span>
+          <span *ngIf="!showCars">Покажи предлагани коли</span>
+        </button>
+
+        <div *ngIf="showCars">
+          hello
+          <div *ngFor="let car of agentDetails.userCars"
+               class="card"
+               style="width: 18rem;"> test2
+            <div class="card-body">
+              <h5 class="card-title">{{car.make}} {{car.model}}</h5>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

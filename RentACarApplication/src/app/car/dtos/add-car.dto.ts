@@ -14,12 +14,11 @@ export class AddCarDto{
   cubicCapacity: number;
   mileage: number;
   description: string;
-  isActive: Boolean;
+  isRented: Boolean;
   category: CategoryEnum;
   engine: EngineEnum;
   transmission: TransmissionEnum;
-  region: RegionEnum; 
-  
+  region: RegionEnum;   
   imageFiles: File;
   images: CarImage[]
 

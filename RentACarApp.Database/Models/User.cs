@@ -25,9 +25,9 @@
         public int RoleId {  get; set; }
         public Role Role { get; set; }
 
-        public List<Car> UserCars { get; set; }
+        public List<Car> UserCars { get; set; } = new List<Car>();
 
-        public List<RentalCar> RentalCars { get;}
+        public List<RentalCar> RentalCars { get;} = new List<RentalCar>();
     }
 
  

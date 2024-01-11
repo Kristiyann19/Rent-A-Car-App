@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { AgentDto } from "../dtos/become-agent.dto";
 import { UserService } from "../service/user.service";
 import { catchError, throwError } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { AgentDetailsDto } from "../dtos/agent-details.dto";
+import { CarDto } from "../../car/dtos/car.dto";
+import { AddCarDto } from "../../car/dtos/add-car.dto";
 
 @Component({
   selector: 'app-agent-details',
@@ -15,6 +16,7 @@ import { AgentDetailsDto } from "../dtos/agent-details.dto";
 export class AgentDetailsComponent implements OnInit {
   agentDetails: AgentDetailsDto = new AgentDetailsDto();
   loadingData = false;
+  showCars = false;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {}
 
@@ -28,6 +30,7 @@ export class AgentDetailsComponent implements OnInit {
             })
           )
     .subscribe((agentDetails: AgentDetailsDto) => {
+      debugger;
       this.agentDetails = agentDetails;
       this.loadingData = false;
     });

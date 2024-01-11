@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
@@ -29,7 +28,9 @@ namespace RentACarApp.Services
             {
                 var userName = existingUserClaim.Value;
 
-                var existingUser = context.Users.FirstOrDefault(x => x.UserName == userName);
+                var existingUser = context.Users
+                    .Include(x => x.UserCars)
+                    .FirstOrDefault(x => x.UserName == userName);
 
                 if (existingUser != null)
                 {
@@ -44,16 +45,16 @@ namespace RentACarApp.Services
                         Description = car.Description,
                         Price = car.Price,
                         Engine = car.Engine,
-                        isActive = true,
+                        isRented = false,
                         Category = car.Category,
                         Mileage = car.Mileage,
                         Region = car.Region,
                         Transmission = car.Transmission,
                         Images = car.Images,
-                        UserId = existingUser.Id
-                        
+                        UserId = existingUser.Id,
                     };
 
+                    existingUser.UserCars.Add(entity);
 
                     List<Image> imageList = new List<Image>();
                     if (car.ImageFiles.Count > 0)
@@ -93,7 +94,8 @@ namespace RentACarApp.Services
 
         public async Task DeleteCarAsync(int carId)
         {
-            var car = context.Cars.FirstOrDefault(x => x.Id == carId);
+            var car = context.Cars
+                .FirstOrDefault(x => x.Id == carId);
 
             context.Remove(car);
             await context.SaveChangesAsync();
@@ -172,7 +174,8 @@ namespace RentACarApp.Services
         {
             var user = await GetUserDataAsync(httpContext);
 
-            return  context.RentalCars.Include(x => x.Car)
+            return  context.RentalCars
+                .Include(x => x.Car)
                 .Select(c => new Car
                 {
                     Id = c.Car.Id,
@@ -185,7 +188,7 @@ namespace RentACarApp.Services
                     Description = c.Car.Description,
                     Price = c.Car.Price,
                     Engine = c.Car.Engine,
-                    isActive = true,
+                    isRented = true,
                     Category = c.Car.Category,
                     Mileage = c.Car.Mileage,
                     Region = c.Car.Region,
@@ -200,9 +203,11 @@ namespace RentACarApp.Services
         {
             var user = await GetUserDataAsync(httpContext);
 
-            var car = await context.Cars.FirstOrDefaultAsync(c => c.Id == carId);
+            var car = await context.Cars
+                .FirstOrDefaultAsync(c => c.Id == carId);
 
-            if (!await context.RentalCars.AnyAsync(e => e.CarId == car.Id && e.UserId == user.Id))
+            if (!await context.RentalCars
+                .AnyAsync(e => e.CarId == car.Id && e.UserId == user.Id))
             {
                 context.RentalCars.Add(new RentalCar { CarId = car.Id, UserId = user.Id});
                 await context.SaveChangesAsync();
@@ -211,12 +216,14 @@ namespace RentACarApp.Services
 
         public async Task<UserDto> GetUserDataAsync(HttpContext httpContext)
         {
-            var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
+            var existingUserClaim = httpContext.User
+                .FindFirst(ClaimTypes.Name);
 
             if (existingUserClaim != null)
             {   
                 var userName = existingUserClaim.Value;
-                var existingUser = await context.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+                var existingUser = await context.Users
+                    .FirstOrDefaultAsync(x => x.UserName == userName);
                 return new UserDto { Email = existingUser.Email, Id = existingUser.Id, RoleId = existingUser.RoleId, UserName = existingUser.UserName, RentalCars = existingUser.RentalCars };
             }
 

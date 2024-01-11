@@ -27,7 +27,7 @@ namespace RentACarApp.Database.Models
 
         public string Description { get; set; }
 
-        public bool isActive { get; set; }
+        public bool isRented { get; set; }
 
         public EngineEnum Engine { get; set; }
 
@@ -38,7 +38,6 @@ namespace RentACarApp.Database.Models
         public CategoryEnum Category { get; set; }
 
         public int UserId { get; set; }
-        public User User { get; set; }
 
         public List<Image> Images { get; set; }
 
@@ -95,7 +94,7 @@ namespace RentACarApp.Database.Models
                 .IsRequired();
 
             builder
-                .Property(x => x.isActive)
+                .Property(x => x.isRented)
                 .IsRequired();
         }
     }

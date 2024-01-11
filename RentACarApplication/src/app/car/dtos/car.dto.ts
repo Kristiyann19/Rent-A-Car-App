@@ -16,7 +16,7 @@ export class CarDto{
   cubicCapacity: number;
   mileage: number;
   description: string;
-  isActive: Boolean;
+  isRented: Boolean;
   category: CategoryEnum;
   engine: EngineEnum;
   transmission: TransmissionEnum;
@@ -24,5 +24,4 @@ export class CarDto{
   userId: number;
   imageFiles: File;
   images: CarImage[];
-
 }

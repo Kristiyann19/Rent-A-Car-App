@@ -10,6 +10,7 @@ import { AuthGuard } from './auth.guard';
 import { UserComponent } from './user/components/user.component';
 import { AgentDetailsComponent } from './user/components/agent-details.component';
 import { RentCarComponent } from './car/component/rent-car.component';
+import { UpdateCarComponent } from './car/component/update-car.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'becomeagent', component: UserComponent },
   {path: 'agent/:id', component: AgentDetailsComponent},
-  {path: 'rentedcars', component: RentCarComponent}
+  {path: 'rentedcars', component: RentCarComponent},
+  {path: 'updatecar', component: UpdateCarComponent}
 
 ];
 

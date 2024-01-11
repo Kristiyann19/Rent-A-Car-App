@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+    <div class="p-3 border">
+      <input type="text"
+             [(ngModel)]="updateCar.make"
+             placeholder="Make">
+    </div>
+    <div class="p-3 border">
+      <input type="text"
+             [(ngModel)]="updateCar.model"
+             placeholder="Model">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="updateCar.year"
+             placeholder="Year">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="updateCar.price"
+             placeholder="Price">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="updateCar.horsePower"
+             placeholder="HorsePower">
+    </div>
+    <div class="p-3 border">
+      <input type="text"
+             [(ngModel)]="updateCar.color"
+             placeholder="Color">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="updateCar.cubicCapacity"
+             placeholder="Cubic Capacity">
+    </div>
+    <div class="p-3 border">
+      <input type="number"
+             [(ngModel)]="updateCar.mileage"
+             placeholder="Mileage">
+    </div>
+    <div class="p-3 border">
+      <input type="text"
+             [(ngModel)]="updateCar.description"
+             placeholder="Description">
+    </div>
+    <div class="p-3 border">
+      <select [(ngModel)]="updateCar.engine">
+        <option [ngValue]="1"> Бензинов</option>
+        <option [ngValue]="2">Дизелов</option>
+        <option [ngValue]="3">Електрически</option>
+      </select>
+    </div>
+    <div class="p-3 border">
+      <select [(ngModel)]="updateCar.category">
+        <option [ngValue]="1"> Седан</option>
+        <option [ngValue]="2">Хечбек</option>
+        <option [ngValue]="3">SUV</option>
+        <option [ngValue]="4">Купе</option>
+        <option [ngValue]="5">Миниван</option>
+        <option [ngValue]="6">Пикап</option>
+        <option [ngValue]="7">Спортна кола</option>
+        <option [ngValue]="8">Кабриолет</option>
+        <option [ngValue]="9">Комби</option>
+      </select>
+    </div>
+    <div class="p-3 border">
+      <select [(ngModel)]="updateCar.transmission">
+        <option></option>
+        <option [ngValue]="1"> Автоматична</option>
+        <option [ngValue]="2">Ръчна</option>
+        <option [ngValue]="3">Семи-автоматична</option>
+      </select>
+    </div>
+    <div class="p-3 border">
+      <select [(ngModel)]="updateCar.region">
+        <option></option>
+        <option [ngValue]="1"> Благоев Град</option>
+      </select>
+    </div>
+    <div class="p-3 border">
+      <button class="btn btn-primary"
+              [routerLink]="['/']"
+              (click)="updateCarPut()">Add</button>
+    </div>
+
+  </div>

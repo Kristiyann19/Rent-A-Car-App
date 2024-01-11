@@ -6,9 +6,9 @@ namespace RentACarApp.Dtos
     {
         public int Id { get; set; }
 
-        public string Make { get; set; }
+        public string? Make { get; set; }
 
-        public string Model { get; set; }
+        public string? Model { get; set; }
 
         public decimal Price { get; set; }
 
@@ -23,6 +23,8 @@ namespace RentACarApp.Dtos
         public int Mileage { get; set; }
 
         public string Description { get; set; }
+
+        public int UserId { get; set; }
 
         public bool isActive { get; set; }
 

@@ -64,7 +64,7 @@ namespace RentACarApp.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateCar([FromBody] CarDto updatedCar)
         {
-            await carService.UpdateCarAsync(updatedCar);
+            await carService.UpdateCarAsync(updatedCar, HttpContext);
             return Ok();
         }
 

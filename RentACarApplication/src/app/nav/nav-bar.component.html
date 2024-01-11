@@ -3,12 +3,12 @@
     <a class="navbar-brand"
        [routerLink]="['']">RentACar</a>
     <ul class="navbar-nav mr-auto">
-      <li *ngIf="userService.currentUserDto.roleId === 1"
+      <li *ngIf="userService.currentUserDto?.roleId === 1"
           class="nav-item">
         <a class="nav-link"
            [routerLink]="['/becomeagent']"> Become Agent</a>
       </li>
-      <li *ngIf="userService.currentUserDto.roleId === 2"
+      <li *ngIf="userService.currentUserDto?.roleId === 2"
           class="nav-item">
         <a class="nav-link"
            [routerLink]="['/add']"> Add Car </a>

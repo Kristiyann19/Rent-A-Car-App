@@ -37,9 +37,17 @@ export class CarService{
     return this.http.post<void>(this.apiUrl, car);
   }
 
+  removeRented(id: number){
+    return this.http.delete<CarDto>(`http://localhost:19999/api/Car/RemoveRented/${id}`)
+  }
+
   searchCar(car: CarDto): Observable<CarDto[]> {
     const url = 'http://localhost:19999/api/Car/search';
     return this.http.get<CarDto[]>(url + this.composeQueryString(car));
+  }
+
+  deleteCar(id: number){
+    return this.http.delete<CarDto>(`http://localhost:19999/api/Car/${id}`);
   }
 
 public composeQueryString(object: any): string {

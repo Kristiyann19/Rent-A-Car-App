@@ -19,6 +19,11 @@ export class CarComponent {
     this.carService.userRentCar(id).subscribe((car: CarDto) => this.car = car);
   }
 
+  deleteCar(id){
+    this.carService.deleteCar(id).subscribe();
+  }
+
+
   ngOnInit(): void {
     this.carService.getCars().subscribe((result: CarDto[]) => {
       this.cars = result;

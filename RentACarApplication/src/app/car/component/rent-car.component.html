@@ -10,6 +10,9 @@
         <li class="list-group-item">Цена: {{rentCar.price}} лв.</li>
         <li class="list-group-item">Пробег: {{rentCar.mileage}} км.</li>
         <li class="list-group-item">Година: {{rentCar.year}}</li>
+        <button class="btn btn-primary"
+                (click)="removeFromRented(rentCar.id)">Remove</button>
+
       </ul>
     </div>
   </div>

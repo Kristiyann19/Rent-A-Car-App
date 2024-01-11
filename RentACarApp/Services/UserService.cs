@@ -67,18 +67,29 @@ namespace RentACarApp.Services
 
         public async Task<UserDto> GetUserDataAsync(HttpContext httpContext)
         {
-            var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
+            var existingUserClaim = httpContext.User
+                .FindFirst(ClaimTypes.Name);
 
             if (existingUserClaim != null)
             {
                 var userName = existingUserClaim.Value;
-                var existingUser = await context.Users.FirstOrDefaultAsync(x => x.UserName == userName);
-                return new UserDto { Email = existingUser.Email, Id = existingUser.Id, RoleId = existingUser.RoleId, UserName = existingUser.UserName, RentalCars = existingUser.RentalCars };
+                var existingUser = await context.Users
+                    .Include(u => u.UserCars)
+                    .Select(x => new UserDto
+                    {
+                        Email = x.Email,
+                        Id = x.Id,
+                        RoleId = x.RoleId,
+                        UserName = x.UserName,
+                        RentalCars = x.RentalCars
+                    })
+                    .FirstOrDefaultAsync(x => x.UserName == userName);
+                return existingUser;
             }
 
             return null;
 
-        } 
+        }
 
     }
 }       

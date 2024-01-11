@@ -76,7 +76,7 @@
       <img class="card-img-top"
            src="{{car.imageFiles}}">
       <div class="card-body">
-        <h5 class="card-title">{{car.make}} {{car.model}}</h5>
+        <h5 class="card-title">{{car?.make}} {{car.model}}</h5>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Цена: {{car.price}} лв.</li>
@@ -89,6 +89,10 @@
               [routerLink]="['/agent', car.userId]">Агент</button>
       <button class="btn btn-primary"
               (click)="rentCar(car.id)">Rent</button>
+      <button class="btn btn-primary"
+              (click)="deleteCar(car.id)">Delete</button>
+
+
     </div>
   </div>
 </div>

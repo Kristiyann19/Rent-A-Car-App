@@ -11,7 +11,7 @@ namespace RentACarApp.Contracts
 
         Task AddCarAsync(HttpContext httpContext, AddCarDto car);
 
-        Task DeleteCarAsync(int carId);
+        Task DeleteCarAsync(int carId, HttpContext httpContext);
 
         Task UpdateCarAsync(CarDto updatedCar);
 
@@ -22,5 +22,7 @@ namespace RentACarApp.Contracts
         Task<UserDto> GetUserDataAsync(HttpContext httpContext);
 
         Task<IEnumerable<Car>> GetRentedCarsAsync(HttpContext httpContext);
+
+        Task RemoveFromRentedAsync(int carId, HttpContext httpContext);
     }
 }

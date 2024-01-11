@@ -18,6 +18,8 @@
             <div class="card-body">
               <h5 class="card-title">{{car.make}} {{car.model}}</h5>
             </div>
+            <button class="btn btn-primary"
+                    [routerLink]="['/car',car.id]">детайли</button>
           </div>
         </div>
       </div>

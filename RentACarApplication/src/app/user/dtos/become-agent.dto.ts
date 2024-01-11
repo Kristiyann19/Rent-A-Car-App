@@ -3,5 +3,5 @@ export class AgentDto{
   firstName: string;
   lastName: string;
   phoneNumber: string;
-  roleId: number;
+  roleId?: number;
 }

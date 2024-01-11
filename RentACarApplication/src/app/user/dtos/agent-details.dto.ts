@@ -5,6 +5,6 @@ export class AgentDetailsDto{
   firstName: string;
   lastName: string;
   phoneNumber: string;
-  roleId: number;
+  roleId?: number;
   userCar: CarDto[];
 }

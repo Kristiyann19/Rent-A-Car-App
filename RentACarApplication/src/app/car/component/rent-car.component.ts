@@ -19,4 +19,10 @@ export class RentCarComponent {
     });
   }
 
+  
+  removeFromRented(id){
+    debugger
+    this.carService.removeRented(id).subscribe();
+  }
+
 }

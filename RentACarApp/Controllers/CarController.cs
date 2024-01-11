@@ -33,8 +33,15 @@ namespace RentACarApp.Controllers
 
         [HttpDelete("{carId}")]
         public async Task<IActionResult> DeleteCar([FromRoute] int carId)
+         {
+            await carService.DeleteCarAsync(carId, HttpContext);
+            return Ok();
+        }
+
+        [HttpDelete("RemoveRented/{carId}")]
+        public async Task<IActionResult> RemoveFromRented([FromRoute] int carId)
         {
-            await carService.DeleteCarAsync(carId);
+            await carService.RemoveFromRentedAsync(carId, HttpContext);
             return Ok();
         }
 

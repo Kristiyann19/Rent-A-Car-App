@@ -152,12 +152,12 @@ namespace RentACarApp.Services
         }
 
     
-        public async Task<IEnumerable<Car>> GetRentedCarsAsync (HttpContext httpContext) //DTO
+        public async Task<List<Car>> GetRentedCarsAsync (HttpContext httpContext) //DTO
         {
             var user = await GetUserDataAsync(httpContext);
 
-            return  context.RentalCars
-                .Include(x => x.Car)
+            return await context.RentalCars
+                .Where(x => x.UserId == user.Id)
                 .Select(c => new Car
                 {
                     Id = c.Car.Id,
@@ -170,15 +170,13 @@ namespace RentACarApp.Services
                     Description = c.Car.Description,
                     Price = c.Car.Price,
                     Engine = c.Car.Engine,
-                    isRented = true,
                     Category = c.Car.Category,
                     Mileage = c.Car.Mileage,
                     Region = c.Car.Region,
                     Transmission = c.Car.Transmission,
                     Images = c.Car.Images,
                     UserId = user.Id
-                });
-
+                }).ToListAsync();
         }
 
         public async Task RentCarAsync(int carId, HttpContext httpContext)
@@ -192,6 +190,7 @@ namespace RentACarApp.Services
                 .AnyAsync(e => e.CarId == car.Id && e.UserId == user.Id))
             {
                 context.RentalCars.Add(new RentalCar { CarId = car.Id, UserId = user.Id});
+                car.isRented = true;
                 await context.SaveChangesAsync();
             }
         }
@@ -207,6 +206,7 @@ namespace RentACarApp.Services
             if (rentedCar != null)
             {
                 context.RentalCars.Remove(rentedCar);
+                car.isRented = false;
                 await context.SaveChangesAsync();
                 
             }

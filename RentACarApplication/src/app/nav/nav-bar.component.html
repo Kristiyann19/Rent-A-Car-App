@@ -13,10 +13,7 @@
         <a class="nav-link"
            [routerLink]="['/add']"> Пусни кола под наем </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"
-           [routerLink]="['/rentedcars']">Наети Коли</a>
-      </li>
+
     </ul>
 
     <div class="navbar-collapse justify-content-end">
@@ -31,7 +28,13 @@
                [routerLink]="['/login']">Вход</a>
           </li>
         </ng-container>
+
         <ng-template #loggedInLinks>
+          <li *ngIf="userService.currentUserDto"
+              class="nav-item">
+            <a class="nav-link"
+               [routerLink]="['/rentedcars']">Наети Коли</a>
+          </li>
           <li class="nav-item">
             <button class="nav-link"
                     (click)="logout()">Logout</button>

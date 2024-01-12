@@ -3,6 +3,7 @@ import { LoginDto } from '../dtos/login.dto';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../user/service/user.service';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-login',
@@ -11,7 +12,8 @@ import { UserService } from '../../user/service/user.service';
 })
 export class LoginComponent {
   user: LoginDto = { userName: '',  password: '' }; 
-  
+  subject = new Subject<number>()
+
     constructor(private loginService: LoginService, private router: Router, private userService: UserService) {}
 
     onSubmit(): void {

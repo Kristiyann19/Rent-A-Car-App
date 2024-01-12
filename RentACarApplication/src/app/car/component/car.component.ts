@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { CarDto } from "../dtos/car.dto";
 import { CarService } from "../service/car.service";
 import { ActivatedRoute } from "@angular/router";
+import { UserService } from "../../user/service/user.service";
 
 @Component({
   selector: 'app-car',
@@ -12,7 +13,7 @@ import { ActivatedRoute } from "@angular/router";
 export class CarComponent {
   cars: CarDto[] = [];
   car: CarDto = new CarDto();
-  constructor(private carService: CarService, private route: ActivatedRoute){}
+  constructor(private carService: CarService, private route: ActivatedRoute, public userService: UserService){}
 
   rentCar(id){
     // const id = parseInt(this.route.snapshot.paramMap.get('id')!)

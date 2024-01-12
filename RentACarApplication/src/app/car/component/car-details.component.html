@@ -9,6 +9,8 @@
         <p class="card-text">Категория: {{ categoryEnumLocalization[car?.category]}}</p>
         <p class="card-text">Скоростна кутия: {{ transmissionEnumLocalization[car?.transmission]}}</p>
         <p class="card-text">Регион: {{ regionEnumLocalization[car?.region]}}</p>
+        <button class="btn btn-primary"
+                [routerLink]="['/agent', car.userId]">Агент</button>
       </div>
     </div>
   </div>

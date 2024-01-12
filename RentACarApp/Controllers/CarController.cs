@@ -61,10 +61,10 @@ namespace RentACarApp.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateCar([FromBody] CarDto updatedCar)
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdateCar([FromRoute] int id, [FromBody] CarDto updatedCar)
         {
-            await carService.UpdateCarAsync(updatedCar, HttpContext);
+            await carService.UpdateCarAsync(id, updatedCar, HttpContext);
             return Ok();
         }
 

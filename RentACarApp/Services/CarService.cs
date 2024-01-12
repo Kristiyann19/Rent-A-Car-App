@@ -117,47 +117,30 @@ namespace RentACarApp.Services
         public Task<Car> GetCarByIdAsync(int carId)
             => context.Cars.FirstOrDefaultAsync(x => x.Id == carId);
 
-        public async Task UpdateCarAsync(CarDto updatedCar, HttpContext httpContext)
+        public async Task UpdateCarAsync(int id, CarDto updatedCar, HttpContext httpContext)
         {
             var user = await GetUserDataAsync(httpContext);
 
-            var existingCar = await context.Cars.Select(car => new CarDto
-            {
-                Make = car.Make,
-                Model = car.Model,
-                Year = car.Year,
-                Color = car.Color,
-                HorsePower = car.HorsePower,
-                CubicCapacity = car.CubicCapacity,
-                Description = car.Description,
-                Price = car.Price,
-                Engine = car.Engine,
-                Category = car.Category,
-                Mileage = car.Mileage,
-                Region = car.Region,
-                Transmission = car.Transmission,
-                UserId = user.Id,
-            })
-               .FirstOrDefaultAsync(x => x.Id == updatedCar.Id);
+            var existingCar = await context.Cars
+               .Where(x => x.UserId == user.Id)
+               .FirstOrDefaultAsync(x => x.Id == id);
 
             if (user.Id != existingCar.UserId)
             {
                 throw new ArgumentException();
             }
-
             mapper.Map(updatedCar, existingCar);
-
 
             await context.SaveChangesAsync();
         }
-
+            
     
         public async Task<List<Car>> GetRentedCarsAsync (HttpContext httpContext) //DTO
         {
             var user = await GetUserDataAsync(httpContext);
 
             return await context.RentalCars
-                .Where(x => x.UserId == user.Id)
+                .Where(x => x.UserId == user.Id)        
                 .Select(c => new Car
                 {
                     Id = c.Car.Id,

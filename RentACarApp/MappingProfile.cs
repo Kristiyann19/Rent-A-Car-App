@@ -8,8 +8,7 @@ namespace RentACarApp
     {
         public MappingProfile()
         {
-      
-            CreateMap<CarDto, CarDto>();
+            CreateMap<CarDto, Car>();
             CreateMap<AgentDto, User>();
         }
     }

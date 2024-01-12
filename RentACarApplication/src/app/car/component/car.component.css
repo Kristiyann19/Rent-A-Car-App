@@ -1,7 +1,13 @@
-.card{
+.card {
   margin-left: 10px;
   margin-right: 10px;
+  cursor: pointer;
+  
 }
+
+/* .card:hover{
+  color: grey; 
+} */
 
 .row{
   margin-left: 10px;

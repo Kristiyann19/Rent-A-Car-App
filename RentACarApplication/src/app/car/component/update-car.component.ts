@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { CarDto } from "../dtos/car.dto";
 import { CarService } from "../service/car.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-update-car',
@@ -9,12 +10,14 @@ import { CarService } from "../service/car.service";
 })
 
 export class UpdateCarComponent {
-  updateCars: CarDto[] = [];
-  updateCar: CarDto = new CarDto();
-  constructor(private carService: CarService){}
+  updatedCar: CarDto = new CarDto();
+
+  constructor(private route: ActivatedRoute, private carService: CarService){}
   
-  updateCarPut() {
-    this.carService.updateCar(this.updateCar).subscribe();
+
+  updateCarPut(id) {
+  debugger;
+    this.carService.updateCar(id, this.updatedCar).subscribe((car: CarDto) => this.updatedCar = car);
   }
 
 }

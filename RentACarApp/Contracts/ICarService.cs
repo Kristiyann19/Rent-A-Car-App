@@ -13,7 +13,7 @@ namespace RentACarApp.Contracts
 
         Task DeleteCarAsync(int carId, HttpContext httpContext);
 
-        Task UpdateCarAsync(CarDto updatedCar, HttpContext httpContext);
+        Task UpdateCarAsync(int id, CarDto updatedCar, HttpContext httpContext);
 
         Task<List<Car>> SeachInCarAsync(CarDto car);
 

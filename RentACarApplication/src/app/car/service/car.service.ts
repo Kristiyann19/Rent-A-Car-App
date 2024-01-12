@@ -16,8 +16,8 @@ export class CarService{
   private apiUrl = 'http://localhost:19999/api/Car';
 
 
-  updateCar(car: CarDto) {
-    return this.http.put('http://localhost:19999/api/Car', car);
+  updateCar(id: number, car: CarDto) : Observable<CarDto>{
+    return this.http.put<CarDto>(`http://localhost:19999/api/Car/${id}`, car);
   }
 
   getRentedCars(): Observable<CarDto[]>{

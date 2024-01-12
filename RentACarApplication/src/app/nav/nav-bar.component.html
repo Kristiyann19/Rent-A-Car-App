@@ -3,6 +3,7 @@
     <a class="navbar-brand"
        [routerLink]="['']">RentACar</a>
     <ul class="navbar-nav mr-auto">
+
       <li *ngIf="userService.currentUserDto?.roleId === 1"
           class="nav-item">
         <a class="nav-link"
@@ -12,6 +13,11 @@
           class="nav-item">
         <a class="nav-link"
            [routerLink]="['/add']"> Пусни кола под наем </a>
+      </li>
+      <li *ngIf="userService.currentUserDto"
+          class="nav-item">
+        <a class="nav-link"
+           [routerLink]="['/rentedcars']">Наети Коли</a>
       </li>
 
     </ul>
@@ -30,14 +36,10 @@
         </ng-container>
 
         <ng-template #loggedInLinks>
-          <li *ngIf="userService.currentUserDto"
-              class="nav-item">
-            <a class="nav-link"
-               [routerLink]="['/rentedcars']">Наети Коли</a>
-          </li>
+
           <li class="nav-item">
             <button class="nav-link"
-                    (click)="logout()">Logout</button>
+                    (click)="logout()">Излез</button>
           </li>
         </ng-template>
       </ul>

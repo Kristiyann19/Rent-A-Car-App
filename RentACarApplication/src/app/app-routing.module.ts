@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'becomeagent', component: UserComponent },
   {path: 'agent/:id', component: AgentDetailsComponent},
   {path: 'rentedcars', component: RentCarComponent},
-  {path: 'updatecar', component: UpdateCarComponent}
+  {path: 'updatecar/:id', component: UpdateCarComponent}
 
 ];
 

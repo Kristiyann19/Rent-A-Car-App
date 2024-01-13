@@ -139,12 +139,16 @@
                 [routerLink]="['/car',car.id]">детайли</button>
       </ul>
       <button class="btn btn-primary"
+              *ngIf="car.userId === userService.currentUserDto?.id"
               [routerLink]="['/updatecar', car.id]">Update</button>
+
       <button class="btn btn-primary"
               *ngIf="!car.isRented && userService.currentUserDto"
               (click)="rentCar(car.id)">Наеми Колата</button>
+
       <button class="btn btn-primary"
               *ngIf="car.isRented && userService.currentUserDto">Колата е наета</button>
+
       <button *ngIf="car.userId === userService.currentUserDto?.id"
               class="btn btn-primary"
               (click)="deleteCar(car.id)">Delete</button>

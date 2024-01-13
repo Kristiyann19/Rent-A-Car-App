@@ -107,18 +107,18 @@
       </select>
     </div>
     <div>
-      <label for="imageUpload">Upload Image:</label>
+      <label for="images">Images:</label>
       <input type="file"
-             id="imageUpload"
-             name="imageUpload"
+             id="images"
              (change)="handleImageUpload($event)"
+             multiple
              accept="image/*"
-             multiple>
+             required>
     </div>
     <div class="p-3 border">
       <button class="btn btn-primary"
               [routerLink]="['/']"
-              (click)="add()">Add</button>
+              (click)="addCar()">Add</button>
     </div>
 
   </div>

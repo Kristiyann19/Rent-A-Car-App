@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
-using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
 
 namespace RentACarApp.Controllers

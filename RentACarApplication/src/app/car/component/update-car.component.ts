@@ -11,13 +11,29 @@ import { ActivatedRoute } from "@angular/router";
 
 export class UpdateCarComponent {
   updatedCar: CarDto = new CarDto();
+  carId: number;
 
   constructor(private route: ActivatedRoute, private carService: CarService){}
   
 
-  updateCarPut(id) {
-  debugger;
-    this.carService.updateCar(id, this.updatedCar).subscribe((car: CarDto) => this.updatedCar = car);
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.carId = +params['id'];
+      this.fetchCarDetails(); 
+    });
+  }
+
+
+  fetchCarDetails(): void {
+    this.carService.getCarDetails(this.carId).subscribe((car) => {
+      this.updatedCar = { ...car }; 
+    });
+  }
+  updateCar(): void {
+    this.carService.updateCar(this.carId, this.updatedCar).subscribe(() => {
+      console.log('Car updated successfully');
+      
+    });
   }
 
 }

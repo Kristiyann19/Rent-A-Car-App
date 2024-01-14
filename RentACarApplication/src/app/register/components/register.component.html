@@ -3,48 +3,63 @@
               <div class="card card-body p-5">
                      <h2 class="text-uppercase text-center mb-5">Създайте акаунт</h2>
 
-                     <form (ngSubmit)="onSubmit()"
+                     <form [formGroup]="form"
+                           (ngSubmit)="onSubmit()"
                            class="text-center mb-5">
-
                             <div class="form-outline mb-4">
                                    <input type="text"
                                           placeholder="Потребителско име"
-                                          [(ngModel)]="user.userName"
-                                          name="username"
-                                          required>
-                                   <!-- <label class="form-label"
-                                                 for="form3Example1cg">Your UserName</label> -->
+                                          formControlName="userName">
+                                   <div *ngIf="submitted && form.get('userName').hasError('required')"
+                                        class="text-danger">
+                                          Потребителското име е задължително.
+                                   </div>
+                                   <div *ngIf="submitted && form.get('userName').hasError('minlength')"
+                                        class="text-danger">
+                                          Потребителското име трябва да бъде поне 6
+                                   </div>
                             </div>
 
                             <div class="form-outline mb-4">
                                    <input type="text"
                                           placeholder="Имейл"
-                                          [(ngModel)]="user.email"
-                                          name="username"
-                                          required>
-                                   <!-- <label class="form-label"
-                                                 for="form3Example3cg">Your Email</label> -->
+                                          formControlName="email">
+                                   <div *ngIf="submitted && form.get('email').hasError('required')"
+                                        class="text-danger">
+                                          Имейлът е задължителен.
+                                   </div>
+                                   <div *ngIf="submitted && form.get('email').hasError('minlength')"
+                                        class="text-danger">
+                                          Имейлът трябва да бъде поне 6
+                                   </div>
                             </div>
 
                             <div class="form-outline mb-4">
                                    <input type="password"
                                           placeholder="Парола"
-                                          [(ngModel)]="user.password"
-                                          name="password"
-                                          required>
-                                   <!-- <label class="form-label"
-                                                 for="form3Example4cg">Password</label> -->
+                                          formControlName="password">
+                                   <div *ngIf="submitted && form.get('password').hasError('required')"
+                                        class="text-danger">
+                                          Паролата е задължителна.
+                                   </div>
+                                   <div *ngIf="submitted && form.get('password').hasError('minlength')"
+                                        class="text-danger">
+                                          Паролата трябва да бъде поне 6 знака.
+                                   </div>
                             </div>
 
                             <div class="form-outline mb-4">
                                    <input type="password"
                                           placeholder="Повтори паролата"
-                                          [(ngModel)]="user.confirmPassword"
-                                          name="username"
-                                          required>
-                                   <!-- <label class="form-label"
-                                                 for="form3Example4cdg">Repeat your
-                                                 password</label> -->
+                                          formControlName="confirmPassword">
+                                   <div *ngIf="submitted && form.get('confirmPassword').hasError('required')"
+                                        class="text-danger">
+                                          Повторете паролата.
+                                   </div>
+                                   <div *ngIf="form.get('password').value !== form.get('confirmPassword').value && form.get('confirmPassword').touched"
+                                        class="text-danger">
+                                          Паролите не съвпадат.
+                                   </div>
                             </div>
 
                             <div class="d-flex justify-content-center">

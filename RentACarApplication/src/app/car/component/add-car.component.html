@@ -8,10 +8,18 @@
                [(ngModel)]="car.make"
                placeholder="Марка">
       </div>
+      <div *ngIf="submitted && form.get('make').hasError('required')"
+           class="text-danger">
+        Марката е задължителна.
+      </div>
       <div class="col-sm-4">
         <input type="text"
                [(ngModel)]="car.model"
                placeholder="Модел">
+      </div>
+      <div *ngIf="submitted && form.get('model').hasError('required')"
+           class="text-danger">
+        Моделът е задължителен.
       </div>
       <div class="col-sm-4">
         <input type="number"
@@ -28,6 +36,7 @@
                [(ngModel)]="car.horsePower"
                placeholder="Коне">
       </div>
+
       <div class="col-sm-4">
         <input type="text"
                [(ngModel)]="car.color"
@@ -44,12 +53,17 @@
                placeholder="Пробег">
       </div>
 
+
       <div class="col-sm-4">
         <select [(ngModel)]="car.engine">
           <option [ngValue]="1"> Бензинов</option>
           <option [ngValue]="2">Дизелов</option>
           <option [ngValue]="3">Електрически</option>
         </select>
+      </div>
+      <div *ngIf="submitted && form.get('engine').hasError('required')"
+           class="text-danger">
+        Двигателят е задължителен.
       </div>
       <div class="col-sm-4">
         <select [(ngModel)]="car.category">
@@ -64,6 +78,10 @@
           <option [ngValue]="9">Комби</option>
         </select>
       </div>
+      <div *ngIf="submitted && form.get('category').hasError('required')"
+           class="text-danger">
+        Категорията е задължителна.
+      </div>
       <div class="col-sm-4">
         <select [(ngModel)]="car.transmission">
           <option></option>
@@ -71,6 +89,10 @@
           <option [ngValue]="2">Ръчна</option>
           <option [ngValue]="3">Семи-автоматична</option>
         </select>
+      </div>
+      <div *ngIf="submitted && form.get('category').hasError('required')"
+           class="text-danger">
+        Скоростната кутия е задължителна.
       </div>
       <div class="col-sm-4">
         <select [(ngModel)]="car.region">
@@ -105,6 +127,10 @@
           <option [ngValue]="28">Извън страната</option>
         </select>
       </div>
+      <div *ngIf="submitted && form.get('category').hasError('required')"
+           class="text-danger">
+        Регионът е задължителен.
+      </div>
       <div class="col-sm-4">
         <textarea type="text"
                   [(ngModel)]="car.description"
@@ -123,8 +149,9 @@
       </div>
       <div class="col-sm-4">
         <button class="btn btn-primary"
-                [routerLink]="['/']"
-                (click)="addCar()">Добави</button>
+                (click)="onSubmit()">Добави</button>
+        <div *ngIf="addError"
+             class="text-danger mt3">Грешка при добавянето на кола.</div>
       </div>
     </div>
   </div>

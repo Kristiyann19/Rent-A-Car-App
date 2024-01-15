@@ -18,7 +18,8 @@ namespace RentACarApp
                 .AddScoped<IRegisterService, RegisterService>()
                 .AddScoped<ICarService, CarService>()
                 .AddScoped<IUserService, UserService>()
-                .AddScoped<IValidator<RegisterDto>, RegisterValidator>();
+                .AddScoped<IValidator<RegisterDto>, RegisterValidator>()
+                .AddScoped<IValidator<CarDto>, CarValidator>();
 
             return services;
         }

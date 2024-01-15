@@ -25,7 +25,7 @@ namespace RentACarApp.Services
                 Email = register.Email,
                 NormalizedEmail = register.Email.ToLower(),
                 PasswordSalt = PasswordHasher.GenerateSalt(),
-                RoleId = 1
+                RoleId = 1  
             };
             user.Password = PasswordHasher.ComputeHash(register.Password, user.PasswordSalt);
 

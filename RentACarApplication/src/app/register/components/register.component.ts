@@ -11,10 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent {
     user: RegisterDto = { userName: '', email: '', password: '', confirmPassword: '' }; 
     form: FormGroup;
-
     serverErrors: any = {};
-    
     submitted = false;
+    
     constructor(private registerService: RegisterService, private fb: FormBuilder) {
         this.form = this.fb.group({
             userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
@@ -25,9 +24,12 @@ export class RegisterComponent {
     }
 
 
-    onSubmit(): void {
+    onSubmit(): void {      
       this.submitted = true;
-        this.registerService.register(this.user)
+      if(this.form.valid){
+        const registerDto: RegisterDto = this.form.value as RegisterDto;
+      
+        this.registerService.register(registerDto)
           .subscribe(
             (result: RegisterDto) => {
               this.user = result;
@@ -40,6 +42,6 @@ export class RegisterComponent {
                 console.error('An error occurred:', error);     
               }
             }
-          );
+          )};
  }
 }

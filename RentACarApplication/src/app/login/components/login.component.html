@@ -4,34 +4,35 @@
 
       <h2 class="text-uppercase text-center mb-5">Влезте в акаунта си</h2>
 
-      <form (ngSubmit)="onSubmit()"
-            class="text-center">
-
+      <form [formGroup]="form"
+            (ngSubmit)="onSubmit()"
+            class="text-center mb-5">
         <div class="form-outline mb-4">
           <input type="text"
                  placeholder="Потребителско име"
-                 [(ngModel)]="user.userName"
-                 name="username"
-                 required>
-          <!-- <label class="form-label"
-                                            for="form3Example1cg">Your UserName</label> -->
+                 formControlName="userName">
+        </div>
+        <div *ngIf="submitted && form.get('userName').hasError('required')"
+             class="text-danger">
+          Потребителското име е задължително.
         </div>
 
         <div class="form-outline mb-4">
           <input type="password"
                  placeholder="Парола"
-                 [(ngModel)]="user.password"
-                 name="password"
-                 required>
-          <!-- <label class="form-label"
-                                            for="form3Example4cg">Password</label> -->
-        </div>
+                 formControlName="password">
 
+        </div>
+        <div *ngIf="submitted && form.get('password').hasError('required')"
+             class="text-danger">
+          Паролата е задължителна.
+        </div>
         <div class="d-flex justify-content-center">
           <button type="submit"
                   class="btn btn-success">Вход</button>
         </div>
-
+        <div *ngIf="loginError"
+             class="text-danger mt3">Грешно потребителско име или парола. Моля опитайте отново.</div>
       </form>
     </div>
   </div>

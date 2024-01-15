@@ -4,6 +4,7 @@ import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../user/service/user.service';
 import { Subject } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-login',
@@ -14,10 +15,23 @@ export class LoginComponent {
   user: LoginDto = { userName: '',  password: '' }; 
   subject = new Subject<number>()
 
-    constructor(private loginService: LoginService, private router: Router, private userService: UserService) {}
+  form: FormGroup;
+  serverErrors: any = {};
+  submitted = false;
+  loginError: Boolean = false;
+
+    constructor(private loginService: LoginService, private router: Router, private userService: UserService, private fb: FormBuilder) {
+
+      this.form = this.fb.group({
+        userName: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+      })
+    }
 
     onSubmit(): void {
-      this.loginService.login(this.user).subscribe(
+      const registerDto: LoginDto = this.form.value as LoginDto;
+      this.submitted = true;
+      this.loginService.login(registerDto).subscribe(
         (response: any) => {
           if (response?.token) {
             localStorage.setItem('access_token', response.token);
@@ -28,6 +42,7 @@ export class LoginComponent {
         },
         (error) => {
           console.error('Login failed:', error);
+          this.loginError = true;
         }
       );
  }

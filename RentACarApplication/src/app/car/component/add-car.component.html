@@ -1,124 +1,131 @@
-<div class="row">
-  <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="car.make"
-             placeholder="Make">
-    </div>
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="car.model"
-             placeholder="Model">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="car.year"
-             placeholder="Year">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="car.price"
-             placeholder="Price">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="car.horsePower"
-             placeholder="HorsePower">
-    </div>
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="car.color"
-             placeholder="Color">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="car.cubicCapacity"
-             placeholder="Cubic Capacity">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="car.mileage"
-             placeholder="Mileage">
-    </div>
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="car.description"
-             placeholder="Description">
-    </div>
-    <div class="p-3 border">
-      <select [(ngModel)]="car.engine">
-        <option [ngValue]="1"> Бензинов</option>
-        <option [ngValue]="2">Дизелов</option>
-        <option [ngValue]="3">Електрически</option>
-      </select>
-    </div>
-    <div class="p-3 border">
-      <select [(ngModel)]="car.category">
-        <option [ngValue]="1"> Седан</option>
-        <option [ngValue]="2">Хечбек</option>
-        <option [ngValue]="3">SUV</option>
-        <option [ngValue]="4">Купе</option>
-        <option [ngValue]="5">Миниван</option>
-        <option [ngValue]="6">Пикап</option>
-        <option [ngValue]="7">Спортна кола</option>
-        <option [ngValue]="8">Кабриолет</option>
-        <option [ngValue]="9">Комби</option>
-      </select>
-    </div>
-    <div class="p-3 border">
-      <select [(ngModel)]="car.transmission">
-        <option></option>
-        <option [ngValue]="1"> Автоматична</option>
-        <option [ngValue]="2">Ръчна</option>
-        <option [ngValue]="3">Семи-автоматична</option>
-      </select>
-    </div>
-    <div class="p-3 border">
-      <select [(ngModel)]="car.region">
-        <option></option>
-        <option [ngValue]="1"> Благоев Град</option>
-        <option [ngValue]="2">Бургас</option>
-        <option [ngValue]="3">Варна</option>
-        <option [ngValue]="4">Велико Търново</option>
-        <option [ngValue]="5">Видин</option>
-        <option [ngValue]="6">Враца</option>
-        <option [ngValue]="7">Габрово</option>
-        <option [ngValue]="8">Добрич</option>
-        <option [ngValue]="9">Дупница</option>
-        <option [ngValue]="10">Кърджали</option>
-        <option [ngValue]="11">Кюстендил</option>
-        <option [ngValue]="12">Монтана</option>
-        <option [ngValue]="13">Пазарджик</option>
-        <option [ngValue]="14">Перник</option>
-        <option [ngValue]="15">Плевен</option>
-        <option [ngValue]="16">Пловдив</option>
-        <option [ngValue]="17">Разград</option>
-        <option [ngValue]="18">Русе</option>
-        <option [ngValue]="19">Силистра</option>
-        <option [ngValue]="20">Сливен</option>
-        <option [ngValue]="21">Смолян</option>
-        <option [ngValue]="22">София</option>
-        <option [ngValue]="23">Стара Загора</option>
-        <option [ngValue]="24">Търговище</option>
-        <option [ngValue]="25">Хасково</option>
-        <option [ngValue]="26">Шумен</option>
-        <option [ngValue]="27">Ямбол</option>
-        <option [ngValue]="28">Извън страната</option>
-      </select>
-    </div>
-    <div>
-      <label for="images">Images:</label>
-      <input type="file"
-             id="images"
-             (change)="handleImageUpload($event)"
-             multiple
-             accept="image/*"
-             required>
-    </div>
-    <div class="p-3 border">
-      <button class="btn btn-primary"
-              [routerLink]="['/']"
-              (click)="addCar()">Add</button>
-    </div>
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <h4>
+        Въвеждане на описанието на Автомобилa</h4>
+      <div class="col-sm-4">
+        <input type="text"
+               [(ngModel)]="car.make"
+               placeholder="Марка">
+      </div>
+      <div class="col-sm-4">
+        <input type="text"
+               [(ngModel)]="car.model"
+               placeholder="Модел">
+      </div>
+      <div class="col-sm-4">
+        <input type="number"
+               [(ngModel)]="car.year"
+               placeholder="Година">
+      </div>
+      <div class="col-sm-4">
+        <input type="number"
+               [(ngModel)]="car.price"
+               placeholder="Цена">
+      </div>
+      <div class="col-sm-4">
+        <input type="number"
+               [(ngModel)]="car.horsePower"
+               placeholder="Коне">
+      </div>
+      <div class="col-sm-4">
+        <input type="text"
+               [(ngModel)]="car.color"
+               placeholder="Цвят">
+      </div>
+      <div class="col-sm-4">
+        <input type="number"
+               [(ngModel)]="car.cubicCapacity"
+               placeholder="Кубатура">
+      </div>
+      <div class="col-sm-4">
+        <input type="number"
+               [(ngModel)]="car.mileage"
+               placeholder="Пробег">
+      </div>
 
+      <div class="col-sm-4">
+        <select [(ngModel)]="car.engine">
+          <option [ngValue]="1"> Бензинов</option>
+          <option [ngValue]="2">Дизелов</option>
+          <option [ngValue]="3">Електрически</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select [(ngModel)]="car.category">
+          <option [ngValue]="1"> Седан</option>
+          <option [ngValue]="2">Хечбек</option>
+          <option [ngValue]="3">SUV</option>
+          <option [ngValue]="4">Купе</option>
+          <option [ngValue]="5">Миниван</option>
+          <option [ngValue]="6">Пикап</option>
+          <option [ngValue]="7">Спортна кола</option>
+          <option [ngValue]="8">Кабриолет</option>
+          <option [ngValue]="9">Комби</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select [(ngModel)]="car.transmission">
+          <option></option>
+          <option [ngValue]="1"> Автоматична</option>
+          <option [ngValue]="2">Ръчна</option>
+          <option [ngValue]="3">Семи-автоматична</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select [(ngModel)]="car.region">
+          <option></option>
+          <option [ngValue]="1"> Благоев Град</option>
+          <option [ngValue]="2">Бургас</option>
+          <option [ngValue]="3">Варна</option>
+          <option [ngValue]="4">Велико Търново</option>
+          <option [ngValue]="5">Видин</option>
+          <option [ngValue]="6">Враца</option>
+          <option [ngValue]="7">Габрово</option>
+          <option [ngValue]="8">Добрич</option>
+          <option [ngValue]="9">Дупница</option>
+          <option [ngValue]="10">Кърджали</option>
+          <option [ngValue]="11">Кюстендил</option>
+          <option [ngValue]="12">Монтана</option>
+          <option [ngValue]="13">Пазарджик</option>
+          <option [ngValue]="14">Перник</option>
+          <option [ngValue]="15">Плевен</option>
+          <option [ngValue]="16">Пловдив</option>
+          <option [ngValue]="17">Разград</option>
+          <option [ngValue]="18">Русе</option>
+          <option [ngValue]="19">Силистра</option>
+          <option [ngValue]="20">Сливен</option>
+          <option [ngValue]="21">Смолян</option>
+          <option [ngValue]="22">София</option>
+          <option [ngValue]="23">Стара Загора</option>
+          <option [ngValue]="24">Търговище</option>
+          <option [ngValue]="25">Хасково</option>
+          <option [ngValue]="26">Шумен</option>
+          <option [ngValue]="27">Ямбол</option>
+          <option [ngValue]="28">Извън страната</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <textarea type="text"
+                  [(ngModel)]="car.description"
+                  placeholder="Описание">
+
+</textarea>
+      </div>
+      <div class="col-sm-4">
+        <label for="images">Снимки:</label>
+        <input type="file"
+               id="images"
+               (change)="handleImageUpload($event)"
+               multiple
+               accept="image/*"
+               required>
+      </div>
+      <div class="col-sm-4">
+        <button class="btn btn-primary"
+                [routerLink]="['/']"
+                (click)="addCar()">Добави</button>
+      </div>
+    </div>
   </div>
+</div>

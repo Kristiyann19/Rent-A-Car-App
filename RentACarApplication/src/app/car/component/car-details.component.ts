@@ -6,6 +6,8 @@ import { CarService } from "../service/car.service";
 import { CategoryEnum, CategoryEnumLocalization } from "../../enums/category-enum";
 import { TransmissionEnum, TransmissionEnumLocalization } from "../../enums/transmission-enum";
 import { RegionEnum, RegionEnumLocalization } from "../../enums/region-enum";
+import { HttpErrorResponse } from "@angular/common/http";
+import { catchError, throwError } from "rxjs";
 
 @Component({
   selector: 'app-car-details',
@@ -14,7 +16,7 @@ import { RegionEnum, RegionEnumLocalization } from "../../enums/region-enum";
 })
 
 export class CarDetailsComponent{
-  car: CarDto;
+  car: CarDto = new CarDto();
 
   engineEnumLocalization = EngineEnumLocalization;
   categoryEnumLocalization = CategoryEnumLocalization;
@@ -25,11 +27,27 @@ export class CarDetailsComponent{
   categoryEnum = CategoryEnum;
   transmissionEnum = TransmissionEnum;
   regionEnum = RegionEnum;
+  loadingData = false;
 
   constructor(private route: ActivatedRoute, private carService: CarService) {}
 
-  ngOnInit(): void{
+  getCarDetails (): void{
     const id = parseInt(this.route.snapshot.paramMap.get('id')!)
-    this.carService.getCarDetails(id).subscribe((car: CarDto) => this.car = car); //?
+    this.carService.getCarDetails(id)
+    .pipe(
+             catchError((err: HttpErrorResponse) => {
+                this.loadingData = false;
+                return throwError(() => err);
+            })
+          )
+    .subscribe((car: CarDto) => {
+      this.car = car;
+      this.loadingData = false;
+    }); 
+  }
+
+  ngOnInit(): void {
+    this.loadingData = true;
+    this.getCarDetails();
   }
 }

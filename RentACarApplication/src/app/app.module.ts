@@ -18,6 +18,8 @@ import { AgentDetailsComponent } from './user/components/agent-details.component
 import { UserService } from './user/service/user.service';
 import { RentCarComponent } from './car/component/rent-car.component';
 import { UpdateCarComponent } from './car/component/update-car.component';
+import { LoadingComponent } from './loading/loading.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { UpdateCarComponent } from './car/component/update-car.component';
     NavBarComponent,
     AgentDetailsComponent,
     RentCarComponent,
-    UpdateCarComponent
+    UpdateCarComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { UpdateCarComponent } from './car/component/update-car.component';
     HttpClientModule,
     FormsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     UserService,

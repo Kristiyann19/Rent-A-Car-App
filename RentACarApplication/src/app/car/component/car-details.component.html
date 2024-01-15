@@ -1,18 +1,23 @@
-<div class="card">
-  <div class="text-center row">
-    <div class="col-md-12">
-      <div class="card-body">
-        <h5 class="card-title mt-1">{{car?.make}} {{car?.model}}</h5>
-        <p class="card-text">Цена: {{car?.price}} лева</p>
-        <p class="card-text">Година: {{car?.year}}</p>
-        <p class="card-text">Двигател: {{ engineEnumLocalization[car?.engine]}}</p>
-        <p class="card-text">Категория: {{ categoryEnumLocalization[car?.category]}}</p>
-        <p class="card-text">Скоростна кутия: {{ transmissionEnumLocalization[car?.transmission]}}</p>
-        <p class="card-text">Регион: {{ regionEnumLocalization[car?.region]}}</p>
-        <button class="btn btn-primary"
-                [routerLink]="['/agent', car.userId]">Агент</button>
+<div *ngIf="!loadingData else loadingDataSection">
+  <div class="card">
+    <div class="text-center row">
+      <div class="col-md-12">
+        <div class="card-body">
+          <h5 class="card-title mt-1">{{car?.make}} {{car?.model}}</h5>
+          <p class="card-text">Цена: {{car?.price}} лева</p>
+          <p class="card-text">Година: {{car?.year}}</p>
+          <p class="card-text">Двигател: {{ engineEnumLocalization[car?.engine]}}</p>
+          <p class="card-text">Категория: {{ categoryEnumLocalization[car?.category]}}</p>
+          <p class="card-text">Скоростна кутия: {{ transmissionEnumLocalization[car?.transmission]}}</p>
+          <p class="card-text">Регион: {{ regionEnumLocalization[car?.region]}}</p>
+          <button class="btn btn-primary"
+                  [routerLink]="['/agent', car.userId]">Агент</button>
 
+        </div>
       </div>
     </div>
   </div>
 </div>
+<ng-template #loadingDataSection>
+  <loading-section></loading-section>
+</ng-template>

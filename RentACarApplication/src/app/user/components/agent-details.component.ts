@@ -30,7 +30,6 @@ export class AgentDetailsComponent implements OnInit {
             })
           )
     .subscribe((agentDetails: AgentDetailsDto) => {
-      debugger;
       this.agentDetails = agentDetails;
       this.loadingData = false;
     });

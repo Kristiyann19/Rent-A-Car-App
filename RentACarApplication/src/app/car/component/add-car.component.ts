@@ -7,7 +7,7 @@ import { CarImage } from "../dtos/image.dto";
 @Component({
   selector: 'app-add-car',
   templateUrl: './add-car.component.html',
-  styleUrls: ['./car.component.css']
+  styleUrls: ['./add-car.component.css']
 })
 
 

@@ -24,5 +24,7 @@ namespace RentACarApp.Contracts
         Task<List<Car>> GetRentedCarsAsync(HttpContext httpContext);
 
         Task RemoveFromRentedAsync(int carId, HttpContext httpContext);
+
+        Task<IEnumerable<Car>> GetPostedCarsAsync(HttpContext httpContext);
     }
 }

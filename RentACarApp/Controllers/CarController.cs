@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.Dtos;
+using RentACarApp.Services;
 
 namespace RentACarApp.Controllers
 {
@@ -32,7 +33,7 @@ namespace RentACarApp.Controllers
 
         [HttpDelete("{carId}")]
         public async Task<IActionResult> DeleteCar([FromRoute] int carId)
-         {
+        {
             await carService.DeleteCarAsync(carId, HttpContext);
             return Ok();
         }
@@ -81,6 +82,12 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
+        [HttpGet("AgentCars")]
+        public async Task<IActionResult> PostedCars()
+        {
+            var postedCars = await carService.GetPostedCarsAsync(HttpContext);
+            return Ok(postedCars);
+        }
 
     }
 }

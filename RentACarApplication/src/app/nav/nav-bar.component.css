@@ -55,5 +55,19 @@ li a:hover {
  
 }
 
+.nav-item{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0d6efd;
+}
+
+.nav-item :hover{
+  background-color: #0f67eb;
+  transform: scale(1.02);
+ 
+}
+
 
 

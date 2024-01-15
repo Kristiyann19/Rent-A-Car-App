@@ -20,6 +20,7 @@ export class CarService{
     return this.http.put(`http://localhost:19999/api/Car/${id}`, updatedCar);
   }
 
+
   getRentedCars(): Observable<CarDto[]>{
     return this.http.get<CarDto[]>('http://localhost:19999/api/Car/RentedCars');
   }

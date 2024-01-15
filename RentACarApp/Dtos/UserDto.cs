@@ -13,5 +13,7 @@ namespace RentACarApp.Dtos
         public int RoleId { get; set; }
 
         public List<RentalCar> RentalCars { get; set; } = new List<RentalCar>();
+
+        public List<Car> UserCars { get; set; } = new List<Car>();
     }
 }

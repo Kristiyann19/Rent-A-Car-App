@@ -72,7 +72,6 @@ namespace RentACarApp.Services
 
                     existingUser.UserCars.Add(entity);
 
-                    List<Image> imageList = new List<Image>();
                     if (car.ImageFiles.Count > 0)
                     {
                         foreach (var formFile in car.ImageFiles)
@@ -93,7 +92,7 @@ namespace RentACarApp.Services
                                             FileExtension = Path.GetExtension(formFile.FileName),
                                             Size = formFile.Length,
                                         };
-                                        imageList.Add(newImage);
+                                        entity.Images.Add(newImage);
                                     }
 
                                 }
@@ -133,7 +132,14 @@ namespace RentACarApp.Services
 
             await context.SaveChangesAsync();
         }
-            
+
+        public async Task<IEnumerable<Car>> GetPostedCarsAsync (HttpContext httpContext)
+        {
+            var user = await GetUserDataAsync(httpContext);
+
+            return user.UserCars.ToList();
+
+        }    
     
         public async Task<List<Car>> GetRentedCarsAsync (HttpContext httpContext) //DTO
         {

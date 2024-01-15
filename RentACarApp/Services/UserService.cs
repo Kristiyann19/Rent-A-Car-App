@@ -55,7 +55,7 @@ namespace RentACarApp.Services
                 return false;
             }
 
-            //mapper.Map(updatedToAgent, existingUser);                      
+            
         }
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()
@@ -81,7 +81,9 @@ namespace RentACarApp.Services
                         Id = x.Id,
                         RoleId = x.RoleId,
                         UserName = x.UserName,
-                        RentalCars = x.RentalCars
+                        RentalCars = x.RentalCars,
+                        UserCars = x.UserCars
+
                     })
                     .FirstOrDefaultAsync(x => x.UserName == userName);
                 return existingUser;

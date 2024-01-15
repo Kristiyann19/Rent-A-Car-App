@@ -19,7 +19,18 @@
         <a class="nav-link"
            [routerLink]="['/rentedcars']">Наети Коли</a>
       </li>
+      <li *ngIf="userService.currentUserDto"
+          class="nav-item">
 
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle">Dropdown</button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+      </li>
     </ul>
 
     <div class="navbar-collapse justify-content-end">

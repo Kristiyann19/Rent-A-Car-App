@@ -102,8 +102,6 @@
           <option value="26">Шумен</option>
           <option value="27">Ямбол</option>
           <option value="28">Извън страната</option>
-
-
         </select>
       </div>
     </div>
@@ -118,15 +116,13 @@
 </div>
 
 
-
 <div class="container">
   <div class="row">
     <div *ngFor="let car of cars"
          class="card"
          style="width: 18rem;">
-      <img *ngIf="car.images && car.images.length > 0"
-           [src]="'data:image/' + car.images[0].fileExtension + ';base64,' + car.images[0].bytes"
-           alt="{{ car.images[0].description }}"
+      <img *ngIf="car.imageFiles && car.imageFiles.length > 0"
+           [src]="'data:image/'"
            class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{car?.make}} {{car.model}}</h5>
@@ -146,11 +142,11 @@
               *ngIf="!car.isRented && userService.currentUserDto"
               (click)="rentCar(car.id)">Наеми Колата</button>
 
-      <button class="btn btn-primary"
+      <button class="btn text-danger"
               *ngIf="car.isRented && userService.currentUserDto">Колата е наета</button>
 
       <button *ngIf="car.userId === userService.currentUserDto?.id"
-              class="btn btn-primary"
+              class="btn btn-danger"
               (click)="deleteCar(car.id)">Delete</button>
     </div>
   </div>

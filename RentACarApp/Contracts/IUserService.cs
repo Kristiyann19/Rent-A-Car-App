@@ -13,6 +13,6 @@ namespace RentACarApp.Contracts
 
         Task<UserDto> GetUserDataAsync(HttpContext httpContext);
 
-     
+        Task DeleteUserAsync(HttpContext httpContext);
     }
 }

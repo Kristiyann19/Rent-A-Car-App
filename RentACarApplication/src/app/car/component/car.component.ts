@@ -25,10 +25,25 @@ export class CarComponent {
   }
 
 
+
   ngOnInit(): void {
     this.carService.getCars().subscribe((result: CarDto[]) => {
       this.cars = result;
     });
+  }
+
+  getImageUrl(image: any) {
+    const base64Data = this.ArrayBufferToBase(image.bytes);
+    return `data:image/${image.fileExtension};base64,${base64Data}`
+  }
+
+  private ArrayBufferToBase(buffer: any) {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+  for (let i = 0; i < bytes.byteLength; i++){
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary)
   }
 
   search(): void {

@@ -22,6 +22,10 @@ export class UserService {
       return this.http.get<CurrentUserDto>('api/User/currentData').subscribe(e => this.currentUserDto = e);
     }
 
+    removeCar(){
+        return this.http.delete<CurrentUserDto>('http://localhost:19999/api/User/DeleteAccount')
+    }
+
     getAll() {
         return this.http.get<UserDto[]>('http://localhost:19999/api/User/All');
     }

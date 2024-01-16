@@ -9,7 +9,11 @@
                  alt="avatar"
                  class="rounded-circle img-fluid"
                  style="width: 150px;">
-            <h5 class="my-3">{{userService.currentUserDto.firstName}} {{userService.currentUserDto.lastName}}</h5>
+            <h5 class="my-3"
+                *ngIf="userService.currentUserDto.roleId == 2">{{userService.currentUserDto.firstName}}
+              {{userService.currentUserDto.lastName}}</h5>
+            <h5 class="my-3"
+                *ngIf="userService.currentUserDto.roleId == 1">{{userService.currentUserDto.userName}} </h5>
             <p class="text-muted mb-1"
                *ngIf="userService.currentUserDto.roleId == 2">Агент</p>
             <p class="text-muted mb-1"
@@ -84,10 +88,9 @@
               </div>
             </div>
             <hr>
-
           </div>
-
         </div>
+
         <div class="card mb-4">
           <div class="card-body">
             <div class="row">
@@ -102,7 +105,6 @@
                   <span *ngIf="showCars">Скрий</span>
                   <span *ngIf="!showCars">Покажи твоите обяви коли</span>
                 </button>
-
               </div>
             </div>
           </div>
@@ -126,5 +128,7 @@
       </div>
 
     </div>
+    <button class="btn btn-danger"
+            (click)="deleteAccount()">Delete</button>
   </div>
 </section>

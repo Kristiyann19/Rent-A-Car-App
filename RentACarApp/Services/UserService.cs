@@ -23,6 +23,18 @@ namespace RentACarApp.Services
             mapper = _mapper;
         }
 
+        public async Task DeleteUserAsync(HttpContext httpContext)
+        {
+            var currentUser = await GetUserDataAsync(httpContext);
+
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Id == currentUser.Id);
+
+            context.Users.Remove(user);
+
+            await context.SaveChangesAsync();
+        }
+
+
         public  async Task<bool> BecomeAgentAsync(HttpContext httpContext, AgentDto updatedToAgent)
         {
             try

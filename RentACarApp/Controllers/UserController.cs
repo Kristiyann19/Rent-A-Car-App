@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.Dtos;
-using RentACarApp.Services;
-using System.Security.Claims;
 
 namespace RentACarApp.Controllers
 {
@@ -29,7 +26,6 @@ namespace RentACarApp.Controllers
         public async Task<IActionResult> AllUsers()
         {
             var users = await userService.GetAllUsersAsync();
-
             return Ok(users);
         }
 
@@ -48,6 +44,13 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
+        [HttpDelete]
+        [Route("DeleteAccount")]
+        public async Task<IActionResult> DeleteAccount()
+        {
+            await userService.DeleteUserAsync(HttpContext);
+            return Ok();
+        }
       
 
     }

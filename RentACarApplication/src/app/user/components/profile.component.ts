@@ -14,4 +14,8 @@ export class ProfileComponent  {
       
   }
 
+  deleteAccount(){
+    this.userService.removeCar().subscribe();
+  }
+
 }

@@ -21,6 +21,7 @@ import { UpdateCarComponent } from './car/component/update-car.component';
 import { LoadingComponent } from './loading/loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './user/components/profile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { ProfileComponent } from './user/components/profile.component';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [
     UserService,

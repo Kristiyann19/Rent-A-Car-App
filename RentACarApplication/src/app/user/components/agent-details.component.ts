@@ -4,8 +4,6 @@ import { UserService } from "../service/user.service";
 import { catchError, throwError } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { AgentDetailsDto } from "../dtos/agent-details.dto";
-import { CarDto } from "../../car/dtos/car.dto";
-import { AddCarDto } from "../../car/dtos/add-car.dto";
 
 @Component({
   selector: 'app-agent-details',

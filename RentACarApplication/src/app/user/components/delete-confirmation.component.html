@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h2 class="model-title">Confirm Deletion</h2>
+  <button type="button"
+          class="close"
+          (click)="cancelDelete()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <p>Are you sure you want to delete this account?</p>
+</div>
+
+<div class="modal-footer">
+  <button type="button"
+          class="btn btn-danger"
+          (click)="confirmDelete()">Yes</button>
+  <button type="button"
+          class="btn btn-secondary"
+          (click)="cancelDelete()">No</button>
+</div>

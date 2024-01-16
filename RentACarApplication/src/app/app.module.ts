@@ -20,7 +20,7 @@ import { RentCarComponent } from './car/component/rent-car.component';
 import { UpdateCarComponent } from './car/component/update-car.component';
 import { LoadingComponent } from './loading/loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { DropdownComponent } from './dropdown/dropdown.component';
+import { ProfileComponent } from './user/components/profile.component';
 
 
 @NgModule({
@@ -38,7 +38,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     RentCarComponent,
     UpdateCarComponent,
     LoadingComponent,
-    DropdownComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

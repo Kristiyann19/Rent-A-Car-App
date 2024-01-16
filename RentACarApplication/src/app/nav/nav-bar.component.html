@@ -14,23 +14,7 @@
         <a class="nav-link"
            [routerLink]="['/add']"> Пусни кола под наем </a>
       </li>
-      <li *ngIf="userService.currentUserDto"
-          class="nav-item">
-        <a class="nav-link"
-           [routerLink]="['/rentedcars']">Наети Коли</a>
-      </li>
-      <li *ngIf="userService.currentUserDto"
-          class="nav-item">
 
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle">Dropdown</button>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-          </div>
-        </div>
-      </li>
     </ul>
 
     <div class="navbar-collapse justify-content-end">
@@ -47,11 +31,16 @@
         </ng-container>
 
         <ng-template #loggedInLinks>
-
+          <li class="nav-item">
+            <button class="nav-link"
+                    [routerLink]="['/profile']"> Профил</button>
+          </li>
           <li class="nav-item">
             <button class="nav-link"
                     (click)="logout()">Излез</button>
           </li>
+
+
         </ng-template>
       </ul>
     </div>

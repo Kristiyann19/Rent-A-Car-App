@@ -11,6 +11,7 @@ import { UserComponent } from './user/components/user.component';
 import { AgentDetailsComponent } from './user/components/agent-details.component';
 import { RentCarComponent } from './car/component/rent-car.component';
 import { UpdateCarComponent } from './car/component/update-car.component';
+import { ProfileComponent } from './user/components/profile.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'becomeagent', component: UserComponent },
   {path: 'agent/:id', component: AgentDetailsComponent},
   {path: 'rentedcars', component: RentCarComponent},
-  {path: 'updatecar/:id', component: UpdateCarComponent}
+  {path: 'updatecar/:id', component: UpdateCarComponent},
+  {path: 'profile', component:ProfileComponent}
 
 ];
 

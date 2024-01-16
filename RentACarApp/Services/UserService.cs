@@ -82,8 +82,10 @@ namespace RentACarApp.Services
                         RoleId = x.RoleId,
                         UserName = x.UserName,
                         RentalCars = x.RentalCars,
-                        UserCars = x.UserCars
-
+                        UserCars = x.UserCars,
+                        FirstName = x.FirstName,
+                        PhoneNumber = x.PhoneNumber,
+                        LastName = x.LastName
                     })
                     .FirstOrDefaultAsync(x => x.UserName == userName);
                 return existingUser;

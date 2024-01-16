@@ -5,11 +5,12 @@ import { AgentDto } from '../dtos/become-agent.dto';
 import { Observable, Observer, catchError, throwError } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { AgentDetailsDto } from '../dtos/agent-details.dto';
+import { CurrentUserDto } from '../dtos/current-user.dto';
 
 @Injectable()
 export class UserService {
     agentDto: AgentDto;
-    currentUserDto: UserDto = new UserDto();
+    currentUserDto: CurrentUserDto = new CurrentUserDto();
     private isAgent = false;
     localStorage: Storage;
 
@@ -18,7 +19,7 @@ export class UserService {
     }  
 
     getCurrentUser() {
-      return this.http.get<UserDto>('api/User/currentData').subscribe(e => this.currentUserDto = e);
+      return this.http.get<CurrentUserDto>('api/User/currentData').subscribe(e => this.currentUserDto = e);
     }
 
     getAll() {

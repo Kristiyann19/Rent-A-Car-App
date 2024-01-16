@@ -10,6 +10,13 @@ namespace RentACarApp.Dtos
 
         public string Email { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+
         public int RoleId { get; set; }
 
         public List<RentalCar> RentalCars { get; set; } = new List<RentalCar>();

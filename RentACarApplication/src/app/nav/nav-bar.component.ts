@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../login/service/login.service';
 import { UserService } from '../user/service/user.service';
-import { UserDto } from '../user/dtos/user.dto';
 
 @Component({
   selector: 'app-nav-bar',

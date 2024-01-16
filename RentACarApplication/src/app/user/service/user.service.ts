@@ -18,6 +18,11 @@ export class UserService {
         this.localStorage = document.defaultView?.localStorage;
     }  
 
+
+    updateUser(getCurrentUser: CurrentUserDto){
+        return this.http.put('http://localhost:19999/api/User/UpdateAccount', getCurrentUser);
+    }
+
     getCurrentUser() {
       return this.http.get<CurrentUserDto>('api/User/currentData').subscribe(e => this.currentUserDto = e);
     }

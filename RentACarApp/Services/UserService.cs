@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 namespace RentACarApp.Services
@@ -30,6 +27,26 @@ namespace RentACarApp.Services
             var user = await context.Users.FirstOrDefaultAsync(x => x.Id == currentUser.Id);
 
             context.Users.Remove(user);
+
+            await context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAccountAsync(HttpContext httpContext, UserDto updateUser)
+        {
+            var user = await GetUserDataAsync(httpContext);
+
+            var existingUser = await context.Users
+                .FirstOrDefaultAsync(x => x.Id == user.Id);
+
+
+            if (existingUser != null)
+            {
+                existingUser.UserName = updateUser.UserName;
+                existingUser.Email = updateUser.Email;
+                existingUser.FirstName = updateUser.FirstName;
+                existingUser.LastName = updateUser.LastName;
+                existingUser.PhoneNumber = updateUser.PhoneNumber;
+            }
 
             await context.SaveChangesAsync();
         }
@@ -107,5 +124,8 @@ namespace RentACarApp.Services
 
         }
 
+       
+
     }
-}       
+}
+

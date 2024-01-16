@@ -1,16 +1,19 @@
-import { Router } from "express";
 import { UserService } from "../service/user.service";
 import { Component } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { Router } from "@angular/router";
 
 @Component({templateUrl: 'delete-confirmation.component.html'})
-
 export class DeleteConfirmationModalComponent  {
-  constructor(public activeModal: NgbActiveModal, private userService: UserService) { }
+  localStorage: Storage;
+  constructor(public activeModal: NgbActiveModal, private userService: UserService, private router: Router) { 
+    this.localStorage = document.defaultView?.localStorage;
+  }
 
   confirmDelete(){
     this.userService.removeCar().subscribe();
     this.activeModal.close(true);
+    this.localStorage?.removeItem('access_token')
   }  
 
 

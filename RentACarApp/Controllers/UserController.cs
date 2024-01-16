@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.Dtos;
+using RentACarApp.Services;
 
 namespace RentACarApp.Controllers
 {
@@ -51,7 +52,15 @@ namespace RentACarApp.Controllers
             await userService.DeleteUserAsync(HttpContext);
             return Ok();
         }
-      
+
+        [HttpPut]
+        [Route("UpdateAccount")]
+        public async Task<IActionResult> UpdateAccount([FromBody] UserDto updateUser)
+        {
+            await userService.UpdateAccountAsync(HttpContext, updateUser);
+            return Ok();
+        }
+
 
     }
 }

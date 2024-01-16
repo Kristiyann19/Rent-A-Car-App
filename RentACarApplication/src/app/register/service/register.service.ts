@@ -13,7 +13,6 @@ export class RegisterService {
     constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
 
     register(userDto: RegisterDto) {
-        debugger;
         return this.http.post(this.apiUrl, userDto);
     }
 }

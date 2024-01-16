@@ -1,8 +1,6 @@
 import { Component} from '@angular/core';
 import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
-import { subscribe } from 'diagnostics_channel';
-import { UserDto } from '../dtos/user.dto';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteConfirmationModalComponent } from './delete-confirmation.component';
 

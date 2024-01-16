@@ -20,7 +20,6 @@
                *ngIf="userService.currentUserDto.roleId == 1">Клиент</p>
             <p class="text-muted mb-1"
                *ngIf="userService.currentUserDto.roleId == 3">Администратор</p>
-            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
             <div class="d-flex justify-content-center mb-2">
               <button type="button"
                       class="btn btn-primary">Follow</button>
@@ -87,7 +86,6 @@
                    [routerLink]="['/becomeagent']">Не сте агент, за да имате тази информация!</p>
               </div>
             </div>
-            <hr>
           </div>
         </div>
 
@@ -105,6 +103,13 @@
                   <span *ngIf="showCars">Скрий</span>
                   <span *ngIf="!showCars">Покажи твоите обяви коли</span>
                 </button>
+
+
+                <button class="btn btn-danger"
+                        (click)="openDeleteConfirmationModal()">Delete</button>
+
+                <button class="btn btn-primary"
+                        [routerLink]="['/updateuser']">Update User</button>
               </div>
             </div>
           </div>
@@ -122,13 +127,12 @@
                   [routerLink]="['/car',car.id]">детайли</button>
         </div>
       </div>
-
       <div *ngIf="showCars && userService.currentUserDto.roleId != 2">
         <p>Станете агент, за да добавяте коли</p>
       </div>
 
+
     </div>
-    <button class="btn btn-danger"
-            (click)="openDeleteConfirmationModal()">Delete</button>
+
   </div>
 </section>

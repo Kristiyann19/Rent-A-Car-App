@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteConfirmationModalComponent } from './delete-confirmation.component';
 
-@Component({templateUrl: 'profile.component.html'})
+@Component({
+  templateUrl: 'profile.component.html',
+  styleUrls: ['profile.component.css']
+})
 
 export class ProfileComponent  {
   constructor(private modalService: NgbModal,private router: Router, public userService: UserService) { }

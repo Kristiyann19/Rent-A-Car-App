@@ -3,7 +3,7 @@
 
     <div class="row">
       <div class="col-lg-4">
-        <div class="card mb-4">
+        <div class="card mb-5">
           <div class="card-body text-center">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                  alt="avatar"
@@ -35,7 +35,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">UserName</p>
+                <p class="mb-0">Потребителско Име</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{userService.currentUserDto.userName}}</p>
@@ -44,7 +44,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Email</p>
+                <p class="mb-0">Имейл</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{userService.currentUserDto.email}}</p>
@@ -58,7 +58,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
+                <p class="mb-0">Телефонен номер</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0"
@@ -89,31 +89,35 @@
           </div>
         </div>
 
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <button class="btn btn-primary"
-                        [routerLink]="['/rentedcars']">
-                  Наети Коли
-                </button>
+        <div class="button-container">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
 
-                <button class="btn btn-primary"
-                        (click)="showCars = !showCars">
-                  <span *ngIf="showCars">Скрий</span>
-                  <span *ngIf="!showCars">Покажи твоите обяви коли</span>
-                </button>
+                  <button class="btn btn-primary"
+                          [routerLink]="['/rentedcars']">
+                    Наети Коли
+                  </button>
+
+                  <button class="btn btn-primary"
+                          (click)="showCars = !showCars">
+                    <span *ngIf="showCars">Скрий</span>
+                    <span *ngIf="!showCars">Покажи твоите обяви коли</span>
+                  </button>
+
+                  <button class="btn btn-primary"
+                          [routerLink]="['/updateuser']">Update User</button>
 
 
-                <button class="btn btn-danger"
-                        (click)="openDeleteConfirmationModal()">Delete</button>
-
-                <button class="btn btn-primary"
-                        [routerLink]="['/updateuser']">Update User</button>
+                  <button class="btn btn-danger"
+                          (click)="openDeleteConfirmationModal()">Delete</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
 
       <div *ngIf="showCars">
@@ -130,8 +134,6 @@
       <div *ngIf="showCars && userService.currentUserDto.roleId != 2">
         <p>Станете агент, за да добавяте коли</p>
       </div>
-
-
     </div>
 
   </div>

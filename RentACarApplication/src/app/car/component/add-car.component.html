@@ -1,10 +1,11 @@
 <div class="container">
   <div class="card">
     <div class="row">
-      <h4>
+      <h4 class="title">
         Въвеждане на описанието на Автомобилa</h4>
       <div class="col-sm-4">
         <input type="text"
+               class="form-control"
                [(ngModel)]="car.make"
                placeholder="Марка">
       </div>
@@ -14,6 +15,7 @@
       </div>
       <div class="col-sm-4">
         <input type="text"
+               class="form-control"
                [(ngModel)]="car.model"
                placeholder="Модел">
       </div>
@@ -23,39 +25,46 @@
       </div>
       <div class="col-sm-4">
         <input type="number"
+               class="form-control"
                [(ngModel)]="car.year"
                placeholder="Година">
       </div>
       <div class="col-sm-4">
         <input type="number"
+               class="form-control"
                [(ngModel)]="car.price"
                placeholder="Цена">
       </div>
       <div class="col-sm-4">
         <input type="number"
+               class="form-control"
                [(ngModel)]="car.horsePower"
                placeholder="Коне">
       </div>
 
       <div class="col-sm-4">
         <input type="text"
+               class="form-control"
                [(ngModel)]="car.color"
                placeholder="Цвят">
       </div>
       <div class="col-sm-4">
         <input type="number"
+               class="form-control"
                [(ngModel)]="car.cubicCapacity"
                placeholder="Кубатура">
       </div>
       <div class="col-sm-4">
         <input type="number"
+               class="form-control"
                [(ngModel)]="car.mileage"
                placeholder="Пробег">
       </div>
 
 
       <div class="col-sm-4">
-        <select [(ngModel)]="car.engine">
+        <select [(ngModel)]="car.engine"
+                class="form-select">
           <option [ngValue]="1"> Бензинов</option>
           <option [ngValue]="2">Дизелов</option>
           <option [ngValue]="3">Електрически</option>
@@ -66,7 +75,8 @@
         Двигателят е задължителен.
       </div>
       <div class="col-sm-4">
-        <select [(ngModel)]="car.category">
+        <select [(ngModel)]="car.category"
+                class="form-select">
           <option [ngValue]="1"> Седан</option>
           <option [ngValue]="2">Хечбек</option>
           <option [ngValue]="3">SUV</option>
@@ -83,7 +93,8 @@
         Категорията е задължителна.
       </div>
       <div class="col-sm-4">
-        <select [(ngModel)]="car.transmission">
+        <select [(ngModel)]="car.transmission"
+                class="form-select">
           <option></option>
           <option [ngValue]="1"> Автоматична</option>
           <option [ngValue]="2">Ръчна</option>
@@ -95,7 +106,8 @@
         Скоростната кутия е задължителна.
       </div>
       <div class="col-sm-4">
-        <select [(ngModel)]="car.region">
+        <select [(ngModel)]="car.region"
+                class="form-select">
           <option></option>
           <option [ngValue]="1"> Благоев Град</option>
           <option [ngValue]="2">Бургас</option>
@@ -133,6 +145,7 @@
       </div>
       <div class="col-sm-4">
         <textarea type="text"
+                  class="form-control"
                   [(ngModel)]="car.description"
                   placeholder="Описание">
 

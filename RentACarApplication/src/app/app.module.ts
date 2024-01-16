@@ -23,6 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './user/components/profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteConfirmationModalComponent } from './user/components/delete-confirmation.component';
+import { ChatService } from './chat/chat.service';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { DeleteConfirmationModalComponent } from './user/components/delete-confi
     UpdateCarComponent,
     LoadingComponent,
     ProfileComponent,
-    DeleteConfirmationModalComponent
+    DeleteConfirmationModalComponent,
+    ChatComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -55,6 +59,7 @@ import { DeleteConfirmationModalComponent } from './user/components/delete-confi
   ],
   providers: [
     UserService,
+    ChatService,
     {
        provide: APP_INITIALIZER,
        deps: [UserService],

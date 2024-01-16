@@ -121,9 +121,12 @@
     <div *ngFor="let car of cars"
          class="card"
          style="width: 18rem;">
-      <img *ngFor="let image in car.images"
-           [src]="getImageUrl(car.image[0])"
-           class="card-img-top">
+      <div *ngIf="car?.images && car.images.length > 0">
+        <div *ngFor="let image in car.images">
+          <img [src]="getImageUrl(car.image[0])"
+               class="card-img-top">
+        </div>
+      </div>
       <div class="card-body">
         <h5 class="card-title">{{car?.make}} {{car.model}}</h5>
       </div>

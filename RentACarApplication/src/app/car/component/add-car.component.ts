@@ -3,6 +3,7 @@ import { CarDto } from "../dtos/car.dto";
 import { CarService } from "../service/car.service";
 import { AddCarDto } from "../dtos/add-car.dto";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { CarImage } from "../dtos/image.dto";
 
 @Component({
   selector: 'app-add-car',
@@ -20,12 +21,12 @@ export class AddCarComponent{
   submitted = false;
   selectedImages: FileList;
 
+  images: CarImage[]
 
   constructor(private carService: CarService, private fb: FormBuilder){
      }
 
   handleImageUpload(event: any): void {
-    debugger;
     this.selectedImages = event.target.files;
   }
 
@@ -46,13 +47,17 @@ export class AddCarComponent{
     formData.append('region', this.car.region.toString());
     formData.append('transmission', this.car.transmission.toString());
     formData.append('engine', this.car.engine.toString());
-
+    
     if (this.selectedImages && this.selectedImages.length > 0) {
       for (let i = 0; i < this.selectedImages.length; i++) {
         formData.append('imageFiles', this.selectedImages[i]);
-
+     
       }
     }
+
+    // for (let i = 0; i < this.car.images.length; i++){
+    //   formData.append('images', this.car.images[i].description)
+    // }
 
     this.carService.addCar(formData).subscribe(
       (response) => {

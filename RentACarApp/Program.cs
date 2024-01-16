@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RentACarApp;
 using RentACarApp.Database;
+using RentACarApp.Hubs;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 
@@ -13,7 +14,7 @@ builder.Services.AddDbContext<RentACarAppContext>(options =>
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 
-
+builder.Services.AddSignalR();
 builder.Services.AddRentACarServices();
 builder.Services.ConfigureJwtAuthenticationServices();
 builder.Services.AddFluentValidationAutoValidation();
@@ -25,6 +26,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.MapHub<ChatHub>("/chatHub");
 
 if (app.Environment.IsDevelopment())
 {

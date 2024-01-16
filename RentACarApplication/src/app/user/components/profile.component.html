@@ -10,16 +10,16 @@
                  class="rounded-circle img-fluid"
                  style="width: 150px;">
             <h5 class="my-3"
-                *ngIf="userService.currentUserDto.roleId == 2">{{userService.currentUserDto.firstName}}
+                *ngIf="userService.currentUserDto?.roleId == 2">{{userService.currentUserDto.firstName}}
               {{userService.currentUserDto.lastName}}</h5>
             <h5 class="my-3"
-                *ngIf="userService.currentUserDto.roleId == 1">{{userService.currentUserDto.userName}} </h5>
+                *ngIf="userService.currentUserDto?.roleId == 1">{{userService.currentUserDto.userName}} </h5>
             <p class="text-muted mb-1"
-               *ngIf="userService.currentUserDto.roleId == 2">Агент</p>
+               *ngIf="userService.currentUserDto?.roleId == 2">Агент</p>
             <p class="text-muted mb-1"
-               *ngIf="userService.currentUserDto.roleId == 1">Клиент</p>
+               *ngIf="userService.currentUserDto?.roleId == 1">Клиент</p>
             <p class="text-muted mb-1"
-               *ngIf="userService.currentUserDto.roleId == 3">Администратор</p>
+               *ngIf="userService.currentUserDto?.roleId == 3">Администратор</p>
             <div class="d-flex justify-content-center mb-2">
               <button type="button"
                       class="btn btn-primary">Follow</button>
@@ -62,11 +62,11 @@
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0"
-                   *ngIf="userService.currentUserDto.roleId == 2">{{userService.currentUserDto.phoneNumber}}</p>
+                   *ngIf="userService.currentUserDto?.roleId == 2">{{userService.currentUserDto.phoneNumber}}</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0"
-                   *ngIf="userService.currentUserDto.roleId == 1"
+                   *ngIf="userService.currentUserDto?.roleId == 1"
                    [routerLink]="['/becomeagent']">Не сте агент, за да имате тази информация!</p>
               </div>
             </div>
@@ -77,12 +77,12 @@
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0"
-                   *ngIf="userService.currentUserDto.roleId == 2">{{userService.currentUserDto.firstName}}
+                   *ngIf="userService.currentUserDto?.roleId == 2">{{userService.currentUserDto.firstName}}
                   {{userService.currentUserDto.lastName}}</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0"
-                   *ngIf="userService.currentUserDto.roleId == 1"
+                   *ngIf="userService.currentUserDto?.roleId == 1"
                    [routerLink]="['/becomeagent']">Не сте агент, за да имате тази информация!</p>
               </div>
             </div>

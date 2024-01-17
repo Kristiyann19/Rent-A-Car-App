@@ -16,30 +16,41 @@ import { Subject } from "rxjs";
 export class CarComponent {
   cars: CarDto[] = [];
   searchCar: CarDto = new CarDto();
+  page = 1;
+  pageSize = 15;
 
-  // private carDeletedSubject = new Subject<number>();
-  // carDeleted$ = this.carDeletedSubject.asObservable();
   constructor(private modalService: NgbModal,  private carService: CarService, private route: ActivatedRoute, public userService: UserService){}
 
-  rentCar(index: number, id){
-    debugger;
-    this.carService.userRentCar(id).subscribe(() => 
-    {
-      this.cars[index].isRented = true;
-    });
-  }
-
-  onDeleteModal(id){
-    const modal = this.modalService.open(DeleteConfirmationCarModalComponent);
-    modal.componentInstance.id = id;
-   
-  }
-
   ngOnInit(): void {
+    this.fetchCars();
+  }
+  
+  fetchCars(){
+    debugger;
+    const currentPage = this.page;
+    
     this.carService.getCars().subscribe((result: CarDto[]) => {
       this.cars = result;
+      if (this.page == currentPage){
+      const startIndex = (this.page - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      this.cars = this.cars.slice(startIndex, endIndex)
+    }
     });
   }
+
+  OnPageChange(page: number){
+    this.page = page;
+    this.fetchCars();
+  }
+
+ 
+
+//   refreshProduct() {
+//     this.cars = this.cars
+//         .map((car: any, i: number) => ({ id: i + 1, ...car }))
+//         .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+// }
 
   getImageUrl(image: any) {
     const base64Data = this.ArrayBufferToBase(image.bytes);
@@ -54,11 +65,23 @@ export class CarComponent {
     }
   return btoa(binary);
   }
+  rentCar(index: number, id){
+    this.carService.userRentCar(id).subscribe(() => 
+    {
+      this.cars[index].isRented = true;
+    });
+  }
 
+  onDeleteModal(id){
+    const modal = this.modalService.open(DeleteConfirmationCarModalComponent);
+    modal.componentInstance.id = id;
+   
+  }
   search(): void {
     this.carService.searchCar(this.searchCar).subscribe(
       (data: CarDto[]) => {
         this.cars = data;
+        this.cars.length;
       }
     )
   }  

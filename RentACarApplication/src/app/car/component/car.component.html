@@ -117,16 +117,31 @@
 
 
 <div class="container">
+
   <div class="row">
+
+    <ngb-pagination [collectionSize]="cars.length"
+                    [page]="page"
+                    (pageChange)="OnPageChange($event)"
+                    aria-label="Default pagination" />
+
+
+    <pre>Current page: {{ page }}</pre>
+
+    <label for="card">Общо намерени обяви: {{cars.length}} </label>
+    <hr>
     <div *ngFor="let car of cars; let i = index"
          class="card"
          style="width: 18rem;">
+
       <div *ngIf="car?.images && car.images.length > 0">
+
         <div *ngFor="let image in car.images">
           <img [src]="getImageUrl(car.image[0])"
                class="card-img-top">
         </div>
       </div>
+
       <div class="card-body">
         <h5 class="card-title">{{car.make}} {{car.model}}</h5>
       </div>

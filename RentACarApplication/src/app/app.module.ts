@@ -26,6 +26,7 @@ import { DeleteConfirmationModalComponent } from './user/components/delete-confi
 import { ChatService } from './chat/chat.service';
 import { ChatComponent } from './chat/chat.component';
 import { DeleteConfirmationCarModalComponent } from './car/modal/delete-confirmation.component';
+import { PaginationComponent } from './paging/pagination.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { DeleteConfirmationCarModalComponent } from './car/modal/delete-confirma
     ProfileComponent,
     DeleteConfirmationModalComponent,
     ChatComponent,
-    DeleteConfirmationCarModalComponent
+    DeleteConfirmationCarModalComponent,
+    PaginationComponent
     
   ],
   imports: [

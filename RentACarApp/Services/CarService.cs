@@ -228,7 +228,7 @@ namespace RentACarApp.Services
 
         }
 
-        public async Task<List<Car>> SeachInCarAsync(CarDto car)
+        public async Task<List<Car>> SeachInCarAsync(SearchCarDto car)
         {
             IQueryable<Car> query = context.Cars;
 

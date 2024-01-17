@@ -70,10 +70,6 @@
           <option [ngValue]="3">Електрически</option>
         </select>
       </div>
-      <div *ngIf="submitted && form.get('engine').hasError('required')"
-           class="text-danger">
-        Двигателят е задължителен.
-      </div>
       <div class="col-sm-4">
         <select [(ngModel)]="car.category"
                 class="form-select">
@@ -88,10 +84,7 @@
           <option [ngValue]="9">Комби</option>
         </select>
       </div>
-      <div *ngIf="submitted && form.get('category').hasError('required')"
-           class="text-danger">
-        Категорията е задължителна.
-      </div>
+
       <div class="col-sm-4">
         <select [(ngModel)]="car.transmission"
                 class="form-select">
@@ -101,10 +94,7 @@
           <option [ngValue]="3">Семи-автоматична</option>
         </select>
       </div>
-      <div *ngIf="submitted && form.get('category').hasError('required')"
-           class="text-danger">
-        Скоростната кутия е задължителна.
-      </div>
+
       <div class="col-sm-4">
         <select [(ngModel)]="car.region"
                 class="form-select">
@@ -139,10 +129,7 @@
           <option [ngValue]="28">Извън страната</option>
         </select>
       </div>
-      <div *ngIf="submitted && form.get('category').hasError('required')"
-           class="text-danger">
-        Регионът е задължителен.
-      </div>
+
       <div class="col-sm-4">
         <textarea type="text"
                   class="form-control"

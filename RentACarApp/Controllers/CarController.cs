@@ -54,7 +54,7 @@ namespace RentACarApp.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchCar([FromQuery] CarDto car)
+        public async Task<IActionResult> SearchCar([FromQuery] SearchCarDto car)
         {
             var result = await carService.SeachInCarAsync(car);
 

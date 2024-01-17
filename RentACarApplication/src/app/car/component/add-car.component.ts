@@ -24,6 +24,10 @@ export class AddCarComponent{
   images: CarImage[]
 
   constructor(private carService: CarService, private fb: FormBuilder){
+    this.form = this.fb.group({
+      make: ['', [Validators.required]],
+      model: ['', [Validators.required]]
+    })
      }
 
   handleImageUpload(event: any): void {
@@ -31,9 +35,8 @@ export class AddCarComponent{
   }
 
   onSubmit(): void {
-    
-    const formData: FormData = new FormData();
     this.submitted = true;
+    const formData: FormData = new FormData();
     formData.append('make', this.car.make);
     formData.append('model', this.car.model);
     formData.append('price', this.car.price.toString());
@@ -54,11 +57,7 @@ export class AddCarComponent{
      
       }
     }
-
-    // for (let i = 0; i < this.car.images.length; i++){
-    //   formData.append('images', this.car.images[i].description)
-    // }
-
+    
     this.carService.addCar(formData).subscribe(
       (response) => {
         console.log('Car added successfully', response);

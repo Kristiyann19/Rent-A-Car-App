@@ -35,8 +35,6 @@ export class CarComponent {
    
   }
 
-
-
   ngOnInit(): void {
     this.carService.getCars().subscribe((result: CarDto[]) => {
       this.cars = result;

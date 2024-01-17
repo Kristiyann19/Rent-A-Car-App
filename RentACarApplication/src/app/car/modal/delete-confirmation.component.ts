@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 export class DeleteConfirmationCarModalComponent  {
   localStorage: Storage;
   @Input() id : number
-  @Input() cars : CarDto[] = [];
+
 
   constructor(public activeModal: NgbActiveModal, private carService: CarService, private router: Router) { 
     this.localStorage = document.defaultView?.localStorage;
@@ -17,9 +17,7 @@ export class DeleteConfirmationCarModalComponent  {
 
 
   confirmCarDelete(id){
-    this.carService.deleteCar(id).subscribe(() => {
-      this.cars = this.cars.filter((car) => car.id !== id)
-  });
+    this.carService.deleteCar(id).subscribe();
     this.activeModal.close(true);
     
   }  

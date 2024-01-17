@@ -15,7 +15,7 @@ namespace RentACarApp.Contracts
 
         Task UpdateCarAsync(int id, CarDto updatedCar, HttpContext httpContext);
 
-        Task<List<Car>> SeachInCarAsync(CarDto car);
+        Task<List<Car>> SeachInCarAsync(SearchCarDto car);
 
         Task RentCarAsync(int carId, HttpContext httpContext);
 

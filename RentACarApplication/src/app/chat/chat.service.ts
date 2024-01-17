@@ -8,7 +8,7 @@ import { UserService } from "../user/service/user.service";
 })
 export class ChatService {
      private hubConnection: HubConnection
-    private currentUser;
+     private currentUser;
      private messageRecieved = new Subject<{sender: string, message: string}>();
 
      messageRecieved$ = this.messageRecieved.asObservable();

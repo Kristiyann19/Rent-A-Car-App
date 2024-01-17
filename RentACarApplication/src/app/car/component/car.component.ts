@@ -3,6 +3,9 @@ import { CarDto } from "../dtos/car.dto";
 import { CarService } from "../service/car.service";
 import { ActivatedRoute } from "@angular/router";
 import { UserService } from "../../user/service/user.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { DeleteConfirmationCarModalComponent } from "../modal/delete-confirmation.component";
+import { Subject } from "rxjs";
 
 @Component({
   selector: 'app-car',
@@ -12,17 +15,24 @@ import { UserService } from "../../user/service/user.service";
 
 export class CarComponent {
   cars: CarDto[] = [];
-  car: CarDto = new CarDto();
+  searchCar: CarDto = new CarDto();
 
-  constructor(private carService: CarService, private route: ActivatedRoute, public userService: UserService){}
+  // private carDeletedSubject = new Subject<number>();
+  // carDeleted$ = this.carDeletedSubject.asObservable();
+  constructor(private modalService: NgbModal,  private carService: CarService, private route: ActivatedRoute, public userService: UserService){}
 
-  rentCar(id){
-    // const id = parseInt(this.route.snapshot.paramMap.get('id')!)
-    this.carService.userRentCar(id).subscribe((car: CarDto) => this.car = car);
+  rentCar(index: number, id){
+    debugger;
+    this.carService.userRentCar(id).subscribe(() => 
+    {
+      this.cars[index].isRented = true;
+    });
   }
 
-  deleteCar(id){
-    this.carService.deleteCar(id).subscribe();
+  onDeleteModal(id){
+    const modal = this.modalService.open(DeleteConfirmationCarModalComponent);
+    modal.componentInstance.id = id;
+   
   }
 
 
@@ -48,7 +58,7 @@ export class CarComponent {
   }
 
   search(): void {
-    this.carService.searchCar(this.car).subscribe(
+    this.carService.searchCar(this.searchCar).subscribe(
       (data: CarDto[]) => {
         this.cars = data;
       }

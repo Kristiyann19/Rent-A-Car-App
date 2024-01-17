@@ -1,0 +1,16 @@
+<div *ngIf="selectUser">
+  <h3>Chatting with the selected user</h3>
+  <div *ngFor="let message of messages">
+    <strong>{{message.sender}}:</strong> {{message.message}}
+  </div>
+  <input [(ngModel)]="newMessage"
+         placeholder="Type your message">
+  <button (click)="sendMessage()">Send Message</button>
+</div>
+<div *ngIf="!selectUser">
+  <h3>Select user to chat</h3>
+  <ul>
+    <li *ngFor="user in users"
+        (click)="selectUser()">{{user.userName}}</li>
+  </ul>
+</div>

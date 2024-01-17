@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { CarDto } from "../dtos/car.dto";
 import { UserService } from "../../user/service/user.service";
 
@@ -9,6 +9,7 @@ import { UserService } from "../../user/service/user.service";
 })
 
 export class CarService{
+
   constructor(private http: HttpClient, private userService: UserService){}
 
   currentUser = this.userService.currentUserDto;
@@ -42,8 +43,8 @@ export class CarService{
     return this.http.post<void>(this.apiUrl, car);
   }
 
-  removeRented(id: number){
-    return this.http.delete<CarDto>(`http://localhost:19999/api/Car/RemoveRented/${id}`)
+  removeRented(id: number) : Observable<any> {
+    return this.http.delete<any>(`http://localhost:19999/api/Car/RemoveRented/${id}`)
   }
 
   searchCar(car: CarDto): Observable<CarDto[]> {
@@ -51,7 +52,7 @@ export class CarService{
     return this.http.get<CarDto[]>(url + this.composeQueryString(car));
   }
 
-  deleteCar(id: number){
+  deleteCar(id: number) {
     return this.http.delete<CarDto>(`http://localhost:19999/api/Car/${id}`);
   }
 

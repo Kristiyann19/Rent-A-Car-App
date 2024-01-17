@@ -9,19 +9,22 @@ import { CarService } from "../service/car.service";
 })
 
 export class RentCarComponent {
-  rentCars: CarDto[] = [];
-  rentCar: CarDto = new CarDto();
+  rentedCars: CarDto[] = [];
   constructor(private carService: CarService){}
 
   ngOnInit(){
     this.carService.getRentedCars().subscribe((result: CarDto[]) => {
-      this.rentCars = result;
+      this.rentedCars = result;
     });
   }
 
   
-  removeFromRented(id){
-    this.carService.removeRented(id).subscribe();
+  removeFromRented(index: number, id){
+    this.carService.removeRented(id).subscribe(() => 
+    {
+      this.rentedCars[index].isRented = false;
+      this.ngOnInit();
+    });
   }
 
 }

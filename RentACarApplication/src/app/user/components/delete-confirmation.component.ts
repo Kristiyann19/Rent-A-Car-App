@@ -11,7 +11,7 @@ export class DeleteConfirmationModalComponent  {
   }
 
   confirmDelete(){
-    this.userService.removeCar().subscribe();
+    this.userService.deleteAccount().subscribe();
     this.activeModal.close(true);
     this.localStorage?.removeItem('access_token')
   }  

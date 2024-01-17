@@ -4,7 +4,7 @@
       <div class="col-sm-4">
         <label for="make">Търси по марка</label>
         <input type="text"
-               [(ngModel)]="car.make"
+               [(ngModel)]="searchCar.make"
                id="make"
                class="form-control"
                placeholder="Избери">
@@ -12,7 +12,7 @@
       <div class="col-sm-4">
         <label for="model">Търси по модел</label>
         <input type="text"
-               [(ngModel)]="car.model"
+               [(ngModel)]="searchCar.model"
                id="model"
                class="form-control"
                placeholder="Избери">
@@ -20,7 +20,7 @@
       <div class="col-sm-4">
         <label for="year">Търси по година</label>
         <input type="number"
-               [(ngModel)]="car.year"
+               [(ngModel)]="searchCar.year"
                id="year"
                class="form-control"
                placeholder="Избери">
@@ -30,7 +30,7 @@
     <div class="row mt-3">
       <div class="col-sm-4">
         <label for="engine">Търси по двигател</label>
-        <select [(ngModel)]="car.engine"
+        <select [(ngModel)]="searchCar.engine"
                 class="form-control"
                 id="engine">
           <option></option>
@@ -41,7 +41,7 @@
       </div>
       <div class="col-sm-4">
         <label for="category">Търси по категория</label>
-        <select [(ngModel)]="car.category"
+        <select [(ngModel)]="searchCar.category"
                 class="form-control"
                 id="category">
           <option></option>
@@ -58,7 +58,7 @@
       </div>
       <div class="col-sm-4">
         <label for="transmission">Търси по скоростна кутия</label>
-        <select [(ngModel)]="car.transmission"
+        <select [(ngModel)]="searchCar.transmission"
                 class="form-control"
                 id="transmission">
           <option></option>
@@ -70,7 +70,7 @@
       <div class="col-sm-4">
         <label for="region"
                class="bold-label">Вземи колата от:</label>
-        <select [(ngModel)]="car.region"
+        <select [(ngModel)]="searchCar.region"
                 class="form-control"
                 id="region">
           <option></option>
@@ -118,7 +118,7 @@
 
 <div class="container">
   <div class="row">
-    <div *ngFor="let car of cars"
+    <div *ngFor="let car of cars; let i = index"
          class="card"
          style="width: 18rem;">
       <div *ngIf="car?.images && car.images.length > 0">
@@ -128,7 +128,7 @@
         </div>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{car?.make}} {{car.model}}</h5>
+        <h5 class="card-title">{{car.make}} {{car.model}}</h5>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Цена: {{car.price}} лв.</li>
@@ -143,14 +143,14 @@
 
       <button class="btn btn-primary"
               *ngIf="!car.isRented && userService.currentUserDto"
-              (click)="rentCar(car.id)">Наеми Колата</button>
+              (click)="rentCar(i, car.id)">Наеми Колата</button>
 
       <button class="btn text-danger"
               *ngIf="car.isRented && userService.currentUserDto">Колата е наета</button>
 
       <button *ngIf="car.userId === userService.currentUserDto?.id"
               class="btn btn-danger"
-              (click)="deleteCar(car.id)">Delete</button>
+              (click)="onDeleteModal(car.id)">Delete</button>
     </div>
   </div>
 </div>

@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h2 class="model-title">Обявата Ви ще бъде изтрита</h2>
+  <button type="button"
+          class="close"
+          (click)="cancelCarDelete()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <p>Сигурни ли сте, че искате да изтриете Вашата обява?</p>
+</div>
+
+<div class="modal-footer">
+  <button type="button"
+          class="btn btn-danger"
+          (click)="confirmCarDelete(id)"
+          [routerLink]="['/']">Yes</button>
+  <button type="button"
+          class="btn btn-secondary"
+          (click)="cancelCarDelete()">No</button>
+</div>

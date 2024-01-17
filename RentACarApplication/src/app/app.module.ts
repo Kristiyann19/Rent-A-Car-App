@@ -25,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteConfirmationModalComponent } from './user/components/delete-confirmation.component';
 import { ChatService } from './chat/chat.service';
 import { ChatComponent } from './chat/chat.component';
+import { DeleteConfirmationCarModalComponent } from './car/modal/delete-confirmation.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ChatComponent } from './chat/chat.component';
     LoadingComponent,
     ProfileComponent,
     DeleteConfirmationModalComponent,
-    ChatComponent
+    ChatComponent,
+    DeleteConfirmationCarModalComponent
     
   ],
   imports: [

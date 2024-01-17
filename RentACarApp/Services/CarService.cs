@@ -141,7 +141,7 @@ namespace RentACarApp.Services
 
         }    
     
-        public async Task<List<Car>> GetRentedCarsAsync (HttpContext httpContext) //DTO
+        public async Task<IEnumerable<Car>> GetRentedCarsAsync (HttpContext httpContext) //DTO
         {
             var user = await GetUserDataAsync(httpContext);
 
@@ -157,6 +157,7 @@ namespace RentACarApp.Services
                     HorsePower = c.Car.HorsePower,
                     CubicCapacity = c.Car.CubicCapacity,
                     Description = c.Car.Description,
+                    isRented = c.Car.isRented,
                     Price = c.Car.Price,
                     Engine = c.Car.Engine,
                     Category = c.Car.Category,

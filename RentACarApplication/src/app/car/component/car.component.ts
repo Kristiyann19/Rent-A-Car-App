@@ -17,32 +17,44 @@ export class CarComponent {
   cars: CarDto[] = [];
   searchCar: CarDto = new CarDto();
   page = 1;
-  pageSize = 15;
+  pageSize = 12;
 
   constructor(private modalService: NgbModal,  private carService: CarService, private route: ActivatedRoute, public userService: UserService){}
 
   ngOnInit(): void {
-    this.fetchCars();
-  }
-  
-  fetchCars(){
-    debugger;
-    const currentPage = this.page;
-    
-    this.carService.getCars().subscribe((result: CarDto[]) => {
-      this.cars = result;
-      if (this.page == currentPage){
-      const startIndex = (this.page - 1) * this.pageSize;
-      const endIndex = startIndex + this.pageSize;
-      this.cars = this.cars.slice(startIndex, endIndex)
-    }
-    });
+    this.loadCars();
   }
 
-  OnPageChange(page: number){
-    this.page = page;
-    this.fetchCars();
+  loadCars() : void{ 
+    this.carService.getCars(this.page, this.pageSize)
+      .subscribe((result: CarDto[]) => {
+       this.cars = result;
+      });
   }
+
+  OnPageChange(newPage: number){
+      this.page = newPage;
+       this.ngOnInit();
+     }
+
+  // fetchCars(){
+  //   debugger;
+  //   const currentPage = this.page;
+    
+  //   this.carService.getCars().subscribe((result: CarDto[]) => {
+  //     this.cars = result;
+  //     if (this.page == currentPage){
+  //     const startIndex = (this.page - 1) * this.pageSize;
+  //     const endIndex = startIndex + this.pageSize;
+  //     this.cars = this.cars.slice(startIndex, endIndex)
+  //   }
+  //   });
+  // }
+
+  // OnPageChange(page: number){
+  //   this.page = page;
+  //   this.fetchCars();
+  // }
 
  
 

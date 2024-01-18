@@ -107,10 +107,17 @@ namespace RentACarApp.Services
           
         }
 
-        
 
-        public async Task<IEnumerable<Car>> GetAllCarsAsync()
-            => await context.Cars.ToListAsync();
+
+        public async Task<IEnumerable<Car>> GetAllCarsAsync(int page, int pageSize)
+        {
+            var cars = await context.Cars.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            return cars;
+        } 
+
+        public async Task<int> GetCarsCount()
+            => await context.Cars.CountAsync();
 
 
         public Task<Car> GetCarByIdAsync(int carId)

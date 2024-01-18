@@ -17,12 +17,14 @@ namespace RentACarApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AllCars()
+        public async Task<IActionResult> AllCars(int page = 1, int pageSize = 10)
         {
-            var cars = await carService.GetAllCarsAsync();
-
+            var cars = await carService.GetAllCarsAsync(page, pageSize);
+         
             return Ok(cars);
         }
+
+      
 
         [HttpPost]
         public async Task<IActionResult> AddCar([FromForm] AddCarDto car) //changed

@@ -5,7 +5,7 @@ namespace RentACarApp.Contracts
 {
     public interface ICarService
     {
-        Task<IEnumerable<Car>> GetAllCarsAsync();
+        Task<IEnumerable<Car>> GetAllCarsAsync(int page, int pageSize);
 
         Task<Car> GetCarByIdAsync(int carId);
 
@@ -26,5 +26,7 @@ namespace RentACarApp.Contracts
         Task RemoveFromRentedAsync(int carId, HttpContext httpContext);
 
         Task<IEnumerable<Car>> GetPostedCarsAsync(HttpContext httpContext);
+
+        Task<int> GetCarsCount();
     }
 }

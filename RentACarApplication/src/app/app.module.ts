@@ -29,6 +29,7 @@ import { DeleteConfirmationCarModalComponent } from './car/modal/delete-confirma
 import { PaginationComponent } from './paging/pagination.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

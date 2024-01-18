@@ -115,20 +115,24 @@
   </div>
 </div>
 
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <ngb-pagination [collectionSize]="pageSize"
+                      [page]="page"
+                      (pageChange)="OnPageChange($event)"
+                      aria-label="Default pagination" />
+      <label for="card"> {{cars.length}} обяви на {{page}} страница </label>
+
+    </div>
+  </div>
+</div>
 
 <div class="container">
 
   <div class="row">
 
-    <ngb-pagination [collectionSize]="cars.length"
-                    [page]="page"
-                    (pageChange)="OnPageChange($event)"
-                    aria-label="Default pagination" />
-
-
-    <pre>Current page: {{ page }}</pre>
-
-    <label for="card">Общо намерени обяви: {{cars.length}} </label>
     <hr>
     <div *ngFor="let car of cars; let i = index"
          class="card"

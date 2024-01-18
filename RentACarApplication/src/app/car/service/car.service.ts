@@ -30,8 +30,8 @@ export class CarService{
     return this.http.post<any>(`http://localhost:19999/api/Car/${id}`, this.currentUser);
   }
 
-  getCars() : Observable<CarDto[]>{
-    return this.http.get<CarDto[]>(this.apiUrl);
+  getCars(page: number, pageSize: number) : Observable<CarDto[]>{
+    return this.http.get<CarDto[]>(`http://localhost:19999/api/Car?page=${page}&pageSize=${pageSize}`);
   }
 
   getCarDetails(id: number): Observable<CarDto> {

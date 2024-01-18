@@ -34,7 +34,7 @@ namespace RentACarApp.Services
             await context.SaveChangesAsync();
         }
 
-      
+ 
 
         public async Task AddCarAsync(HttpContext httpContext, AddCarDto car)
         {
@@ -109,6 +109,8 @@ namespace RentACarApp.Services
 
 
 
+
+
         public async Task<IEnumerable<Car>> GetAllCarsAsync(int page, int pageSize)
         {
             var cars = await context.Cars.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
@@ -117,11 +119,14 @@ namespace RentACarApp.Services
         } 
 
         public async Task<int> GetCarsCount()
-            => await context.Cars.CountAsync();
+            => await context.Cars.CountAsync(); //MOVE TO MAIN METHOD
 
 
         public Task<Car> GetCarByIdAsync(int carId)
             => context.Cars.FirstOrDefaultAsync(x => x.Id == carId);
+
+        public Task<Car> GetCarImageByIdAsync(int carId)
+            => context.Cars.Include(e => e.Images).FirstOrDefaultAsync(x => x.Id == carId);
 
         public async Task UpdateCarAsync(int id, CarDto updatedCar, HttpContext httpContext)
         {

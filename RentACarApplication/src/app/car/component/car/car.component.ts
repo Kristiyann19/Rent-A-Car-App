@@ -19,7 +19,7 @@ export class CarComponent {
 
   isSearched : Boolean = false;
   page = 1;
-  pageSize = 7;
+  pageSize = 12;
 
   constructor(private modalService: NgbModal,  private carService: CarService, private route: ActivatedRoute, public userService: UserService){}
 
@@ -36,24 +36,10 @@ export class CarComponent {
 
   OnPageChange(newPage: number){
       this.page = newPage;
-       this.ngOnInit();
+      this.loadCars();
      }
 
-  getImageUrl(image: any) {
-    const base64Data = this.ArrayBufferToBase(image.bytes);
-    return `data:image/${image.fileExtension};base64,${base64Data}`
-  }
-
-  private ArrayBufferToBase(buffer: any) {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-
-    for (let i = 0; i < bytes.byteLength; i++){
-      binary += String.fromCharCode(bytes[i]);
-    }
-
-    return btoa(binary);
-  }
+ 
   rentCar(index: number, id){
     this.carService.userRentCar(id).subscribe(() => 
     {
@@ -76,4 +62,10 @@ export class CarComponent {
     )
   }  
 
+
+  getImageUrl(carId: number) {
+    return `http://localhost:19999/api/Car/${carId}/Image`
+  }
+
+ 
 }

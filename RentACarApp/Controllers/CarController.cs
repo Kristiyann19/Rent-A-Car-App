@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
+using RentACarApp.Database;
+using RentACarApp.Database.Migrations;
+using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
 using RentACarApp.Services;
 
@@ -20,10 +24,9 @@ namespace RentACarApp.Controllers
         public async Task<IActionResult> AllCars([FromQuery] int page = 1, [FromQuery] int pageSize = 12)
         {
             var cars = await carService.GetAllCarsAsync(page, pageSize);
-         
+     
             return Ok(cars);
         }
-
       
 
         [HttpPost]
@@ -91,5 +94,34 @@ namespace RentACarApp.Controllers
             return Ok(postedCars);
         }
 
+        [HttpGet("{carId:int}/Image")]
+        public async Task<IActionResult> GetFirstCarImage([FromRoute] int carId)
+        {
+            var car = await carService.GetCarImageByIdAsync(carId);
+
+            if (car.Images.Any())
+            {
+                var firstCarImage = car.Images.OrderBy(e => e.Id).First();
+
+                return File(firstCarImage.Bytes, "image/jpg", firstCarImage.Description);
+            }
+
+            return Ok();
+        }
+
+        [HttpGet("{carId:int}/Image/{id:int}")]
+        public async Task<IActionResult> GetCarImage([FromRoute] int carId, [FromRoute] int id)
+        {
+            var car = await carService.GetCarImageByIdAsync(carId);
+
+            if (car.Images.Any())
+            {
+                var image = car.Images.FirstOrDefault(e => e.Id == id);
+
+                return File(image?.Bytes, "image/jpg", image?.Description);
+            }
+
+            return Ok();
+        }
     }
 }

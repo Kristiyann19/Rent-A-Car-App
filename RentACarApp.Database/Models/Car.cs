@@ -39,7 +39,7 @@ namespace RentACarApp.Database.Models
 
         public int UserId { get; set; }
 
-        public List<Image> Images { get; set; }
+        public List<Image> Images { get; set; } = new List<Image>();
 
     }
 

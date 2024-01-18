@@ -2,8 +2,7 @@ import { Component, Input } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { Router } from "@angular/router";
 import { CarService } from "../service/car.service";
-import { CarDto } from "../dtos/car.dto";
-import { Observable } from "rxjs";
+
 
 @Component({templateUrl: 'delete-confirmation.component.html'})
 export class DeleteConfirmationCarModalComponent  {
@@ -17,9 +16,11 @@ export class DeleteConfirmationCarModalComponent  {
 
 
   confirmCarDelete(id){
-    this.carService.deleteCar(id).subscribe();
+    this.carService.deleteCar(id).subscribe(() => {
+      window.location.reload();
+    });
     this.activeModal.close(true);
-    
+
   }  
 
 

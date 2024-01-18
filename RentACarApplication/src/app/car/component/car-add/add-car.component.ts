@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
-import { CarDto } from "../dtos/car.dto";
-import { CarService } from "../service/car.service";
-import { AddCarDto } from "../dtos/add-car.dto";
+import { CarDto } from "../../dtos/car.dto";
+import { CarService } from "../../service/car.service";
+import { AddCarDto } from "../../dtos/add-car.dto";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { CarImage } from "../dtos/image.dto";
+import { CarImage } from "../../dtos/image.dto";
 
 @Component({
   selector: 'app-add-car',

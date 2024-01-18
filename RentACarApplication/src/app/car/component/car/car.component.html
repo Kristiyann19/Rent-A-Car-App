@@ -115,7 +115,8 @@
   </div>
 </div>
 
-<div class="container">
+<div *ngIf="!isSearched"
+     class="container">
 
   <div class="row">
     <div class="col">
@@ -170,6 +171,20 @@
       <button *ngIf="car.userId === userService.currentUserDto?.id"
               class="btn btn-danger"
               (click)="onDeleteModal(car.id)">Delete</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isSearched"
+     class="container">
+
+  <div class="row">
+    <div class="col">
+      <ngb-pagination [collectionSize]="pageSize"
+                      [page]="page"
+                      (pageChange)="OnPageChange($event)"
+                      aria-label="Default pagination" />
+      <label for="card"> {{cars.length}} обяви на {{page}} страница </label>
+
     </div>
   </div>
 </div>

@@ -13,7 +13,7 @@ export class RegisterComponent {
     form: FormGroup;
     serverErrors: any = {};
     submitted = false;
-    
+    registerError: Boolean = false;
     constructor(private registerService: RegisterService, private fb: FormBuilder) {
         this.form = this.fb.group({
             userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
@@ -35,12 +35,9 @@ export class RegisterComponent {
               this.user = result;
             },
             (error) => {
-              if (error.status === 400) {
+              console.error('Register Failed:', error);
+              this.registerError = true
               
-                this.serverErrors = error.error.errors; 
-              } else {
-                console.error('An error occurred:', error);     
-              }
             }
           )};
  }

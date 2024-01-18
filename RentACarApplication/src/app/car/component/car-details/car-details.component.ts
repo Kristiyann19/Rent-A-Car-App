@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
-import { CarDto } from "../dtos/car.dto";
-import { EngineEnum, EngineEnumLocalization } from "../../enums/engine-enum";
+import { CarDto } from "../../dtos/car.dto";
+import { EngineEnum, EngineEnumLocalization } from "../../../enums/engine-enum";
 import { ActivatedRoute } from "@angular/router";
-import { CarService } from "../service/car.service";
-import { CategoryEnum, CategoryEnumLocalization } from "../../enums/category-enum";
-import { TransmissionEnum, TransmissionEnumLocalization } from "../../enums/transmission-enum";
-import { RegionEnum, RegionEnumLocalization } from "../../enums/region-enum";
+import { CarService } from "../../service/car.service";
+import { CategoryEnum, CategoryEnumLocalization } from "../../../enums/category-enum";
+import { TransmissionEnum, TransmissionEnumLocalization } from "../../../enums/transmission-enum";
+import { RegionEnum, RegionEnumLocalization } from "../../../enums/region-enum";
 import { HttpErrorResponse } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
 

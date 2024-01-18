@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { CarDto } from "../dtos/car.dto";
-import { CarService } from "../service/car.service";
+import { CarDto } from "../../dtos/car.dto";
+import { CarService } from "../../service/car.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({

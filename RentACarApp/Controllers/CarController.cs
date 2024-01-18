@@ -17,7 +17,7 @@ namespace RentACarApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AllCars(int page = 1, int pageSize = 10)
+        public async Task<IActionResult> AllCars([FromQuery] int page = 1, [FromQuery] int pageSize = 12)
         {
             var cars = await carService.GetAllCarsAsync(page, pageSize);
          

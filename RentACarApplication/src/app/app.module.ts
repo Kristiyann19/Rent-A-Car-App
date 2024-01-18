@@ -6,9 +6,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/components/register.component';
 import { LoginComponent } from './login/components/login.component';
-import { CarComponent } from './car/component/car.component';
-import { CarDetailsComponent } from './car/component/car-details.component';
-import { AddCarComponent } from './car/component/add-car.component';
+import { CarComponent } from './car/component/car/car.component';
+import { CarDetailsComponent } from './car/component/car-details/car-details.component';
+import { AddCarComponent } from './car/component/car-add/add-car.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { JwtInterceptor } from './jwt.interceptor';
@@ -16,8 +16,8 @@ import { UserComponent } from './user/components/user.component';
 import { NavBarComponent } from './nav/nav-bar.component';
 import { AgentDetailsComponent } from './user/components/agent-details.component';
 import { UserService } from './user/service/user.service';
-import { RentCarComponent } from './car/component/rent-car.component';
-import { UpdateCarComponent } from './car/component/update-car.component';
+import { RentCarComponent } from './car/component/car-rent/rent-car.component';
+import { UpdateCarComponent } from './car/component/car-update/update-car.component';
 import { LoadingComponent } from './loading/loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './user/components/profile.component';
@@ -27,7 +27,7 @@ import { ChatService } from './chat/chat.service';
 import { ChatComponent } from './chat/chat.component';
 import { DeleteConfirmationCarModalComponent } from './car/modal/delete-confirmation.component';
 import { PaginationComponent } from './paging/pagination.component';
-
+import { UpdateUserComponent } from './user/components/update-user.component';
 
 
 @NgModule({
@@ -49,8 +49,8 @@ import { PaginationComponent } from './paging/pagination.component';
     DeleteConfirmationModalComponent,
     ChatComponent,
     DeleteConfirmationCarModalComponent,
-    PaginationComponent
-    
+    PaginationComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

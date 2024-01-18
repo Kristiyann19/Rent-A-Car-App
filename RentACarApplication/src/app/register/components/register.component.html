@@ -66,6 +66,9 @@
                                    <button type="submit"
                                            class="btn btn-success">Регистрация</button>
                             </div>
+                            <div *ngIf="registerError"
+                                 class="text-danger mt3">Грешка при регистрацията.</div>
+
                             <p class="text-center text-muted mt-5 mb-0">
                                    Вече си имаш акаунт?
                                    <a routerLink="/login"

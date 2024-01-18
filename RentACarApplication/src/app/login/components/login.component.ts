@@ -29,9 +29,9 @@ export class LoginComponent {
     }
 
     onSubmit(): void {
-      const registerDto: LoginDto = this.form.value as LoginDto;
+      const loginDto: LoginDto = this.form.value as LoginDto;
       this.submitted = true;
-      this.loginService.login(registerDto).subscribe(
+      this.loginService.login(loginDto).subscribe(
         (response: any) => {
           if (response?.token) {
             localStorage.setItem('access_token', response.token);

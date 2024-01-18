@@ -5,7 +5,10 @@ import { ActivatedRoute } from "@angular/router";
 import { UserService } from "../../../user/service/user.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DeleteConfirmationCarModalComponent } from "../../modal/delete-confirmation.component";
-import {ChangeDetectorRef} from '@angular/core';
+import { EngineEnumLocalization } from "../../../enums/engine-enum";
+import { CategoryEnumLocalization } from "../../../enums/category-enum";
+import { TransmissionEnumLocalization } from "../../../enums/transmission-enum";
+import { RegionEnumLocalization } from "../../../enums/region-enum";
 
 @Component({
   selector: 'app-car',
@@ -14,6 +17,13 @@ import {ChangeDetectorRef} from '@angular/core';
 })
 
 export class CarComponent {
+  
+  engineEnumLocalization = EngineEnumLocalization;
+  categoryEnumLocalization = CategoryEnumLocalization;
+  transmissionEnumLocalization = TransmissionEnumLocalization;
+  regionEnumLocalization = RegionEnumLocalization;
+  
+
   cars: CarDto[] = [];
   searchCar: CarDto = new CarDto();
 
@@ -21,16 +31,20 @@ export class CarComponent {
   page = 1;
   pageSize = 12;
 
+  totalCarsCount = 0;
+
   constructor(private modalService: NgbModal,  private carService: CarService, private route: ActivatedRoute, public userService: UserService){}
 
   ngOnInit(): void {
     this.loadCars();
+   
   }
 
   loadCars() : void{ 
     this.carService.getCars(this.page, this.pageSize)
       .subscribe((result: CarDto[]) => {
        this.cars = result;
+       this.totalItems();
       });
   }
 
@@ -39,7 +53,13 @@ export class CarComponent {
       this.loadCars();
      }
 
- 
+
+  totalItems() : void {
+    debugger;
+    this.carService.totalCars().subscribe((count: number) =>{
+        this.totalCarsCount = count;
+    })
+  }
   rentCar(index: number, id){
     this.carService.userRentCar(id).subscribe(() => 
     {
@@ -66,6 +86,8 @@ export class CarComponent {
   getImageUrl(carId: number) {
     return `http://localhost:19999/api/Car/${carId}/Image`
   }
+
+
 
  
 }

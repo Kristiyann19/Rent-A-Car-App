@@ -2,6 +2,9 @@
   <div class="card">
     <div class="text-center row">
       <div class="col-md-12">
+        <img [src]="(getImagesUrl(car.id))"
+             alt="Липсва снимка"
+             class="card-img-top">
         <div class="card-body">
           <h5 class="card-title mt-1">{{car?.make}} {{car?.model}}</h5>
           <p class="card-text">Цена: {{car?.price}} лева</p>

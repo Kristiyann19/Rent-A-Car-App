@@ -17,19 +17,6 @@ export class CarService{
   private apiUrl = 'http://localhost:19999/api/Car';
 
 
-  updateCar(id: number, updatedCar: CarDto) : Observable<any>{
-    return this.http.put(`http://localhost:19999/api/Car/${id}`, updatedCar);
-  }
-
-
-  getRentedCars(): Observable<CarDto[]>{
-    return this.http.get<CarDto[]>('http://localhost:19999/api/Car/RentedCars');
-  }
-
-  userRentCar(id: number) : Observable<any>{
-    return this.http.post<any>(`http://localhost:19999/api/Car/${id}`, this.currentUser);
-  }
-
   getCars(page: number, pageSize: number) : Observable<CarDto[]>{
     return this.http.get<CarDto[]>(`http://localhost:19999/api/Car?page=${page}&pageSize=${pageSize}`);
   }
@@ -38,13 +25,16 @@ export class CarService{
     return this.http.get<CarDto>(`http://localhost:19999/api/Car/${id}`);
   }  
 
-
   addCar(car: FormData) : Observable<void>{
     return this.http.post<void>(this.apiUrl, car);
   }
 
-  removeRented(id: number) : Observable<any> {
-    return this.http.delete<any>(`http://localhost:19999/api/Car/RemoveRented/${id}`)
+  deleteCar(id: number) {
+    return this.http.delete<CarDto>(`http://localhost:19999/api/Car/${id}`);
+  }
+
+  updateCar(id: number, updatedCar: CarDto) : Observable<any>{
+    return this.http.put(`http://localhost:19999/api/Car/${id}`, updatedCar);
   }
 
   searchCar(car: CarDto): Observable<CarDto[]> {
@@ -52,8 +42,22 @@ export class CarService{
     return this.http.get<CarDto[]>(url + this.composeQueryString(car));
   }
 
-  deleteCar(id: number) {
-    return this.http.delete<CarDto>(`http://localhost:19999/api/Car/${id}`);
+  totalCars() : Observable<number> {
+    return this.http.get<number>('http://localhost:19999/api/Car/Count');
+  }
+  
+  userRentCar(id: number) : Observable<any>{
+    return this.http.post<any>(`http://localhost:19999/api/Car/${id}`, this.currentUser);
+  }
+
+
+  getRentedCars(): Observable<CarDto[]>{
+    return this.http.get<CarDto[]>('http://localhost:19999/api/Car/RentedCars');
+  }
+
+  
+  removeRented(id: number) : Observable<any> {
+    return this.http.delete<any>(`http://localhost:19999/api/Car/RemoveRented/${id}`)
   }
 
 public composeQueryString(object: any): string {

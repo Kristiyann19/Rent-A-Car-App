@@ -45,7 +45,9 @@ export class CarDetailsComponent{
       this.loadingData = false;
     }); 
   }
-
+  getImagesUrl(carId:number, id:number){
+    return `http://localhost:19999/api/Car/${carId}/Image?id=${id}`
+  }
   ngOnInit(): void {
     this.loadingData = true;
     this.getCarDetails();

@@ -120,7 +120,7 @@
 
   <div class="row">
     <div class="col">
-      <ngb-pagination [collectionSize]="28"
+      <ngb-pagination [collectionSize]="this.totalCarsCount"
                       [pageSize]="12"
                       [page]="page"
                       (pageChange)="OnPageChange($event)"
@@ -137,7 +137,7 @@
 
     <hr>
     <div *ngFor="let car of cars; let i = index"
-         class="card"
+         class="custom-card"
          style="width: 18rem;">
 
       <img [src]="getImageUrl(car.id)"
@@ -148,26 +148,28 @@
         <h5 class="card-title">{{car.make}} {{car.model}}</h5>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Цена: {{car.price}} лв.</li>
-        <li class="list-group-item">Пробег: {{car.mileage}} км.</li>
-        <li class="list-group-item">Година: {{car.year}}</li>
+        <li class="list-group-item bold-label"> {{car.price}}лв./ден</li>
+        <li class="list-group-item bold-label">Регион: {{ regionEnumLocalization[car?.region] }}</li>
+      </ul>
+      <div class="card-body">
+        <button class="btn btn-primary bold-label"
+                *ngIf="!car.isRented && userService.currentUserDto"
+                (click)="rentCar(i, car.id)">Наеми Колата</button>
+
         <button class="btn btn-primary"
                 [routerLink]="['/car',car.id]">детайли</button>
-      </ul>
-      <button class="btn btn-primary"
-              *ngIf="car.userId === userService.currentUserDto?.id"
-              [routerLink]="['/updatecar', car.id]">Update</button>
 
-      <button class="btn btn-primary"
-              *ngIf="!car.isRented && userService.currentUserDto"
-              (click)="rentCar(i, car.id)">Наеми Колата</button>
+        <button class="btn btn-primary"
+                *ngIf="car.userId === userService.currentUserDto?.id"
+                [routerLink]="['/updatecar', car.id]">Update</button>
 
-      <button class="btn text-danger"
-              *ngIf="car.isRented && userService.currentUserDto">Колата е наета</button>
+        <button class="btn text-danger"
+                *ngIf="car.isRented && userService.currentUserDto">Колата е наета</button>
 
-      <button *ngIf="car.userId === userService.currentUserDto?.id"
-              class="btn btn-danger"
-              (click)="onDeleteModal(car.id)">Delete</button>
+        <button *ngIf="car.userId === userService.currentUserDto?.id"
+                class="btn btn-danger"
+                (click)="onDeleteModal(car.id)">Delete</button>
+      </div>
     </div>
   </div>
 </div>
@@ -176,7 +178,7 @@
 
   <div class="row">
     <div class="col">
-      <ngb-pagination [collectionSize]="28"
+      <ngb-pagination [collectionSize]="this.totalCarsCount"
                       [pageSize]="12"
                       [page]="page"
                       (pageChange)="OnPageChange($event)"

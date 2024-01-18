@@ -24,10 +24,18 @@ namespace RentACarApp.Controllers
         public async Task<IActionResult> AllCars([FromQuery] int page = 1, [FromQuery] int pageSize = 12)
         {
             var cars = await carService.GetAllCarsAsync(page, pageSize);
+            
      
             return Ok(cars);
         }
-      
+
+        [HttpGet]
+        [Route("Count")]
+        public async Task<IActionResult> TotalCars()
+        {
+            var totalCars = await carService.GetCarsCount();
+            return Ok(totalCars);
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddCar([FromForm] AddCarDto car) //changed
@@ -36,12 +44,14 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
+
         [HttpDelete("{carId}")]
         public async Task<IActionResult> DeleteCar([FromRoute] int carId)
         {
             await carService.DeleteCarAsync(carId, HttpContext);
             return Ok();
         }
+
 
         [HttpDelete("RemoveRented/{carId}")]
         public async Task<IActionResult> RemoveFromRented([FromRoute] int carId)
@@ -58,6 +68,7 @@ namespace RentACarApp.Controllers
             return Ok(reuslt);
         }
 
+
         [HttpGet("search")]
         public async Task<IActionResult> SearchCar([FromQuery] SearchCarDto car)
         {
@@ -66,12 +77,14 @@ namespace RentACarApp.Controllers
             return Ok(result);
         }
 
+
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateCar([FromRoute] int id, [FromBody] CarDto updatedCar)
         {
             await carService.UpdateCarAsync(id, updatedCar, HttpContext);
             return Ok();
         }
+
 
         [HttpGet("RentedCars")]
         public async Task<IActionResult> RentedCars()
@@ -80,6 +93,7 @@ namespace RentACarApp.Controllers
             return Ok(rentedCars);
         }
 
+
         [HttpPost("{carId}")]
         public async Task<IActionResult> RentCar([FromRoute] int carId)
         {
@@ -87,12 +101,14 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
+
         [HttpGet("AgentCars")]
         public async Task<IActionResult> PostedCars()
         {
             var postedCars = await carService.GetPostedCarsAsync(HttpContext);
             return Ok(postedCars);
         }
+
 
         [HttpGet("{carId:int}/Image")]
         public async Task<IActionResult> GetFirstCarImage([FromRoute] int carId)
@@ -109,8 +125,9 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
+
         [HttpGet("{carId:int}/Image/{id:int}")]
-        public async Task<IActionResult> GetCarImage([FromRoute] int carId, [FromRoute] int id)
+        public async Task<IActionResult> GetCarImage([FromRoute] int carId, [FromQuery] int id)
         {
             var car = await carService.GetCarImageByIdAsync(carId);
 
@@ -123,5 +140,5 @@ namespace RentACarApp.Controllers
 
             return Ok();
         }
-    }
+    }   
 }

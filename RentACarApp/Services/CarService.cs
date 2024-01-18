@@ -119,7 +119,7 @@ namespace RentACarApp.Services
         } 
 
         public async Task<int> GetCarsCount()
-            => await context.Cars.CountAsync(); //MOVE TO MAIN METHOD
+            => await context.Cars.CountAsync(); 
 
 
         public Task<Car> GetCarByIdAsync(int carId)

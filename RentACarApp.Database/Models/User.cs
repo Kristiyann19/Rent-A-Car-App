@@ -1,4 +1,7 @@
-﻿namespace RentACarApp.Database.Models
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+
+namespace RentACarApp.Database.Models
 {
     public class User 
     {
@@ -29,6 +32,6 @@
 
         public List<RentalCar> RentalCars { get;} = new List<RentalCar>();
     }
+  
 
- 
 }

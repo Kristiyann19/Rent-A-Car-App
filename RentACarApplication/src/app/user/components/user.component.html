@@ -1,22 +1,55 @@
 <form (ngSubmit)="become()"
       class="container">
        <h2>Стани Дилър на Коли, за да пускаш обяви!</h2>
-       <label for="firstName">Име:</label>
-       <input type="text"
-              id="fname"
-              name="fname"
-              [(ngModel)]="agent.firstName">
-       <label for="lastName">Фамилия:</label>
-       <input type="text"
-              id="lname"
-              name="lname"
-              [(ngModel)]="agent.lastName">
-       <label for="phoneNumber">Телефонен номер:</label>
-       <input type="text"
-              id="phone"
-              name="phone"
-              [(ngModel)]="agent.phoneNumber">
+       <div class="col-sm-4">
+              <label for="firstName">Име:</label>
+              <input type="text"
+                     id="firstName"
+                     name="firstName"
+                     #firstName="ngModel"
+                     required
+                     maxlength="30"
+                     minlength="2"
+                     [(ngModel)]="agent.firstName">
+       </div>
+       <div class="text-danger"
+            *ngIf="firstName.errors?.['required']">Името е задължително</div>
+       <div class="text-danger"
+            *ngIf="firstName.errors?.['minlength']">Името не може да е 1 буква</div>
+
+       <div class="col-sm-4">
+              <label for="lastName">Фамилия:</label>
+              <input type="text"
+                     id="lastName"
+                     name="lastName"
+                     #lastName="ngModel"
+                     required
+                     minlength="2"
+                     [(ngModel)]="agent.lastName">
+       </div>
+       <div class="text-danger"
+            *ngIf="lastName.errors?.['required']">Фамилията е задължителена</div>
+       <div class="text-danger"
+            *ngIf="lastName.errors?.['minlength']">Фамилията не може да е 1 буква</div>
+
+       <div class="col-sm-4">
+              <label for="phoneNumber">Телефонен номер:</label>
+              <input type="text"
+                     id="phoneNumber"
+                     name="phoneNumber"
+                     #phoneNumber="ngModel"
+                     required
+                     pattern="[^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$]*"
+                     [(ngModel)]="agent.phoneNumber">
+       </div>
+       <div class="text-danger"
+            *ngIf="phoneNumber.errors?.['required'] ">Телефонният номер е задължителен</div>
+       <div class="text-danger"
+            *ngIf="phoneNumber.errors?.['pattern']">Невалиден телефонен номер</div>
 
        <button type="submit">Стани Дилър на Коли</button>
+       <div *ngIf="becomeError">Грешка при полетата</div>
 
 </form>
+
+<!-- pattern="[^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$]*" -->

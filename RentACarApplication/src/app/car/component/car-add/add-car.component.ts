@@ -16,29 +16,23 @@ export class AddCarComponent{
   cars: CarDto[] = [];
   car: AddCarDto = new AddCarDto();
   addError: Boolean = false;
-  form: FormGroup;
   serverErrors: any = {};
   submitted = false;
   selectedImages: FileList;
 
   images: CarImage[]
 
-  constructor(private carService: CarService, private fb: FormBuilder){
-    this.form = this.fb.group({
-      make: ['', [Validators.required]],
-      model: ['', [Validators.required]]
-    })
-     }
+  constructor(private carService: CarService){   }
 
   handleImageUpload(event: any): void {
     this.selectedImages = event.target.files;
-  }
+  } 
 
   onSubmit(): void {
     this.submitted = true;
     const formData: FormData = new FormData();
-    formData.append('make', this.car.make);
     formData.append('model', this.car.model);
+    formData.append('make', this.car.make);
     formData.append('price', this.car.price.toString());
     formData.append('year', this.car.year.toString());
     formData.append('horsePower', this.car.horsePower.toString());

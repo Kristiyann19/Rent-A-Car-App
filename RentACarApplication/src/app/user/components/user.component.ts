@@ -4,11 +4,14 @@ import { AgentDto } from '../dtos/become-agent.dto';
 import { Router } from '@angular/router';
 
 
-@Component({templateUrl: 'user.component.html'})
+@Component({
+  templateUrl: 'user.component.html',
+  styleUrl: 'user.component.css'
+})
 
 export class UserComponent  {
   constructor(private router: Router, private userService: UserService) { }
-
+  becomeError: Boolean = false;
   agent: AgentDto = new AgentDto();
 
 
@@ -22,6 +25,7 @@ export class UserComponent  {
         
       },
       (error) => {
+        this.becomeError = true;
         console.error('Error becoming agent:', error);
       }
     );

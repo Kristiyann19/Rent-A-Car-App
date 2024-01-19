@@ -4,75 +4,140 @@
       <div class="row">
         <h4 class="title">
           Въвеждане на описанието на Автомобилa</h4>
-        <div class="col-sm-4">
-          <input type="text"
-                 class="form-control"
-                 [(ngModel)]="car.make"
-                 placeholder="Марка">
-        </div>
-        <div *ngIf="submitted && form.get('make').hasError('required')"
-             class="text-danger">
-          Марката е задължителна.
-        </div>
+
         <div class="col-sm-4">
           <input type="text"
                  class="form-control"
                  [(ngModel)]="car.model"
+                 name="model"
+                 required
+                 #model="ngModel"
                  placeholder="Модел">
         </div>
-        <div *ngIf="submitted && form.get('model').hasError('required')"
-             class="text-danger">
+        <span *ngIf="model.errors?.['required']"
+              class="text-danger">
           Моделът е задължителен.
+        </span>
+
+        <div class="col-sm-4">
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="car.make"
+                 name="make"
+                 required
+                 placeholder="Марка"
+                 #make="ngModel">
         </div>
+        <span *ngIf=" make.errors?.['required']"
+              class="text-danger">
+          Марката е задължителна.
+        </span>
+
         <div class="col-sm-4">
           <input type="number"
                  class="form-control"
                  [(ngModel)]="car.year"
+                 name="year"
+                 required
+                 #year="ngModel"
                  placeholder="Година">
         </div>
+        <div *ngIf="year.errors?.['required']"
+             class="text-danger">
+          Годината е задължителен.
+        </div>
+
         <div class="col-sm-4">
           <input type="number"
                  class="form-control"
                  [(ngModel)]="car.price"
+                 name="price"
+                 required
+                 #price="ngModel"
                  placeholder="Цена">
         </div>
+        <div *ngIf="price.errors?.['required']"
+             class="text-danger">
+          Цената е задължителна.
+        </div>
+
         <div class="col-sm-4">
           <input type="number"
                  class="form-control"
                  [(ngModel)]="car.horsePower"
+                 name="horsePower"
+                 required
+                 #horsePower="ngModel"
                  placeholder="Коне">
+        </div>
+        <div *ngIf="submitted && horsePower.errors?.['required']"
+             class="text-danger">
+          Конските сили са задължителни.
         </div>
 
         <div class="col-sm-4">
           <input type="text"
                  class="form-control"
                  [(ngModel)]="car.color"
+                 name="color"
+                 required
+                 #color="ngModel"
                  placeholder="Цвят">
         </div>
+        <div *ngIf="submitted && color.errors?.['required']"
+             class="text-danger">
+          Цвета е задължителен
+        </div>
+
         <div class="col-sm-4">
           <input type="number"
                  class="form-control"
                  [(ngModel)]="car.cubicCapacity"
+                 name="cubicCapacity"
+                 required
+                 #cubicCapacity="ngModel"
                  placeholder="Кубатура">
+        </div>
+        <div *ngIf="submitted && cubicCapacity.errors?.['required']"
+             class="text-danger">
+          Кубатурата е задължителна
         </div>
         <div class="col-sm-4">
           <input type="number"
                  class="form-control"
                  [(ngModel)]="car.mileage"
+                 name="mileage"
+                 required
+                 #mileage="ngModel"
                  placeholder="Пробег">
+        </div>
+        <div *ngIf="submitted && mileage.errors?.['required']"
+             class="text-danger">
+          Пробегът е задължителен
         </div>
 
 
         <div class="col-sm-4">
           <select [(ngModel)]="car.engine"
+                  name="engine"
+                  required
+                  #engine="ngModel"
                   class="form-select">
             <option [ngValue]="1"> Бензинов</option>
             <option [ngValue]="2">Дизелов</option>
             <option [ngValue]="3">Електрически</option>
           </select>
         </div>
+        <div *ngIf="submitted && engine.errors?.['required']"
+             class="text-danger">
+          Двигателят е задължителен
+        </div>
+
         <div class="col-sm-4">
           <select [(ngModel)]="car.category"
+                  name="category"
+                  required
+                  #category="ngModel"
                   class="form-select">
             <option [ngValue]="1"> Седан</option>
             <option [ngValue]="2">Хечбек</option>
@@ -85,9 +150,16 @@
             <option [ngValue]="9">Комби</option>
           </select>
         </div>
+        <div *ngIf="submitted && color.errors?.['required']"
+             class="text-danger">
+          Категорията е задължителена
+        </div>
 
         <div class="col-sm-4">
           <select [(ngModel)]="car.transmission"
+                  name="transmission"
+                  required
+                  #transmission="ngModel"
                   class="form-select">
             <option></option>
             <option [ngValue]="1"> Автоматична</option>
@@ -95,9 +167,16 @@
             <option [ngValue]="3">Семи-автоматична</option>
           </select>
         </div>
+        <div *ngIf="submitted && transmission.errors?.['required']"
+             class="text-danger">
+          Скоростната кутия е задължителена
+        </div>
 
         <div class="col-sm-4">
           <select [(ngModel)]="car.region"
+                  name="region"
+                  required
+                  #region="ngModel"
                   class="form-select">
             <option></option>
             <option [ngValue]="1"> Благоев Град</option>
@@ -130,14 +209,24 @@
             <option [ngValue]="28">Извън страната</option>
           </select>
         </div>
-
+        <div *ngIf="submitted && region.errors?.['required']"
+             class="text-danger">
+          Регионът е задължителен
+        </div>
         <div class="col-sm-4">
           <textarea type="text"
                     class="form-control"
+                    #description="ngModel"
                     [(ngModel)]="car.description"
+                    required
+                    name="description"
                     placeholder="Описание">
 
           </textarea>
+        </div>
+        <div *ngIf="submitted && description.errors?.['required']"
+             class="text-danger">
+          Описанието е задължителено
         </div>
         <div class="col-sm-4">
           <label for="images">Снимки:</label>
@@ -150,18 +239,18 @@
         </div>
 
         <div class="col-sm-10">
-          <button class="btn btn-primary"
-                  (click)="onSubmit()">Добави</button>
+          <button (click)="onSubmit()"
+                  class="btn btn-primary">Добави</button>
           <div *ngIf="addError"
                class="text-danger mt3">Грешка при добавянето на кола.</div>
           <button [routerLink]="['']"
                   class="btn btn-danger">Откажи</button>
         </div>
       </div>
-
-
-
     </div>
 
+
+
   </div>
+
 </section>

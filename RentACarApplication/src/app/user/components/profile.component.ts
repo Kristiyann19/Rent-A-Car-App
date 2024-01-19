@@ -3,6 +3,7 @@ import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteConfirmationModalComponent } from './delete-confirmation.component';
+import { RegionEnumLocalization } from '../../enums/region-enum';
 
 @Component({
   templateUrl: 'profile.component.html',
@@ -10,6 +11,7 @@ import { DeleteConfirmationModalComponent } from './delete-confirmation.componen
 })
 
 export class ProfileComponent  {
+  regionEnumLocalization = RegionEnumLocalization;
   constructor(private modalService: NgbModal,private router: Router, public userService: UserService) { }
   showCars = false;
   

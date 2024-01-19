@@ -120,15 +120,21 @@
 
       </div>
 
-      <div *ngIf="showCars">
+      <div class="row"
+           *ngIf="showCars">
         <div *ngFor="let car of userService.currentUserDto.userCars"
              class="card"
              style="width: 18rem;">
+
           <div class="card-body">
             <h5 class="card-title">{{car.make}} {{car.model}}</h5>
           </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item bold-label"> {{car.price}}лв./ден</li>
+            <li class="list-group-item bold-label">Регион: {{ regionEnumLocalization[car?.region] }}</li>
+          </ul>
           <button class="btn btn-primary"
-                  [routerLink]="['/car',car.id]">детайли</button>
+                  [routerLink]="['/car',car.id]">Виж обявата</button>
         </div>
       </div>
       <div *ngIf="showCars && userService.currentUserDto.roleId != 2">

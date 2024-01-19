@@ -137,7 +137,7 @@
                     [(ngModel)]="car.description"
                     placeholder="Описание">
 
-</textarea>
+          </textarea>
         </div>
         <div class="col-sm-4">
           <label for="images">Снимки:</label>
@@ -148,13 +148,20 @@
                  accept="image/*"
                  required>
         </div>
-        <div class="col-sm-4">
+
+        <div class="col-sm-10">
           <button class="btn btn-primary"
                   (click)="onSubmit()">Добави</button>
           <div *ngIf="addError"
                class="text-danger mt3">Грешка при добавянето на кола.</div>
+          <button [routerLink]="['']"
+                  class="btn btn-danger">Откажи</button>
         </div>
       </div>
+
+
+
     </div>
+
   </div>
 </section>

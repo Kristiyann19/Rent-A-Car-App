@@ -1,6 +1,9 @@
 .btn{
   margin-top: 10px; 
 }
+  .btn-danger{
+    float:right;
+  }
 
 .form-group{
   margin-bottom: 10px; 

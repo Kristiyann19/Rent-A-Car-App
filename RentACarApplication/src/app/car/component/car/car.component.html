@@ -155,18 +155,18 @@
                 (click)="rentCar(i, car.id)">Наеми Колата</button>
 
         <button class="btn btn-primary"
-                [routerLink]="['/car',car.id]">детайли</button>
+                [routerLink]="['/car',car.id]">Детайли</button>
 
         <button class="btn btn-primary"
                 *ngIf="car.userId === userService.currentUserDto?.id"
-                [routerLink]="['/updatecar', car.id]">Update</button>
+                [routerLink]="['/updatecar', car.id]">Редактирай</button>
 
         <button class="btn text-danger"
                 *ngIf="car.isRented && userService.currentUserDto">Колата е наета</button>
 
         <button *ngIf="car.userId === userService.currentUserDto?.id"
                 class="btn btn-danger"
-                (click)="onDeleteModal(car.id)">Delete</button>
+                (click)="onDeleteModal(car.id)">Изтрий</button>
       </div>
     </div>
   </div>

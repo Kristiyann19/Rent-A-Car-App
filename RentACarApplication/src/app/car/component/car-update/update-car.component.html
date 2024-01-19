@@ -1,319 +1,185 @@
-<div class="container">
-  <h2>Edit Car</h2>
-  <form (ngSubmit)="updateCar()">
-    <div class="form-group">
-      <label for="make">Make:</label>
-      <input type="text"
-             id="make"
-             [(ngModel)]="updatedCar.make"
-             name="make"
-             class="form-control"
-             required>
+<div class="container py-2">
+  <div class="card">
+    <div class="row">
+      <h2>Редактирай обявата си.</h2>
+      <hr>
+      <form (ngSubmit)="updateCar()">
+        <div class="col-sm-4">
+          <label for="make">Стара Марка:</label>
+          <input type="text"
+                 id="make"
+                 [(ngModel)]="updatedCar.make"
+                 name="make"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="model">Стар Модел:</label>
+          <input type="text"
+                 id="model"
+                 [(ngModel)]="updatedCar.model"
+                 name="model"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="year">Стара година:</label>
+          <input type="number"
+                 id="year"
+                 [(ngModel)]="updatedCar.year"
+                 name="year"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="price">Стара цена:</label>
+          <input type="number"
+                 id="price"
+                 [(ngModel)]="updatedCar.price"
+                 name="price"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="horsePower">Стари коне:</label>
+          <input type="number"
+                 id="horsePower"
+                 [(ngModel)]="updatedCar.horsePower"
+                 name="horsePower"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="color">Стар цвят:</label>
+          <input type="text"
+                 id="color"
+                 [(ngModel)]="updatedCar.color"
+                 name="color"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="cubicCapacity">Стара кубатура:</label>
+          <input type="number"
+                 id="cubicCapacity"
+                 [(ngModel)]="updatedCar.cubicCapacity"
+                 name="cubicCapacity"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="mileage">Стар пробег:</label>
+          <input type="number"
+                 id="mileage"
+                 [(ngModel)]="updatedCar.mileage"
+                 name="mileage"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="description">Старо описание:</label>
+          <input type="text"
+                 id="description"
+                 [(ngModel)]="updatedCar.description"
+                 name="description"
+                 class="form-control"
+                 required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="engine">Стар двигател:</label>
+          <select id="engine"
+                  [(ngModel)]="updatedCar.engine"
+                  name="engine"
+                  class="form-control">
+            <option [ngValue]="1">Petrol</option>
+            <option [ngValue]="2">Diesel</option>
+            <option [ngValue]="3">Electric</option>
+          </select>
+        </div>
+
+
+        <div class="col-sm-4">
+          <label for="transmission">Стара скоростна кутия:</label>
+          <select id="transmission"
+                  [(ngModel)]="updatedCar.transmission"
+                  name="transmission"
+                  class="form-control">
+            <option [ngValue]="1">Automatic</option>
+            <option [ngValue]="2">Manual</option>
+            <option [ngValue]="3">Semi-Automatic</option>
+          </select>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="category">Стара категория:</label>
+          <select id="category"
+                  [(ngModel)]="updatedCar.category"
+                  name="category"
+                  class="form-control">
+            <option [ngValue]="1">Sedan</option>
+            <option [ngValue]="2">Hatchback</option>
+            <option [ngValue]="3">SUV</option>
+            <option [ngValue]="4">Coupe</option>
+            <option [ngValue]="5">Minivan</option>
+            <option [ngValue]="6">Pickup</option>
+            <option [ngValue]="7">Sports Car</option>
+            <option [ngValue]="8">Convertible</option>
+            <option [ngValue]="9">Estate</option>
+          </select>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="region">Стар регион:</label>
+          <select id="region"
+                  [(ngModel)]="updatedCar.region"
+                  name="region"
+                  class="form-control">
+            <option [ngValue]="1">Blagoevgrad</option>
+            <option [ngValue]="2">Burgas</option>
+            <option [ngValue]="3">Varna</option>
+            <option [ngValue]="4">Велико Търново</option>
+            <option [ngValue]="5">Видин</option>
+            <option [ngValue]="6">Враца</option>
+            <option [ngValue]="7">Габрово</option>
+            <option [ngValue]="8">Добрич</option>
+            <option [ngValue]="9">Дупница</option>
+            <option [ngValue]="10">Кърджали</option>
+            <option [ngValue]="11">Кюстендил</option>
+            <option [ngValue]="12">Монтана</option>
+            <option [ngValue]="13">Пазарджик</option>
+            <option [ngValue]="14">Перник</option>
+            <option [ngValue]="15">Плевен</option>
+            <option [ngValue]="16">Пловдив</option>
+            <option [ngValue]="17">Разград</option>
+            <option [ngValue]="18">Русе</option>
+            <option [ngValue]="19">Силистра</option>
+            <option [ngValue]="20">Сливен</option>
+            <option [ngValue]="21">Смолян</option>
+            <option [ngValue]="22">София</option>
+            <option [ngValue]="23">Стара Загора</option>
+            <option [ngValue]="24">Търговище</option>
+            <option [ngValue]="25">Хасково</option>
+            <option [ngValue]="26">Шумен</option>
+            <option [ngValue]="27">Ямбол</option>
+            <option [ngValue]="28">Извън страната</option>
+          </select>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">Редактирай колата</button>
+
+        <button [routerLink]="['']"
+                class="btn btn-danger">Откажи</button>
+      </form>
     </div>
-
-    <div class="form-group">
-      <label for="model">Model:</label>
-      <input type="text"
-             id="model"
-             [(ngModel)]="updatedCar.model"
-             name="model"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="year">Year:</label>
-      <input type="number"
-             id="year"
-             [(ngModel)]="updatedCar.year"
-             name="year"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="price">Price</label>
-      <input type="number"
-             id="price"
-             [(ngModel)]="updatedCar.price"
-             name="price"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="horsePower">HorsePower</label>
-      <input type="number"
-             id="horsePower"
-             [(ngModel)]="updatedCar.horsePower"
-             name="horsePower"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="color">Color</label>
-      <input type="text"
-             id="color"
-             [(ngModel)]="updatedCar.color"
-             name="color"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="cubicCapacity">CubicCapacity</label>
-      <input type="number"
-             id="cubicCapacity"
-             [(ngModel)]="updatedCar.cubicCapacity"
-             name="cubicCapacity"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="mileage">Mileage</label>
-      <input type="number"
-             id="mileage"
-             [(ngModel)]="updatedCar.mileage"
-             name="mileage"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <input type="text"
-             id="description"
-             [(ngModel)]="updatedCar.description"
-             name="description"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <input type="text"
-             id="description"
-             [(ngModel)]="updatedCar.description"
-             name="description"
-             class="form-control"
-             required>
-    </div>
-
-    <div class="form-group">
-      <label for="engine">Engine:</label>
-      <select id="engine"
-              [(ngModel)]="updatedCar.engine"
-              name="engine"
-              class="form-control">
-        <option [ngValue]="1">Petrol</option>
-        <option [ngValue]="2">Diesel</option>
-        <option [ngValue]="3">Electric</option>
-      </select>
-    </div>
-
-
-    <div class="form-group">
-      <label for="transmission">Transmission:</label>
-      <select id="transmission"
-              [(ngModel)]="updatedCar.transmission"
-              name="transmission"
-              class="form-control">
-        <option [ngValue]="1">Automatic</option>
-        <option [ngValue]="2">Manual</option>
-        <option [ngValue]="3">Semi-Automatic</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="category">Category:</label>
-      <select id="category"
-              [(ngModel)]="updatedCar.category"
-              name="category"
-              class="form-control">
-        <option [ngValue]="1">Sedan</option>
-        <option [ngValue]="2">Hatchback</option>
-        <option [ngValue]="3">SUV</option>
-        <option [ngValue]="4">Coupe</option>
-        <option [ngValue]="5">Minivan</option>
-        <option [ngValue]="6">Pickup</option>
-        <option [ngValue]="7">Sports Car</option>
-        <option [ngValue]="8">Convertible</option>
-        <option [ngValue]="9">Estate</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="region">Region:</label>
-      <select id="region"
-              [(ngModel)]="updatedCar.region"
-              name="region"
-              class="form-control">
-        <option [ngValue]="1">Blagoevgrad</option>
-        <option [ngValue]="2">Burgas</option>
-        <option [ngValue]="3">Varna</option>
-        <option [ngValue]="4">Велико Търново</option>
-        <option [ngValue]="5">Видин</option>
-        <option [ngValue]="6">Враца</option>
-        <option [ngValue]="7">Габрово</option>
-        <option [ngValue]="8">Добрич</option>
-        <option [ngValue]="9">Дупница</option>
-        <option [ngValue]="10">Кърджали</option>
-        <option [ngValue]="11">Кюстендил</option>
-        <option [ngValue]="12">Монтана</option>
-        <option [ngValue]="13">Пазарджик</option>
-        <option [ngValue]="14">Перник</option>
-        <option [ngValue]="15">Плевен</option>
-        <option [ngValue]="16">Пловдив</option>
-        <option [ngValue]="17">Разград</option>
-        <option [ngValue]="18">Русе</option>
-        <option [ngValue]="19">Силистра</option>
-        <option [ngValue]="20">Сливен</option>
-        <option [ngValue]="21">Смолян</option>
-        <option [ngValue]="22">София</option>
-        <option [ngValue]="23">Стара Загора</option>
-        <option [ngValue]="24">Търговище</option>
-        <option [ngValue]="25">Хасково</option>
-        <option [ngValue]="26">Шумен</option>
-        <option [ngValue]="27">Ямбол</option>
-        <option [ngValue]="28">Извън страната</option>
-      </select>
-    </div>
-
-    <button type="submit"
-            class="btn btn-primary">Update Car</button>
-  </form>
+  </div>
 </div>
-
-
-
-
-
-<!-- <div class="row">
-  <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-    <div class="p-3 border">
-    </div>
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="updatedCar.id"
-             placeholder="Id">
-    </div>
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="updatedCar.make"
-             placeholder="Make">
-    </div>
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="updatedCar.model"
-             placeholder="Model">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="updatedCar.year"
-             placeholder="Year">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="updatedCar.price"
-             placeholder="Price">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="updatedCar.horsePower"
-             placeholder="HorsePower">
-    </div>
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="updatedCar.color"
-             placeholder="Color">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="updatedCar.cubicCapacity"
-             placeholder="Cubic Capacity">
-    </div>
-    <div class="p-3 border">
-      <input type="number"
-             [(ngModel)]="updatedCar.mileage"
-             placeholder="Mileage">
-    </div>
-    <div class="p-3 border">
-      <input type="text"
-             [(ngModel)]="updatedCar.description"
-             placeholder="Description">
-    </div>
-    <div class="p-3 border">
-      <select [(ngModel)]="updatedCar.engine">
-        <option [ngValue]="1"> Бензинов</option>
-        <option [ngValue]="2">Дизелов</option>
-        <option [ngValue]="3">Електрически</option>
-      </select>
-    </div>
-    <div class="p-3 border">
-      <select [(ngModel)]="updatedCar.category">
-        <option [ngValue]="1"> Седан</option>
-        <option [ngValue]="2">Хечбек</option>
-        <option [ngValue]="3">SUV</option>
-        <option [ngValue]="4">Купе</option>
-        <option [ngValue]="5">Миниван</option>
-        <option [ngValue]="6">Пикап</option>
-        <option [ngValue]="7">Спортна кола</option>
-        <option [ngValue]="8">Кабриолет</option>
-        <option [ngValue]="9">Комби</option>
-      </select>
-    </div>
-    <div class="p-3 border">
-      <select [(ngModel)]="updatedCar.transmission">
-        <option></option>
-        <option [ngValue]="1"> Автоматична</option>
-        <option [ngValue]="2">Ръчна</option>
-        <option [ngValue]="3">Семи-автоматична</option>
-      </select>
-    </div>
-    <div class="p-3 border">
-      <select [(ngModel)]="updatedCar.region">
-        <option></option>
-        <option [ngValue]="1"> Благоев Град</option>
-        <option [ngValue]="2">Бургас</option>
-        <option [ngValue]="3">Варна</option>
-        <option [ngValue]="4">Велико Търново</option>
-        <option [ngValue]="5">Видин</option>
-        <option [ngValue]="6">Враца</option>
-        <option [ngValue]="7">Габрово</option>
-        <option [ngValue]="8">Добрич</option>
-        <option [ngValue]="9">Дупница</option>
-        <option [ngValue]="10">Кърджали</option>
-        <option [ngValue]="11">Кюстендил</option>
-        <option [ngValue]="12">Монтана</option>
-        <option [ngValue]="13">Пазарджик</option>
-        <option [ngValue]="14">Перник</option>
-        <option [ngValue]="15">Плевен</option>
-        <option [ngValue]="16">Пловдив</option>
-        <option [ngValue]="17">Разград</option>
-        <option [ngValue]="18">Русе</option>
-        <option [ngValue]="19">Силистра</option>
-        <option [ngValue]="20">Сливен</option>
-        <option [ngValue]="21">Смолян</option>
-        <option [ngValue]="22">София</option>
-        <option [ngValue]="23">Стара Загора</option>
-        <option [ngValue]="24">Търговище</option>
-        <option [ngValue]="25">Хасково</option>
-        <option [ngValue]="26">Шумен</option>
-        <option [ngValue]="27">Ямбол</option>
-        <option [ngValue]="28">Извън страната</option>
-      </select>
-    </div>
-    <input type="file"
-           id="imageUpload"
-           name="imageUpload"
-           accept="image/*"
-           multiple>
-    <div class="p-3 border">
-      <button class="btn btn-primary"
-              [routerLink]="['/']"
-              (click)="updateCar()">Update</button>
-    </div>
-
-  </div> -->

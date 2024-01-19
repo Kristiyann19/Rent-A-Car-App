@@ -25,6 +25,10 @@ export class CarService{
     return this.http.get<CarDto>(`http://localhost:19999/api/Car/${id}`);
   }  
 
+  getImagesUrl(carId:number){
+    return this.http.get(`http://localhost:19999/api/Car/${carId}/Images`);
+  }
+
   addCar(car: FormData) : Observable<void>{
     return this.http.post<void>(this.apiUrl, car);
   }

@@ -55,7 +55,6 @@ export class CarComponent {
 
 
   totalItems() : void {
-    debugger;
     this.carService.totalCars().subscribe((count: number) =>{
         this.totalCarsCount = count;
     })
@@ -82,12 +81,7 @@ export class CarComponent {
     )
   }  
 
-
   getImageUrl(carId: number) {
     return `http://localhost:19999/api/Car/${carId}/Image`
   }
-
-
-
- 
 }

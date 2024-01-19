@@ -8,6 +8,7 @@ import { TransmissionEnum, TransmissionEnumLocalization } from "../../../enums/t
 import { RegionEnum, RegionEnumLocalization } from "../../../enums/region-enum";
 import { HttpErrorResponse } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-car-details',
@@ -17,7 +18,9 @@ import { catchError, throwError } from "rxjs";
 
 export class CarDetailsComponent{
   car: CarDto = new CarDto();
+  carImagesBase64: string[] = [];
 
+  imagePath : any;
   engineEnumLocalization = EngineEnumLocalization;
   categoryEnumLocalization = CategoryEnumLocalization;
   transmissionEnumLocalization = TransmissionEnumLocalization;
@@ -29,10 +32,9 @@ export class CarDetailsComponent{
   regionEnum = RegionEnum;
   loadingData = false;
 
-  constructor(private route: ActivatedRoute, private carService: CarService) {}
+  constructor(private route: ActivatedRoute, private carService: CarService, private sanitizer: DomSanitizer) {}
 
-  getCarDetails (): void{
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!)
+  getCarDetails (id: number): void{
     this.carService.getCarDetails(id)
     .pipe(
              catchError((err: HttpErrorResponse) => {
@@ -45,11 +47,27 @@ export class CarDetailsComponent{
       this.loadingData = false;
     }); 
   }
-  getImagesUrl(carId:number, id:number){
-    return `http://localhost:19999/api/Car/${carId}/Image?id=${id}`
+
+
+  getImages(id : number) : void{
+    this.carService.getImagesUrl(id)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+         return throwError(() => err);
+     })
+   )
+  .subscribe((carImagesBase64: string[]) => {
+  this.carImagesBase64 = carImagesBase64;
+  this.imagePath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,');
+  }); 
   }
+
+  
+
   ngOnInit(): void {
     this.loadingData = true;
-    this.getCarDetails();
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!)
+    this.getCarDetails(id);
+    this.getImages(id);
   }
 }

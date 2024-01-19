@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
@@ -24,8 +25,8 @@ namespace RentACarApp.Controllers
         public async Task<IActionResult> AllCars([FromQuery] int page = 1, [FromQuery] int pageSize = 12)
         {
             var cars = await carService.GetAllCarsAsync(page, pageSize);
-            
-     
+
+
             return Ok(cars);
         }
 
@@ -126,19 +127,80 @@ namespace RentACarApp.Controllers
         }
 
 
-        [HttpGet("{carId:int}/Image/{id:int}")]
-        public async Task<IActionResult> GetCarImage([FromRoute] int carId, [FromQuery] int id)
+        [HttpGet("{carId:int}/Images")]
+        public async Task<IActionResult> GetCarImage([FromRoute] int carId)
         {
             var car = await carService.GetCarImageByIdAsync(carId);
 
+            var base64Images = new List<string>();
+
             if (car.Images.Any())
             {
-                var image = car.Images.FirstOrDefault(e => e.Id == id);
+                var images = car.Images.OrderBy(e => e.Id).ToList();
 
-                return File(image?.Bytes, "image/jpg", image?.Description);
+                foreach (var image in images)
+                {
+                    var base64string = Convert.ToBase64String(image.Bytes);
+
+                    base64Images.Add(base64string);
+                }
             }
-
-            return Ok();
+            return Ok(base64Images);
         }
-    }   
+
+
+    }
+
 }
+
+
+//[HttpGet("{carId:int}/Images")]
+//public async Task<IActionResult> GetCarImage([FromRoute] int carId)
+//{
+//    var car = await carService.GetCarImageByIdAsync(carId);
+
+//    if (car.Images.Any())
+//    {
+//        var images = car.Images.OrderBy(e => e.Id).ToList();
+
+//        var fileResponses = new List<FileContentResult>();
+
+//        foreach (var image in images)
+//        {
+//            var fileResponse = File(image.Bytes, "image/jpg", image?.Description);
+//            fileResponses.Add(fileResponse);
+//        }
+
+//        return fileResponses;
+//    }
+
+//    return Ok();
+//}
+
+
+
+//[HttpGet("{carId:int}/Images")]
+//public async Task<IActionResult> GetCarImage([FromRoute] int carId)
+//{
+//    var car = await carService.GetCarImageByIdAsync(carId);
+
+//    if (car.Images.Any())
+//    {
+//        var images = car.Images.OrderBy(e => e.Id).ToList();
+
+//        var fileResponses = new List<object>();
+
+//        foreach (var image in images)
+//        {
+//            var base64string = Convert.ToBase64String(image.Bytes);
+//            var imageResponse = new Image
+//            {
+//                Description = image.Description,
+//            }
+//                }
+
+//        return fileResponses;
+//    }
+
+//    return Ok();
+//}

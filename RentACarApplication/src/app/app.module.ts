@@ -19,15 +19,15 @@ import { UserService } from './user/service/user.service';
 import { RentCarComponent } from './car/component/car-rent/rent-car.component';
 import { UpdateCarComponent } from './car/component/car-update/update-car.component';
 import { LoadingComponent } from './loading/loading.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './user/components/profile.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteConfirmationModalComponent } from './user/components/delete-confirmation.component';
 import { ChatService } from './chat/chat.service';
 import { ChatComponent } from './chat/chat.component';
 import { DeleteConfirmationCarModalComponent } from './car/modal/delete-confirmation.component';
 import { PaginationComponent } from './paging/pagination.component';
 import { UpdateUserComponent } from './user/components/update-user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -61,6 +61,7 @@ import { UpdateUserComponent } from './user/components/update-user.component';
     ReactiveFormsModule,
     FontAwesomeModule,
     NgbModule
+
   ],
   providers: [
     UserService,

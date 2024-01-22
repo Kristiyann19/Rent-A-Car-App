@@ -128,7 +128,7 @@ namespace RentACarApp.Controllers
 
 
         [HttpGet("{carId:int}/Images")]
-        public async Task<IActionResult> GetCarImage([FromRoute] int carId)
+        public async Task<IActionResult> GetCarImages([FromRoute] int carId)
         {
             var car = await carService.GetCarImageByIdAsync(carId);
 

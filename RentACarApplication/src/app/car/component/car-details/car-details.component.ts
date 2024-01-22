@@ -8,7 +8,7 @@ import { TransmissionEnum, TransmissionEnumLocalization } from "../../../enums/t
 import { RegionEnum, RegionEnumLocalization } from "../../../enums/region-enum";
 import { HttpErrorResponse } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-car-details',
@@ -32,6 +32,8 @@ export class CarDetailsComponent{
   regionEnum = RegionEnum;
   loadingData = false;
 
+  imagePaths: SafeResourceUrl[] = [];
+
   constructor(private route: ActivatedRoute, private carService: CarService, private sanitizer: DomSanitizer) {}
 
   getCarDetails (id: number): void{
@@ -49,18 +51,22 @@ export class CarDetailsComponent{
   }
 
 
-  getImages(id : number) : void{
+  getImages(id: number): void {
+    debugger;
     this.carService.getImagesUrl(id)
-    .pipe(
-      catchError((err: HttpErrorResponse) => {
-         return throwError(() => err);
-     })
-   )
-  .subscribe((carImagesBase64: string[]) => {
-  this.carImagesBase64 = carImagesBase64;
-  this.imagePath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,');
-  }); 
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          return throwError(() => err);
+        })
+      )
+      .subscribe((carImagesBase64: string[]) => {
+        this.carImagesBase64 = carImagesBase64;
+        this.imagePaths = this.carImagesBase64.map(imageBase64 =>
+          this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + imageBase64)
+        );
+      });
   }
+  
 
   
 
@@ -71,3 +77,21 @@ export class CarDetailsComponent{
     this.getImages(id);
   }
 }
+
+
+//WORKS ONLY FOR ONE IMAGE
+// getImages(id: number): void {
+//   this.carService.getImagesUrl(id)
+//     .pipe(
+//       catchError((err: HttpErrorResponse) => {
+//         return throwError(() => err);
+//       })
+//     )
+//     .subscribe((carImagesBase64: string[]) => {
+//       this.carImagesBase64 = carImagesBase64;
+//       if (this.carImagesBase64.length > 0) {
+//         // Assuming carImagesBase64 is an array of base64 strings
+//         this.imagePath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + this.carImagesBase64[0]);
+//       }
+//     });
+// }

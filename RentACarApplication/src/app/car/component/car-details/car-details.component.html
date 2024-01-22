@@ -2,8 +2,8 @@
   <div class="card">
     <div class="text-center row">
       <div class="col-md-12">
-        <div *ngFor="let image of carImagesBase64 ">
-          <img [src]="(getImagesUrl(car.id))"
+        <div *ngFor="let imagePath of imagePaths">
+          <img [src]="imagePath"
                alt="Липсва снимка"
                class="card-img-top">
         </div>

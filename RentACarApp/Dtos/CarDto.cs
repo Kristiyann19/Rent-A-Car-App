@@ -1,4 +1,5 @@
 ﻿using RentACarApp.Database.Enums;
+using RentACarApp.Database.Models;
 
 namespace RentACarApp.Dtos
 {
@@ -35,5 +36,9 @@ namespace RentACarApp.Dtos
         public RegionEnum? Region { get; set; }
 
         public CategoryEnum? Category { get; set; }
+
+        public List<IFormFile> ImageFiles { get; set; }
+
+        public List<Image> Images { get; set; } = new List<Image>();
     }
 }

@@ -1,0 +1,14 @@
+.card-images-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+.card {
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.card-img-top {
+  max-width: 100%;
+  height: auto;
+}

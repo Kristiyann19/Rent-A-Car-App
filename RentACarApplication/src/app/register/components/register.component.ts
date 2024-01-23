@@ -32,6 +32,7 @@ export class RegisterComponent {
         this.registerService.register(registerDto)
           .subscribe(
             (result: RegisterDto) => {
+              // this.registerService.sendConfirmationEmail(this.user.email)
               this.user = result;
             },
             (error) => {

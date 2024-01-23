@@ -22,9 +22,7 @@ namespace RentACarApp.Dtos
         public int Mileage { get; set; }
 
         public string Description { get; set; }
-
-        public bool isActive { get; set; }
-
+     
         public EngineEnum Engine { get; set; }
 
         public TransmissionEnum Transmission { get; set; }

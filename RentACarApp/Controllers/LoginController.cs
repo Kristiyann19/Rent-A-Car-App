@@ -11,7 +11,7 @@ namespace RentACarApp.Controllers
 
         private readonly ILoginService loginService;
 
-        public LoginController(ILoginService _loginService)
+        public LoginController(ILoginService _loginService) 
         {
             loginService = _loginService;
         }

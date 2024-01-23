@@ -25,6 +25,10 @@ namespace RentACarApp.Database.Models
 
         public string Password { get; set; }
 
+        public string EmailConfirmationToken { get; set; }
+
+        public bool IsEmailConfirmed { get; set; }
+
         public int RoleId {  get; set; }
         public Role Role { get; set; }
 

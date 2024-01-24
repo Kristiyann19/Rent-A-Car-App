@@ -38,7 +38,7 @@ namespace RentACarApp.Services
 
             context.Users.Add(user);
             context.SaveChanges();
-            SendConfirmationEmail(user.Email, user.EmailConfirmationToken);
+            //SendConfirmationEmail(user.Email, user.EmailConfirmationToken);
         }
 
 
@@ -50,9 +50,8 @@ namespace RentACarApp.Services
             var smtpPassword = configuration["EmailSettings:Password"];
             var senderEmail = configuration["EmailSettings:SenderEmail"];
 
-            var baseUrl = configuration["http://localhost:4200"];
 
-            var confirmationLink = $"{baseUrl}/confirm-email?token={token}";
+            var confirmationLink = $"http://localhost:4200/confirm-email?token={token}";
 
             var subject = "Confirm your email";
             var body = $"Please confirm your email by clicking the following link: {confirmationLink}";

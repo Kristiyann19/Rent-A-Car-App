@@ -19,7 +19,7 @@ export class AddCarComponent{
   serverErrors: any = {};
   submitted = false;
   selectedImages: FileList;
-
+  currentYear = new Date().getFullYear();
   images: CarImage[]
 
   constructor(private carService: CarService){   }

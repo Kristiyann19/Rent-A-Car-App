@@ -8,27 +8,31 @@
         <div class="col-sm-4">
           <input type="text"
                  class="form-control"
-                 [(ngModel)]="car.model"
-                 name="model"
+                 [(ngModel)]="car.make"
+                 name="make"
                  required
+                 maxlength="30"
+                 minlength="2"
                  #model="ngModel"
-                 placeholder="Модел">
+                 placeholder="Марка">
         </div>
-        <span *ngIf="model.errors?.['required']"
-              class="text-danger">
+        <div *ngIf="submitted && make.errors?.['required']"
+             class="text-danger">
           Моделът е задължителен.
-        </span>
+        </div>
 
         <div class="col-sm-4">
           <input type="text"
                  class="form-control"
-                 [(ngModel)]="car.make"
-                 name="make"
+                 [(ngModel)]="car.model"
+                 name="model"
                  required
-                 placeholder="Марка"
+                 maxlength="30"
+                 minlength="2"
+                 placeholder="Модел"
                  #make="ngModel">
         </div>
-        <span *ngIf=" make.errors?.['required']"
+        <span *ngIf="submitted && model.errors?.['required']"
               class="text-danger">
           Марката е задължителна.
         </span>
@@ -39,12 +43,18 @@
                  [(ngModel)]="car.year"
                  name="year"
                  required
+                 min="1940"
+                 max="{{currentYear}}"
                  #year="ngModel"
                  placeholder="Година">
         </div>
-        <div *ngIf="year.errors?.['required']"
+        <div *ngIf="submitted && year.errors?.['required']"
              class="text-danger">
           Годината е задължителен.
+        </div>
+        <div *ngIf="submitted && year.errors?.['min'] || submitted && year.errors?.['max']"
+             class="text-danger">
+          Годината трябва да бъде между 1940 и {{ currentYear }}.
         </div>
 
         <div class="col-sm-4">
@@ -53,12 +63,18 @@
                  [(ngModel)]="car.price"
                  name="price"
                  required
+                 min="1"
+                 max="100000"
                  #price="ngModel"
                  placeholder="Цена">
         </div>
-        <div *ngIf="price.errors?.['required']"
+        <div *ngIf="submitted && price.errors?.['required']"
              class="text-danger">
           Цената е задължителна.
+        </div>
+        <div *ngIf="submitted && price.errors?.['min'] || submitted &&  price.errors?.['max']"
+             class="text-danger">
+          Нереална цена.
         </div>
 
         <div class="col-sm-4">
@@ -67,12 +83,17 @@
                  [(ngModel)]="car.horsePower"
                  name="horsePower"
                  required
+                 max="2500"
                  #horsePower="ngModel"
                  placeholder="Коне">
         </div>
         <div *ngIf="submitted && horsePower.errors?.['required']"
              class="text-danger">
           Конските сили са задължителни.
+        </div>
+        <div *ngIf="submitted && horsePower.errors?.['max']"
+             class="text-danger">
+          Конските сили са невалидни.
         </div>
 
         <div class="col-sm-4">
@@ -81,6 +102,7 @@
                  [(ngModel)]="car.color"
                  name="color"
                  required
+                 max="40"
                  #color="ngModel"
                  placeholder="Цвят">
         </div>
@@ -95,12 +117,17 @@
                  [(ngModel)]="car.cubicCapacity"
                  name="cubicCapacity"
                  required
+                 max="10000"
                  #cubicCapacity="ngModel"
                  placeholder="Кубатура">
         </div>
         <div *ngIf="submitted && cubicCapacity.errors?.['required']"
              class="text-danger">
           Кубатурата е задължителна
+        </div>
+        <div *ngIf="submitted && cubicCapacity.errors?.['max']"
+             class="text-danger">
+          Невалидна кубатура.
         </div>
         <div class="col-sm-4">
           <input type="number"
@@ -220,7 +247,9 @@
                     #description="ngModel"
                     [(ngModel)]="car.description"
                     required
+                    maxlength="3000"
                     name="description"
+                    style="max-height: 200px;"
                     placeholder="Описание">
 
           </textarea>
@@ -235,6 +264,7 @@
                  id="images"
                  (change)="handleImageUpload($event)"
                  multiple
+                 required
                  accept="image/*"
                  required>
         </div>

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { CarDto } from "../../dtos/car.dto";
 import { CarService } from "../../service/car.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-update-car',
@@ -12,8 +12,8 @@ import { ActivatedRoute } from "@angular/router";
 export class UpdateCarComponent {
   updatedCar: CarDto = new CarDto();
   carId: number;
-
-  constructor(private route: ActivatedRoute, private carService: CarService){}
+  updateError : Boolean = false;
+  constructor(private route: ActivatedRoute, private carService: CarService, private router: Router){}
   
 
   ngOnInit(): void {
@@ -30,9 +30,15 @@ export class UpdateCarComponent {
     });
   }
   updateCar(): void {
-    this.carService.updateCar(this.carId, this.updatedCar).subscribe(() => {
-      console.log('Car updated successfully');
-      
+    this.carService.updateCar(this.carId, this.updatedCar).subscribe(
+    (response: any) => {
+      console.log('Car updated successfully', response);
+      this.router.navigate([''])
+    },
+    (error) => {
+        
+      console.error('Error adding car', error);
+      this.updateError = true;
     });
   }
 

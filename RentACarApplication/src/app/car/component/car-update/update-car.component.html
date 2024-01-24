@@ -1,11 +1,14 @@
 <div class="container py-2">
   <div class="card">
-    <div class="row">
-      <h2>Редактирай обявата си.</h2>
+    <div class="card-body">
+      <h2 class="card-title">Редактирай обявата си</h2>
       <hr>
-      <form (ngSubmit)="updateCar()">
-        <div class="col-sm-4">
-          <label for="make">Стара Марка:</label>
+
+      <form (ngSubmit)="updateCar()"
+            class="row g-3">
+        <div class="col-md-4">
+          <label for="make"
+                 class="form-label">Стара Марка:</label>
           <input type="text"
                  id="make"
                  [(ngModel)]="updatedCar.make"
@@ -14,8 +17,9 @@
                  required>
         </div>
 
-        <div class="col-sm-4">
-          <label for="model">Стар Модел:</label>
+        <div class="col-md-4">
+          <label for="model"
+                 class="form-label">Стар Модел:</label>
           <input type="text"
                  id="model"
                  [(ngModel)]="updatedCar.model"
@@ -24,19 +28,21 @@
                  required>
         </div>
 
-        <div class="col-sm-4">
-          <label for="year">Стара година:</label>
-          <input type="number"
-                 id="year"
-                 [(ngModel)]="updatedCar.year"
-                 name="year"
+        <div class="col-md-4">
+          <label for="model"
+                 class="form-label">Стар Година:</label>
+          <input type="text"
+                 id="price"
+                 [(ngModel)]="updatedCar.price"
+                 name="price"
                  class="form-control"
                  required>
         </div>
 
-        <div class="col-sm-4">
-          <label for="price">Стара цена:</label>
-          <input type="number"
+        <div class="col-md-4">
+          <label for="model"
+                 class="form-label">Стар цена:</label>
+          <input type="text"
                  id="price"
                  [(ngModel)]="updatedCar.price"
                  name="price"
@@ -94,37 +100,28 @@
                  required>
         </div>
 
-        <div class="col-sm-4">
-          <label for="engine">Стар двигател:</label>
-          <select id="engine"
-                  [(ngModel)]="updatedCar.engine"
-                  name="engine"
-                  class="form-control">
-            <option [ngValue]="1">Petrol</option>
-            <option [ngValue]="2">Diesel</option>
-            <option [ngValue]="3">Electric</option>
-          </select>
-        </div>
+        <!-- Repeat the similar structure for other input fields -->
 
-
-        <div class="col-sm-4">
-          <label for="transmission">Стара скоростна кутия:</label>
+        <div class="col-md-4">
+          <label for="transmission"
+                 class="form-label">Стара скоростна кутия:</label>
           <select id="transmission"
                   [(ngModel)]="updatedCar.transmission"
                   name="transmission"
-                  class="form-control">
+                  class="form-select">
             <option [ngValue]="1">Automatic</option>
             <option [ngValue]="2">Manual</option>
             <option [ngValue]="3">Semi-Automatic</option>
           </select>
         </div>
 
-        <div class="col-sm-4">
-          <label for="category">Стара категория:</label>
+        <div class="col-md-4">
+          <label for="category"
+                 class="form-label">Стара категория:</label>
           <select id="category"
                   [(ngModel)]="updatedCar.category"
                   name="category"
-                  class="form-control">
+                  class="form-select">
             <option [ngValue]="1">Sedan</option>
             <option [ngValue]="2">Hatchback</option>
             <option [ngValue]="3">SUV</option>
@@ -137,12 +134,13 @@
           </select>
         </div>
 
-        <div class="col-sm-4">
-          <label for="region">Стар регион:</label>
+        <div class="col-md-4">
+          <label for="region"
+                 class="form-label">Стар регион:</label>
           <select id="region"
                   [(ngModel)]="updatedCar.region"
                   name="region"
-                  class="form-control">
+                  class="form-select">
             <option [ngValue]="1">Blagoevgrad</option>
             <option [ngValue]="2">Burgas</option>
             <option [ngValue]="3">Varna</option>
@@ -174,11 +172,16 @@
           </select>
         </div>
 
-        <button type="submit"
-                class="btn btn-primary">Редактирай колата</button>
-
-        <button [routerLink]="['']"
-                class="btn btn-danger">Откажи</button>
+        <div class="col-12">
+          <button type="submit"
+                  class="btn btn-primary">Редактирай колата</button>
+          <div *ngIf="updateError"
+               class="alert alert-danger mt-3">
+            Редактирането се провали. Моля опитайте отново.
+          </div>
+          <button [routerLink]="['']"
+                  class="btn btn-danger">Откажи</button>
+        </div>
       </form>
     </div>
   </div>

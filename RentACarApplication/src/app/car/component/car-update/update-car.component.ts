@@ -29,6 +29,7 @@ export class UpdateCarComponent {
       this.updatedCar = { ...car }; 
     });
   }
+  
   updateCar(): void {
     this.carService.updateCar(this.carId, this.updatedCar).subscribe(
     (response: any) => {

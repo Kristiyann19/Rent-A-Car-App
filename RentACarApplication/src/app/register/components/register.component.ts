@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RegisterService } from '../service/register.service';
 import { RegisterDto } from '../dtos/register.dto';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-registration',
@@ -14,7 +15,7 @@ export class RegisterComponent {
     serverErrors: any = {};
     submitted = false;
     registerError: Boolean = false;
-    constructor(private registerService: RegisterService, private fb: FormBuilder) {
+    constructor(private registerService: RegisterService, private fb: FormBuilder, private router: Router) {
         this.form = this.fb.group({
             userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
             email: ['', [Validators.required, Validators.email, Validators.minLength(4), Validators.maxLength(30)]],
@@ -31,14 +32,15 @@ export class RegisterComponent {
       
         this.registerService.register(registerDto)
           .subscribe(
-            (result: RegisterDto) => {
+            () => {
+              debugger;
+              console.log('User registered successfully');
               // this.registerService.sendConfirmationEmail(this.user.email)
-              this.user = result;
+              this.router.navigate(['/login'])
             },
             (error) => {
               console.error('Register Failed:', error);
               this.registerError = true
-              
             }
           )};
  }

@@ -1,12 +1,6 @@
-﻿using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
-using RentACarApp.Database;
-using RentACarApp.Database.Migrations;
-using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
-using RentACarApp.Services;
 
 namespace RentACarApp.Controllers
 {

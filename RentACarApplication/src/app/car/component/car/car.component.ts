@@ -27,7 +27,6 @@ export class CarComponent {
   cars: CarDto[] = [];
   searchCar: CarDto = new CarDto();
 
-  isSearched : Boolean = false;
   page = 1;
   pageSize = 12;
 
@@ -75,8 +74,7 @@ export class CarComponent {
     this.carService.searchCar(this.searchCar).subscribe(
       (data: CarDto[]) => {
         this.cars = data;
-        this.cars.length;
-        this.isSearched = true;
+        this.totalItems();
       }
     )
   }  

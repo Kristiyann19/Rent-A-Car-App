@@ -104,7 +104,7 @@ namespace RentACarApp.Services
                 var userName = existingUserClaim.Value;
                 var existingUser = await context.Users
                     .Include(u => u.UserCars)
-                    .Select(x => new UserDto
+                    .Select(x => new UserDto 
                     {
                         Email = x.Email,
                         Id = x.Id,

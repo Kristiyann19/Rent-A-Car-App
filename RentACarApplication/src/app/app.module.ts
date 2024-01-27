@@ -28,6 +28,7 @@ import { PaginationComponent } from './paging/pagination.component';
 import { UpdateUserComponent } from './user/components/update-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ChatComponent,
     DeleteConfirmationCarModalComponent,
     PaginationComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

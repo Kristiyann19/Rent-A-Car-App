@@ -13,12 +13,8 @@ export class UpdateUserComponent {
 
   updatedUserDto: CurrentUserDto = new CurrentUserDto();
 
-
   constructor(private route: ActivatedRoute, public userService: UserService){}
   
-
-
-
   updateUser(): void {
     debugger;
     this.userService.updateUser(this.userService.currentUserDto).subscribe(() => {

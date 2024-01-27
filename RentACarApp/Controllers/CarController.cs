@@ -73,7 +73,7 @@ namespace RentACarApp.Controllers
         [HttpGet("search")]
         public async Task<IActionResult> SearchCar([FromQuery] SearchCarDto car)
         {
-            var result = await carService.SeachInCarAsync(car);
+            var result = await carService.SearchInCarAsync(car);
 
             return Ok(result);
         }
@@ -152,55 +152,3 @@ namespace RentACarApp.Controllers
     }
 
 }
-
-
-//[HttpGet("{carId:int}/Images")]
-//public async Task<IActionResult> GetCarImage([FromRoute] int carId)
-//{
-//    var car = await carService.GetCarImageByIdAsync(carId);
-
-//    if (car.Images.Any())
-//    {
-//        var images = car.Images.OrderBy(e => e.Id).ToList();
-
-//        var fileResponses = new List<FileContentResult>();
-
-//        foreach (var image in images)
-//        {
-//            var fileResponse = File(image.Bytes, "image/jpg", image?.Description);
-//            fileResponses.Add(fileResponse);
-//        }
-
-//        return fileResponses;
-//    }
-
-//    return Ok();
-//}
-
-
-
-//[HttpGet("{carId:int}/Images")]
-//public async Task<IActionResult> GetCarImage([FromRoute] int carId)
-//{
-//    var car = await carService.GetCarImageByIdAsync(carId);
-
-//    if (car.Images.Any())
-//    {
-//        var images = car.Images.OrderBy(e => e.Id).ToList();
-
-//        var fileResponses = new List<object>();
-
-//        foreach (var image in images)
-//        {
-//            var base64string = Convert.ToBase64String(image.Bytes);
-//            var imageResponse = new Image
-//            {
-//                Description = image.Description,
-//            }
-//                }
-
-//        return fileResponses;
-//    }
-
-//    return Ok();
-//}

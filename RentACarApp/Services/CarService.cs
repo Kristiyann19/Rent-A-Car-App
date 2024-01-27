@@ -4,6 +4,7 @@ using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
+using System.Linq.Expressions;
 using System.Security.Claims;
 
 namespace RentACarApp.Services
@@ -106,9 +107,6 @@ namespace RentACarApp.Services
             }
           
         }
-
-
-
 
 
         public async Task<IEnumerable<Car>> GetAllCarsAsync(int page, int pageSize)
@@ -240,54 +238,54 @@ namespace RentACarApp.Services
 
         }
 
-        public async Task<List<Car>> SeachInCarAsync(SearchCarDto car)
+   
+
+        public async Task<List<Car>> SearchInCarAsync(SearchCarDto car)
         {
             IQueryable<Car> query = context.Cars;
 
-            if (!string.IsNullOrWhiteSpace(car.Make))
-            {
-                query = query.Where(x => x.Make.ToLower().Contains(car.Make.Trim().ToLower()));
-            }
+            query = ApplyFilter(query,
+                                !string.IsNullOrWhiteSpace(car.Make),
+                                x => x.Make.ToLower().Contains(car.Make.Trim().ToLower()));
 
-            if (!string.IsNullOrWhiteSpace(car.Model))
-            {
-                query = query.Where(x => x.Model.ToLower().Contains(car.Model.ToLower().Trim()));
-            }
+            query = ApplyFilter(query,
+                                !string.IsNullOrWhiteSpace(car.Model),
+                                x => x.Model.ToLower().Contains(car.Model.ToLower().Trim()));
 
-            if (car.Year != 0)
-            {
-                query = query.Where(x => x.Year == car.Year);
-            }
-            //FIX
-            if (car.Price != 0)
-            {
-                query = query.GroupBy(x => x.Price).Select(car => car.Where(x => x.Price == car.Max(y => y.Price)).First());
-            }
+            query = ApplyFilter(query,
+                                car.Year != 0,
+                                x => x.Year == car.Year);
 
-            if (car.HorsePower != 0)
-            {
-                query = query.Where(x => x.HorsePower == car.HorsePower);
-            }
+            query = ApplyFilter(query,
+                                car.Price != 0,
+                                x => x.Price == query.Max(y => y.Price));
 
-            if (car.Engine != null)
-            {
-                query = query.Where(x => x.Engine == car.Engine);
-            }
-            if (car.Category != null)
-            {
-                query = query.Where(x => x.Category == car.Category);
-            }
-            if (car.Region != null)
-            {
-                query = query.Where(x => x.Region == car.Region);
-            }
-            if (car.Transmission != null)
-            {
-                query = query.Where(x => x.Transmission == car.Transmission);
-            }
-            //TODO: Add more later
+            query = ApplyFilter(query,
+                                car.HorsePower != 0,
+                                x => x.HorsePower == car.HorsePower);
+
+            query = ApplyFilter(query,
+                                car.Engine != null,
+                                x => x.Engine == car.Engine);
+
+            query = ApplyFilter(query,
+                                car.Category != null,
+                                x => x.Category == car.Category);
+
+            query = ApplyFilter(query,
+                                car.Region != null,
+                                x => x.Region == car.Region);
+
+            query = ApplyFilter(query,
+                                car.Transmission != null,
+                                x => x.Transmission == car.Transmission);
 
             return await query.ToListAsync();
+        }
+
+        private IQueryable<Car> ApplyFilter(IQueryable<Car> query, bool condition, Expression<Func<Car, bool>> predicate)
+        {
+            return condition ? query.Where(predicate) : query;
         }
     }
 }

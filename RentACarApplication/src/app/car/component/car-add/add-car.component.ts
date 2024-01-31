@@ -2,8 +2,8 @@ import { Component } from "@angular/core";
 import { CarDto } from "../../dtos/car.dto";
 import { CarService } from "../../service/car.service";
 import { AddCarDto } from "../../dtos/add-car.dto";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CarImage } from "../../dtos/image.dto";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-car',
@@ -22,7 +22,7 @@ export class AddCarComponent{
   currentYear = new Date().getFullYear();
   images: CarImage[]
 
-  constructor(private carService: CarService){   }
+  constructor(private carService: CarService, private router: Router){   }
 
   handleImageUpload(event: any): void {
     this.selectedImages = event.target.files;
@@ -55,6 +55,7 @@ export class AddCarComponent{
     this.carService.addCar(formData).subscribe(
       (response) => {
         console.log('Car added successfully', response);
+        this.router.navigate(['']);
       },
       (error) => {
         

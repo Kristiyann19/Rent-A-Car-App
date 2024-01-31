@@ -33,7 +33,6 @@ export class RegisterComponent {
         this.registerService.register(registerDto)
           .subscribe(
             () => {
-              debugger;
               console.log('User registered successfully');
               // this.registerService.sendConfirmationEmail(this.user.email)
               this.router.navigate(['/login'])

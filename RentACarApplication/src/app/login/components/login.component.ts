@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../user/service/user.service';
 import { Subject } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CurrentUserDto } from '../../user/dtos/current-user.dto';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   user: LoginDto = { userName: '',  password: '' }; 
   subject = new Subject<number>()
-
   form: FormGroup;
   serverErrors: any = {};
   submitted = false;
@@ -37,6 +37,9 @@ export class LoginComponent {
             localStorage.setItem('access_token', response.token);
             this.loginService.setIsLoggedIn(true); 
             this.userService.getCurrentUser();
+            if (this.userService.currentUserDto.roleId == 3){
+              this.router.navigate(['admin'])
+            }
             this.router.navigate(['']);
           }
         },
@@ -46,4 +49,6 @@ export class LoginComponent {
         }
       );
  }
+
+
 }

@@ -124,7 +124,6 @@ namespace RentACarApp.Services
 
         }
 
-       
 
     }
 }

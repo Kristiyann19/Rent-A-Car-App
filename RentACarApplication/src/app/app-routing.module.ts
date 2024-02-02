@@ -14,6 +14,8 @@ import { UpdateCarComponent } from './car/component/car-update/update-car.compon
 import { ProfileComponent } from './user/components/profile.component';
 import { UpdateUserComponent } from './user/components/update-user.component';
 import { ChatComponent } from './chat/chat.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -28,7 +30,8 @@ const routes: Routes = [
   {path: 'updatecar/:id', component: UpdateCarComponent},
   {path: 'profile', component:ProfileComponent},
   {path: 'updateuser', component:UpdateUserComponent},
-  {path: 'chatHub', component:ChatComponent}
+  {path: 'chatHub', component:ChatComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]}
 
 ];
 

@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'profile', component:ProfileComponent},
   {path: 'updateuser', component:UpdateUserComponent},
   {path: 'chatHub', component:ChatComponent},
-  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]}
+  {path: 'admin', component: AdminComponent}
 
 ];
 

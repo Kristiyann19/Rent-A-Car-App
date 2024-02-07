@@ -1,9 +1,10 @@
 
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@microsoft/signalr";
-import { Observable } from "rxjs";
 import { CarService } from "../car/service/car.service";
 import { UserService } from "../user/service/user.service";
+import { UserDto } from "../user/dtos/user.dto";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { AdminService } from "./admin.service";
 
 @Component({
   selector: 'app-admin',
@@ -11,9 +12,26 @@ import { UserService } from "../user/service/user.service";
 })
 
 export class AdminComponent  implements OnInit {
-  constructor(private http: HttpClient, public carService: CarService, public userService: UserService) {}
+  users: UserDto[] = [];
+  localStorage: Storage;
+  constructor( public carService: CarService, public userService: UserService, public adminService: AdminService) {
+
+  }
 
   ngOnInit(): void {
-    
+    this.getAllUsers();
   }
+
+  getAllUsers() {
+    return this.userService.getAll().subscribe((result: UserDto[]) => {
+      this.users = result;
+    });
+  }
+
+  delete(id){
+    return this.adminService.deleteUser(id).subscribe(() => {
+      window.location.reload();
+    });
+  }
+
 }

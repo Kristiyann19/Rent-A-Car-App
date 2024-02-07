@@ -1,287 +1,227 @@
 <section style="background-color: #eee;">
   <div class="container  py-5">
-    <div class="card">
-      <div class="row">
-        <h4 class="title">
-          Въвеждане на описанието на Автомобилa</h4>
+    <form (ngSubmit)="onSubmit()"
+          #addForm="ngForm">
+      <div class="card">
+        <div class="row">
+          <h4 class="title">
+            Въвеждане на описанието на Автомобилa</h4>
 
-        <div class="col-sm-4">
-          <input type="text"
-                 class="form-control"
-                 [(ngModel)]="car.make"
-                 name="make"
-                 required
-                 maxlength="30"
-                 minlength="2"
-                 #model="ngModel"
-                 placeholder="Марка">
-        </div>
-        <div *ngIf="submitted && make.errors?.['required']"
-             class="text-danger">
-          Моделът е задължителен.
-        </div>
+          <div class="col-sm-4">
+            <input type="text"
+                   class="form-control"
+                   [(ngModel)]="car.make"
+                   name="make"
+                   required
+                   maxlength="30"
+                   minlength="2"
+                   #model="ngModel"
+                   placeholder="Марка">
+          </div>
 
-        <div class="col-sm-4">
-          <input type="text"
-                 class="form-control"
-                 [(ngModel)]="car.model"
-                 name="model"
-                 required
-                 maxlength="30"
-                 minlength="2"
-                 placeholder="Модел"
-                 #make="ngModel">
-        </div>
-        <span *ngIf="submitted && model.errors?.['required']"
-              class="text-danger">
-          Марката е задължителна.
-        </span>
+          <div class="col-sm-4">
+            <input type="text"
+                   class="form-control"
+                   [(ngModel)]="car.model"
+                   name="model"
+                   required
+                   maxlength="30"
+                   minlength="2"
+                   placeholder="Модел"
+                   #make="ngModel">
+          </div>
 
-        <div class="col-sm-4">
-          <input type="number"
-                 class="form-control"
-                 [(ngModel)]="car.year"
-                 name="year"
-                 required
-                 min="1940"
-                 max="{{currentYear}}"
-                 #year="ngModel"
-                 placeholder="Година">
-        </div>
-        <div *ngIf="submitted && year.errors?.['required']"
-             class="text-danger">
-          Годината е задължителен.
-        </div>
-        <div *ngIf="submitted && year.errors?.['min'] || submitted && year.errors?.['max']"
-             class="text-danger">
-          Годината трябва да бъде между 1940 и {{ currentYear }}.
-        </div>
+          <div class="col-sm-4">
+            <input type="number"
+                   class="form-control"
+                   [(ngModel)]="car.year"
+                   name="year"
+                   required
+                   min="1940"
+                   max="{{currentYear}}"
+                   #year="ngModel"
+                   placeholder="Година">
+          </div>
 
-        <div class="col-sm-4">
-          <input type="number"
-                 class="form-control"
-                 [(ngModel)]="car.price"
-                 name="price"
-                 required
-                 min="1"
-                 max="100000"
-                 #price="ngModel"
-                 placeholder="Цена">
-        </div>
-        <div *ngIf="submitted && price.errors?.['required']"
-             class="text-danger">
-          Цената е задължителна.
-        </div>
-        <div *ngIf="submitted && price.errors?.['min'] || submitted &&  price.errors?.['max']"
-             class="text-danger">
-          Нереална цена.
-        </div>
+          <div *ngIf="submitted && year.errors?.['min'] || submitted && year.errors?.['max']"
+               class="text-danger">
+            Годината трябва да бъде между 1940 и {{ currentYear }}.
+          </div>
 
-        <div class="col-sm-4">
-          <input type="number"
-                 class="form-control"
-                 [(ngModel)]="car.horsePower"
-                 name="horsePower"
-                 required
-                 max="2500"
-                 #horsePower="ngModel"
-                 placeholder="Коне">
-        </div>
-        <div *ngIf="submitted && horsePower.errors?.['required']"
-             class="text-danger">
-          Конските сили са задължителни.
-        </div>
-        <div *ngIf="submitted && horsePower.errors?.['max']"
-             class="text-danger">
-          Конските сили са невалидни.
-        </div>
+          <div class="col-sm-4">
+            <input type="number"
+                   class="form-control"
+                   [(ngModel)]="car.price"
+                   name="price"
+                   required
+                   min="1"
+                   max="100000"
+                   #price="ngModel"
+                   placeholder="Цена">
+          </div>
 
-        <div class="col-sm-4">
-          <input type="text"
-                 class="form-control"
-                 [(ngModel)]="car.color"
-                 name="color"
-                 required
-                 max="40"
-                 #color="ngModel"
-                 placeholder="Цвят">
-        </div>
-        <div *ngIf="submitted && color.errors?.['required']"
-             class="text-danger">
-          Цвета е задължителен
-        </div>
-
-        <div class="col-sm-4">
-          <input type="number"
-                 class="form-control"
-                 [(ngModel)]="car.cubicCapacity"
-                 name="cubicCapacity"
-                 required
-                 max="10000"
-                 #cubicCapacity="ngModel"
-                 placeholder="Кубатура">
-        </div>
-        <div *ngIf="submitted && cubicCapacity.errors?.['required']"
-             class="text-danger">
-          Кубатурата е задължителна
-        </div>
-        <div *ngIf="submitted && cubicCapacity.errors?.['max']"
-             class="text-danger">
-          Невалидна кубатура.
-        </div>
-        <div class="col-sm-4">
-          <input type="number"
-                 class="form-control"
-                 [(ngModel)]="car.mileage"
-                 name="mileage"
-                 required
-                 #mileage="ngModel"
-                 placeholder="Пробег">
-        </div>
-        <div *ngIf="submitted && mileage.errors?.['required']"
-             class="text-danger">
-          Пробегът е задължителен
-        </div>
+          <div class="col-sm-4">
+            <input type="number"
+                   class="form-control"
+                   [(ngModel)]="car.horsePower"
+                   name="horsePower"
+                   required
+                   max="2500"
+                   #horsePower="ngModel"
+                   placeholder="Коне">
+          </div>
 
 
-        <div class="col-sm-4">
-          <select [(ngModel)]="car.engine"
-                  name="engine"
-                  required
-                  #engine="ngModel"
-                  class="form-select">
-            <option [ngValue]="1"> Бензинов</option>
-            <option [ngValue]="2">Дизелов</option>
-            <option [ngValue]="3">Електрически</option>
-          </select>
-        </div>
-        <div *ngIf="submitted && engine.errors?.['required']"
-             class="text-danger">
-          Двигателят е задължителен
-        </div>
+          <div class="col-sm-4">
+            <input type="text"
+                   class="form-control"
+                   [(ngModel)]="car.color"
+                   name="color"
+                   required
+                   max="40"
+                   #color="ngModel"
+                   placeholder="Цвят">
+          </div>
 
-        <div class="col-sm-4">
-          <select [(ngModel)]="car.category"
-                  name="category"
-                  required
-                  #category="ngModel"
-                  class="form-select">
-            <option [ngValue]="1"> Седан</option>
-            <option [ngValue]="2">Хечбек</option>
-            <option [ngValue]="3">SUV</option>
-            <option [ngValue]="4">Купе</option>
-            <option [ngValue]="5">Миниван</option>
-            <option [ngValue]="6">Пикап</option>
-            <option [ngValue]="7">Спортна кола</option>
-            <option [ngValue]="8">Кабриолет</option>
-            <option [ngValue]="9">Комби</option>
-          </select>
-        </div>
-        <div *ngIf="submitted && color.errors?.['required']"
-             class="text-danger">
-          Категорията е задължителена
-        </div>
 
-        <div class="col-sm-4">
-          <select [(ngModel)]="car.transmission"
-                  name="transmission"
-                  required
-                  #transmission="ngModel"
-                  class="form-select">
-            <option></option>
-            <option [ngValue]="1"> Автоматична</option>
-            <option [ngValue]="2">Ръчна</option>
-            <option [ngValue]="3">Семи-автоматична</option>
-          </select>
-        </div>
-        <div *ngIf="submitted && transmission.errors?.['required']"
-             class="text-danger">
-          Скоростната кутия е задължителена
-        </div>
+          <div class="col-sm-4">
+            <input type="number"
+                   class="form-control"
+                   [(ngModel)]="car.cubicCapacity"
+                   name="cubicCapacity"
+                   required
+                   max="10000"
+                   #cubicCapacity="ngModel"
+                   placeholder="Кубатура">
+          </div>
 
-        <div class="col-sm-4">
-          <select [(ngModel)]="car.region"
-                  name="region"
-                  required
-                  #region="ngModel"
-                  class="form-select">
-            <option></option>
-            <option value="1">Благоевград</option>
-            <option value="2">Бургас</option>
-            <option value="3">Варна</option>
-            <option value="4">Велико Търново</option>
-            <option value="5">Видин</option>
-            <option value="6">Враца</option>
-            <option value="7">Габрово</option>
-            <option value="8">Добрич</option>
-            <option value="9">Дупница</option>
-            <option value="10">Кърджали</option>
-            <option value="11">Кюстендил</option>
-            <option value="12">Ловеч</option>
-            <option value="13">Монтана</option>
-            <option value="14">Пазарджик</option>
-            <option value="15">Перник</option>
-            <option value="16">Плевен</option>
-            <option value="17">Пловдив</option>
-            <option value="18">Разград</option>
-            <option value="19">Русе</option>
-            <option value="20">Силистра</option>
-            <option value="21">Сливен</option>
-            <option value="22">Смолян</option>
-            <option value="23">София</option>
-            <option value="24">Стара Загора</option>
-            <option value="25">Търговище</option>
-            <option value="26">Хасково</option>
-            <option value="27">Шумен</option>
-            <option value="28">Ямбол</option>
-            <option value="29">Извън страната</option>
-          </select>
-        </div>
-        <div *ngIf="submitted && region.errors?.['required']"
-             class="text-danger">
-          Регионът е задължителен
-        </div>
-        <div class="col-sm-4">
-          <textarea type="text"
-                    class="form-control"
-                    #description="ngModel"
-                    [(ngModel)]="car.description"
+          <div class="col-sm-4">
+            <input type="number"
+                   class="form-control"
+                   [(ngModel)]="car.mileage"
+                   name="mileage"
+                   required
+                   #mileage="ngModel"
+                   placeholder="Пробег">
+          </div>
+
+
+          <div class="col-sm-4">
+            <select [(ngModel)]="car.engine"
+                    name="engine"
                     required
-                    maxlength="3000"
-                    name="description"
-                    style="max-height: 200px;"
-                    placeholder="Описание">
+                    #engine="ngModel"
+                    class="form-select">
+              <option [ngValue]="1"> Бензинов</option>
+              <option [ngValue]="2">Дизелов</option>
+              <option [ngValue]="3">Електрически</option>
+            </select>
+          </div>
+
+          <div class="col-sm-4">
+            <select [(ngModel)]="car.category"
+                    name="category"
+                    required
+                    #category="ngModel"
+                    class="form-select">
+              <option [ngValue]="1"> Седан</option>
+              <option [ngValue]="2">Хечбек</option>
+              <option [ngValue]="3">SUV</option>
+              <option [ngValue]="4">Купе</option>
+              <option [ngValue]="5">Миниван</option>
+              <option [ngValue]="6">Пикап</option>
+              <option [ngValue]="7">Спортна кола</option>
+              <option [ngValue]="8">Кабриолет</option>
+              <option [ngValue]="9">Комби</option>
+            </select>
+          </div>
+
+          <div class="col-sm-4">
+            <select [(ngModel)]="car.transmission"
+                    name="transmission"
+                    required
+                    #transmission="ngModel"
+                    class="form-select">
+              <option [ngValue]="1"> Автоматична</option>
+              <option [ngValue]="2">Ръчна</option>
+              <option [ngValue]="3">Семи-автоматична</option>
+            </select>
+          </div>
+
+          <div class="col-sm-4">
+            <select [(ngModel)]="car.region"
+                    name="region"
+                    required
+                    #region="ngModel"
+                    class="form-select">
+              <option value="1">Благоевград</option>
+              <option value="2">Бургас</option>
+              <option value="3">Варна</option>
+              <option value="4">Велико Търново</option>
+              <option value="5">Видин</option>
+              <option value="6">Враца</option>
+              <option value="7">Габрово</option>
+              <option value="8">Добрич</option>
+              <option value="9">Дупница</option>
+              <option value="10">Кърджали</option>
+              <option value="11">Кюстендил</option>
+              <option value="12">Ловеч</option>
+              <option value="13">Монтана</option>
+              <option value="14">Пазарджик</option>
+              <option value="15">Перник</option>
+              <option value="16">Плевен</option>
+              <option value="17">Пловдив</option>
+              <option value="18">Разград</option>
+              <option value="19">Русе</option>
+              <option value="20">Силистра</option>
+              <option value="21">Сливен</option>
+              <option value="22">Смолян</option>
+              <option value="23">София</option>
+              <option value="24">Стара Загора</option>
+              <option value="25">Търговище</option>
+              <option value="26">Хасково</option>
+              <option value="27">Шумен</option>
+              <option value="28">Ямбол</option>
+              <option value="29">Извън страната</option>
+            </select>
+          </div>
+
+          <div class="col-sm-4">
+            <textarea type="text"
+                      class="form-control"
+                      #description="ngModel"
+                      [(ngModel)]="car.description"
+                      required
+                      maxlength="3000"
+                      name="description"
+                      style="max-height: 200px;"
+                      placeholder="Описание">
 
           </textarea>
-        </div>
-        <div *ngIf="submitted && description.errors?.['required']"
-             class="text-danger">
-          Описанието е задължителено
-        </div>
-        <div class="col-sm-4">
-          <label for="images">Снимки:</label>
-          <input type="file"
-                 id="images"
-                 (change)="handleImageUpload($event)"
-                 multiple
-                 required
-                 accept="image/*"
-                 required>
-        </div>
+          </div>
 
-        <div class="col-sm-10">
-          <button (click)="onSubmit()"
-                  class="btn btn-primary">Добави</button>
-          <div *ngIf="addError"
-               class="text-danger mt3">Грешка при добавянето на кола.</div>
-          <button [routerLink]="['']"
-                  class="btn btn-danger">Откажи</button>
+          <div class="col-sm-4">
+            <label for="images">Снимки:</label>
+            <input type="file"
+                   id="images"
+                   (change)="handleImageUpload($event)"
+                   multiple
+                   required
+                   accept="image/*">
+          </div>
+
+          <div class="col-sm-10">
+            <button type="submit"
+                    class="btn btn-primary"
+                    [disabled]="!addForm.valid">Добави</button>
+
+            <button [routerLink]="['']"
+                    class="btn btn-danger">Откажи</button>
+          </div>
+
         </div>
       </div>
-    </div>
-
-
-
+    </form>
   </div>
 
 </section>

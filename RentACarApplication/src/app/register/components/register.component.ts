@@ -34,7 +34,7 @@ export class RegisterComponent {
           .subscribe(
             () => {
               console.log('User registered successfully');
-              // this.registerService.sendConfirmationEmail(this.user.email)
+              this.registerService.sendConfirmationEmail(this.user.email)
               this.router.navigate(['/login'])
             },
             (error) => {

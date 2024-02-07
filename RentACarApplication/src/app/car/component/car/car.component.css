@@ -7,8 +7,34 @@
 .custom-card:hover {
   transition:   0.15s;
   transform: scale(1.02); 
+   border: 2px solid #ccc;
+  box-shadow: 5px 5px 10px 2px rgba(172, 172, 172, 0.8);
 }
 
+.card{
+  box-shadow: 5px 5px 10px 2px rgba(172, 172, 172, 0.8);
+}
+
+input[type=text],[type=number] {
+
+  border: 2px solid #ccc;
+  
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+label[for=region]{
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+select{
+  border: 2px solid #ccc;
+}
 
 .row{
   margin-left: 10px;
@@ -16,6 +42,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 .container{
   margin-top:20px;
 }

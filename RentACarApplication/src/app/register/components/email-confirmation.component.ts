@@ -16,21 +16,22 @@ export class EmailConfirmationComponent implements OnInit {
     private registrationService: RegisterService
   ) { }
 
-  ngOnInit(): void {
-    const token = this.route.snapshot.queryParams['access_token'];
+  ngOnInit(): void 
+  {
+    // const token = this.route.snapshot.queryParams['access_token'];
 
-    if (token) {
-      this.registrationService.confirmEmail(token).subscribe(
-        () => {
-          this.message = 'Email confirmed successfully';
-        },
-        (error) => {
-          console.error('Email confirmation failed:', error);
-          this.message = 'Email confirmation failed';
-        }
-      );
-    } else {
-      this.message = 'Invalid token';
-    }
+    // if (token) {
+    //   this.registrationService.confirmEmail(token).subscribe(
+    //     () => {
+    //       this.message = 'Email confirmed successfully';
+    //     },
+    //     (error) => {
+    //       console.error('Email confirmation failed:', error);
+    //       this.message = 'Email confirmation failed';
+    //     }
+    //   );
+    // } else {
+    //   this.message = 'Invalid token';
+    // }
   }
 }

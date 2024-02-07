@@ -68,8 +68,7 @@
         </select>
       </div>
       <div class="col-sm-4">
-        <label for="region"
-               class="bold-label">Вземи колата от:</label>
+        <label for="region">Вземи колата от:</label>
         <select [(ngModel)]="searchCar.region"
                 class="form-control"
                 id="region">
@@ -145,6 +144,7 @@
       <div class="card-body">
         <h5 class="card-title">{{car.make}} {{car.model}}</h5>
       </div>
+
       <ul class="list-group list-group-flush">
         <li class="list-group-item bold-label"> {{car.price}}лв./ден</li>
         <li class="list-group-item bold-label">Регион: {{ regionEnumLocalization[car?.region] }}</li>
@@ -168,6 +168,7 @@
                 class="btn btn-danger"
                 (click)="onDeleteModal(car.id)">Изтрий</button>
       </div>
+      <hr>
     </div>
   </div>
 </div>

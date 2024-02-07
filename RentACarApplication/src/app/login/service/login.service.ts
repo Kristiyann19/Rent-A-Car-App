@@ -36,4 +36,5 @@ export class LoginService {
     this.isLoggedIn = this.localStorage?.getItem('access_token') ? true : false;
     return this.isLoggedIn; 
   }
+
 }

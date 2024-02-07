@@ -9,7 +9,7 @@
         <a class="nav-link"
            [routerLink]="['/becomeagent']">Стани Дилър на Коли</a>
       </li>
-      <li *ngIf="userService.currentUserDto?.roleId === 2"
+      <li *ngIf="userService.currentUserDto?.roleId === 2 || 3"
           class="nav-item">
         <a class="nav-link"
            [routerLink]="['/add']">Добави обява</a>

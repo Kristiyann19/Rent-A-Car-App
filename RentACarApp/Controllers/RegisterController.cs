@@ -23,15 +23,15 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
-        [HttpGet]
-        [Route("confirm-email")]
-        public IActionResult ConfirmEmail(string token)
-        {
-            registerService.ConfirmEmailAddress(token);
+        //[HttpGet]
+        //[Route("confirm-email")]
+        //public IActionResult ConfirmEmail(string token)
+        //{
+        //    registerService.ConfirmEmailAddress(token);
 
 
-            return Ok("Email confirmed successfully");
-        }
+        //    return Ok("Email confirmed successfully");
+        //}
 
 
     }

@@ -3,6 +3,7 @@ import { UserService } from '../service/user.service';
 import { AgentDto } from '../dtos/become-agent.dto';
 import { Router } from '@angular/router';
 import { CurrentUserDto } from '../dtos/current-user.dto';
+import { UserDto } from '../dtos/user.dto';
 
 
 @Component({
@@ -14,16 +15,16 @@ export class UserComponent  {
   constructor(private router: Router, private userService: UserService) { }
   becomeError: Boolean = false;
   agent: AgentDto = new AgentDto();
- 
+  users: UserDto[] = [];
   currentUser: CurrentUserDto = new CurrentUserDto();
 
+  
   become() : void {
     this.userService.becomeAgent(this.agent).subscribe(
       
       (response) => {
         console.log('User became agent successfully!', response)
-        this.router.navigate(['']);        
-      
+        this.router.navigate(['']);    
         
       },
       (error) => {
@@ -33,7 +34,10 @@ export class UserComponent  {
     );
   }
 
-  isAdmin() : boolean {
-    return this.currentUser && this.currentUser.roleId === 3;
-   }
+  allUsers() {
+    this.userService.getAll().subscribe((result: UserDto[]) => {
+      this.users = result;
+    });
+  }
+
 }

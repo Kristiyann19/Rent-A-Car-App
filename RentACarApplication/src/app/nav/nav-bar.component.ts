@@ -14,6 +14,7 @@ export class NavBarComponent {
     return this.loginService.getIsLoggedIn();
   }
 
+
   logout(): void {
     this.loginService.logout(); 
   }

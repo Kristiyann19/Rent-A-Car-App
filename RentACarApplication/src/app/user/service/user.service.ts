@@ -11,7 +11,6 @@ import { CurrentUserDto } from '../dtos/current-user.dto';
 export class UserService {
     agentDto: AgentDto;
     currentUserDto: CurrentUserDto = new CurrentUserDto();
-    private isAgent = false;
     localStorage: Storage;
 
     constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document) { 

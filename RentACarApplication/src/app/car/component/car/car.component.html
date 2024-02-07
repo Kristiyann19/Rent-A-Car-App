@@ -158,13 +158,13 @@
                 [routerLink]="['/car',car.id]">Детайли</button>
 
         <button class="btn btn-primary"
-                *ngIf="car.userId === userService.currentUserDto?.id"
+                *ngIf="car.userId === userService.currentUserDto?.id || userService.currentUserDto?.roleId == 3"
                 [routerLink]="['/updatecar', car.id]">Редактирай</button>
 
         <button class="btn text-danger"
                 *ngIf="car.isRented && userService.currentUserDto">Колата е наета</button>
 
-        <button *ngIf="car.userId === userService.currentUserDto?.id"
+        <button *ngIf="car.userId === userService.currentUserDto?.id || userService.currentUserDto?.roleId == 3"
                 class="btn btn-danger"
                 (click)="onDeleteModal(car.id)">Изтрий</button>
       </div>

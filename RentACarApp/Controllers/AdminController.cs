@@ -45,14 +45,7 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> AllCars([FromQuery] int page = 1, [FromQuery] int pageSize = 12)
-        {
-            var cars = await carService.GetAllCarsAsync(page, pageSize);
-
-
-            return Ok(cars);
-        }
+      
 
         [HttpGet]
         [Route("Count")]
@@ -60,13 +53,6 @@ namespace RentACarApp.Controllers
         {
             var totalCars = await carService.GetCarsCount();
             return Ok(totalCars);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddCar([FromForm] AddCarDto car) //changed
-        {
-            await carService.AddCarAsync(HttpContext, car);
-            return Ok();
         }
 
 

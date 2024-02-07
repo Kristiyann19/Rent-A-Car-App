@@ -4,9 +4,6 @@ using RentACarApp.Database.Models;
 using RentACarApp.Dtos;
 using System.Net.Mail;
 using System.Net;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Mvc;
-
 
 namespace RentACarApp.Services
 {
@@ -20,7 +17,6 @@ namespace RentACarApp.Services
             context = _context;
             configuration = _configuration;
         }
-
 
         public void Register(RegisterDto register)
         {
@@ -38,7 +34,7 @@ namespace RentACarApp.Services
 
             context.Users.Add(user);
             context.SaveChanges();
-            //SendConfirmationEmail(user.Email, user.EmailConfirmationToken);
+            SendConfirmationEmail(user.Email, user.EmailConfirmationToken);
         }
 
 
@@ -49,7 +45,6 @@ namespace RentACarApp.Services
             var smtpUsername = configuration["EmailSettings:Username"];
             var smtpPassword = configuration["EmailSettings:Password"];
             var senderEmail = configuration["EmailSettings:SenderEmail"];
-
 
             var confirmationLink = $"http://localhost:4200/confirm-email?token={token}";
 
@@ -68,6 +63,7 @@ namespace RentACarApp.Services
                 smtpClient.Send(mailMessage);
             }
         }
+            
 
         public void ConfirmEmailAddress(string token)
         {
@@ -76,17 +72,13 @@ namespace RentACarApp.Services
             if (user != null && !user.IsEmailConfirmed)
             {
 
-                user.EmailConfirmationToken = null; // Mark the token as used
-                user.IsEmailConfirmed = true; // Add a property to your User model if needed
+                user.EmailConfirmationToken = null; 
+                user.IsEmailConfirmed = true; 
 
                 context.SaveChanges();
 
             }
-
-
         }
-
-
     }
 }
 

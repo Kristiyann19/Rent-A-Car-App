@@ -1,3 +1,63 @@
+<section style="background-color: #eee;">
+     <div class="container py-5">
+
+          <div class="container">
+               <div class="card mb-1">
+                    <div class="card-body">
+                         <h2>Попълнете полетата, за да станете агент.</h2>
+                         <form (ngSubmit)="become()"
+                               #becomeForm="ngForm">
+
+
+                              <div class="form-group">
+                                   <label for="firstName">Име:</label>
+                                   <input type="text"
+                                          id="firstName"
+                                          [(ngModel)]="agent.firstName"
+                                          name="firstName"
+                                          class="form-control"
+                                          maxlength="30"
+                                          minlength="2"
+                                          required>
+                              </div>
+
+                              <div class="form-group">
+                                   <label for="lastName">Фамилия:</label>
+                                   <input type="text"
+                                          id="lastName"
+                                          [(ngModel)]="agent.lastName"
+                                          name="lastName"
+                                          maxlength="30"
+                                          minlength="2"
+                                          class="form-control"
+                                          required>
+                              </div>
+
+                              <div class="form-group">
+                                   <label for="phoneNumber">Телефонен номер:</label>
+                                   <input type="text"
+                                          id="phoneNumber"
+                                          [(ngModel)]="agent.phoneNumber"
+                                          name="phoneNumber"
+                                          class="form-control"
+                                          pattern="[^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$]*"
+                                          required>
+                              </div>
+
+                              <button type="submit"
+                                      class="btn btn-primary"
+                                      [disabled]="!becomeForm.valid">Стани Дилър на Коли</button>
+
+                              <button [routerLink]="['']"
+                                      class="btn btn-danger">Откажи</button>
+                         </form>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+</section>
+<!--   
 <form (ngSubmit)="become()"
       class="container">
        <h2>Стани Дилър на Коли, за да пускаш обяви!</h2>
@@ -52,4 +112,4 @@
 
 </form>
 
-<!-- pattern="[^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$]*" -->
+pattern="[^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$]*" -->

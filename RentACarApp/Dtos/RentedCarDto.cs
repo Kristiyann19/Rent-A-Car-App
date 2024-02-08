@@ -13,5 +13,7 @@
         public int HorsePower{ get; set; }
 
         public int Year { get; set; }
+
+        public bool isRented { get; set; }
     }
 }

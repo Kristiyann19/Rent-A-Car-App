@@ -25,17 +25,6 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
-        [HttpPut]
-        [Route("confirm-email")]
-        public IActionResult ConfirmEmail([FromQuery] string token)
-        {
-            emailService.ConfirmEmailAddress(token);
-
-
-            return Ok("Email confirmed successfully");
-        }
-
-
     }
 
 

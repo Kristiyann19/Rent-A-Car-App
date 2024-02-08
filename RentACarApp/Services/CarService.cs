@@ -164,7 +164,8 @@ namespace RentACarApp.Services
                     Model = c.Car.Model,
                     Year = c.Car.Year,
                     HorsePower = c.Car.HorsePower,
-                    Price = c.Car.Price,
+                    isRented = c.Car.isRented,
+                    Price = c.Car.Price
 
                 }).ToListAsync();
         }

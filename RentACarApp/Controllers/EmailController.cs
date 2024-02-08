@@ -16,8 +16,8 @@ namespace RentACarApp.Controllers
 
 
         [HttpPost]
-        [Route("confirm-email")]
-        public IActionResult ConfirmEmail([FromQuery] string token)
+        [Route("confirm")]
+        public IActionResult ConfirmEmail(string token)
         {
             emailService.ConfirmEmailAddress(token);
 

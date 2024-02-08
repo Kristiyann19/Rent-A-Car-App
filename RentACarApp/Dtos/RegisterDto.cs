@@ -18,5 +18,6 @@ namespace RentACarApp.Dtos
 
         public string EmailConfirmationToken { get; set; }
 
+
     }
 }

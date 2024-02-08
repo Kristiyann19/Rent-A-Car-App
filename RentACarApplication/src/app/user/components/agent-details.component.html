@@ -14,10 +14,7 @@
             <h5 class="my-3">
               {{agentDetails?.firstName}} {{agentDetails?.lastName}}</h5>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button"
-                      class="btn btn-primary">Follow</button>
-              <button type="button"
-                      class="btn btn-outline-primary ms-1">Message</button>
+
             </div>
           </div>
         </div>
@@ -83,70 +80,3 @@
 <ng-template #loadingDataSection>
   <loading-section [isLoading]="loadingData"></loading-section>
 </ng-template>
-
-
-
-<!-- <div class="col-lg-4">
-  <div class="card mb-5">
-    <div class="card-body text-center">
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-           alt="avatar"
-           class="rounded-circle img-fluid"
-           style="width: 150px;">
-      <h5 class="my-3">
-        {{agentDetails?.firstName}} {{agentDetails?.lastName}}</h5>
-      <div class="d-flex justify-content-center mb-2">
-        <button type="button"
-                class="btn btn-primary">Follow</button>
-        <button type="button"
-                class="btn btn-outline-primary ms-1">Message</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="card mb-4">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-sm-3">
-        <p class="mb-0">Имейл</p>
-      </div>
-      <div class="col-sm-9">
-        <p class="text-muted mb-0">{{agentDetails?.email}}</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-3">
-        <p class="mb-0">Телефонен номер</p>
-      </div>
-      <div class="col-sm-9">
-        <p class="text-muted mb-0">
-          {{agentDetails?.phoneNumber}}</p>
-      </div>
-    </div>
-    <button class="btn btn-primary"
-            (click)="showCars = !showCars">
-      <span *ngIf="showCars">Скрий</span>
-      <span *ngIf="!showCars">Други обяви на агента</span>
-    </button>
-    <div *ngIf="showCars">
-      <div *ngFor="let car of agentDetails.userCars"
-           class="card"
-           style="width: 18rem;">
-
-
-        <div class="card-body">
-          <h5 class="card-title">{{car.make}} {{car.model}}</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item bold-label"> {{car.price}}лв./ден</li>
-          <li class="list-group-item bold-label">Регион: {{ regionEnumLocalization[car?.region] }}</li>
-        </ul>
-        <button class="btn btn-primary"
-                [routerLink]="['/car',car.id]">детайли</button>
-      </div>
-    </div>
-  </div>
-
-</div> -->

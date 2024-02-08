@@ -9,6 +9,7 @@ import { RegionEnum, RegionEnumLocalization } from "../../../enums/region-enum";
 import { HttpErrorResponse } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { UserService } from "../../../user/service/user.service";
 
 @Component({
   selector: 'app-car-details',
@@ -34,7 +35,7 @@ export class CarDetailsComponent{
 
   imagePaths: SafeResourceUrl[] = [];
 
-  constructor(private route: ActivatedRoute, private carService: CarService, private sanitizer: DomSanitizer) {}
+  constructor(public userService: UserService, private route: ActivatedRoute, private carService: CarService, private sanitizer: DomSanitizer) {}
 
   getCarDetails (id: number): void{
     this.carService.getCarDetails(id)

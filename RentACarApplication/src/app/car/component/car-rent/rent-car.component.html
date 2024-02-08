@@ -1,19 +1,36 @@
 <div class="container">
+  <div *ngIf="rentedCars.length <= 0; else elseBlock">
+    <h3>Не сте наели кола под наем</h3>
+  </div>
+  <ng-template #elseBlock>
+    <h3>Това са колите, които сте взели под наем. Свържете се с дилъра на посочения телефон.</h3>
+  </ng-template>
+
   <div class="row">
     <div *ngFor="let rentCar of rentedCars;  let i = index"
          class="card"
          style="width: 18rem;">
+
+
+      <img [src]="carService.getImageUrl(rentCar.id)"
+           alt="Липсва снимка"
+           class="card-img-top">
+
       <div class="card-body">
         <h5 class="card-title">{{rentCar.make}} {{rentCar.model}}</h5>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Цена: {{rentCar.price}} лв.</li>
-        <li class="list-group-item">Пробег: {{rentCar.mileage}} км.</li>
+        <li class="list-group-item">Мощност: {{rentCar.horsePower}} км.</li>
         <li class="list-group-item">Година: {{rentCar.year}}</li>
         <button class="btn btn-primary"
-                (click)="removeFromRented(i, rentCar.id)">Remove</button>
+                (click)="removeFromRented(i, rentCar.id)">Премахни</button>
+
+        <button class="btn btn-primary"
+                [routerLink]="['/car',rentCar.id]">Детайли</button>
 
       </ul>
     </div>
   </div>
+
 </div>

@@ -3,8 +3,7 @@
   <div class="card">
     <div class="text-center">
       <div class="card-images-container">
-        <div *ngFor="let imagePath of imagePaths"
-             class="card">
+        <div *ngFor="let imagePath of imagePaths">
           <img [src]="imagePath"
                alt="Липсва снимка">
         </div>
@@ -12,17 +11,36 @@
 
       <div class="card-body">
         <h5 class="card-title mt-1">{{car?.make}} {{car?.model}}</h5>
-        <p class="card-text">Цена: {{car?.price}} лева</p>
-        <p class="card-text">Година: {{car?.year}}</p>
-        <p class="card-text">Двигател: {{ engineEnumLocalization[car?.engine]}}</p>
-        <p class="card-text">Категория: {{ categoryEnumLocalization[car?.category]}}</p>
-        <p class="card-text">Скоростна кутия: {{ transmissionEnumLocalization[car?.transmission]}}</p>
-        <p class="card-text">Регион: {{ regionEnumLocalization[car?.region]}}</p>
+        Цена:
+        <p class="card-text"
+           id="price"> {{car?.price}} лв/ден</p>
+        Година:
+        <p class="card-text"> {{car?.year}}</p>
+        Мощност:
+        <p class="card-text">{{car?.horsePower}}</p>
+        Двигател:
+        <p class="card-text"> {{ engineEnumLocalization[car?.engine]}}</p>
+        Скоростна кутия:
+        <p class="card-text"> {{ transmissionEnumLocalization[car?.transmission]}}</p>
+        Категория:
+        <p class="card-text">{{ categoryEnumLocalization[car?.category]}}</p>
+        Регион:
+        <p class="card-text"> {{ regionEnumLocalization[car?.region]}}</p>
+        Пробег:
+        <p class="card-text"> {{car?.mileage}} км.</p>
+        Цвят:
+        <p class="card-text">{{car?.color}} </p>
+        За повече информация за агента:
         <button class="btn btn-primary"
                 [routerLink]="['/agent', car.userId]">Агент</button>
+        Редактирайте обявата си:
+        <button class="btn btn-primary"
+                *ngIf="car.userId === userService.currentUserDto?.id || userService.currentUserDto?.roleId == 3"
+                [routerLink]="['/updatecar', car.id]">Редактирай</button>
       </div>
     </div>
   </div>
+
 </div>
 <ng-template #loadingDataSection>
   <loading-section></loading-section>

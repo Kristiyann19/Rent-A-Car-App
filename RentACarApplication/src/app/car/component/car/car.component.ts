@@ -28,7 +28,6 @@ export class CarComponent {
 
   page = 1;
   pageSize = 12;
-
   totalCarsCount = 0;
 
   constructor(private modalService: NgbModal,  private carService: CarService, private route: ActivatedRoute, public userService: UserService, public adminService: AdminService){}
@@ -75,12 +74,10 @@ export class CarComponent {
         this.cars = data;
         this.totalItems();
       }
+      
     )
   }  
 
-  getImageUrl(carId: number) {
-    return `http://localhost:19999/api/Car/${carId}/Image`
-  }
 
   deleteCarAdmin (id) {
     return this.adminService.deleteCar(id).subscribe(() => {

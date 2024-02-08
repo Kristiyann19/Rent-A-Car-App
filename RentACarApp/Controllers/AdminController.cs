@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.CustomAttributes;
-using RentACarApp.Dtos;
 
 namespace RentACarApp.Controllers
 {
@@ -34,6 +32,7 @@ namespace RentACarApp.Controllers
             await adminService.DeleteUser(userId);
             return Ok();
         }
+          
 
         [HttpDelete("{carId}")]
         public async Task<IActionResult> DeleteCar([FromRoute] int carId)

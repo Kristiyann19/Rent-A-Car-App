@@ -29,6 +29,7 @@ import { UpdateUserComponent } from './user/components/update-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminComponent } from './admin/admin.component';
+import { EmailConfirmationComponent } from './email-confirm/email-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AdminComponent } from './admin/admin.component';
     DeleteConfirmationCarModalComponent,
     PaginationComponent,
     UpdateUserComponent,
-    AdminComponent
+    AdminComponent,
+    EmailConfirmationComponent
   ],
   imports: [
     BrowserModule,

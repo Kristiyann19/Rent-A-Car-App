@@ -22,5 +22,17 @@ namespace RentACarApp.Services
 
             await context.SaveChangesAsync();
         }
+
+        public async Task DeleteCar(int carId)
+        {
+            var car = context.Cars.FirstOrDefault(c => c.Id == carId);
+
+            if (car != null)
+            {
+                context.Cars.Remove(car);
+            }
+
+            await context.SaveChangesAsync();
+        }
     }
 }

@@ -6,7 +6,7 @@ import { CarDetailsComponent } from './car/component/car-details/car-details.com
 import { CarComponent } from './car/component/car/car.component';
 import { AddCarComponent } from './car/component/car-add/add-car.component';
 import { HomeComponent } from './home/home.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { UserComponent } from './user/components/user.component';
 import { AgentDetailsComponent } from './user/components/agent-details.component';
 import { RentCarComponent } from './car/component/car-rent/rent-car.component';
@@ -15,7 +15,7 @@ import { ProfileComponent } from './user/components/profile.component';
 import { UpdateUserComponent } from './user/components/update-user.component';
 import { ChatComponent } from './chat/chat.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminGuard } from './admin.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'profile', component:ProfileComponent},
   {path: 'updateuser', component:UpdateUserComponent},
   {path: 'chatHub', component:ChatComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]}
 
 ];
 

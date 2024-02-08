@@ -15,7 +15,3 @@ export class AdminService{
   }
 
 }
-
-// deleteCar(id: number) {
-//   return this.http.delete<CarDto>(`http://localhost:19999/api/Car/${id}`);
-// }

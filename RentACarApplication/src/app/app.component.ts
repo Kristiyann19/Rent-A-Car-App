@@ -16,7 +16,6 @@ export class AppComponent {
   constructor(
       private router: Router,
       private loginService: LoginService,
-      private userService: UserService
   ) {
        
   }

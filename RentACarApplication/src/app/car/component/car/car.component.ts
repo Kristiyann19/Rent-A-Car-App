@@ -17,13 +17,11 @@ import { RegionEnumLocalization } from "../../../enums/region-enum";
 })
 
 export class CarComponent {
-  
   engineEnumLocalization = EngineEnumLocalization;
   categoryEnumLocalization = CategoryEnumLocalization;
   transmissionEnumLocalization = TransmissionEnumLocalization;
   regionEnumLocalization = RegionEnumLocalization;
   
-
   cars: CarDto[] = [];
   searchCar: CarDto = new CarDto();
 

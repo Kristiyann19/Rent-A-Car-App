@@ -2,6 +2,8 @@
 using System.Net;
 using RentACarApp.Database;
 using RentACarApp.Contracts;
+using AutoMapper;
+using RentACarApp.Dtos;
 
 namespace RentACarApp.Services
 {
@@ -15,7 +17,6 @@ namespace RentACarApp.Services
             context = _context;
             configuration = _configuration;
         }
-
 
         public void SendConfirmationEmail(string recipientEmail, string token)
         {
@@ -45,7 +46,7 @@ namespace RentACarApp.Services
 
 
         public void ConfirmEmailAddress(string token)
-        {
+         {
             var user = context.Users.SingleOrDefault(u => u.EmailConfirmationToken == token);
 
             if (user != null && !user.IsEmailConfirmed)
@@ -58,5 +59,8 @@ namespace RentACarApp.Services
 
             }
         }
+
+
+
     }
 }

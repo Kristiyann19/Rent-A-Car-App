@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
+using System.ComponentModel.DataAnnotations;
 
 namespace RentACarApp.Dtos
 {
@@ -14,6 +15,8 @@ namespace RentACarApp.Dtos
         [Compare(nameof(Password))]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; } = null!;
+
+        public string EmailConfirmationToken { get; set; }
 
     }
 }

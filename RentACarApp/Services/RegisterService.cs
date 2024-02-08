@@ -26,10 +26,12 @@ namespace RentACarApp.Services
                 NormalizedEmail = register.Email.ToLower(),
                 PasswordSalt = PasswordHasher.GenerateSalt(),
                 EmailConfirmationToken = Guid.NewGuid().ToString(),
-                RoleId = 1  
+                RoleId = 1,
+                
             };
             user.Password = PasswordHasher.ComputeHash(register.Password, user.PasswordSalt);
 
+            
             context.Users.Add(user);
             context.SaveChanges();
             emailService.SendConfirmationEmail(user.Email, user.EmailConfirmationToken);

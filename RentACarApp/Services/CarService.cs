@@ -151,31 +151,21 @@ namespace RentACarApp.Services
 
         }    
     
-        public async Task<IEnumerable<Car>> GetRentedCarsAsync (HttpContext httpContext) //DTO
+        public async Task<IEnumerable<RentedCarDto>> GetRentedCarsAsync (HttpContext httpContext) //DTO
         {
             var user = await GetUserDataAsync(httpContext);
 
             return await context.RentalCars
                 .Where(x => x.UserId == user.Id)        
-                .Select(c => new Car
+                .Select(c => new RentedCarDto
                 {
                     Id = c.Car.Id,
                     Make = c.Car.Make,
                     Model = c.Car.Model,
                     Year = c.Car.Year,
-                    Color = c.Car.Color,
                     HorsePower = c.Car.HorsePower,
-                    CubicCapacity = c.Car.CubicCapacity,
-                    Description = c.Car.Description,
-                    isRented = c.Car.isRented,
                     Price = c.Car.Price,
-                    Engine = c.Car.Engine,
-                    Category = c.Car.Category,
-                    Mileage = c.Car.Mileage,
-                    Region = c.Car.Region,
-                    Transmission = c.Car.Transmission,
-                    Images = c.Car.Images,
-                    UserId = user.Id
+
                 }).ToListAsync();
         }
 

@@ -25,6 +25,11 @@ export class AddCarComponent{
   constructor(private carService: CarService, private router: Router){   }
 
   handleImageUpload(event: any): void {
+    const maxFiles = 5;
+    if(event.target.files.length > maxFiles){
+      alert(`You can only insert ${maxFiles} images`)
+      event.target.value = '';
+    }
     this.selectedImages = event.target.files;
   } 
 

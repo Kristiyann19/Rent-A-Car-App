@@ -65,6 +65,11 @@ export class CarService{
     return this.http.delete<any>(`http://localhost:19999/api/Car/RemoveRented/${id}`)
   }
 
+  getImageUrl(carId: number) {
+    return `http://localhost:19999/api/Car/${carId}/Image`
+  }
+
+
 public composeQueryString(object: any): string {
     let result = '';
     let isFirst = true;

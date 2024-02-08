@@ -3,5 +3,7 @@ export class RegisterDto {
   email: string;
   password: string;
   confirmPassword: string;
+  isEmailConfirmed: boolean
+  emailToken: string;
 
 }

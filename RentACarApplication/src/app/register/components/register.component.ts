@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-    user: RegisterDto = { userName: '', email: '', password: '', confirmPassword: '' }; 
+    user: RegisterDto = new RegisterDto(); 
     form: FormGroup;
     serverErrors: any = {};
     submitted = false;
@@ -34,7 +34,6 @@ export class RegisterComponent {
           .subscribe(
             () => {
               console.log('User registered successfully');
-              this.registerService.sendConfirmationEmail(this.user.email)
               this.router.navigate(['/login'])
             },
             (error) => {

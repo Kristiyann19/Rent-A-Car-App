@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-primary">
   <div class=container-fluid>
+
     <a class="navbar-brand"
        [routerLink]="['']">RentACar</a>
     <ul class="navbar-nav mr-auto">
@@ -9,6 +10,7 @@
         <a class="nav-link"
            [routerLink]="['/becomeagent']">Стани Дилър на Коли</a>
       </li>
+
       <li *ngIf="userService.currentUserDto?.roleId === 2 || userService.currentUserDto?.roleId === 3"
           class="nav-item">
         <a class="nav-link"
@@ -33,6 +35,8 @@
                [routerLink]="['/login']">Вход</a>
           </li>
         </ng-container>
+
+
 
         <ng-template #loggedInLinks>
           <li class="nav-item">

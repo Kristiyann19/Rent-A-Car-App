@@ -11,4 +11,7 @@ export class CurrentUserDto{
   phoneNumber: string;
   roleId?: number;
   userCar: CarDto[];
+
+  emailToken: string;
+
 }

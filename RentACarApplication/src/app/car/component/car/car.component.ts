@@ -9,6 +9,7 @@ import { EngineEnumLocalization } from "../../../enums/engine-enum";
 import { CategoryEnumLocalization } from "../../../enums/category-enum";
 import { TransmissionEnumLocalization } from "../../../enums/transmission-enum";
 import { RegionEnumLocalization } from "../../../enums/region-enum";
+import { AdminService } from "../../../admin/admin.service";
 
 @Component({
   selector: 'app-car',
@@ -30,7 +31,7 @@ export class CarComponent {
 
   totalCarsCount = 0;
 
-  constructor(private modalService: NgbModal,  private carService: CarService, private route: ActivatedRoute, public userService: UserService){}
+  constructor(private modalService: NgbModal,  private carService: CarService, private route: ActivatedRoute, public userService: UserService, public adminService: AdminService){}
 
   ngOnInit(): void {
     this.loadCars();
@@ -79,5 +80,11 @@ export class CarComponent {
 
   getImageUrl(carId: number) {
     return `http://localhost:19999/api/Car/${carId}/Image`
+  }
+
+  deleteCarAdmin (id) {
+    return this.adminService.deleteCar(id).subscribe(() => {
+      window.location.reload();
+    })
   }
 }

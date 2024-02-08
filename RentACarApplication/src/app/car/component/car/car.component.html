@@ -164,9 +164,12 @@
         <button class="btn text-danger"
                 *ngIf="car.isRented && userService.currentUserDto">Колата е наета</button>
 
-        <button *ngIf="car.userId === userService.currentUserDto?.id || userService.currentUserDto?.roleId == 3"
+        <button *ngIf="car.userId === userService.currentUserDto?.id"
                 class="btn btn-danger"
                 (click)="onDeleteModal(car.id)">Изтрий</button>
+        <button class="btn btn-danger"
+                *ngIf="userService.currentUserDto?.roleId == 3 "
+                (click)="deleteCarAdmin(car.id)">Админско затриване</button>
       </div>
       <hr>
     </div>

@@ -84,6 +84,6 @@ import { AdminComponent } from './admin/admin.component';
 
 export class AppModule { }
 export function getUserData(userService: UserService) {
-  return () => userService.getCurrentUser();
+  return () => userService.initializeUser();
 }
 

@@ -8,10 +8,12 @@
 }
 
 .nav-link{
+  font-weight: bold;
   color:white;
   float: right;
 }
 .navbar-brand{
+  font-weight: bold;
   color: white;
   margin-left: 10px;
 }

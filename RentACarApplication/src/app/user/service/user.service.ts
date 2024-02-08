@@ -48,4 +48,15 @@ export class UserService {
     });
         return this.http.put<AgentDto>('http://localhost:19999/api/User', agent, { headers: headers })
     }
+
+    initializeUser(): Promise<{}> {
+        return new Promise((resolve) => {
+          return this.http
+            .get<CurrentUserDto>('api/User/currentData')
+            .subscribe((e) => {
+              this.currentUserDto = e;
+              resolve(true);
+            });
+        });
+      }
 }

@@ -43,14 +43,14 @@
                   {{agentDetails?.phoneNumber}}</p>
               </div>
             </div>
-            <hr>
           </div>
-          <button class="btn btn-primary"
-                  (click)="showCars = !showCars">
-            <span *ngIf="showCars">Скрий</span>
-            <span *ngIf="!showCars">Покажи всички обяви на агента</span>
-          </button>
+
         </div>
+        <button class="btn btn-primary"
+                (click)="showCars = !showCars">
+          <span *ngIf="showCars">Скрий</span>
+          <span *ngIf="!showCars">Покажи всички обяви на агента</span>
+        </button>
       </div>
     </div>
 
@@ -59,6 +59,10 @@
       <div *ngFor="let car of agentDetails.userCars"
            class="card"
            style="width: 18rem;">
+
+        <img [src]="carService.getImageUrl(car.id)"
+             alt="Липсва снимка"
+             class="card-img-top">
 
         <div class="card-body">
           <h5 class="card-title">{{car.make}} {{car.model}}</h5>
@@ -69,8 +73,11 @@
         </ul>
         <button class="btn btn-primary"
                 [routerLink]="['/car',car.id]">Виж обявата</button>
+
       </div>
+
     </div>
+
 
 
   </div>

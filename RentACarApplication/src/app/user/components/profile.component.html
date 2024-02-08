@@ -122,6 +122,11 @@
              class="card"
              style="width: 18rem;">
 
+          <img [src]="carService.getImageUrl(car.id)"
+               alt="Липсва снимка"
+               class="card-img-top">
+
+
           <div class="card-body">
             <h5 class="card-title">{{car.make}} {{car.model}}</h5>
           </div>

@@ -24,9 +24,12 @@ namespace RentACarApp.CustomAttributes
         public void OnAuthorization(AuthorizationFilterContext context)
         {
 
-            var user = context.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            var user = context.HttpContext.User
+                .FindFirst(ClaimTypes.Name).Value;
 
-            var userRoleIdCLaim = contextt.Users.Where(x => x.UserName == user).FirstOrDefault(x => x.RoleId == 3);
+            var userRoleIdCLaim = contextt.Users
+                .Where(x => x.UserName == user)
+                .FirstOrDefault(x => x.RoleId == 3);
 
             if (userRoleIdCLaim != null)
             {

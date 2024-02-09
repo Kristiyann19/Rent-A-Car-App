@@ -4,15 +4,14 @@ using RentACarApp.Database;
 using RentACarApp.Hubs;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<RentACarAppContext>(options =>
     options.UseNpgsql(connectionString));
   
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-
 
 builder.Services.AddSignalR();
 builder.Services.AddRentACarServices();

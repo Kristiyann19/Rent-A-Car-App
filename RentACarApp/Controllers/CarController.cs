@@ -18,7 +18,8 @@ namespace RentACarApp.Controllers
         [HttpGet]
         public async Task<IActionResult> AllCars([FromQuery] int page = 1, [FromQuery] int pageSize = 12)
         {
-            var cars = await carService.GetAllCarsAsync(page, pageSize);
+            var cars = await carService
+                .GetAllCarsAsync(page, pageSize);
 
 
             return Ok(cars);
@@ -28,14 +29,18 @@ namespace RentACarApp.Controllers
         [Route("Count")]
         public async Task<IActionResult> TotalCars()
         {
-            var totalCars = await carService.GetCarsCount();
+            var totalCars = await carService
+                .GetCarsCount();
+
             return Ok(totalCars);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddCar([FromForm] AddCarDto car) //changed
         {
-            await carService.AddCarAsync(HttpContext, car);
+            await carService
+                .AddCarAsync(HttpContext, car);
+
             return Ok();
         }
 
@@ -43,7 +48,9 @@ namespace RentACarApp.Controllers
         [HttpDelete("{carId}")]
         public async Task<IActionResult> DeleteCar([FromRoute] int carId)
         {
-            await carService.DeleteCarAsync(carId, HttpContext);
+            await carService
+                .DeleteCarAsync(carId, HttpContext);
+
             return Ok();
         }
 
@@ -51,7 +58,9 @@ namespace RentACarApp.Controllers
         [HttpDelete("RemoveRented/{carId}")]
         public async Task<IActionResult> RemoveFromRented([FromRoute] int carId)
         {
-            await carService.RemoveFromRentedAsync(carId, HttpContext);
+            await carService
+                .RemoveFromRentedAsync(carId, HttpContext);
+
             return Ok();
         }
 
@@ -59,7 +68,9 @@ namespace RentACarApp.Controllers
         [HttpGet("{carId:int}")]
         public async Task<IActionResult> CarById([FromRoute] int carId)
         {
-            var reuslt = await carService.GetCarByIdAsync(carId);
+            var reuslt = await carService
+                .GetCarByIdAsync(carId);
+
             return Ok(reuslt);
         }
 
@@ -67,7 +78,8 @@ namespace RentACarApp.Controllers
         [HttpGet("search")]
         public async Task<IActionResult> SearchCar([FromQuery] SearchCarDto car)
         {
-            var result = await carService.SearchInCarAsync(car);
+            var result = await carService
+                .SearchInCarAsync(car);
 
             return Ok(result);
         }
@@ -76,7 +88,9 @@ namespace RentACarApp.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateCar([FromRoute] int id, [FromBody] CarDto updatedCar)
         {
-            await carService.UpdateCarAsync(id, updatedCar, HttpContext);
+            await carService
+                .UpdateCarAsync(id, updatedCar, HttpContext);
+
             return Ok();
         }
 
@@ -84,7 +98,9 @@ namespace RentACarApp.Controllers
         [HttpGet("RentedCars")]
         public async Task<IActionResult> RentedCars()
         {
-            var rentedCars = await carService.GetRentedCarsAsync(HttpContext);
+            var rentedCars = await carService
+                .GetRentedCarsAsync(HttpContext);
+
             return Ok(rentedCars);
         }
 
@@ -92,7 +108,9 @@ namespace RentACarApp.Controllers
         [HttpPost("{carId}")]
         public async Task<IActionResult> RentCar([FromRoute] int carId)
         {
-            await carService.RentCarAsync(carId, HttpContext);
+            await carService
+                .RentCarAsync(carId, HttpContext);
+
             return Ok();
         }
 
@@ -100,7 +118,9 @@ namespace RentACarApp.Controllers
         [HttpGet("AgentCars")]
         public async Task<IActionResult> PostedCars()
         {
-            var postedCars = await carService.GetPostedCarsAsync(HttpContext);
+            var postedCars = await carService
+                .GetPostedCarsAsync(HttpContext);
+
             return Ok(postedCars);
         }
 
@@ -108,11 +128,14 @@ namespace RentACarApp.Controllers
         [HttpGet("{carId:int}/Image")]
         public async Task<IActionResult> GetFirstCarImage([FromRoute] int carId)
         {
-            var car = await carService.GetCarImageByIdAsync(carId);
+            var car = await carService
+                .GetCarImageByIdAsync(carId);
 
             if (car.Images.Any())
             {
-                var firstCarImage = car.Images.OrderBy(e => e.Id).First();
+                var firstCarImage = car.Images
+                    .OrderBy(e => e.Id)
+                    .First();
 
                 return File(firstCarImage.Bytes, "image/jpg", firstCarImage.Description);
             }
@@ -124,13 +147,16 @@ namespace RentACarApp.Controllers
         [HttpGet("{carId:int}/Images")]
         public async Task<IActionResult> GetCarImages([FromRoute] int carId)
         {
-            var car = await carService.GetCarImageByIdAsync(carId);
+            var car = await carService
+                .GetCarImageByIdAsync(carId);
 
             var base64Images = new List<string>();
 
             if (car.Images.Any())
             {
-                var images = car.Images.OrderBy(e => e.Id).ToList();
+                var images = car.Images
+                    .OrderBy(e => e.Id)
+                    .ToList();
 
                 foreach (var image in images)
                 {

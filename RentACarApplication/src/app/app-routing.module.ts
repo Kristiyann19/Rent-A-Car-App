@@ -5,7 +5,6 @@ import { LoginComponent } from './login/components/login.component';
 import { CarDetailsComponent } from './car/component/car-details/car-details.component';
 import { CarComponent } from './car/component/car/car.component';
 import { AddCarComponent } from './car/component/car-add/add-car.component';
-import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UserComponent } from './user/components/become-agent/user.component';
 import { AgentDetailsComponent } from './user/components/agent-details/agent-details.component';
@@ -23,15 +22,14 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   { path: 'car/:id', component: CarDetailsComponent},
   {path: '', component: CarComponent},
-  {path: 'add', component: AddCarComponent},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'becomeagent', component: UserComponent },
+  {path: 'add', component: AddCarComponent, canActivate: [AuthGuard] },
+  {path: 'becomeagent', component: UserComponent, canActivate: [AuthGuard] },
   {path: 'agent/:id', component: AgentDetailsComponent},
-  {path: 'rentedcars', component: RentCarComponent},
-  {path: 'updatecar/:id', component: UpdateCarComponent},
-  {path: 'profile', component:ProfileComponent},
-  {path: 'updateuser', component:UpdateUserComponent},
-  {path: 'chatHub', component:ChatComponent},
+  {path: 'rentedcars', component: RentCarComponent, canActivate: [AuthGuard] },
+  {path: 'updatecar/:id', component: UpdateCarComponent, canActivate: [AuthGuard] },
+  {path: 'profile', component:ProfileComponent, canActivate: [AuthGuard] },
+  {path: 'updateuser', component:UpdateUserComponent, canActivate: [AuthGuard] },
+  {path: 'chatHub', component:ChatComponent, canActivate: [AuthGuard] },
   {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
   {path: 'confirm-email', component: EmailConfirmationComponent}
 ];

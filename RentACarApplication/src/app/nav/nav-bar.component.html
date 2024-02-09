@@ -3,6 +3,7 @@
 
     <a class="navbar-brand"
        [routerLink]="['']">RentACar</a>
+
     <ul class="navbar-nav mr-auto">
 
       <li *ngIf="userService.currentUserDto?.roleId === 1"
@@ -16,15 +17,18 @@
         <a class="nav-link"
            [routerLink]="['/add']">Добави обява</a>
       </li>
+
       <li *ngIf="userService.currentUserDto?.roleId === 3"
           class="nav-item">
         <a class="nav-link"
            [routerLink]="['/admin']">Админ панел</a>
       </li>
+
     </ul>
 
     <div class="navbar-collapse justify-content-end">
       <ul class="navbar-nav">
+
         <ng-container *ngIf="!isLoggedIn; else loggedInLinks">
           <li class="nav-item">
             <a class="nav-link"
@@ -36,8 +40,6 @@
           </li>
         </ng-container>
 
-
-
         <ng-template #loggedInLinks>
           <li class="nav-item">
             <button class="nav-link"
@@ -48,6 +50,7 @@
                     (click)="logout()">Излез</button>
           </li>
         </ng-template>
+
       </ul>
     </div>
   </div>

@@ -12,6 +12,8 @@ import { CurrentUserDto } from "../../user/dtos/current-user.dto";
 export class LoginService {
   private apiUrl = 'http://localhost:19999/api/Login';
   public isLoggedIn = false;
+
+  public isAgent = false;
   localStorage: Storage;
 
   constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document, private userService: UserService) {
@@ -36,5 +38,21 @@ export class LoginService {
     this.isLoggedIn = this.localStorage?.getItem('access_token') ? true : false;
     return this.isLoggedIn; 
   }
+
+  setIsAgent(status: boolean) : void{
+    this.isAgent = this.userService.currentUserDto.roleId ? true : false;
+    this.isAgent = status;
+  }
+
+  // getIsAgent() : boolean {
+
+  //   if(this.userService.currentUserDto?.roleId == 2 || this.userService.currentUserDto?.roleId == 3){
+  //     return this.isAgent = true;
+  //   } else{
+      
+  //     return this.isAgent = false;
+  //   }
+
+  // }
 
 }

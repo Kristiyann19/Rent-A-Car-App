@@ -66,6 +66,7 @@
                    [(ngModel)]="car.horsePower"
                    name="horsePower"
                    required
+                   min="5"
                    max="2500"
                    #horsePower="ngModel"
                    placeholder="Коне">
@@ -90,6 +91,7 @@
                    [(ngModel)]="car.cubicCapacity"
                    name="cubicCapacity"
                    required
+                   min="1"
                    max="10000"
                    #cubicCapacity="ngModel"
                    placeholder="Кубатура">
@@ -99,6 +101,7 @@
             <input type="number"
                    class="form-control"
                    [(ngModel)]="car.mileage"
+                   min="0"
                    name="mileage"
                    required
                    #mileage="ngModel"
@@ -186,12 +189,14 @@
             </select>
           </div>
 
+
           <div class="col-sm-4">
             <textarea type="text"
                       class="form-control"
                       #description="ngModel"
                       [(ngModel)]="car.description"
                       required
+                      minlength="10"
                       maxlength="3000"
                       name="description"
                       style="max-height: 200px;"
@@ -199,6 +204,7 @@
 
           </textarea>
           </div>
+
 
           <div class="col-sm-4">
             <label for="images">Снимки:</label>

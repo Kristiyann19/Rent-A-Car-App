@@ -7,4 +7,6 @@ export class RentedCarDto{
   horsePower: number;
   year:number;
   isRented: Boolean;
+
+  userId: number;
 }

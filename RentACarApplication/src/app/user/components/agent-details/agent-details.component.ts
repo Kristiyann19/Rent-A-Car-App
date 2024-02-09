@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { UserService } from "../service/user.service";
+import { UserService } from "../../service/user.service";
 import { catchError, throwError } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
-import { AgentDetailsDto } from "../dtos/agent-details.dto";
-import { RegionEnumLocalization } from "../../enums/region-enum";
-import { CarService } from "../../car/service/car.service";
+import { AgentDetailsDto } from "../../dtos/agent-details.dto";
+import { RegionEnumLocalization } from "../../../enums/region-enum";
+import { CarService } from "../../../car/service/car.service";
 
 @Component({
   selector: 'app-agent-details',

@@ -1,14 +1,14 @@
 import { Component} from '@angular/core';
-import { UserService } from '../service/user.service';
-import { AgentDto } from '../dtos/become-agent.dto';
+import { UserService } from '../../service/user.service';
+import { AgentDto } from '../../dtos/become-agent.dto';
 import { Router } from '@angular/router';
-import { CurrentUserDto } from '../dtos/current-user.dto';
-import { UserDto } from '../dtos/user.dto';
+import { CurrentUserDto } from '../../dtos/current-user.dto';
+import { UserDto } from '../../dtos/user.dto';
 
 
 @Component({
   templateUrl: 'user.component.html',
-  styleUrl: 'user.component.css'
+  styleUrl: './user.component.css'
 })
 
 export class UserComponent  {

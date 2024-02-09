@@ -141,6 +141,12 @@
       <div *ngIf="showCars && userService.currentUserDto.roleId != 2">
         <p>Станете агент, за да добавяте обяви</p>
       </div>
+      <div *ngIf="showCars && !userService.currentUserDto.userCar && userService.currentUserDto.roleId == 2">Нямате
+        качени обяви на сайта ни. Може да го направите
+        от тук: <button class="btn btn-primary"
+                [routerLink]="['/add']">Добавете обява</button>
+      </div>
+
     </div>
 
   </div>

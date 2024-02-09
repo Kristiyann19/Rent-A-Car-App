@@ -1,4 +1,4 @@
-import { UserService } from "../service/user.service";
+import { UserService } from "../../user/service/user.service";
 import { Component } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { Router } from "@angular/router";

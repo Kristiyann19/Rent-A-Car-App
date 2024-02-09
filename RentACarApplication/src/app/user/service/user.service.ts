@@ -6,7 +6,8 @@ import { Observable, Observer, catchError, throwError } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { AgentDetailsDto } from '../dtos/agent-details.dto';
 import { CurrentUserDto } from '../dtos/current-user.dto';
-import {UserAdminViewDto } from '../dtos/all-property-user.dto';
+import { UpdateUserDto } from '../dtos/all-property-user.dto';
+
 
 @Injectable()
 export class UserService {
@@ -19,8 +20,8 @@ export class UserService {
     }  
 
 
-    updateUser(getCurrentUser: CurrentUserDto){
-        return this.http.put('http://localhost:19999/api/User/UpdateAccount', getCurrentUser);
+    updateUser(updateUser2: UpdateUserDto){
+        return this.http.put('http://localhost:19999/api/User/UpdateAccount', updateUser2);
     }
 
     getCurrentUser() {
@@ -32,7 +33,7 @@ export class UserService {
     }
 
     getAll() {
-        return this.http.get<UserAdminViewDto[]>('http://localhost:19999/api/User/All');
+        return this.http.get<UserDto[]>('http://localhost:19999/api/User/All');
     }
 
     getAgentDetails(id: number): Observable<AgentDetailsDto> {

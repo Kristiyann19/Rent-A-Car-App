@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";;
-import { ActivatedRoute } from "@angular/router";
 import { UserService } from "../service/user.service";
 import { CurrentUserDto } from "../dtos/current-user.dto";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-update-user',
@@ -13,14 +13,19 @@ export class UpdateUserComponent {
 
   updatedUserDto: CurrentUserDto = new CurrentUserDto();
 
-  constructor(private route: ActivatedRoute, public userService: UserService){}
+  constructor(public userService: UserService, private router: Router){}
   
   updateUser(): void {
-    debugger;
-    this.userService.updateUser(this.userService.currentUserDto).subscribe(() => {
-      console.log('User updated successfully');
+    this.userService.updateUser(this.userService.currentUserDto).subscribe((response: any) => {
+      console.log('User is successfully updated', response);
+      this.router.navigate(['/profile'])
+    },
+    (error) =>{
+      console.error('Error updating user', error);
       
     });
+    
   }
 
 }
+

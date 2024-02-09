@@ -14,7 +14,7 @@ import { UpdateCarComponent } from './car/component/car-update/update-car.compon
 import { ProfileComponent } from './user/components/profile/profile.component';
 import { UpdateUserComponent } from './user/components/user-update/update-user.component';
 import { ChatComponent } from './chat/chat.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin/components/admin.component';
 import { AdminGuard } from './guards/admin.guard';
 import { EmailConfirmationComponent } from './email-confirm/email-confirmation.component';
 

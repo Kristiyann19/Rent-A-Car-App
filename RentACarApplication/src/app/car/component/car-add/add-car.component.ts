@@ -12,7 +12,6 @@ import { Router } from "@angular/router";
 })
 
 export class AddCarComponent{
-
   cars: CarDto[] = [];
   car: AddCarDto = new AddCarDto();
   addError: Boolean = false;

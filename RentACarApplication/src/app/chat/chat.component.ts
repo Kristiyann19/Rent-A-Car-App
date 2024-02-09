@@ -17,13 +17,16 @@ export class ChatComponent implements OnDestroy {
   newMessage:string = '';
   
   private messageSubscription: Subscription
-  constructor(private chatService: ChatService, private userService: UserService){
+  constructor(private chatService: ChatService, private userService: UserService) {
+
     this.messageSubscription = this.chatService.messageRecieved$.subscribe(message => {
       this.messages.push(message)
-    });
 
+    });
     this.currentUser = this.userService.currentUserDto;
+
   }
+  
   ngOnDestroy(): void {
     this.messageSubscription.unsubscribe();
   }

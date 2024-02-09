@@ -9,7 +9,6 @@ import { LoginComponent } from './login/components/login.component';
 import { CarComponent } from './car/component/car/car.component';
 import { CarDetailsComponent } from './car/component/car-details/car-details.component';
 import { AddCarComponent } from './car/component/car-add/add-car.component';
-import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { JwtInterceptor } from './jwt.interceptor';
 import { UserComponent } from './user/components/become-agent/user.component';
@@ -28,7 +27,7 @@ import { PaginationComponent } from './paging/pagination.component';
 import { UpdateUserComponent } from './user/components/user-update/update-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin/components/admin.component';
 import { EmailConfirmationComponent } from './email-confirm/email-confirmation.component';
 
 @NgModule({
@@ -39,7 +38,6 @@ import { EmailConfirmationComponent } from './email-confirm/email-confirmation.c
     CarComponent,
     CarDetailsComponent, 
     AddCarComponent,
-    HomeComponent,
     UserComponent,
     NavBarComponent,
     AgentDetailsComponent,

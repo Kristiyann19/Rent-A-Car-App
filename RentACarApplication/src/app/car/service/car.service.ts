@@ -1,6 +1,6 @@
 
 import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import { Observable } from "rxjs";
 import { CarDto } from "../dtos/car.dto";
 import { UserService } from "../../user/service/user.service";
 import { HttpClient } from "@angular/common/http";
@@ -11,7 +11,8 @@ import { HttpClient } from "@angular/common/http";
 
 export class CarService{
 
-  constructor(private http: HttpClient, private userService: UserService){}
+  constructor(private http: HttpClient,
+     private userService: UserService){}
 
   currentUser = this.userService.currentUserDto;
   
@@ -55,11 +56,9 @@ export class CarService{
     return this.http.post<any>(`http://localhost:19999/api/Car/${id}`, this.currentUser);
   }
 
-
   getRentedCars(): Observable<CarDto[]>{
     return this.http.get<CarDto[]>('http://localhost:19999/api/Car/RentedCars');
   }
-
   
   removeRented(id: number) : Observable<any> {
     return this.http.delete<any>(`http://localhost:19999/api/Car/RemoveRented/${id}`)

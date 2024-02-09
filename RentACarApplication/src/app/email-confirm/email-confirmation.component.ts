@@ -1,8 +1,6 @@
 // email-confirmation.component.ts
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RegisterService } from '../register/service/register.service';
 import { EmailService } from './email.service';
 import { UserService } from '../user/service/user.service';
 

@@ -1,12 +1,10 @@
 
-import { Component, OnInit, Output } from "@angular/core";
-import { CarService } from "../car/service/car.service";
-import { UserService } from "../user/service/user.service";
-import { AdminService } from "./admin.service";
-import { AgentDetailsDto } from "../user/dtos/agent-details.dto";
-import { ActivatedRoute } from "@angular/router";
-import { EventEmitter } from "stream";
-import { UserDto } from "../user/dtos/user.dto";
+import { Component, OnInit} from "@angular/core";
+import { CarService } from "../../car/service/car.service";
+import { UserService } from "../../user/service/user.service";
+import { AdminService } from "../service/admin.service";
+import { AgentDetailsDto } from "../../user/dtos/agent-details.dto";
+import { UserDto } from "../../user/dtos/user.dto";
 
 @Component({
   selector: 'app-admin',
@@ -19,7 +17,10 @@ export class AdminComponent  implements OnInit {
   agentDetails: AgentDetailsDto = new AgentDetailsDto();
   showCars = false;
   localStorage: Storage;
-  constructor( public carService: CarService, public userService: UserService, public adminService: AdminService, private route: ActivatedRoute) {  } 
+  constructor( public carService: CarService, 
+    public userService: UserService, 
+    public adminService: AdminService
+    ) {  } 
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -36,6 +37,4 @@ export class AdminComponent  implements OnInit {
       window.location.reload();
     });
   }
-
- 
 }

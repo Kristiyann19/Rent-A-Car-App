@@ -35,7 +35,10 @@ export class CarDetailsComponent{
 
   imagePaths: SafeResourceUrl[] = [];
 
-  constructor(public userService: UserService, private route: ActivatedRoute, private carService: CarService, private sanitizer: DomSanitizer) {}
+  constructor(public userService: UserService, 
+    private route: ActivatedRoute, 
+    private carService: CarService,
+    private sanitizer: DomSanitizer) {}
 
   getCarDetails (id: number): void{
     this.carService.getCarDetails(id)

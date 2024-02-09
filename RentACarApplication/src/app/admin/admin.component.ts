@@ -4,9 +4,9 @@ import { CarService } from "../car/service/car.service";
 import { UserService } from "../user/service/user.service";
 import { AdminService } from "./admin.service";
 import { AgentDetailsDto } from "../user/dtos/agent-details.dto";
-import { UserAdminViewDto } from "../user/dtos/all-property-user.dto";
 import { ActivatedRoute } from "@angular/router";
 import { EventEmitter } from "stream";
+import { UserDto } from "../user/dtos/user.dto";
 
 @Component({
   selector: 'app-admin',
@@ -15,7 +15,7 @@ import { EventEmitter } from "stream";
 })
 
 export class AdminComponent  implements OnInit {
-  users: UserAdminViewDto[] = [];
+  users: UserDto[] = [];
   agentDetails: AgentDetailsDto = new AgentDetailsDto();
   showCars = false;
   localStorage: Storage;
@@ -26,7 +26,7 @@ export class AdminComponent  implements OnInit {
   }
 
   getAllUsers() {
-    return this.userService.getAll().subscribe((result: UserAdminViewDto[]) => {
+    return this.userService.getAll().subscribe((result: UserDto[]) => {
       this.users = result;
     });
   }

@@ -9,12 +9,10 @@ namespace RentACarApp.Controllers
     public class RegisterController : Controller
     {
         private readonly IRegisterService registerService;
-        private readonly IEmailService emailService;
 
-        public RegisterController(IRegisterService _registerService, IEmailService _emailService)
+        public RegisterController(IRegisterService _registerService)
         {
             registerService = _registerService;
-            emailService = _emailService;
         }
 
         [HttpPost]

@@ -25,7 +25,7 @@ namespace RentACarApp.Services
             var user = await GetUserDataAsync(httpContext);
 
             var car = context.Cars
-            .FirstOrDefault(x => x.Id == carId);
+                .FirstOrDefault(x => x.Id == carId);
 
             if (user.Id == car.UserId)
             {
@@ -39,7 +39,8 @@ namespace RentACarApp.Services
 
         public async Task AddCarAsync(HttpContext httpContext, AddCarDto car)
         {
-            var existingUserClaim = httpContext.User.FindFirst(ClaimTypes.Name);
+            var existingUserClaim = httpContext.User
+                .FindFirst(ClaimTypes.Name);
 
             if (existingUserClaim != null)
             {
@@ -111,7 +112,10 @@ namespace RentACarApp.Services
 
         public async Task<IEnumerable<Car>> GetAllCarsAsync(int page, int pageSize)
         {
-            var cars = await context.Cars.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            var cars = await context.Cars
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
 
             return cars;
         } 
@@ -121,10 +125,15 @@ namespace RentACarApp.Services
 
 
         public Task<Car> GetCarByIdAsync(int carId)
-            => context.Cars.FirstOrDefaultAsync(x => x.Id == carId);
+            => context.Cars
+            .FirstOrDefaultAsync(x => x.Id == carId);
 
         public Task<Car> GetCarImageByIdAsync(int carId)
-            => context.Cars.Include(e => e.Images).FirstOrDefaultAsync(x => x.Id == carId);
+            => context.Cars
+            .Include(e => e.Images)
+            .FirstOrDefaultAsync(x => x.Id == carId);
+
+       
 
         public async Task UpdateCarAsync(int id, CarDto updatedCar, HttpContext httpContext)
         {
@@ -151,7 +160,7 @@ namespace RentACarApp.Services
 
         }    
     
-        public async Task<IEnumerable<RentedCarDto>> GetRentedCarsAsync (HttpContext httpContext) //DTO
+        public async Task<IEnumerable<RentedCarDto>> GetRentedCarsAsync (HttpContext httpContext) 
         {
             var user = await GetUserDataAsync(httpContext);
 
@@ -190,9 +199,11 @@ namespace RentACarApp.Services
         {
             var user = await GetUserDataAsync(httpContext);
 
-            var car = await context.Cars.FirstOrDefaultAsync(x => x.Id == carId);
+            var car = await context.Cars
+                .FirstOrDefaultAsync(x => x.Id == carId);
 
-            var rentedCar = await context.RentalCars.FirstOrDefaultAsync(e => e.CarId == carId && e.UserId == user.Id);
+            var rentedCar = await context.RentalCars
+                .FirstOrDefaultAsync(e => e.CarId == carId && e.UserId == user.Id);
 
             if (rentedCar != null)
             {

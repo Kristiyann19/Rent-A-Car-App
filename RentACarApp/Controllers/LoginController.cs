@@ -20,10 +20,12 @@ namespace RentACarApp.Controllers
         public IActionResult Login([FromBody]LoginDto loginDto)
         {
             var token = loginService.Login(loginDto);
+
             if (!string.IsNullOrEmpty(token))
             {
                 return Ok(new { Token = token });
             }
+
             return Unauthorized("Invalid credentials");
         }
     }

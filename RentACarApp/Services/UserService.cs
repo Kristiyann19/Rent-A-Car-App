@@ -24,7 +24,8 @@ namespace RentACarApp.Services
         {
             var currentUser = await GetUserDataAsync(httpContext);
 
-            var user = await context.Users.FirstOrDefaultAsync(x => x.Id == currentUser.Id);
+            var user = await context.Users.
+                FirstOrDefaultAsync(x => x.Id == currentUser.Id);
 
             context.Users.Remove(user);
 
@@ -62,7 +63,8 @@ namespace RentACarApp.Services
                 {
                     var userName = existingUserClaim.Value;
 
-                    var existingUser = context.Users.FirstOrDefault(x => x.UserName == userName);
+                    var existingUser = context.Users
+                        .FirstOrDefault(x => x.UserName == userName);
 
                     if (existingUser != null)
                     {
@@ -91,7 +93,9 @@ namespace RentACarApp.Services
             => await context.Users.ToListAsync();
 
         public async Task<User> GetUserByIdAsync(int id)
-            => await context.Users.Include(x => x.UserCars).FirstOrDefaultAsync(u => u.Id == id);
+            => await context.Users
+            .Include(x => x.UserCars)
+            .FirstOrDefaultAsync(u => u.Id == id);
 
 
         public async Task<UserDto> GetUserDataAsync(HttpContext httpContext)

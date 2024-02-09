@@ -22,7 +22,6 @@ namespace RentACarApp.Services
     
         public string Login(LoginDto login)
         {
-            //var passwordHash = HashPassword(login.Password);
             var LoginUser = context.Users.SingleOrDefault(x => x.UserName == login.UserName );
 
             if (LoginUser == null)

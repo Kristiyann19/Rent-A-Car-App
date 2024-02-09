@@ -30,13 +30,11 @@
         <p class="card-text"> {{car?.mileage}} км.</p>
         Цвят:
         <p class="card-text">{{car?.color}} </p>
-        За повече информация за агента:
         <button class="btn btn-primary"
-                [routerLink]="['/agent', car.userId]">Агент</button>
-        Редактирайте обявата си:
+                [routerLink]="['/agent', car.userId]">Информация за агента</button>
         <button class="btn btn-primary"
                 *ngIf="car.userId === userService.currentUserDto?.id || userService.currentUserDto?.roleId == 3"
-                [routerLink]="['/updatecar', car.id]">Редактирай</button>
+                [routerLink]="['/updatecar', car.id]">Редактирайте обявата си</button>
       </div>
     </div>
   </div>

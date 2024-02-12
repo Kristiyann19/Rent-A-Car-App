@@ -9,7 +9,8 @@
                             <div class="form-outline mb-4">
                                    <input type="text"
                                           placeholder="Потребителско име"
-                                          formControlName="userName">
+                                          formControlName="userName"
+                                          (blur)="checkUsernameAvailability()">
                                    <div *ngIf="submitted && form.get('userName').hasError('required')"
                                         class="text-danger">
                                           Потребителското име е задължително.
@@ -18,6 +19,8 @@
                                         class="text-danger">
                                           Потребителското име трябва да бъде поне 6
                                    </div>
+                                   <div *ngIf="form.get('userName').errors?.alreadyTaken"
+                                        class="text-danger">Потребителското име е заето.</div>
                             </div>
 
                             <div class="form-outline mb-4">

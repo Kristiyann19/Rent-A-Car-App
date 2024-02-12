@@ -23,7 +23,17 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
+        [HttpGet("check-username/{username}")]
+        public ActionResult UserNameValidation(string username)
+        {
+            var isAvailable = registerService.CheckUserNameAvailability(username);
+
+            return Ok(isAvailable);
+        }
+
     }
+  
+
 
 
 }

@@ -42,4 +42,16 @@ export class RegisterComponent {
             }
           )};
  }
+
+ checkUsernameAvailability(): void{
+  const userName = this.form.get('userName').value;
+
+  if(userName){
+    this.registerService.checkUsernameAvailability(userName).subscribe(available => {
+      if (!available){
+        this.form.get('userName').setErrors({'alreadyTaken' : true});
+      }
+    });
+  }
+ }
 }

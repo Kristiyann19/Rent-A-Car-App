@@ -16,10 +16,29 @@ namespace RentACarApp.Services
             emailService = _emailService;
         }
 
+        public bool CheckUserNameAvailability(string userName) 
+            => !context.Users.Any(u => u.UserName == userName);
+        
+
         public void Register(RegisterDto register)
         {
+
+            var existingUserName = context.Users.FirstOrDefault(x => x.UserName == register.UserName);
+            var existingEmail = context.Users.FirstOrDefault(x => x.Email == register.Email);
+
+            if (existingUserName != null)
+            {
+                throw new Exception("UserName is already used");
+            }
+
+            if (existingEmail != null)
+            {
+                throw new Exception("Email is already used");
+            }
+
             var user = new User
             {
+                
                 UserName = register.UserName,
                 NormalizedUserName = register.UserName.ToLower(),
                 Email = register.Email,

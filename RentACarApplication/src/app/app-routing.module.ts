@@ -20,7 +20,7 @@ import { EmailConfirmationComponent } from './email-confirm/email-confirmation.c
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  { path: 'car/:id', component: CarDetailsComponent},
+  {path: 'car/:id', component: CarDetailsComponent},
   {path: '', component: CarComponent},
   {path: 'add', component: AddCarComponent, canActivate: [AuthGuard] },
   {path: 'becomeagent', component: UserComponent, canActivate: [AuthGuard] },

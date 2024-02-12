@@ -1,4 +1,3 @@
-import { CarDto } from "../../car/dtos/car.dto";
 
 export class UpdateUserDto{
   userName: string;

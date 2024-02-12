@@ -3,7 +3,6 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 
-
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor 
 {

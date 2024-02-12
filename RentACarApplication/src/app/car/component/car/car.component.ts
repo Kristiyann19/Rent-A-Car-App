@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { CarDto } from "../../dtos/car.dto";
 import { CarService } from "../../service/car.service";
-import { ActivatedRoute } from "@angular/router";
 import { UserService } from "../../../user/service/user.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DeleteConfirmationCarModalComponent } from "../../../modal/delete-car/delete-confirmation.component";
@@ -11,11 +10,11 @@ import { TransmissionEnumLocalization } from "../../../enums/transmission-enum";
 import { RegionEnumLocalization } from "../../../enums/region-enum";
 import { AdminService } from "../../../admin/service/admin.service";
 
-@Component({
-  selector: 'app-car',
-  templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
-})
+  @Component({
+    selector: 'app-car',
+    templateUrl: './car.component.html',
+    styleUrls: ['./car.component.css']
+  })
 
 export class CarComponent {
   engineEnumLocalization = EngineEnumLocalization;

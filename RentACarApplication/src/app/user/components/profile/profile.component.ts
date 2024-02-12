@@ -5,6 +5,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteConfirmationModalComponent } from '../../../modal/delete-user/delete-confirmation.component';
 import { RegionEnumLocalization } from '../../../enums/region-enum';
 import { CarService } from '../../../car/service/car.service';
+import { CarDto } from '../../../car/dtos/car.dto';
+import { CurrentUserDto } from '../../dtos/current-user.dto';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -13,11 +15,13 @@ import { CarService } from '../../../car/service/car.service';
 
 export class ProfileComponent  {
   regionEnumLocalization = RegionEnumLocalization;
-  constructor(private modalService: NgbModal, public userService: UserService, public carService: CarService) { }
+  constructor(private modalService: NgbModal, public userService: UserService, public carService: CarService) { 
+
+  
+  }
   showCars = false;
   
   ngOnInit(){
-      
   }
 
   openDeleteConfirmationModal(){

@@ -24,6 +24,7 @@ export class UserComponent  {
       
       (response) => {
         console.log('User became agent successfully!', response)
+        this.userService.getCurrentUser();
         this.router.navigate(['']);    
         
       },

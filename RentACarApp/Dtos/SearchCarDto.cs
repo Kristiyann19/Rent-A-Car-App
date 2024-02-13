@@ -14,14 +14,6 @@ namespace RentACarApp.Dtos
 
         public int HorsePower { get; set; }
 
-        public string Color { get; set; }
-
-        public int CubicCapacity { get; set; }
-
-        public int Mileage { get; set; }
-
-        public string Description { get; set; }
-
         public int UserId { get; set; }
 
         public EngineEnum? Engine { get; set; }

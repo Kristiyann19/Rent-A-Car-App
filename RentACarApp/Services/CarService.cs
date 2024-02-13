@@ -291,3 +291,44 @@ namespace RentACarApp.Services
         }
     }
 }
+
+//public async Task<List<Car>> SeachInCarAsync(SearchCarDto car)
+//IQueryable<Car> query = context.Cars;
+//if (!string.IsNullOrWhiteSpace(car.Make))
+//{
+//    query = query.Where(x => x.Make.ToLower().Contains(car.Make.Trim().ToLower()));
+//}
+//if (!string.IsNullOrWhiteSpace(car.Model))
+//{
+//    query = query.Where(x => x.Model.ToLower().Contains(car.Model.ToLower().Trim()));
+//}
+//if (car.Year != 0)
+//{
+//    query = query.Where(x => x.Year == car.Year);
+//}
+//if (car.Price != 0)
+//{
+//    query = query.GroupBy(x => x.Price).Select(car => car.Where(x => x.Price == car.Max(y => y.Price)).First());
+//}
+//if (car.HorsePower != 0)
+//{
+//    query = query.Where(x => x.HorsePower == car.HorsePower);
+//}
+//if (car.Engine != null)
+//{
+//    query = query.Where(x => x.Engine == car.Engine);
+//}
+//if (car.Category != null)
+//{
+//    query = query.Where(x => x.Category == car.Category);
+//}
+//if (car.Region != null)
+//{
+//    query = query.Where(x => x.Region == car.Region);
+//}
+//if (car.Transmission != null)
+//{
+//    query = query.Where(x => x.Transmission == car.Transmission);
+//}
+//return await query.ToListAsync();
+//        }

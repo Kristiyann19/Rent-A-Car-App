@@ -5,6 +5,7 @@
       <hr>
 
       <form (ngSubmit)="updateCar()"
+            #updateForm="ngForm"
             class="row g-3">
         <div class="col-md-4">
           <label for="make"
@@ -174,7 +175,8 @@
 
         <div class="col-12">
           <button type="submit"
-                  class="btn btn-primary">Редактирай колата</button>
+                  class="btn btn-primary"
+                  [disabled]="!updateForm.valid">Редактирай колата</button>
           <div *ngIf="updateError"
                class="alert alert-danger mt-3">
             Редактирането се провали. Моля опитайте отново.

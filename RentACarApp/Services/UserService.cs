@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
@@ -11,13 +10,10 @@ namespace RentACarApp.Services
     public class UserService : IUserService
     {
         private readonly RentACarAppContext context;
-        private readonly IMapper mapper;
 
-
-        public UserService(RentACarAppContext _context, IMapper _mapper)
+        public UserService(RentACarAppContext _context)
         {
             context = _context;
-            mapper = _mapper;
         }
 
         public async Task DeleteUserAsync(HttpContext httpContext)
@@ -85,8 +81,6 @@ namespace RentACarApp.Services
 
                 return false;
             }
-
-            
         }
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()

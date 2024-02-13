@@ -5,6 +5,9 @@
   margin-bottom: 10px;
 }
 
+hr{
+  margin-bottom: 20px;
+}
 
 .container{
   margin-top: 10px;
@@ -12,6 +15,18 @@
 
 .text-danger{
   margin-left: 5px;
+}
+
+input[type=text], [type=number] {
+  border: 2px solid #ccc;
+}
+
+select{
+  border: 2px solid #ccc;
+}
+
+textarea{
+  border: 2px solid #ccc;
 }
 
 .btn{

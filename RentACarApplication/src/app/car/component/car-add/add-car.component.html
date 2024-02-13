@@ -1,11 +1,15 @@
 <section style="background-color: #eee;">
-  <div class="container  py-5">
-    <form (ngSubmit)="onSubmit()"
-          #addForm="ngForm">
-      <div class="card">
-        <div class="row">
-          <h4 class="title">
-            Въвеждане на описанието на Автомобилa</h4>
+  <div class="container  py-2">
+    <div class="card">
+      <div class="card-body">
+
+        <h2 class="card-title">
+          Въвеждане на описанието на Автомобилa</h2>
+        <hr>
+
+        <form (ngSubmit)="onSubmit()"
+              #addForm="ngForm"
+              class="row g-3">
 
           <div class="col-sm-4">
             <input type="text"
@@ -224,10 +228,10 @@
             <button [routerLink]="['']"
                     class="btn btn-danger">Откажи</button>
           </div>
-
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
+
 
 </section>

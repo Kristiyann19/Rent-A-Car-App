@@ -1,7 +1,21 @@
 .btn-danger{
    float:right;
 }
+
+.card{
+  box-shadow: 5px 5px 10px 2px rgba(172, 172, 172, 0.8);
+}
+
+input[type=text],[type=number] {
+
+  border: 2px solid #ccc;
   
+}
+
+select{
+  border: 2px solid #ccc;
+}
+
 .form-group{
   margin-top:5px;
   margin-bottom:5px;

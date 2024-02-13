@@ -16,3 +16,17 @@
   margin: auto;
 	width: 75%;
 }
+
+.card{
+  box-shadow: 5px 5px 10px 2px rgba(172, 172, 172, 0.8);
+}
+
+input[type=text] {
+
+  border: 2px solid #ccc;
+  
+}
+
+label{
+  font-weight: bold;
+}

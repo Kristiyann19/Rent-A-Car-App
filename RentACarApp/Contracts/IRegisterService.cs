@@ -1,4 +1,4 @@
-﻿using RentACarApp.Dtos;
+﻿using RentACarApp.Dtos.UserDtos;
 
 namespace RentACarApp.Contracts
 {

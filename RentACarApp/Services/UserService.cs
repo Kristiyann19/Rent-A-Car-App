@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
-using RentACarApp.Dtos;
+using RentACarApp.Dtos.UserDtos;
 using System.Security.Claims;
 
 namespace RentACarApp.Services
@@ -10,10 +11,12 @@ namespace RentACarApp.Services
     public class UserService : IUserService
     {
         private readonly RentACarAppContext context;
+        private readonly IMapper mapper;
 
-        public UserService(RentACarAppContext _context)
+        public UserService(RentACarAppContext _context, IMapper _mapper)
         {
             context = _context;
+            mapper = _mapper;
         }
 
         public async Task DeleteUserAsync(HttpContext httpContext)
@@ -102,19 +105,10 @@ namespace RentACarApp.Services
                 var userName = existingUserClaim.Value;
                 var existingUser = await context.Users
                     .Include(u => u.UserCars)
-                    .Select(x => new UserDto 
-                    {
-                        Email = x.Email,
-                        Id = x.Id,
-                        RoleId = x.RoleId,
-                        UserName = x.UserName,
-                        RentalCars = x.RentalCars,
-                        UserCars = x.UserCars,
-                        FirstName = x.FirstName,
-                        PhoneNumber = x.PhoneNumber,
-                        LastName = x.LastName
-                    })
-                    .FirstOrDefaultAsync(x => x.UserName == userName);
+                    .Where(u => u.UserName == userName)
+                    .Select(u => mapper.Map<UserDto>(u))
+
+                    .FirstOrDefaultAsync();
                 return existingUser;
             }
 

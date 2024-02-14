@@ -1,6 +1,6 @@
 ﻿using RentACarApp.Database.Models;
 
-namespace RentACarApp.Dtos
+namespace RentACarApp.Dtos.UserDtos
 {
     public class UserDto
     {

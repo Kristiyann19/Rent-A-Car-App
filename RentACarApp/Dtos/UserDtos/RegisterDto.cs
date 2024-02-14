@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using System.ComponentModel.DataAnnotations;
 
-namespace RentACarApp.Dtos
+namespace RentACarApp.Dtos.UserDtos
 {
     public class RegisterDto
     {

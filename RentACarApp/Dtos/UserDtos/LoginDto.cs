@@ -1,4 +1,4 @@
-﻿namespace RentACarApp.Dtos
+﻿namespace RentACarApp.Dtos.UserDtos
 {
     public class LoginDto
     {

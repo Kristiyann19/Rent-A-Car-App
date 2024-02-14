@@ -10,6 +10,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { UserService } from "../../../user/service/user.service";
+import { CarDetailsDto } from "../../dtos/car-details.dto";
 
 @Component({
   selector: 'app-car-details',
@@ -18,7 +19,7 @@ import { UserService } from "../../../user/service/user.service";
 })
 
 export class CarDetailsComponent{
-  car: CarDto = new CarDto();
+  car: CarDetailsDto = new CarDetailsDto();
   carImagesBase64: string[] = [];
 
   imagePath : any;
@@ -48,7 +49,7 @@ export class CarDetailsComponent{
                 return throwError(() => err);
             })
           )
-    .subscribe((car: CarDto) => {
+    .subscribe((car: CarDetailsDto) => {
       this.car = car;
       this.loadingData = false;
     }); 
@@ -56,7 +57,6 @@ export class CarDetailsComponent{
 
 
   getImages(id: number): void {
-    debugger;
     this.carService.getImagesUrl(id)
       .pipe(
         catchError((err: HttpErrorResponse) => {

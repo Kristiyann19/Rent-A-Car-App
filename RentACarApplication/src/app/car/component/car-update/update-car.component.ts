@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { CarDto } from "../../dtos/car.dto";
 import { CarService } from "../../service/car.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { CarDetailsDto } from "../../dtos/car-details.dto";
 
 @Component({
   selector: 'app-update-car',
@@ -10,7 +11,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 
 export class UpdateCarComponent {
-  updatedCar: CarDto = new CarDto();
+  updatedCar: CarDetailsDto = new CarDetailsDto();
   carId: number;
   updateError : Boolean = false;
   constructor(private route: ActivatedRoute, 

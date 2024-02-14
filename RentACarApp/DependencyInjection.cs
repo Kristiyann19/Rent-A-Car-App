@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using RentACarApp.Contracts;
-using RentACarApp.Dtos;
+using RentACarApp.Dtos.CarDtos;
+using RentACarApp.Dtos.UserDtos;
 using RentACarApp.Services;
 using RentACarApp.Validations;
 using System.Text;

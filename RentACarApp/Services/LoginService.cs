@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
-using RentACarApp.Dtos;
+using RentACarApp.Dtos.UserDtos;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;

@@ -3,6 +3,9 @@ import { Observable } from "rxjs";
 import { CarDto } from "../dtos/car.dto";
 import { UserService } from "../../user/service/user.service";
 import { HttpClient } from "@angular/common/http";
+import { AllCarsDto } from "../dtos/all-cars.dto";
+import { SearchCarDto } from "../dtos/search-car.dto";
+import { CarDetailsDto } from "../dtos/car-details.dto";
 
 @Injectable({
   providedIn: 'root',
@@ -18,12 +21,12 @@ export class CarService{
   private apiUrl = 'http://localhost:19999/api/Car';
 
 
-  getCars(page: number, pageSize: number) : Observable<CarDto[]>{
-    return this.http.get<CarDto[]>(`http://localhost:19999/api/Car?page=${page}&pageSize=${pageSize}`);
+  getCars(page: number, pageSize: number) : Observable<AllCarsDto[]>{
+    return this.http.get<AllCarsDto[]>(`http://localhost:19999/api/Car?page=${page}&pageSize=${pageSize}`);
   }
 
-  getCarDetails(id: number): Observable<CarDto> {
-    return this.http.get<CarDto>(`http://localhost:19999/api/Car/${id}`);
+  getCarDetails(id: number): Observable<CarDetailsDto> {
+    return this.http.get<CarDetailsDto>(`http://localhost:19999/api/Car/${id}`);
   }  
 
   getImagesUrl(carId:number){
@@ -38,13 +41,13 @@ export class CarService{
     return this.http.delete<CarDto>(`http://localhost:19999/api/Car/${id}`);
   }
 
-  updateCar(id: number, updatedCar: CarDto) : Observable<any>{
+  updateCar(id: number, updatedCar: CarDetailsDto) : Observable<any>{
     return this.http.put(`http://localhost:19999/api/Car/${id}`, updatedCar);
   }
 
-  searchCar(car: CarDto): Observable<CarDto[]> {
+  searchCar(car: SearchCarDto): Observable<SearchCarDto[]> {
     const url = 'http://localhost:19999/api/Car/search';
-    return this.http.get<CarDto[]>(url + this.composeQueryString(car));
+    return this.http.get<SearchCarDto[]>(url + this.composeQueryString(car));
   }
 
   totalCars() : Observable<number> {

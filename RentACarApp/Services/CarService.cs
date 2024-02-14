@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
-using RentACarApp.Dtos;
+using RentACarApp.Dtos.CarDtos;
+using RentACarApp.Dtos.UserDtos;
 using System.Linq.Expressions;
 using System.Security.Claims;
 
@@ -52,25 +53,29 @@ namespace RentACarApp.Services
 
                 if (existingUser != null)
                 {
-                    var entity = new Car()
-                    {
-                        Make = car.Make,
-                        Model = car.Model,
-                        Year = car.Year,
-                        Color = car.Color,
-                        HorsePower = car.HorsePower,
-                        CubicCapacity = car.CubicCapacity,
-                        Description = car.Description,
-                        Price = car.Price,
-                        Engine = car.Engine,
-                        isRented = false,
-                        Category = car.Category,
-                        Mileage = car.Mileage,
-                        Region = car.Region,
-                        Transmission = car.Transmission,
-                        Images = car.Images,
-                        UserId = existingUser.Id,
-                    };
+                    var entity = mapper.Map<Car>(car);
+                    entity.isRented = false;
+                    entity.UserId = existingUser.Id;
+
+                    //var entity = new Car()
+                    //{
+                    //    Make = car.Make,
+                    //    Model = car.Model,
+                    //    Year = car.Year,
+                    //    Color = car.Color,
+                    //    HorsePower = car.HorsePower,
+                    //    CubicCapacity = car.CubicCapacity,
+                    //    Description = car.Description,
+                    //    Price = car.Price,
+                    //    Engine = car.Engine,
+                    //    isRented = false,
+                    //    Category = car.Category,
+                    //    Mileage = car.Mileage,
+                    //    Region = car.Region,
+                    //    Transmission = car.Transmission,
+                    //    Images = car.Images,
+                    //    UserId = existingUser.Id,
+                    //};
 
                     existingUser.UserCars.Add(entity);
 
@@ -110,23 +115,33 @@ namespace RentACarApp.Services
         }
 
 
-        public async Task<IEnumerable<Car>> GetAllCarsAsync(int page, int pageSize)
+        public async Task<IEnumerable<AllCarsDto>> GetAllCarsAsync(int page, int pageSize)
         {
             var cars = await context.Cars
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
+                .Select(c => mapper.Map<AllCarsDto>(c))
                 .ToListAsync();
 
             return cars;
         } 
 
         public async Task<int> GetCarsCount()
-            => await context.Cars.CountAsync(); 
+            => await context.Cars.CountAsync();
 
 
-        public Task<Car> GetCarByIdAsync(int carId)
+        public Task<CarDetailsDto> GetCarByIdAsync(int carId)
             => context.Cars
-            .FirstOrDefaultAsync(x => x.Id == carId);
+            .Where(c => c.Id == carId)
+            .Select(c => mapper.Map<CarDetailsDto>(c))
+            .FirstOrDefaultAsync();
+
+
+
+        //Select(p => mapper.Map(p))
+        //public Task<Car> GetCarByIdAsync(int carId)
+        //    => context.Cars
+        //    .FirstOrDefaultAsync(x => x.Id == carId);
 
         public Task<Car> GetCarImageByIdAsync(int carId)
             => context.Cars
@@ -165,18 +180,9 @@ namespace RentACarApp.Services
             var user = await GetUserDataAsync(httpContext);
 
             return await context.RentalCars
-                .Where(x => x.UserId == user.Id)        
-                .Select(c => new RentedCarDto
-                {
-                    Id = c.Car.Id,
-                    Make = c.Car.Make,
-                    Model = c.Car.Model,
-                    Year = c.Car.Year,
-                    HorsePower = c.Car.HorsePower,
-                    isRented = c.Car.isRented,
-                    Price = c.Car.Price
-
-                }).ToListAsync();
+                .Where(x => x.UserId == user.Id)
+                .Select(c => mapper.Map<RentedCarDto>(c.Car))
+                .ToListAsync();
         }
 
         public async Task RentCarAsync(int carId, HttpContext httpContext)
@@ -260,11 +266,7 @@ namespace RentACarApp.Services
 
             query = ApplyFilter(query,
                                 car.Price != 0,
-                                x => x.Price == query.Max(y => y.Price));
-
-            query = ApplyFilter(query,
-                                car.HorsePower != 0,
-                                x => x.HorsePower == car.HorsePower);
+                                x => x.Price == query.Max(y => y.Price));   
 
             query = ApplyFilter(query,
                                 car.Engine != null,

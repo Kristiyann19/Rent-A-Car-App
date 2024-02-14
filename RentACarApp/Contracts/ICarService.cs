@@ -1,13 +1,14 @@
 ﻿using RentACarApp.Database.Models;
-using RentACarApp.Dtos;
+using RentACarApp.Dtos.CarDtos;
+using RentACarApp.Dtos.UserDtos;
 
 namespace RentACarApp.Contracts
 {
     public interface ICarService
     {
-        Task<IEnumerable<Car>> GetAllCarsAsync(int page, int pageSize);
+        Task<IEnumerable<AllCarsDto>> GetAllCarsAsync(int page, int pageSize);
 
-        Task<Car> GetCarByIdAsync(int carId);
+        Task<CarDetailsDto> GetCarByIdAsync(int carId);
 
         Task<Car> GetCarImageByIdAsync(int carId);
 

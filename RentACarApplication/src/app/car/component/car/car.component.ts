@@ -9,6 +9,8 @@ import { CategoryEnumLocalization } from "../../../enums/category-enum";
 import { TransmissionEnumLocalization } from "../../../enums/transmission-enum";
 import { RegionEnumLocalization } from "../../../enums/region-enum";
 import { AdminService } from "../../../admin/service/admin.service";
+import { AllCarsDto } from "../../dtos/all-cars.dto";
+import { SearchCarDto } from "../../dtos/search-car.dto";
 
   @Component({
     selector: 'app-car',
@@ -22,9 +24,8 @@ export class CarComponent {
   transmissionEnumLocalization = TransmissionEnumLocalization;
   regionEnumLocalization = RegionEnumLocalization;
   
-  cars: CarDto[] = [];
-  searchCar: CarDto = new CarDto();
-
+  cars: AllCarsDto[] = [];
+  searchCar: SearchCarDto = new SearchCarDto();
   page = 1;
   pageSize = 12;
   totalCarsCount = 0;
@@ -41,7 +42,7 @@ export class CarComponent {
 
   loadCars() : void{ 
     this.carService.getCars(this.page, this.pageSize)
-      .subscribe((result: CarDto[]) => {
+      .subscribe((result: AllCarsDto[]) => {
        this.cars = result;
        this.totalItems();
       });
@@ -74,7 +75,7 @@ export class CarComponent {
 
   search(): void {
     this.carService.searchCar(this.searchCar).subscribe(
-      (data: CarDto[]) => {
+      (data: AllCarsDto[]) => {
         this.cars = data;
         this.totalItems();
       }

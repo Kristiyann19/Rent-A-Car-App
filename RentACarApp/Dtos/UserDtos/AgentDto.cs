@@ -1,8 +1,6 @@
-﻿using RentACarApp.Database.Models;
-
-namespace RentACarApp.Dtos
+﻿namespace RentACarApp.Dtos.UserDtos
 {
-    public class AgentDetailsDto
+    public class AgentDto
     {
         public int Id { get; set; }
 
@@ -13,7 +11,5 @@ namespace RentACarApp.Dtos
         public string PhoneNumber { get; set; }
 
         public int RoleId { get; set; }
-
-        public List<Car> UserCar { get; set; } = new List<Car>();
     }
 }

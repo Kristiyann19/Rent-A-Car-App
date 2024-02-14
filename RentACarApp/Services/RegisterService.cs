@@ -1,7 +1,7 @@
 ﻿using RentACarApp.Contracts;
 using RentACarApp.Database;
 using RentACarApp.Database.Models;
-using RentACarApp.Dtos;
+using RentACarApp.Dtos.UserDtos;
 
 namespace RentACarApp.Services
 {

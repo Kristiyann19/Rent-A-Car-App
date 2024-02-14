@@ -1,6 +1,6 @@
 ﻿namespace RentACarApp.Validations;
 using FluentValidation;
-using RentACarApp.Dtos;
+using RentACarApp.Dtos.UserDtos;
 
 public class AgentValidator : AbstractValidator<AgentDto>
 {

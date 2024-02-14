@@ -107,8 +107,8 @@ namespace RentACarApp.Services
                     .Include(u => u.UserCars)
                     .Where(u => u.UserName == userName)
                     .Select(u => mapper.Map<UserDto>(u))
-
                     .FirstOrDefaultAsync();
+
                 return existingUser;
             }
 

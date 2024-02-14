@@ -26,7 +26,8 @@
                             <div class="form-outline mb-4">
                                    <input type="text"
                                           placeholder="Имейл"
-                                          formControlName="email">
+                                          formControlName="email"
+                                          (blur)="checkEmailAvailability()">
                                    <div *ngIf="submitted && form.get('email').hasError('required')"
                                         class="text-danger">
                                           Имейлът е задължителен.
@@ -35,6 +36,10 @@
                                         class="text-danger">
                                           Имейлът трябва да бъде поне 6
                                    </div>
+                                   <div *ngIf="form.get('email').errors?.alreadyTaken"
+                                        class="text-danger">Имейлът е зает.
+                                   </div>
+
                             </div>
 
                             <div class="form-outline mb-4">

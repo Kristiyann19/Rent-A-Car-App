@@ -31,6 +31,14 @@ namespace RentACarApp.Controllers
             return Ok(isAvailable);
         }
 
+        [HttpGet("check-email/{email}")]
+        public ActionResult EmailValidation(string email)
+        {
+            var isAvailable = registerService.CheckEmailAvailability(email);
+
+            return Ok(isAvailable);
+        }
+
     }
   
 

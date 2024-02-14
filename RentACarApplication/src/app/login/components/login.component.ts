@@ -37,7 +37,7 @@ export class LoginComponent {
             localStorage.setItem('access_token', response.token);
             this.loginService.setIsLoggedIn(true); 
             this.userService.getCurrentUser();
-            if (this.userService.currentUserDto.roleId == 3){
+            if (this.userService.currentUserDto?.roleId == 3){
               this.router.navigate(['admin'])
             }
             this.router.navigate(['']);

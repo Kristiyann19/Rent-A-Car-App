@@ -5,6 +5,7 @@ import { DOCUMENT } from "@angular/common";
 import { UserService } from "../../user/service/user.service";
 import { UserDto } from "../../user/dtos/user.dto";
 import { CurrentUserDto } from "../../user/dtos/current-user.dto";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class LoginService {
   public isAgent = false;
   localStorage: Storage;
 
-  constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document, private userService: UserService) {
+  constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document, private userService: UserService, private router: Router) {
     this.localStorage = document.defaultView?.localStorage;
   } 
   login(userDto: LoginDto) {
@@ -27,6 +28,7 @@ export class LoginService {
       this.localStorage?.removeItem('access_token');
       this.userService.currentUserDto = new CurrentUserDto();
       this.setIsLoggedIn(false);
+      this.router.navigate([''])
   }
 
   setIsLoggedIn(status: boolean): void {

@@ -7,5 +7,7 @@ namespace RentACarApp.Contracts
         void Register(RegisterDto register);
 
         public bool CheckUserNameAvailability(string userName);
+
+        bool CheckEmailAvailability(string email);
     }
 }

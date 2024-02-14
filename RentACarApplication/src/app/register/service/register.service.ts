@@ -21,5 +21,7 @@ export class RegisterService {
         return this.http.get<boolean>(`http://localhost:19999/api/Register/check-username/${username}`);
     }
 
-   
+   checkEmailAvailability(email: string) : Observable<boolean> {
+    return this.http.get<boolean>(`http://localhost:19999/api/Register/check-email/${email}`)
+   }
 }

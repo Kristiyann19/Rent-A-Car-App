@@ -54,4 +54,16 @@ export class RegisterComponent {
     });
   }
  }
+
+ checkEmailAvailability() : void {
+  const email = this.form.get('email').value;
+
+  if (email) {
+    this.registerService.checkEmailAvailability(email).subscribe(available => {
+      if(!available){
+        this.form.get('email').setErrors({'alreadyTaken' : true});
+      }
+    });
+  }
+ }
 }

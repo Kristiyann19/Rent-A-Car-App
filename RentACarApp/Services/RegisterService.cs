@@ -18,7 +18,9 @@ namespace RentACarApp.Services
 
         public bool CheckUserNameAvailability(string userName) 
             => !context.Users.Any(u => u.UserName == userName);
-        
+
+        public bool CheckEmailAvailability(string email)
+            => !context.Users.Any(u => u.Email == email);
 
         public void Register(RegisterDto register)
         {

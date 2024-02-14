@@ -15,7 +15,6 @@ import { UpdateUserComponent } from './user/components/user-update/update-user.c
 import { ChatComponent } from './chat/chat.component';
 import { AdminComponent } from './admin/components/admin.component';
 import { AdminGuard } from './guards/admin.guard';
-import { EmailConfirmationComponent } from './email-confirm/email-confirmation.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -24,14 +23,13 @@ const routes: Routes = [
   {path: '', component: CarComponent},
   {path: 'add', component: AddCarComponent, canActivate: [AuthGuard] },
   {path: 'becomeagent', component: UserComponent, canActivate: [AuthGuard] },
-  {path: 'agent/:id', component: AgentDetailsComponent},
+  {path: 'agent/:id', component: AgentDetailsComponent, canActivate: [AuthGuard]},
   {path: 'rentedcars', component: RentCarComponent, canActivate: [AuthGuard] },
   {path: 'updatecar/:id', component: UpdateCarComponent, canActivate: [AuthGuard] },
   {path: 'profile', component:ProfileComponent, canActivate: [AuthGuard] },
   {path: 'updateuser', component:UpdateUserComponent, canActivate: [AuthGuard] },
   {path: 'chatHub', component:ChatComponent, canActivate: [AuthGuard] },
   {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
-  {path: 'confirm-email', component: EmailConfirmationComponent}
 ];
 
 @NgModule({

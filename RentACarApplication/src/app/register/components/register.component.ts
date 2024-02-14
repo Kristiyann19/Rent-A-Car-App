@@ -15,6 +15,7 @@ export class RegisterComponent {
     serverErrors: any = {};
     submitted = false;
     registerError: Boolean = false;
+
     constructor(private registerService: RegisterService, private fb: FormBuilder, private router: Router) {
         this.form = this.fb.group({
             userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
@@ -23,7 +24,6 @@ export class RegisterComponent {
             confirmPassword: ['', Validators.required],
           })
     }
-
 
     onSubmit(): void {      
       this.submitted = true;

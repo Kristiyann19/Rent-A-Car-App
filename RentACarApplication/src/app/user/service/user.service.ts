@@ -19,25 +19,26 @@ export class UserService {
         this.localStorage = document.defaultView?.localStorage;
     }  
 
+    private apiUrl = 'http://localhost:19999/api/User';
 
     updateUser(updateUser2: UpdateUserDto){
-        return this.http.put('http://localhost:19999/api/User/UpdateAccount', updateUser2);
+        return this.http.put(this.apiUrl + '/UpdateAccount', updateUser2);
     }
 
     getCurrentUser() {
-      return this.http.get<CurrentUserDto>('api/User/currentData').subscribe(e => this.currentUserDto = e);
+      return this.http.get<CurrentUserDto>(this.apiUrl + '/currentData').subscribe(e => this.currentUserDto = e);
     }
 
     deleteAccount(){
-        return this.http.delete<CurrentUserDto>('http://localhost:19999/api/User/DeleteAccount')
+        return this.http.delete<CurrentUserDto>(this.apiUrl + '/DeleteAccount')
     }
 
     getAll() {
-        return this.http.get<UserDto[]>('http://localhost:19999/api/User/All');
+        return this.http.get<UserDto[]>(this.apiUrl + '/All');
     }
 
     getAgentDetails(id: number): Observable<AgentDetailsDto> {
-        return this.http.get<AgentDetailsDto>(`http://localhost:19999/api/User/${id}`);
+        return this.http.get<AgentDetailsDto>(this.apiUrl + `/${id}`);
     }  
 
     becomeAgent(agent: AgentDto) : Observable<AgentDto>{
@@ -47,7 +48,7 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-        return this.http.put<AgentDto>('http://localhost:19999/api/User', agent, { headers: headers })
+        return this.http.put<AgentDto>(this.apiUrl, agent, { headers: headers })
     }
 
     initializeUser(): Promise<{}> {

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { CurrentUserDto } from '../../dtos/current-user.dto';
 import { UserDto } from '../../dtos/user.dto';
 
-
 @Component({
   templateUrl: 'user.component.html',
   styleUrl: './user.component.css'

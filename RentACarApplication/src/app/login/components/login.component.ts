@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { UserService } from '../../user/service/user.service';
 import { Subject } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CurrentUserDto } from '../../user/dtos/current-user.dto';
 
 @Component({
     selector: 'app-login',

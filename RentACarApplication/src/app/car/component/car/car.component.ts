@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { CarDto } from "../../dtos/car.dto";
 import { CarService } from "../../service/car.service";
 import { UserService } from "../../../user/service/user.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";

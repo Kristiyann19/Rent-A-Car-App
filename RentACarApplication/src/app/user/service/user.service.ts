@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserDto } from '../dtos/user.dto';
 import { AgentDto } from '../dtos/become-agent.dto';
-import { Observable, Observer, catchError, throwError } from 'rxjs';
+import { Observable} from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { AgentDetailsDto } from '../dtos/agent-details.dto';
 import { CurrentUserDto } from '../dtos/current-user.dto';

@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { CarDto } from "../../dtos/car.dto";
 import { EngineEnum, EngineEnumLocalization } from "../../../enums/engine-enum";
 import { ActivatedRoute } from "@angular/router";
 import { CarService } from "../../service/car.service";

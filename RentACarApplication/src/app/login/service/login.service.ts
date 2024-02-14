@@ -3,7 +3,6 @@ import { Inject, Injectable } from "@angular/core";
 import { LoginDto } from "../dtos/login.dto";
 import { DOCUMENT } from "@angular/common";
 import { UserService } from "../../user/service/user.service";
-import { UserDto } from "../../user/dtos/user.dto";
 import { CurrentUserDto } from "../../user/dtos/current-user.dto";
 import { Router } from "@angular/router";
 

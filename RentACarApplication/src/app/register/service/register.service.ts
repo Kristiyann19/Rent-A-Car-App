@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterDto } from '../dtos/register.dto';
-import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Injectable({

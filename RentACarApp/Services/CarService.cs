@@ -26,7 +26,7 @@ namespace RentACarApp.Services
             var user = await GetUserDataAsync(httpContext);
 
             var car = context.Cars
-                .FirstOrDefault(x => x.Id == carId);
+                .FirstOrDefault(x => x.Id == carId);    
 
             if (user.Id == car.UserId)
             {
@@ -57,26 +57,7 @@ namespace RentACarApp.Services
                     entity.isRented = false;
                     entity.UserId = existingUser.Id;
 
-                    //var entity = new Car()
-                    //{
-                    //    Make = car.Make,
-                    //    Model = car.Model,
-                    //    Year = car.Year,
-                    //    Color = car.Color,
-                    //    HorsePower = car.HorsePower,
-                    //    CubicCapacity = car.CubicCapacity,
-                    //    Description = car.Description,
-                    //    Price = car.Price,
-                    //    Engine = car.Engine,
-                    //    isRented = false,
-                    //    Category = car.Category,
-                    //    Mileage = car.Mileage,
-                    //    Region = car.Region,
-                    //    Transmission = car.Transmission,
-                    //    Images = car.Images,
-                    //    UserId = existingUser.Id,
-                    //};
-
+            
                     existingUser.UserCars.Add(entity);
 
                     if (car.ImageFiles.Count > 0)
@@ -130,21 +111,15 @@ namespace RentACarApp.Services
             => await context.Cars.CountAsync();
 
 
-        public Task<CarDetailsDto> GetCarByIdAsync(int carId)
-            => context.Cars
+        public async Task<CarDetailsDto> GetCarByIdAsync(int carId)
+            => await context.Cars
             .Where(c => c.Id == carId)
             .Select(c => mapper.Map<CarDetailsDto>(c))
             .FirstOrDefaultAsync();
 
 
-
-        //Select(p => mapper.Map(p))
-        //public Task<Car> GetCarByIdAsync(int carId)
-        //    => context.Cars
-        //    .FirstOrDefaultAsync(x => x.Id == carId);
-
-        public Task<Car> GetCarImageByIdAsync(int carId)
-            => context.Cars
+        public async Task<Car> GetCarImageByIdAsync(int carId)
+            => await context.Cars
             .Include(e => e.Images)
             .FirstOrDefaultAsync(x => x.Id == carId);
 

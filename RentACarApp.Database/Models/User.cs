@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RentACarApp.Database.Models
 {
-    public class User 
+    public class User
     {
         public int Id { get; set; }
 
@@ -29,13 +29,41 @@ namespace RentACarApp.Database.Models
 
         public bool IsEmailConfirmed { get; set; }
 
-        public int RoleId {  get; set; }
+        public int RoleId { get; set; }
         public Role Role { get; set; }
 
         public List<Car> UserCars { get; set; } = new List<Car>();
 
-        public List<RentalCar> RentalCars { get;} = new List<RentalCar>();
+        public List<RentalCar> RentalCars { get; } = new List<RentalCar>();
     }
-  
+
+    public class UserConfiguration : IEntityTypeConfiguration<User>
+    {
+        public void Configure(EntityTypeBuilder<User> builder)
+        {
+            builder
+                .Property(x => x.UserName)
+                .IsRequired()
+                .HasMaxLength(30);
+
+            builder
+                .Property(x => x.Email)
+                .IsRequired()
+                .HasMaxLength(30);
+
+            builder
+                .Property(x => x.Password)
+                .IsRequired();
+
+            builder
+                .Property(x => x.FirstName)
+                .HasMaxLength(30);
+
+            builder
+                .Property(x => x.LastName)
+                .HasMaxLength(30);
+        }
+
+    }
 
 }

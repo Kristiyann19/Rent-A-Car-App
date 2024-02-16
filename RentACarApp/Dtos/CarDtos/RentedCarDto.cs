@@ -15,5 +15,7 @@
         public int Year { get; set; }
 
         public bool isRented { get; set; }
+
+        public string PhoneNumber { get; set; }
     }
 }

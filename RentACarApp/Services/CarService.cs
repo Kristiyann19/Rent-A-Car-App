@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using RentACarApp.Contracts;
 using RentACarApp.Database;
@@ -156,7 +157,7 @@ namespace RentACarApp.Services
 
             return await context.RentalCars
                 .Where(x => x.UserId == user.Id)
-                .Select(c => mapper.Map<RentedCarDto>(c.Car))
+                .ProjectTo<RentedCarDto>(mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -222,7 +223,6 @@ namespace RentACarApp.Services
         }
 
    
-
         public async Task<List<Car>> SearchInCarAsync(SearchCarDto car)
         {
             IQueryable<Car> query = context.Cars;
@@ -266,6 +266,8 @@ namespace RentACarApp.Services
         {
             return condition ? query.Where(predicate) : query;
         }
+
+       
     }
 }
 

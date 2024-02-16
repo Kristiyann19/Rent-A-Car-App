@@ -30,6 +30,7 @@ const routes: Routes = [
   {path: 'updateuser', component:UpdateUserComponent, canActivate: [AuthGuard] },
   {path: 'chatHub', component:ChatComponent, canActivate: [AuthGuard] },
   {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+  
 ];
 
 @NgModule({

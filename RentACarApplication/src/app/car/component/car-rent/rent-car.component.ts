@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { CarService } from "../../service/car.service";
 import { RentedCarDto } from "../../dtos/rented-car.dto";
+import { UserService } from "../../../user/service/user.service";
 
 @Component({
   selector: 'app-rent-car',
@@ -10,7 +11,9 @@ import { RentedCarDto } from "../../dtos/rented-car.dto";
 
 export class RentCarComponent {
   rentedCars: RentedCarDto[] = [];
-  constructor(public carService: CarService){}
+
+  constructor(public carService: CarService, public userService: UserService){}
+
 
   ngOnInit(){
     this.carService.getRentedCars().subscribe((result: RentedCarDto[]) => {

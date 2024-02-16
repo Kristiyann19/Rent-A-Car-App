@@ -7,7 +7,6 @@ import { DOCUMENT } from '@angular/common';
 export class JwtInterceptor implements HttpInterceptor 
 {
   localStorage: Storage;
-
   constructor(@Inject(DOCUMENT) private document: Document) {
    
     this.localStorage = document.defaultView?.localStorage;

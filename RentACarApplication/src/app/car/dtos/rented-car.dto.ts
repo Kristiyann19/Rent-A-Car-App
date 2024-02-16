@@ -9,4 +9,6 @@ export class RentedCarDto{
   isRented: Boolean;
 
   userId: number;
+
+  phoneNumber: string;
 }

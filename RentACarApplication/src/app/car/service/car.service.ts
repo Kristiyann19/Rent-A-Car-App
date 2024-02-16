@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { AllCarsDto } from "../dtos/all-cars.dto";
 import { SearchCarDto } from "../dtos/search-car.dto";
 import { CarDetailsDto } from "../dtos/car-details.dto";
+import { RentedCarDto } from "../dtos/rented-car.dto";
 
 @Injectable({
   providedIn: 'root',
@@ -54,8 +55,8 @@ export class CarService{
     return this.http.post<any>(this.apiUrl + `/${id}`, this.currentUser);
   }
 
-  getRentedCars(): Observable<CarDto[]>{
-    return this.http.get<CarDto[]>(this.apiUrl + '/RentedCars');
+  getRentedCars(): Observable<RentedCarDto[]>{
+    return this.http.get<RentedCarDto[]>(this.apiUrl + '/RentedCars');
   }
   
   removeRented(id: number) : Observable<any> {

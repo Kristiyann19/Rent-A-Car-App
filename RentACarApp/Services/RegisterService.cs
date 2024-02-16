@@ -24,31 +24,29 @@ namespace RentACarApp.Services
 
         public void Register(RegisterDto register)
         {
+            var isUsernameAvailable = CheckUserNameAvailability(register.UserName);
+            var isEmailAvailable = CheckEmailAvailability(register.Email);
+            
 
-            var existingUserName = context.Users.FirstOrDefault(x => x.UserName == register.UserName);
-            var existingEmail = context.Users.FirstOrDefault(x => x.Email == register.Email);
-
-            if (existingUserName != null)
+            if (!isUsernameAvailable)
             {
                 throw new Exception("UserName is already used");
             }
 
-            if (existingEmail != null)
+            if (!isEmailAvailable)
             {
                 throw new Exception("Email is already used");
-            }
+            }         
 
             var user = new User
             {
-                
                 UserName = register.UserName,
                 NormalizedUserName = register.UserName.ToLower(),
                 Email = register.Email,
                 NormalizedEmail = register.Email.ToLower(),
                 PasswordSalt = PasswordHasher.GenerateSalt(),
                 EmailConfirmationToken = Guid.NewGuid().ToString(),
-                RoleId = 1,
-                
+                RoleId = 1,   
             };
             user.Password = PasswordHasher.ComputeHash(register.Password, user.PasswordSalt);
 

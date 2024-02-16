@@ -31,5 +31,6 @@ namespace RentACarApp.Contracts
         Task<IEnumerable<Car>> GetPostedCarsAsync(HttpContext httpContext);
 
         Task<int> GetCarsCount();
+
     }
 }

@@ -38,10 +38,5 @@ namespace RentACarApp.Controllers
 
             return Ok(isAvailable);
         }
-
     }
-  
-
-
-
 }

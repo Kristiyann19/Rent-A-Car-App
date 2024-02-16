@@ -20,5 +20,6 @@ export class NavBarComponent {
 
   logout(): void {
     this.loginService.logout(); 
+    this.userService.getCurrentUser();
   }
 }

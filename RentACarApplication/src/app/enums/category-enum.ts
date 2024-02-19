@@ -19,6 +19,5 @@ export const CategoryEnumLocalization = {
   [CategoryEnum.pickupTruck]:'Пикап',
   [CategoryEnum.sportsCar]: 'Спортна Кола',
   [CategoryEnum.convertible]: 'Кабриолет',
-  [CategoryEnum.wagon]:'Комби',
-  
+  [CategoryEnum.wagon]:'Комби', 
 }

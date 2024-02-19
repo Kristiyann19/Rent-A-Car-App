@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.Dtos.UserDtos;
 using RentACarApp.Services;
@@ -7,6 +9,7 @@ namespace RentACarApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UserController : Controller
     {
         private readonly IUserService userService;
@@ -17,6 +20,7 @@ namespace RentACarApp.Controllers
         }
 
         [HttpGet("currentData")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetUserData()
         {
             return Ok(await userService
@@ -25,6 +29,7 @@ namespace RentACarApp.Controllers
 
         [HttpGet]
         [Route("All")]
+        [AllowAnonymous]
         public async Task<IActionResult> AllUsers()
         {
             var users = await userService

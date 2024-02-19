@@ -55,6 +55,7 @@ namespace RentACarApp.Services
                 if (existingUser != null)
                 {
                     var entity = mapper.Map<Car>(car);
+
                     entity.isRented = false;
                     entity.UserId = existingUser.Id;
 

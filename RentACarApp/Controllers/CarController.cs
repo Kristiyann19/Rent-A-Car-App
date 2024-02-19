@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACarApp.Contracts;
 using RentACarApp.Dtos.CarDtos;
 
@@ -6,6 +8,7 @@ namespace RentACarApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CarController : Controller
     {
         private readonly ICarService carService;
@@ -15,6 +18,7 @@ namespace RentACarApp.Controllers
             carService = _carService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> AllCars([FromQuery] int page = 1, [FromQuery] int pageSize = 12)
         {
@@ -25,6 +29,7 @@ namespace RentACarApp.Controllers
             return Ok(cars);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("Count")]
         public async Task<IActionResult> TotalCars()
@@ -64,7 +69,7 @@ namespace RentACarApp.Controllers
             return Ok();
         }
 
-
+        [AllowAnonymous]
         [HttpGet("{carId:int}")]
         public async Task<IActionResult> CarById([FromRoute] int carId)
         {
@@ -74,7 +79,7 @@ namespace RentACarApp.Controllers
             return Ok(reuslt);
         }
 
-
+        [AllowAnonymous]
         [HttpGet("search")]
         public async Task<IActionResult> SearchCar([FromQuery] SearchCarDto car)
         {
@@ -124,7 +129,7 @@ namespace RentACarApp.Controllers
             return Ok(postedCars);
         }
 
-
+        [AllowAnonymous]
         [HttpGet("{carId:int}/Image")]
         public async Task<IActionResult> GetFirstCarImage([FromRoute] int carId)
         {
@@ -145,6 +150,7 @@ namespace RentACarApp.Controllers
 
 
         [HttpGet("{carId:int}/Images")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetCarImages([FromRoute] int carId)
         {
             var car = await carService
